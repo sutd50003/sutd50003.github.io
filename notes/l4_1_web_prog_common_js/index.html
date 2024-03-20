@@ -751,20 +751,17 @@ f(10);
 </div>
 <p>The main program call <code>f(10)</code>. We place a new frame on the call stack. When executing <code>f(10)</code>, we assign <code>10+1</code> to a local variable <code>y</code> in the call frame of <code>f(10)</code>. </p>
 <div class="mermaid">graph LR;
-    %%{init:{'flowchart':{'nodeSpacing': 5}}}%%
     id2("f(10)&lt;br/&gt;y=11")
     id3(main)
 </div>
 <p>Before returning the result, we call <code>g(y)</code> which is <code>g(11)</code> which creates another call frame. The following diagram shows the call stack with three frames when the program execution point is right before <code>return z*2</code>.</p>
 <div class="mermaid">graph LR;
-    %%{init:{'flowchart':{'nodeSpacing': 5}}}%%
     id1("g(11)")
     id2("f(10)&lt;br/&gt;y=11")
     id3(main)
 </div>
 <p>As <code>g(11)</code> call returns we remove the top most frame, i.e. <code>g(11)</code>, then back to the frame <code>f(10)</code>. </p>
 <div class="mermaid">graph LR;
-    %%{init:{'flowchart':{'nodeSpacing': 5}}}%%
     id2("f(10)&lt;br/&gt;y=11")
     id3(main)
 </div>
