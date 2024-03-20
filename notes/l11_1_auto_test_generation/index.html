@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>50.003 - Auto Test Generation - Elements of Software Construction 50.003</title>
+<link href="../../css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../css/font-awesome.min.css" rel="stylesheet"/>
+<link href="../../css/base.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body>
+<div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+<div class="container">
+<a class="navbar-brand" href="../..">Elements of Software Construction 50.003</a>
+<!-- Expander button -->
+<button class="navbar-toggler" data-target="#navbar-collapse" data-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<!-- Expanded navigation -->
+<div class="navbar-collapse collapse" id="navbar-collapse">
+<!-- Main navigation -->
+<ul class="nav navbar-nav">
+<li class="navitem">
+<a class="nav-link" href="../..">Home</a>
+</li>
+<li class="navitem">
+<a class="nav-link" href="../l1_course_handout/">Handout</a>
+</li>
+</ul>
+<ul class="nav navbar-nav ml-auto">
+<li class="nav-item">
+<a class="nav-link" data-target="#mkdocs_search_modal" data-toggle="modal" href="#">
+<i class="fa fa-search"></i> Search
+                            </a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+<div class="navbar-header">
+<button class="navbar-toggler collapsed" data-target="#toc-collapse" data-toggle="collapse" title="Table of Contents" type="button">
+<span class="fa fa-angle-down"></span>
+</button>
+</div>
+<div class="navbar-collapse collapse card bg-secondary" id="toc-collapse">
+<ul class="nav flex-column">
+<li class="nav-item" data-level="1"><a class="nav-link" href="#50003-auto-test-generation">50.003 - Auto Test Generation</a>
+<ul class="nav flex-column">
+<li class="nav-item" data-level="2"><a class="nav-link" href="#learning-outcomes">Learning Outcomes</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-level="2"><a class="nav-link" href="#test-generation">Test Generation</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-level="2"><a class="nav-link" href="#fuzz-testing">Fuzz Testing</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div></div>
+<div class="col-md-9" role="main">
+<h1 id="50003-auto-test-generation">50.003 - Auto Test Generation</h1>
+<h2 id="learning-outcomes">Learning Outcomes</h2>
+<p>By the end of this unit you should be able to</p>
+<ol>
+<li>explain the roles and functionalities of the test generator.</li>
+<li>apply mutation-based fuzzing to generate test cases.</li>
+<li>apply generation-based function to synthesize test cases.</li>
+</ol>
+<h2 id="test-generation">Test Generation</h2>
+<p>Recall that process of software testing.</p>
+<div class="mermaid">graph
+  Input--&gt;Program
+  Program--&gt;TO
+  TO["Test Oracle"]--&gt;Pass
+  TO["Test Oracle"]--&gt;Fail
+</div>
+<p>So far we have been defining, curating and generating test cases manually.</p>
+<p>In this unit we consider some approaches that generates test cases automatically. </p>
+<div class="mermaid">graph
+  TG["Test Generator"]--&gt;Input
+  Input--&gt;Program
+  Program--&gt;TO
+  TO["Test Oracle"]--&gt;Pass
+  TO["Test Oracle"]--&gt;Fail
+</div>
+<h2 id="fuzz-testing">Fuzz Testing</h2>
+<p>Fuzzing or fuzz testing is an automated software testing technique that involves providing invalid, unexpected, or random data as inputs to a computer program. </p>
+<p>Fuzzing aims to identify test inputs which reveal exploitable vulnerabilities.</p>
+<p>One downside for fuzzing is that it can't generate the expected outputs. This drawback is minor since for most of the fuzzing test cases, error should be expected outputs. </p>
+<h3 id="why-fuzzing">Why fuzzing</h3>
+<p>Besides test case generation automation, there are several extra reasons why fuzzing should be considered.</p>
+<ul>
+<li>A study found that one-quarter to one-third of all utilities on every UNIX system that the evaluators could get their hands on would crash in the presence of random input.</li>
+<li>A study that looked at 30 different Windows applications found that 21% of programs crashed and 24% hung when sent random mouse and keyboard input, and every single application crashed or hung when sent random Windows event messages.</li>
+<li>A study found that OS X applications, including Acrobat Reader, Apple Mail, Firefox, iChat, iTunes, MS Office, Opera, and Xcode, were even worse than the Windows ones.</li>
+</ul>
+<h3 id="the-base-line-random-testing">The Base Line - Random Testing</h3>
+<p>The base line of fuzzing is to randomly generate inputs as sequences of characters or bytes. Such a approach can be easily implemented. </p>
+<p>For instance, consider the javascript program <code>simple-fuzzer.js</code></p>
+<pre><code class="language-js">function random_fuzz() {
+    let res = "";
+    // strings of any length between 0 and 1024
+    let length = Math.floor(Math.random() * 1024);
+
+    //generate a random character at each location of the string
+    for (let i =0 ; i &lt; length ; i ++) {
+        //generate a character between ASCII 32 and 128
+        let c = String.fromCharCode(Math.floor(Math.random() * 96) + 32);
+        res = res + c;
+    }
+    return res;
+}
+
+console.log(random_fuzz())
+</code></pre>
+<p>Running <code>node simple-fuzzer.js</code> produces</p>
+<pre><code>.u/m:SKx[-:\3t3b?z87f)6'35!t1Y``fGR[_JS:&amp;9^RSIA6svw8G~!%!%_lHA9b\-a"cw$&lt;|$2Gc^8&amp;A*c$eT#wd&lt;QUd}Y1ua&gt;yDxh:=NC^3jI~KMivT'.j{Cp%cDco\2aG/cw3d$&lt;Ih|vIm,_4d,oE8;nV!VXc:[1T,X{F)pIh8=+_[Xtm=_2X:9EWU_Oo*$|^0}nw~Dr1cQ(&lt;dr}Y7/lH&amp;mS$7?fx(F(]j)^9#j8.m2`&lt;v_]="PAI{qvD+yxPusDx!/5ZXMFf'b"Q,.pt7K\\?i7Yj 8Tx)/E'`M[}=v{&gt;GtDbijU%mwEZB?PG]Fo{{6]jXRD[0(&lt;zgbsah1J!D&amp;m\`aGQ8ehDbQN9&gt;^C&lt;I[AZ2;s'%_oj1}#RuCj~i=O"vG]Q!FJ`UP:?{Y|]o\P#7zi'8\Ck@!vC./j:C.\)iGx&gt;Q]@zffZ24]lZw4L7BKk0dA{/ Z6`3v:NN8:h:@/qOC.oq{O^kgYD(#;|@_\i,l!x2P14G(|T+KL!bml:&lt;[P+Sh!*]JY|\y\dL[
+</code></pre>
+<p>In the older days when softwares were developed using less advanced tools and techniques, this approach was effective. In modern days, in which many softwares were developed with proper design and having standard input validation in-place, e.g. type checking, regex and parser etc. Most of the randomly generated input will be immediately rejected, without reaching very "deep" in the test subject. </p>
+<h3 id="mutation-based-fuzzing">Mutation based fuzzing</h3>
+<p>One of the possible ways to overcome the limitation with the random testing is that we could consider generating fuzzy test cases based on known valid test inputs.</p>
+<p>For instance, assuming that we note that one of the valid inputs to the test subject is the following string</p>
+<pre><code>ISTDisApillarInSUTDbutItsNameiSGoingToChange
+</code></pre>
+<p>One possible way to mutate it is to choose a character at a random position and replace it by ssomething else.</p>
+<p>For instance, we randoml choose position (say 13) and replace the character <code>I</code> by character <code>Y</code></p>
+<pre><code>ISTDisApillarYnSUTDbutItsNameiSGoingToChange
+</code></pre>
+<p>The above is consdered an mutant of the original input. </p>
+<p>Here are some basic operations for mutation at some randomly chosen location.</p>
+<ul>
+<li>Flipping a bit/boolean/integer/character</li>
+<li>Trimming</li>
+<li>Swapping characters/bits</li>
+<li>Insert characters</li>
+</ul>
+<h3 id="corhort-exercise-graded">Corhort Exercise (Graded)</h3>
+<p>Given an input string, implement a mutation operator that chooses a random position in the string and swaps the adjacent characters. Meaning if <code>SUTD</code> is an input string and 2 is chosen as the random position, the output should be <code>SUDT</code>. Careful about the string length bound check. </p>
+<h3 id="generation-based-fuzzing">Generation based fuzzing</h3>
+<p>An alternative to Mutation-based fuzzing is touse generation based fuzzing. 
+In generation based fuzzing, we assume that we have access to a set of grammar rules that defines the possible syntatically valid inputs to the test subject. </p>
+<h4 id="formal-grammar">Formal Grammar</h4>
+<p>In computer science, we often use formal grammar as the specification of a language. A language denotes a set of sequences of terminals. A terminal is often a symbol, a byte, or a number. </p>
+<p>For example, consider a language of arithmetic expressions which consists of 
+<code>+,-,*,/</code> as the operators and numbers as operands. In addition, we allow to use <code>()</code> to disambiguate ambiguous terms.</p>
+<p>For instance <code>5 + 2 * 3</code> is one of the valid expressions according to the following EBNF grammar rules</p>
+<pre><code>S ::= Expr
+Expr ::= Expr + Term | Expr - Term | Term
+Term ::= Term * Factor | Term / Factor | Factor
+Factor ::= -Integer | (Expr) | Integer | Integer.Integer
+Integer ::= Digit | IntegerDigit
+Digit ::=  0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 
+</code></pre>
+<p>In the above, each line denotes a rule. A rule consists of a left-hand-side, a define operator <code>::=</code> and a right-hand-side. The LHS is a <em>non-terminal</em>.
+A non-terminal is a meta symbol in the grammar which defines a potential expension. As a dual, we have terminals, which are the atomic/elementary symbols in the languages, such as <code>0, 1, 2, 3, 4, 5, 6, 7, 8, 9, +, -, *, /, ,., (, )</code> and white space. The RHS of a rule is a set of alternatives sepearated by <code>|</code>. Each alternative is a sequence of terminals and non-terminals. </p>
+<p>We could interpret each rule as the LHS non-terminal can be potentially expanded into the one of the alternatives in the RHS. For example, we consider the rule with <code>Expr</code> as the LHS, which says the expression non-terminal can be either a + expression (which consists another <code>Expr</code>, a <code>+</code> and a non-terminal <code>Term</code>), or a - expression, or a <code>Term</code> by itself.</p>
+<h4 id="parse-tree">Parse Tree</h4>
+<p>Given a grammar, a parser normally validates the input sequence by attempting to construct a parse tree. A parse tree records from which grammar rules the input sequence can be validated according to the grammar. 
+We can also think of the parse tree as the result of the parsing. </p>
+<p>For example, the exxpression <code>5 + 2 * 3</code> can be parsed into the following parse tree</p>
+<div class="mermaid">graph
+   N0("S") --&gt; N1
+   N1("Expr") --&gt; N2
+   N1("Expr") --&gt; N3("+")
+   N1("Expr") --&gt; N4
+   N2("Expr") --&gt; N5
+   N5("Term") --&gt; N6
+   N6("Factor") --&gt; N7
+   N7("Integer") --&gt; N8
+   N8("Digit") --&gt; N9("5")
+   N4("Term") --&gt; N10
+   N4("Term") --&gt; N11("*")
+   N4("Term") --&gt; N12
+   N10("Term") --&gt; N13
+   N13("Factor") --&gt; N14
+   N14("Integer") --&gt; N15
+   N15("Digit") --&gt; 2
+   N12("Factor") --&gt; N16
+   N16("Integer") --&gt; N17
+   N17("Digit") --&gt; N18("3")
+
+
+</div>
+<p>In the above parse tree, starting from the root, we find that the first rule we applied in parsing <code>5 + 2 * 3</code> is <code>S ::= Expr</code>. The subtree indicates that the second rule/alternative we apply is <code>Expr ::= Expr + Term</code>. The left subtree contains no branches, which leads us to the digit <code>5</code>. The right subtree indicates that the  rule we applied to parse the sub expression <code>2 * 3</code> is <code>Term ::= Factor</code>. </p>
+<h4 id="generate-fuzz-test-using-the-grammar">Generate Fuzz test using the grammar</h4>
+<p>Given we understand the input requirement, we can now define a better fuzzer w.r.t to the grammar.<br/>
+The idea is to starting from the starting rule's nonterminal, randomly choose one grammar rule given the current non-terminal to generate a sub term (sub parse tree). We need to take note of</p>
+<ol>
+<li>Do not over expand with the recursive alternative.</li>
+<li>Do not always expand the same sub-tree / node. </li>
+</ol>
+<p>With this we can generate a good set of fuzz test input passing the syntax checking of the target software and yet having enough randomness.</p>
+<h3 id="cohort-exercise-graded">Cohort Exercise (Graded)</h3>
+<p>Use JavaScript to implement a fuzzer that will randomly generate inputs to the calculator conforming to the grammar. For now, you can hardcode the expression grammar. </p>
+<p>Hint: Start with the initial rule <code>S ::= Expr</code> and at each point, apply a rule at random. For example, randomly choose any of the rules <code>Expr ::= Term</code>, <code>Expr ::= Expr + Term</code> or <code>Expr – Term</code> in the next step. Continue until a valid expression for the calculator is obtained. Make sure you do not expand the rules forever to avoid infinite loop. </p>
+<h3 id="limitations-of-fuzzing">Limitations of Fuzzing</h3>
+<p>Fuzzing offers many perks to maintain goodd quality of softwares.</p>
+<ul>
+<li>Can provide results with little effort</li>
+<li>Can reveal bugs that were missed in a manual audit</li>
+<li>Provides an overall picture of the robustness of the target software</li>
+</ul>
+<p>It also shares certain limitations</p>
+<ul>
+<li>Will not find all bugs </li>
+<li>The crashing test cases that are produced may be difficult to analyse, as the act of fuzzing does not give you much knowledge of how the software operates internally</li>
+<li>Programs with complex inputs can require much more work to produce a smart enough fuzzer to get sufficient code coverage</li>
+</ul>
+<h3 id="feedback-based-fuzzing">Feedback-based Fuzzing</h3>
+<p>Besides getting the fuzzer to leverage the input specification, another orthothongal approach is to gather feedback from the test report. </p>
+<p>The idea is to turn the test case generation problem into an optimization problem.</p>
+<div class="mermaid">graph
+    N1--&gt;N2
+    N2("Execute Test Cases")--&gt;N3
+    N3("Collect Feedback")--&gt;N1("Generate Test Cases")
+</div>
+<p>As illustrated by the above diagram, in a feedback-baed fuzzing testing framework, we first use a fuzzer to generate the test cases, Then execute the test cases against the test subject. Finally we collect the test outcomes and report as a feedback to the fuzzer which should improve the test effectivness.</p>
+<p>One common way to measure test effectiveness is to measure the code coverage. </p>
+<h3 id="exercise-not-graded">Exercise (Not Graded)</h3>
+<p>Recall that in Jest, we can generate the coverage report in text or html. Note that it can also generate json report. With it, we can feed the json report back to the fuzzer to generate a better set of tests to increase the code coverage. </p>
+<p>Discuss among your team members to think of a possible implementation to incorporate feedback-based fuzzing</p>
+<h3 id="api-fuzzing">API Fuzzing</h3>
+<p>Fuzz testing can be applied to API testing in several aspect</p>
+<ol>
+<li>Fuzzing the low level request - generates random bytes as HTTP requests to test the robustness of the API service.</li>
+<li>Fuzzing the routes - through fuzzers, we could generate sequences of random valid / invalid requests to the test the API routers.</li>
+<li>Fuzzing the high level request - generate GET/POST/DEL/PUT HTTP requests by fuzzing HTTP parameters or form parameters.</li>
+</ol>
+<p>Some references can be found in the following</p>
+<ul>
+<li><code>https://medium.com/@Magii/fuzzing-with-postman-599dce6317c7</code></li>
+<li><code>https://github.com/KissPeter/APIFuzzer</code></li>
+<li><code>https://docs.gitlab.com/ee/user/application_security/api_fuzzing/</code></li>
+</ul>
+<h3 id="fuzzing-test-on-ui">Fuzzing test on UI</h3>
+<p>Fuzz testing can be applied to UI too.</p>
+<ol>
+<li>Fuzzing the UI element event handler by generating random input actions.</li>
+<li>Fuzzing the inputs to the HTML forms.</li>
+</ol>
+<p>Some reference can be found in the following</p>
+<ul>
+<li><code>https://www.fuzzingbook.org/html/GUIFuzzer.html</code></li>
+</ul></div>
+</div>
+</div>
+<footer class="col-md-12">
+<hr/>
+<p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+</footer>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+<script src="../../js/base.js"></script>
+<script src="../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="../../search/main.js"></script>
+<div aria-hidden="true" aria-labelledby="searchModalLabel" class="modal" id="mkdocs_search_modal" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="searchModalLabel">Search</h4>
+<button class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+</div>
+<div class="modal-body">
+<p>From here you can search these documents. Enter your search terms below.</p>
+<form>
+<div class="form-group">
+<input class="form-control" id="mkdocs-search-query" placeholder="Search..." title="Type search term here" type="search"/>
+</div>
+</form>
+<div data-no-results-text="No results found" id="mkdocs-search-results"></div>
+</div>
+<div class="modal-footer">
+</div>
+</div>
+</div>
+</div><div aria-hidden="true" aria-labelledby="keyboardModalLabel" class="modal" id="mkdocs_keyboard_modal" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+<button class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+</div>
+<div class="modal-body">
+<table class="table">
+<thead>
+<tr>
+<th style="width: 20%;">Keys</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="help shortcut"><kbd>?</kbd></td>
+<td>Open this help</td>
+</tr>
+<tr>
+<td class="next shortcut"><kbd>n</kbd></td>
+<td>Next page</td>
+</tr>
+<tr>
+<td class="prev shortcut"><kbd>p</kbd></td>
+<td>Previous page</td>
+</tr>
+<tr>
+<td class="search shortcut"><kbd>s</kbd></td>
+<td>Search</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="modal-footer">
+</div>
+</div>
+</div>
+</div>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>50.003 - Auto Test Generation Part 2 - Elements of Software Construction 50.003</title>
+<link href="../../css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../css/font-awesome.min.css" rel="stylesheet"/>
+<link href="../../css/base.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body>
+<div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+<div class="container">
+<a class="navbar-brand" href="../..">Elements of Software Construction 50.003</a>
+<!-- Expander button -->
+<button class="navbar-toggler" data-target="#navbar-collapse" data-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<!-- Expanded navigation -->
+<div class="navbar-collapse collapse" id="navbar-collapse">
+<!-- Main navigation -->
+<ul class="nav navbar-nav">
+<li class="navitem">
+<a class="nav-link" href="../..">Home</a>
+</li>
+<li class="navitem">
+<a class="nav-link" href="../l1_course_handout/">Handout</a>
+</li>
+</ul>
+<ul class="nav navbar-nav ml-auto">
+<li class="nav-item">
+<a class="nav-link" data-target="#mkdocs_search_modal" data-toggle="modal" href="#">
+<i class="fa fa-search"></i> Search
+                            </a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+<div class="navbar-header">
+<button class="navbar-toggler collapsed" data-target="#toc-collapse" data-toggle="collapse" title="Table of Contents" type="button">
+<span class="fa fa-angle-down"></span>
+</button>
+</div>
+<div class="navbar-collapse collapse card bg-secondary" id="toc-collapse">
+<ul class="nav flex-column">
+<li class="nav-item" data-level="1"><a class="nav-link" href="#50003-auto-test-generation-part-2">50.003 - Auto Test Generation Part 2</a>
+<ul class="nav flex-column">
+<li class="nav-item" data-level="2"><a class="nav-link" href="#learning-outcomes">Learning Outcomes</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div></div>
+<div class="col-md-9" role="main">
+<h1 id="50003-auto-test-generation-part-2">50.003 - Auto Test Generation Part 2</h1>
+<h2 id="learning-outcomes">Learning Outcomes</h2>
+<p>By the end of this unit, you should be able to </p>
+<ol>
+<li>Apply Genetic algorithm for software testing.</li>
+<li>Apply Symbolic exeuction for software testing.</li>
+<li>Explain how to use symbolic execution for software verification.</li>
+</ol>
+<h3 id="recap">Recap</h3>
+<p>Recall from the last unit, we learned a special version fuzzing technique which leverages on the feedback givem by the test reports.</p>
+<div class="mermaid">graph
+    N1--&gt;N2
+    N2("Execute Test Cases")--&gt;N3
+    N3("Collect Feedback")--&gt;N1("Generate Test Cases")
+</div>
+<p>In each iteration, we take the feedback from the previous test execution to generate the next test cases, hoping the next test cases will perform better. The process of translating the feedback to a new version of test case might be quite tricky to implement as a rule-based system.</p>
+<h3 id="genetic-algorithm">Genetic algorithm</h3>
+<p>A possible way to automate the process of feedback-to-generate-better-test-cases is to adopt the genetic algorithm.</p>
+<p>Genetic Algorithms were invented to mimic some of the processes observed in natural evolution. The idea with GA is to use this power of evolution to solve optimization problems. The father of the original Genetic Algorithm was John Holland who invented it in the early 1970's.</p>
+<p>The main idea is to represent the set of all possible results, good or bad, intermediate or final as an entire population. Any subset of the entire population is considered as a generation. </p>
+<p><img alt="" src="../images/ga1.png"/></p>
+<p>The algorithm starts with randomly pick a subset as the first generation. The following steps are taken in each iteration</p>
+<ol>
+<li>compute the fitness score for each member in the current generation <span class="arithmatex">\(G_i\)</span>.</li>
+<li>pick a subset of <span class="arithmatex">\(G_i\)</span>, say <span class="arithmatex">\(G_i'\)</span> such that all members in <span class="arithmatex">\(G_i'\)</span> are fitter than the rest by a threshold. </li>
+<li>Use members in <span class="arithmatex">\(G_i'\)</span> as "parents" to "breed" the next generation <span class="arithmatex">\(G_{i+1}\)</span>. </li>
+<li>set the current generation as <span class="arithmatex">\(G_{i+1}\)</span>.</li>
+</ol>
+<p>The above loop terminates when either 
+* the maximum number of iterations is reached or 
+* the overall fitness meets the minimum requirement or 
+* the fitness increment is smaller than threshold <span class="arithmatex">\(fit(G_{i+1}) - fit(G_i) &lt; \epsilon\)</span>.</p>
+<h4 id="using-ga-in-test-generation">Using GA in test generation</h4>
+<p>for software testing, it is natural to apply GA. </p>
+<ol>
+<li>Let the set of all possible test inputs be the entire population. Each generatation is a proper subset of the entire population.</li>
+<li>Let the code coverage score be the fitness score for each test input.</li>
+<li>Viewing each test input as a sequence of bytes. There are at least two possible "breeding" operations.</li>
+<li>Cross-over. Taking two test inputs, say A and B from the <span class="arithmatex">\(G_i'\)</span>, and pick some random byte offsets that are common to both. Replace the bytes in A by those bytes from B based on the offsets. The result of this operation will be the member of the next generation.
+   <img alt="" src="../images/ga2.png"/></li>
+<li>Mutatation.  Take one test input say C from <span class="arithmatex">\(G_i'\)</span>, randomly pick a position and change the byte at the position which form a new input in the next generation.
+   <img alt="" src="../images/ga3.png"/></li>
+</ol>
+<h4 id="limitation-of-ga-based-test-generation">Limitation of GA based test generation</h4>
+<p>GA automates the search of best test cases for the given test subject. However it might take many iterations to reach the optimal set. Consider </p>
+<pre><code class="language-js">function example(x,y) {
+    let a = [[1],[2],[3],[4],[5]]
+    if (y == 42342531) {
+        a[x][0] = y // x must be [0..4]
+    }
+}
+</code></pre>
+<p>In the above example, it will take a long time for the GA test case search to discover the bug is prensent when <code>x=5</code> and  <code>y=42342531</code>.</p>
+<p>To reach that branch fast, we need to exploit the code structure of <code>example()</code>, it is kind of white box fuzzing.</p>
+<h3 id="symbolic-execution">Symbolic execution</h3>
+<p>Symbolic exeuction is a kind of dynamic analysis that tries to reach to all executable paths in a function. It differs from concreate execution and testing for not giving concrete values to the function being invoked, instead, some symbolic arguments are given so as to collect the information. It differs from static analysis techniques as it retains a per path level of information for analysis, (which could also be a drawback, we will discuss it shortly).</p>
+<p>Given the function <code>example(x,y)</code>, invoking it with a concrete value say <code>example(100,42342531)</code> is known as a <em>concrete execution</em>. Symbolic execution on the other hand, does not invoke the funciton with concrete values, instead symoblic values are passed in. </p>
+<p>Supose <code>A</code> and <code>B</code> are two symbolic values, we can think of them as logical terms, not variable.</p>
+<pre><code class="language-js">1: function example(A,B){
+2:    // A can be anything, B can be anything
+3:    let a = [[1],[2],[3],[4],[5]]
+4:    if (B == 42342531) {
+5:        // B must be 42342531
+6:        a[A][0] = B // 0 &lt;= A &lt; 5
+7:    } 
+8: }
+</code></pre>
+<p>From the above, we find that for the path 3-&gt;4-&gt;6-&gt;7 to be covered, <code>B</code> must be <code>42342531</code>. By doing so, we can figure out the test case to cover that path.</p>
+<p>Besides generating test cases, Symbolic execution can detect bugs, dead codes and redunant assertion. </p>
+<p>For example, if we add an assertion statement at line 6,</p>
+<pre><code class="language-js">1: function example(A,B){
+2:    // A can be anything, B can be anything
+3:    let a = [[1],[2],[3],[4],[5]]
+4:    if (B == 42342531) {
+5:        // B must be 42342531
+6:        assert(B&gt;0) // B &gt; 0
+7:        a[A][0] = B // 0 &lt;= A &lt; 5
+8:    } 
+9: }
+</code></pre>
+<p>The symbolic execution framework generates the following set of constraints for the path 3-&gt;4-&gt;6-&gt;7-&gt;8,</p>
+<pre><code class="language-js">{ B == 42342531 &amp;&amp; 
+  B &gt; 0 &amp;&amp; 
+  0 &lt;= A &amp;&amp; 
+  A &lt; 5 
+}
+</code></pre>
+<p>since the first constraint implies the second one, the second constraint is redundant.</p>
+<p>Similarly if we have the following code</p>
+<pre><code class="language-js">1: function example(A,B){
+2:    // A can be anything, B can be anything
+3:    let a = [[1],[2],[3],[4],[5]]
+4:    if (B == 42342531) {
+5:        // B must be 42342531
+6:        if (B&lt;0) { // B &lt; 0
+7:          a[A][0] = B // 0 &lt;= A &lt; 5
+8:        } 
+9:    }
+10:}
+</code></pre>
+<p>The symbolic exuection framework generates the constraint set for the path 3-&gt;4-&gt;6-&gt;7-&gt;8-&gt;9-&gt;10, as </p>
+<pre><code class="language-js">{
+    B == 42342531 &amp;&amp; 
+    B&lt;0 &amp;&amp; 
+    0 &lt;= A &amp;&amp; 
+    A &lt; 5  
+}
+</code></pre>
+<p>which can not be satisfied hence this path of code is not reachable.</p>
+<p>Finally if we have the following code</p>
+<pre><code class="language-js">1: function example(A,B){
+2:    // A can be anything, B can be anything
+3:    let a = [[1],[2],[3],[4],[5]]
+4:    if (B == 42342531) {
+5:        // B must be 42342531
+6:        A = B // A == B 
+7:        a[A][0] = B //0 &lt;= A &lt; 5
+8:        
+9:    }
+10:}
+</code></pre>
+<p>we have the following set of constraints</p>
+<pre><code class="language-js">{ B == 42342531 &amp;&amp; B == A &amp;&amp; 0 &lt;= A &lt; 5 
+}
+</code></pre>
+<p>which is unsatifiable hence a bug must be present.</p>
+<p>As we observe, symbolic execution proceeds by 
+path following. For each path it traverse, it generates a set of constraints,</p>
+<ul>
+<li>if it is an assignment and the LHS is first time being assigned,  <code>x = e</code>, it generates an equality constraint <code>x == e</code>.</li>
+<li>if it is an re-assignment <code>x = e</code>, we need to create a fresh copy of <code>x</code>, say the last defined/assigned of <code>x</code> was  <code>x_i</code>, then add <code>x_{i+1} == e</code> to the constraint sets, and rename all the use of <code>x</code> to <code>x_{i+1}</code> in the statements that come after the current one.</li>
+<li>if it is an <code>if p { s1 } else { s2 }</code>, it generate two paths with the first path having <code>p</code> and the second path having <code>!(p)</code>.</li>
+<li>if it is a <code>while p { s }</code>, it generates a path into the loop body with <code>p</code> as part of the constraint set, and another path with <code>!p</code> as it exits the loops. </li>
+</ul>
+<p>We can also add extra constraints such as the reference of the array elements must be within range.</p>
+<p>For example,</p>
+<pre><code class="language-js">1: function sum_upto(n) {
+2:    let s = 0;
+3:    let i = 0;
+4:    while (i &lt; n) {
+5:        s = s + i;
+6:        i = i + 1;
+7:    }
+8:    return s;
+9: }
+</code></pre>
+<p>we first "get" rid of the while loop by unrolling it once and one.</p>
+<p>Path 1:</p>
+<pre><code class="language-js">1: function sum_upto(N) {
+2:    let s = 0;
+3:    let i = 0;
+7:    assert(i &gt;= N) // !(i&lt;n)
+8:    return s;
+9: }
+</code></pre>
+<p>Path 2:</p>
+<pre><code class="language-js">1: function sum_upto(N) {
+2:    let s = 0;
+3:    let i = 0;
+4:    assert(i &lt; N) // (i&lt;n)
+5:    s = s + i;
+6:    i = i + 1;
+7:    assert(i &gt;=N) // !(i&lt;n)
+8:    return s;
+9: }
+</code></pre>
+<p>We then rename the variables used in the assignments into single assignment form.</p>
+<p>Path 1:</p>
+<pre><code class="language-js">1: function sum_upto(N) {
+2:    let s0 = 0;
+3:    let i0 = 0;
+7:    assert(i0 &gt;= N) // !(i&lt;n)
+8:    return s0;
+9: }
+</code></pre>
+<p>Path 2:</p>
+<pre><code class="language-js">1: function sum_upto(N) {
+2:    let s0 = 0;
+3:    let i0 = 0;
+4:    assert(i0 &lt; N) // (i&lt;n)
+5:    s1 = s0 + i;
+6:    i1 = i0 + 1;
+7:    assert(i1 &gt;=N) // !(i&lt;n)
+8:    return s1;
+9: }
+</code></pre>
+<p>Then we have two versions of the above.</p>
+<p>One version of not entering the while loop body.</p>
+<pre><code class="language-js">1: {
+2:    s0 == 0 &amp;&amp;
+3:    i0 == 0 &amp;&amp;
+4:    !(i0 &lt; N)  
+9: }
+</code></pre>
+<p>And another version of executing the while loop body once.</p>
+<pre><code class="language-js">1: {
+2:    s0 == 0 &amp;&amp;
+3:    i0 == 0 &amp;&amp;
+4:    i0 &lt; N &amp;&amp; 
+5:    s1 == s0 + i0 &amp;&amp;
+6:    i1 == i0 + 1 &amp;&amp;
+7:    !(i1 &lt; N)
+9: }
+</code></pre>
+<p>We could have more versions of having while loop being unrolled more than once, we just need to be adding extra superscripts to distinguish variables being re-assigned in different iterations.</p>
+<p>We finally can send these versions to constraint solvers to check for satisfiability.</p>
+<h4 id="limitation-of-symbolic-execution">Limitation of Symbolic execution</h4>
+<p>Symbolic execution was a nice framework with strong formalism behind and highly useful.
+There are several issues required more care. </p>
+<h5 id="limitation-of-the-solvers">Limitation of the solvers</h5>
+<p>It relias on the solver's capabilities. Hence in case of complex inequality, we might not get an answer.</p>
+<pre><code class="language-js">function f(x, y, z) {
+    if (x*x*x*x + y*y*y &lt; z*z) {
+        assert(false);
+    }
+}
+</code></pre>
+<p>Existing SMT solvers support theories on linear integer arithmetic, bit vectors, string, etc. Existing SMT solvers are not particularly scalable or efficient for certain theories e.g., non-linear arithmetic.
+* In such cases symbolic execution will not (always) be able to evaluate which side of the branch should be taken. 
+* Thus, symbolic execution may randomly generate some inputs to find one of the feasible execution, losing opportunities to cover a large portion of code. </p>
+<h5 id="memory-object-aliasing">Memory object aliasing</h5>
+<p>Keeping track of constraints among variables with primitive values are straight-forward, it is not that simple when dealing with reference to objects in the heap.</p>
+<p>For instance consider </p>
+<pre><code class="language-js">1: class A {
+2:    constructor(x) { this.attr = x};
+3: }
+4: function foo(N) {
+5:    let a = new A(N); // a == mloc1 &amp;&amp; mloc1.attr == N
+6:    if (a.attr == N) {
+7:        let b = a; // b == a
+8:        b.attr = N+1; // mloc1.attr == N +1 
+9:    }
+10:}
+</code></pre>
+<p>If we naively construct a set of constraint from a path from 5--&gt;6--&gt;7--&gt;8--&gt;9, we have the following</p>
+<pre><code class="language-js">{
+  a == mloc1 &amp;&amp; 
+  mloc1.attr == N &amp;&amp;
+  mloc1.attr == N &amp;&amp;
+  b == a &amp;&amp;
+  mloc1.attr == N+1
+}
+</code></pre>
+<p>which is not satisfiable, but the above path of executions should be valid. Clearly we need a better model to manage to heap objects.</p>
+<h5 id="treatment-of-loops">Treatment of loops</h5>
+<p>Symbolic Execution does not cover all the paths, e.g. we have to fix a limit to how many time the loop can be unrolled, or require the programmers to annotate the loop with invariant (which is uncommon for day-to-day programming). For example, if a program add an invariant constraint of the while loop <code>s &lt;= i * (i-1) / 2</code>, we could verify that for all 
+versions of <code>s_k</code> and <code>i_k</code>, satifies the invariant contraints, for example</p>
+<pre><code class="language-js">s0 == 0 &amp;&amp; i0 == 0  &amp;&amp; i0 == N  ==&gt; s0 &lt;=  i0 * (i_{-1} - 1) / 2
+</code></pre>
+<p><code>i_{-1}</code> is undefined but since <code>i0</code> is 0, hence the above holds</p>
+<pre><code class="language-js">s1 == s0 + i0 &amp;&amp; i1 == i0 + 1 &amp;&amp; i0 == 0 &amp;&amp; i0 == N  ==&gt; s1 &lt;=  i1 * (i0 - 1) / 2
+</code></pre>
+<p>This generalizes to for all <code>k</code>. 
+Thus, when <code>N &gt;=0</code>, 
+We can then use the invariant plus the post condition <code>i==N</code> as the approximiated constraint set for the loop for the subsequent paths, this is to like combining static analysis with dynamic analysis.</p></div>
+</div>
+</div>
+<footer class="col-md-12">
+<hr/>
+<p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+</footer>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+<script src="../../js/base.js"></script>
+<script src="../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="../../search/main.js"></script>
+<div aria-hidden="true" aria-labelledby="searchModalLabel" class="modal" id="mkdocs_search_modal" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="searchModalLabel">Search</h4>
+<button class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+</div>
+<div class="modal-body">
+<p>From here you can search these documents. Enter your search terms below.</p>
+<form>
+<div class="form-group">
+<input class="form-control" id="mkdocs-search-query" placeholder="Search..." title="Type search term here" type="search"/>
+</div>
+</form>
+<div data-no-results-text="No results found" id="mkdocs-search-results"></div>
+</div>
+<div class="modal-footer">
+</div>
+</div>
+</div>
+</div><div aria-hidden="true" aria-labelledby="keyboardModalLabel" class="modal" id="mkdocs_keyboard_modal" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+<button class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+</div>
+<div class="modal-body">
+<table class="table">
+<thead>
+<tr>
+<th style="width: 20%;">Keys</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="help shortcut"><kbd>?</kbd></td>
+<td>Open this help</td>
+</tr>
+<tr>
+<td class="next shortcut"><kbd>n</kbd></td>
+<td>Next page</td>
+</tr>
+<tr>
+<td class="prev shortcut"><kbd>p</kbd></td>
+<td>Previous page</td>
+</tr>
+<tr>
+<td class="search shortcut"><kbd>s</kbd></td>
+<td>Search</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="modal-footer">
+</div>
+</div>
+</div>
+</div>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>

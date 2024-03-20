@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>50.003 - Node.js - Elements of Software Construction 50.003</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Elements of Software Construction 50.003</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../l1_course_handout/" class="nav-link">Handout</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#50003-nodejs" class="nav-link">50.003 - Node.js</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#learning-outcomes" class="nav-link">Learning Outcomes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#frontend-vs-backend" class="nav-link">Frontend vs Backend</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#nodejs" class="nav-link">Node.js</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#when-will-the-event-loop-stop" class="nav-link">When will the event loop stop?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#further-readings" class="nav-link">Further Readings</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="50003-nodejs">50.003 - Node.js</h1>
+<h2 id="learning-outcomes">Learning Outcomes</h2>
+<p>By the end of this unit, you should be able to</p>
+<ol>
+<li>Name the differences between frontend and backend development for web application</li>
+<li>Describe the use of a package/project manager for node.js</li>
+<li>Describe the run-time system of node.js</li>
+<li>Compare the difference between event callbacks and promises.</li>
+<li>Analyse the run-time behavior of an asynchronous node.js program</li>
+</ol>
+<h2 id="frontend-vs-backend">Frontend vs Backend</h2>
+<p>In many web applications, it is insufficient to run the application in the browser which is a run-time system hosted in the user's device, such as desktop, laptop or mobile phone. An obvious reason is that certain computation must not be executed on the user's device due to security and integrity, for instance, transferring balance from one account to another. These highly sensitive operations should be executed at the server ends, which is known as the "backend".</p>
+<h2 id="nodejs">Node.js</h2>
+<p>There are many options of implementing the backend applications, e.g. Spring with Java, Django with Python, Flask with Python, Node.js with JavaScript. </p>
+<p>Node.js is a run-time system to run JavaScript applications without the browser (and its event APIs), for instance <code>document</code> is no longer a predefined reference in Node.js.</p>
+<h3 id="hello-world">Hello World</h3>
+<p>The hello world program in Node.js is not too far apart from the one in the browser.</p>
+<p>Suppose we have a JavaScript file name <code>hello.js</code> with the following content,</p>
+<pre><code class="language-js">console.log(&quot;hello&quot;);
+</code></pre>
+<p>To execute it, we need the node.js run-time to be installed, for installation, please refer to </p>
+<pre><code class="language-url">https://nodejs.org/en/download
+</code></pre>
+<p>Then in the terminal, </p>
+<pre><code class="language-bash">node hello.js
+</code></pre>
+<p>We see the message <code>hello</code>, being printed in the terminal.</p>
+<p>Since it is using the same language as the browser run-time, we will skip those common language features and focus on the difference. </p>
+<h3 id="nodejs-projectpackage-manager">Node.js Project/Package Manager</h3>
+<p>In most of the cases, we develop projects based on existing libraries, modules and packages. To better manage all these dependencies, we need a project management tool.
+<code>npm</code> is the mostly commonly used too in the node.js community. Its role is similar to <code>pip</code> for python and <code>gradle</code> for java.</p>
+<p>To start a Node.js project, </p>
+<pre><code class="language-bash">mkdir myproj
+cd myproj
+npm init
+</code></pre>
+<p>To add a dependency, we type </p>
+<pre><code class="language-bash">npm i xhr2
+</code></pre>
+<p>where <code>xhr2</code> is the library that we would like to install as a dependency for our current project.  After executing the above command, we observe that
+the <code>xhr</code> library is downloaded to a temporary forder <code>node_modules</code> and the following </p>
+<pre><code class="language-json">  &quot;dependencies&quot;: {
+    &quot;xhr2&quot;: &quot;^0.2.1&quot;
+  }
+</code></pre>
+<p>is added to the project definition file <code>package.json</code>.</p>
+<p>When we clone the project to a new machine, (for development installation or deployment purpose),  we can download all the dependencies defined by <code>package.json</code> by running</p>
+<pre><code class="language-bash">npm i
+</code></pre>
+<p>Next we would like to enable the ES6 module mode in this project. We will explain what is ES6 module mode shortly. </p>
+<p>Use an editor to add the following entry to the <code>package.json</code> file.</p>
+<pre><code class="language-json">{
+  &quot;name&quot;: &quot;myproj&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;
+  },
+  &quot;type&quot;: &quot;module&quot;, // enable module type
+  &quot;author&quot;: &quot;&quot;,
+  &quot;license&quot;: &quot;ISC&quot;, 
+  &quot;dependencies&quot;: {
+    &quot;xhr2&quot;: &quot;^0.2.1&quot;
+  }
+}
+</code></pre>
+<h3 id="commonjs-vs-es6-modules">CommonJS vs ES6 modules</h3>
+<p>Module system allows one to put common codes in a module which can be reused by many different use sites. </p>
+<p>For instance, consider the following JavaScript program <code>mymath.js</code></p>
+<pre><code class="language-js">const pi = 3.14159
+const e = 2.71828
+
+module.exports = {pi, e};
+</code></pre>
+<p>in which we define two constant variables <code>pi</code> and <code>e</code>, and export them, so that when <code>mymath.js</code> is being imported in another JavaScript program, these two constant variables can be reused. </p>
+<p>Traditionally, In Common JavaScript (dubbed as CJS), we import predefined references from another JS file, via the <code>require()</code> function. </p>
+<pre><code class="language-js">const mymath = require('./mymath.js');
+console.log(mymath.pi);
+</code></pre>
+<p>In ES6 onwards, the following "better" syntax was instroduced,</p>
+<p>Exporting</p>
+<pre><code class="language-js">const pi = 3.14159
+const e = 2.71828
+
+export {pi, e};
+</code></pre>
+<p>Importing</p>
+<pre><code class="language-js">import {pi} from './mymath.js';
+console.log(pi);
+</code></pre>
+<p>For the rest of this unit, we will stick to the ES6 import syntax.</p>
+<p>Let's consider the following JavaScript program <code>circle.js</code> that makes use of <code>mymath.js</code>.</p>
+<pre><code class="language-js">import {pi} from &quot;./mymath.js&quot;
+
+class Circle {
+    constructor(r) {
+        this.r = r;
+    }
+    area() {
+        return this.r**2 * pi;
+    }
+}
+
+export default Circle;
+</code></pre>
+<p>In the above, we make use of the <code>pi</code> defined in <code>mymath.js</code> to compute the area of a <code>Circle</code> object. And the end of the file, we export the class definition <code>Circle</code> with a <code>default</code> modifier. Note that there can only one name to be exported if <code>default</code> is used. Being a <code>default</code> export, we do not need to surround it with <code>{}</code> when importing. 
+In CommonJS (pre ES6), we write <code>modules.export = Circle</code> instead.</p>
+<p>Consider the following program <code>moduletest.js</code></p>
+<pre><code class="language-js">import Circle from './circle.js';
+var circle = new Circle(10);
+console.log(circle.area());
+</code></pre>
+<h3 id="nodejs-event-loop">Node.js Event-loop</h3>
+<p>Like JavaScript run-time in the browser, when the main program ended, Node.js run-time goes into an event loop.</p>
+<p>The Node.js event-loop consists of the following steps, (AKA phases.)</p>
+<pre><code>   ┌───────────────────────────┐
+┌─&gt;│           timers          │
+│  └─────────────┬─────────────┘
+│  ┌─────────────┴─────────────┐
+│  │     pending callbacks     │
+│  └─────────────┬─────────────┘
+│  ┌─────────────┴─────────────┐
+│  │       idle, prepare       │
+│  └─────────────┬─────────────┘      ┌───────────────┐
+│  ┌─────────────┴─────────────┐      │   incoming:   │
+│  │           poll            │&lt;─────┤  connections, │
+│  └─────────────┬─────────────┘      │   data, etc.  │
+│  ┌─────────────┴─────────────┐      └───────────────┘
+│  │           check           │
+│  └─────────────┬─────────────┘
+│  ┌─────────────┴─────────────┐
+└──┤      close callbacks      │
+   └───────────────────────────┘
+</code></pre>
+<ol>
+<li>timers: this phase executes callbacks scheduled by setTimeout() and setInterval().</li>
+<li>pending callbacks: executes I/O callbacks deferred to the next loop iteration.</li>
+<li>idle, prepare: only used internally.</li>
+<li>poll: retrieve new I/O events; execute I/O related callbacks (almost all with the exception of close callbacks, the ones scheduled by timers, and setImmediate()); node will block here when appropriate.</li>
+<li>check: setImmediate() callbacks are invoked here.</li>
+<li>close callbacks: some close callbacks, e.g. socket.on('close', ...).</li>
+</ol>
+<p>Between each run of the event loop, Node.js checks if it is waiting for any asynchronous I/O or timers and shuts down cleanly if there are not any.</p>
+<p>Now we focused on call-backs and asychronous tasks (The 2nd Phase, and 4th Phase).</p>
+<h3 id="nodejs-io">Node.js I/O</h3>
+<p>Since node.js applications are meant for the backend system, there is no need to handle the I/O with the browser interface, instead we find the following I/O operations</p>
+<ol>
+<li>Network I/O</li>
+<li>File I/O</li>
+<li>other I/Os</li>
+</ol>
+<p>Let's consider an example of using network I/O,</p>
+<pre><code class="language-js">import XMLHttpRequest from 'xhr2';
+var xhr = new XMLHttpRequest();
+var args = process.argv;
+if (args.length &gt; 2) {
+    var input = args[2];
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            var res = xhr.responseText;
+            console.log(res);
+        } 
+    }; 
+    xhr.open('GET', `https://postman-echo.com/get?x=${input}`);
+    xhr.send();
+} else {
+    console.log(&quot;USAGE: node index.js input&quot;);
+}
+</code></pre>
+<p>The first statement, we import the <code>XMLHttpRequest</code> class  from the package <code>xhr2</code>. 
+(We don't need to import it when the code is executed in the browser as all browser has <code>XMLHttpRequest</code> class builtin in the run-time, but this is not the case for node.js).
+In the second statement, we instantiate an <code>XMLHttpRequest</code> request object. 
+In the third line, we read the command line arguments into a variable <code>args</code>.
+The following <code>if-else</code> statement check whether the user supplies enough arguments. 
+In the then branch, we extract the third argument, which will be used as the input parameters in the API call. 
+Before calling the API, we set-up a callback in the event of the state of the request changing. As we discussed earlier, 
+the node.js run-time has an event loop, which periodically checks for events (Phase 4). In this case, the change of state in the <code>XMLHttpRequest</code> object is one of the events it is checking. When the event occurs, i.e. the state of the object changes, the callback function will be placed in the callback queue. When the main call stack is empty, the callback will be put into the callstack for execution. 
+In the callback function, we check whether the state is <code>4</code>, which stands for <code>DONE</code>. When the call is  done, we extract the response text and print it out. After setting up the callback function, we open the request and submit it.</p>
+<p>If we execute this script, we will observe the API request's repsonse being printed on the command line.</p>
+<p>Next let's consider another example that interacts with file system via the <code>node:fs</code> library (which is builtin).</p>
+<pre><code class="language-js">import { writeFile } from 'node:fs';
+const txt = &quot;hello&quot;;
+writeFile('save.txt', txt, (err) =&gt; {
+    if (err) throw err;
+    console.log('The file has been saved!');
+}); 
+</code></pre>
+<p>In the second statement,we define the text data to be written to the file. In third statement we write the result to a file named <code>save.txt</code>, note that <code>writeFile()</code> takes three arguments. The last argument is a callback function, whose argument <code>err</code> is potentially an error. In this case, when the error is present, we propogate the error by throwing it as an excception, otherwise, we print a message.</p>
+<h3 id="callback-pyramid">Callback Pyramid</h3>
+<p>Let's say now we would like to combine the two examples, first we would like to make an API call, when the call is returned successfully, we save the result of the API call into a file.</p>
+<pre><code class="language-js">import XMLHttpRequest from 'xhr2';
+import { writeFile } from 'node:fs';
+
+var xhr = new XMLHttpRequest();
+var args = process.argv;
+if (args.length &gt; 2) {
+    var input = args[2];
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            var res = xhr.responseText;
+            writeFile('api_result.txt', res, (err) =&gt; {
+                if (err) throw err;
+                console.log('The file has been saved!');
+            }); 
+        }
+    }; 
+    xhr.open('GET', `https://postman-echo.com/get?x=${input}`);
+    xhr.send();
+} else {
+    console.log(&quot;USAGE: node index.js input&quot;);
+}
+</code></pre>
+<p>Note that we have to "embed" the routine of writing the result <code>res</code> into a file <code>api_result.txt</code> deep inside the callback of <code>xhr</code> request, the <code>writeFile()</code> call itself has another callback. If we have many asynchronous steps following one another, the code will become complicated and hard to read. </p>
+<h3 id="promise">Promise</h3>
+<p>Promise is a builtin class in JavaScript, which allows us to build a sequence of asynchronous tasks without nesting call-backs. </p>
+<p>A <code>Promise</code> object can be instantiated passing in a function as argument. This function argument is called the <em>executor</em>. An executor function is a higher order function that takes two functions as arguments, commonly named as <code>resolve</code> and <code>reject</code>. <code>resolve</code> is applied to the result of the promise during normal execution, <code>reject</code> is applied when some error occurs, (cf. <code>throw</code>).
+In the following we instantiate a <code>Promise</code> object that always resolves.</p>
+<pre><code class="language-js">let alwaysWork = new Promise(function(resolve, reject) {
+  resolve();
+})
+</code></pre>
+<p>Let's consider a more interesting example using <code>Promise</code>.</p>
+<pre><code class="language-js">function asyncCounter()  {
+    var count = 0;
+    return new Promise( (resolve, reject) =&gt; {
+        resolve(count);
+    });
+}
+
+function incr(count) {
+    console.log(count);
+    return ++count;
+}
+
+let counter = asyncCounter();
+
+counter
+    .then( incr )
+    .then( incr )
+    .then( incr )
+</code></pre>
+<p>In the above we instantiate an asychronous counter by calling the function <code>asyncCounter()</code>, which initializes a local variable and return a promise object that 
+resolves with the variable, recall that <code>resolve</code> is the continuation (i.e. the next 
+step of the promise). Next we invoke <code>.then</code> method of this counter (promise) three times. We can chain the invocation because, <code>.then</code> method takes a method and returns a new promise. In this case, we use the <code>incr</code> function as the parameter of <code>.then</code>. 
+In the <code>incr</code> function, we print the <code>count</code> variable and return the result of incrementing <code>count</code> by 1. One may point out that <code>incr</code> does not return a new Promise object, how could this work? Behind the scene, node.js rewrite the <code>incr</code> function as </p>
+<pre><code class="language-js">function incr(count) {
+    console.log(count);
+    return new Promise((resolve, reject) =&gt; resolve(++count));
+}
+</code></pre>
+<p>When we execute the above we will see the following printed on the terminal.</p>
+<pre><code class="language-bash">0
+1
+2 
+</code></pre>
+<p>Now let's make some changes to the example, so that the <code>incr</code> function will stop incrementing the counter when the limit is reached. We modify the <code>incr</code> function as follows,</p>
+<pre><code class="language-js">// definition of asyncCounter() remains unchanged.
+function incr(count) {
+    console.log(count);
+    return new Promise((resolve, reject) =&gt; {
+        if (count &gt; 1) {
+            reject(&quot;limit reached&quot;);
+        } else {
+            resolve(++count);
+        }
+    }); 
+}
+</code></pre>
+<p>In the above, <code>incr</code> returns a new promise object which does not always resolve with <code>++count</code>. In the event that the current <code>count</code> value is greater than 1, it will reject the rest of the computation, by applying <code>reject</code>.</p>
+<p>Now coming back to the use of the <code>counter</code>, we chain it with <code>incr</code> 4 times, followed by a call to a <code>catch()</code> method invocation and consumes the error raised by any of the <code>reject</code> function call.</p>
+<pre><code class="language-js">let counter = asyncCounter();
+
+counter
+    .then( incr )
+    .then( incr )
+    .then( incr )
+    .then( incr )
+    .catch( (reason) =&gt; console.log(`rejected: ${reason}.`))
+</code></pre>
+<p>calling the above, we have</p>
+<pre><code class="language-bash">0
+1
+2 
+rejected: limit reached.
+</code></pre>
+<p>We now argue that we don't experience any asynchronousness here. </p>
+<p>Let's modify the example by attaching a prefix to the message printed by the <code>incr</code> function 
+and creating a second counter. </p>
+<pre><code class="language-js">1: function asyncCounter()  {
+2:     var count = 0;
+3:     return new Promise( (resolve, reject) =&gt; {
+4:         resolve(count);
+5:     });
+6: }
+7:
+8: function incr(id) {
+9:     return function (count) {
+10:        console.log(`${id}:${count}`);
+11:        return new Promise((resolve, reject) =&gt; {
+12:            if (count &gt; 1) {
+13:                reject(&quot;limit reached&quot;);
+14:            } else {
+15:                resolve(++count);
+16:            }
+17:        }); 
+18:    };
+19:}
+20:
+21:let counter1 = asyncCounter();
+22:
+23:counter1
+24:    .then( incr(&quot;c1&quot;) )
+25:    .then( incr(&quot;c1&quot;) )
+26:    .then( incr(&quot;c1&quot;) )
+27:    .catch( (reason) =&gt; console.log(`rejected: ${reason}.`))
+28: 
+29:let counter2 = asyncCounter();
+30:
+31:counter2
+32:    .then( incr(&quot;c2&quot;) )
+33:    .then( incr(&quot;c2&quot;) )
+34:    .then( incr(&quot;c2&quot;) )
+35:    .catch( (reason) =&gt; console.log(`rejected: ${reason}.`))
+36:
+37:process.nextTick(() =&gt; console.log(&quot;tick!&quot;));
+38:console.log(&quot;main done!&quot;)
+</code></pre>
+<p>In the 2nd last statement, we call <code>process.nextTick()</code> which prints a <code>tick!</code> message at the next event loop cycle.  When executing the above example, we observe</p>
+<pre><code class="language-bash">main done!
+c1:0
+c2:0
+c1:1
+c2:1
+c1:2
+c2:2
+rejected: limit reached.
+rejected: limit reached.
+tick!
+</code></pre>
+<p>It reveals that the execution of the <code>incr</code> method calls for both promise objects are interleaved. The <code>tick</code> message shows that all these happens in one single event loop cycle. </p>
+<h3 id="nodejs-run-time-model">Node.js run-time model</h3>
+<p>Recall from the previous class, we studied the JavaScript run-time in the browser, which has a call stack, a heap, an event registry and a callback queue. 
+1. The run-time executes the JavaScript main program in the call stack until no more stack frame left, and goes into the event loop. 
+2. When there is an event triggered, the callback function associated with the event (in the event registery) will be added to the callback queue. 
+3. In an event loop cycle, when there is no more frame in the call stack but there is some item in the call back queue, the run-time will dequeue the  callback from the queue and add it to the call stack. </p>
+<p>With the presence of <code>Promise</code>, there are more than one callback queues. For simplicity, let's say there are two.
+1. The macro task queue, which is same as the callback queue that stores callback associated with events.
+2. The micro task queue, which stores callbacks associated with promises. </p>
+<p>Given that promises are special builtin of Node.js run-time, they are treated "differently" when executed. When a promise is instantiated, its excutor function is executed 
+upto the <code>resolve(...)</code> (or <code>reject(...)</code>) statement. The call of <code>resolve(...)</code> (or <code>reject(...)</code>)  is enqueued into the micro task queue.
+In an event loop cycle, when the call stack is empty, the run-time checks whether the micro task queue contains any item before checking the macro task queue. </p>
+<p>We illustrate the execution the last example in the following table, 
+for simplicity, we omit the event registry table, and the macro task queue since they are empty in this example.
+We are interested in the program counter, the call stack, the micro task queue, a list of promises.</p>
+<table>
+<thead>
+<tr>
+<th>program counter (line num)</th>
+<th>call stack</th>
+<th>micro queue</th>
+<th>promises</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>21</td>
+<td>[main]</td>
+<td>[]</td>
+<td>{}</td>
+</tr>
+<tr>
+<td>1</td>
+<td>[main, asyncCounter]</td>
+<td>[]</td>
+<td>{}</td>
+</tr>
+<tr>
+<td>3</td>
+<td>[main, asyncCounter]</td>
+<td>[]</td>
+<td>{promise@21}</td>
+</tr>
+<tr>
+<td>23</td>
+<td>[main]</td>
+<td>[]</td>
+<td>{promise@21}</td>
+</tr>
+<tr>
+<td>8-9</td>
+<td>[main, incr]</td>
+<td>[promise@21.resolve(0)=incr("c1")(0) ]</td>
+<td>{promise@21}</td>
+</tr>
+<tr>
+<td>23</td>
+<td>[main]</td>
+<td>[promise@21.resolve(0)=incr("c1")(0) ]</td>
+<td>{promise@21}</td>
+</tr>
+</tbody>
+</table>
+<p>In the above we show the execution of the program from line 1 to line 27. 
+1. Line 1 defines function <code>aysncCounter</code>
+1. Line 8 defines function <code>incr</code>.
+1. Line 21, <code>asyncCounter()</code> is invoked, the program counter moves back to line 2 then line 3, 
+1. Line 3, a promise object <code>promise@21</code> is instantiated, its body is executed upto the call to <code>resolve</code>, since at this stage, we are not sure what the <code>resolve</code> function could be. We add <code>promise@21</code> to the set of promises. We added the suffix <code>@21</code> to indicate that the promise object was instantiated and with reference at line 21. This helps us to reason about the execution.
+1. Line 23, <code>promise@21</code> is being chained with <code>.then(incr("c1"))</code>, we first move the program pointer back to line 8-9 and compute <code>incr("c1")</code>, which add the function call to call stack 
+1. Line 9, we return a function, this function will be the <code>resolve</code> function of the <code>promise@21</code> object. One may ask what about the <code>reject</code> function of the same promise object, since in this case the <code>reject</code> is never used, we could omit it. To be precise, we can say that it can be an identity reject function. 
+    <code>js
+    (err) =&gt;  new Promise((resolve, reject) =&gt; reject(err));</code>
+    We've done with the call <code>incr("c1")</code> and return to the call site Line 24. It is another chain with <code>.then</code>. However the value to be produced here is the result of a task from the micro task queue, we skip the rest.
+If we continue to execute the rest of the program (ignoring lines 37-38), we will end up with </p>
+<table>
+<thead>
+<tr>
+<th>program counter (line num)</th>
+<th>call stack</th>
+<th>micro queue</th>
+<th>promises</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>29</td>
+<td>[main()]</td>
+<td>[promise@21.resolve(0)=incr("c1")(0) ]</td>
+<td>{promise@21, promise@29}</td>
+</tr>
+<tr>
+<td>1</td>
+<td>[main(), asyncCounter()]</td>
+<td>[promise@21.resolve(0)=incr("c1")(0)]</td>
+<td>{promise@21, promise@29}</td>
+</tr>
+<tr>
+<td>3</td>
+<td>[main(), asyncCounter()]</td>
+<td>[promise@21.resolve(0)=incr("c1")(0)]</td>
+<td>{promise@21, promise@29}</td>
+</tr>
+<tr>
+<td>31</td>
+<td>[main()]</td>
+<td>[promise@21.resolve(0)=incr("c1")(0)]</td>
+<td>{promise@21, promise@29}</td>
+</tr>
+<tr>
+<td>8-9</td>
+<td>[main(), incr()]</td>
+<td>[promise@21.resolve(0)=incr("c1")(0), promise@29.resolve(0)=incr("c2")(0) ]</td>
+<td>{promise@21, promise@29}</td>
+</tr>
+<tr>
+<td>31</td>
+<td>[main()]</td>
+<td>[promise@21.resolve(0)=incr("c1")(0), promise@29.resolve(0)=incr("c2")(0) ]</td>
+<td>{promise@21, promise@29}</td>
+</tr>
+<tr>
+<td>eof</td>
+<td>[]</td>
+<td>[promise@21.resolve(0)=incr("c1")(0), promise@29.resolve(0)=incr("c2")(0) ]</td>
+<td>{promise@21, promise@29}</td>
+</tr>
+</tbody>
+</table>
+<p>At this stage, the call stack is empty, the node.js run-time dequeues the first task from the micro task queue, i.e. <code>promise@21.resolve(0)</code>. <code>incr("c1")(0)</code> prints <code>c1:0</code>, generates a new  promise <code>promise@24</code> (because the promise object will be returned to the chaining at line 24). </p>
+<table>
+<thead>
+<tr>
+<th>program counter (line num)</th>
+<th>call stack</th>
+<th>micro queue</th>
+<th>promises</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9-18</td>
+<td>[function@9(0)]</td>
+<td>[ promise@29.resolve(0)=incr("c2")(0) ]</td>
+<td>{promise@21, promise@29, promise@24}</td>
+</tr>
+</tbody>
+</table>
+<p>Since the promise at line 24 become known, thanks to the <code>.then(incr("c1"))</code> a line 25, we resolve the promise at line 24 and enqueue to the micro queue. </p>
+<table>
+<thead>
+<tr>
+<th>program counter (line num)</th>
+<th>call stack</th>
+<th>micro queue</th>
+<th>promises</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>25</td>
+<td>[]</td>
+<td>[ promise@29.resolve(0)=incr("c2")(0), promise@24.resolve(1)=incr("c1")(1) ]</td>
+<td>{promise@21, promise@29, promise@24}</td>
+</tr>
+</tbody>
+</table>
+<p>Since the call stack is empty, we dequeue the next item from micro task queue, which is </p>
+<table>
+<thead>
+<tr>
+<th>program counter (line num)</th>
+<th>call stack</th>
+<th>micro queue</th>
+<th>promises</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9-18</td>
+<td>[function@9(0)]</td>
+<td>[ promise@24.resolve(1)=incr("c1")(1) ]</td>
+<td>{promise@21, promise@29, promise@24, promise@32}</td>
+</tr>
+</tbody>
+</table>
+<p>Since the promise at line 32 become known, thanks to the <code>.then(incr("c2"))</code>, we resolve
+the promise at line 32 and enqueue to the micro queue. </p>
+<table>
+<thead>
+<tr>
+<th>program counter (line num)</th>
+<th>call stack</th>
+<th>micro queue</th>
+<th>promises</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>33</td>
+<td>[]</td>
+<td>[ promise@24.resolve(1)=incr("c1")(1), promise@32.resolve(1)=incr("c2")(1) ]</td>
+<td>{promise@21, promise@29, promise@24, promise@32}</td>
+</tr>
+</tbody>
+</table>
+<p>By repeating the similar steps, we get </p>
+<pre><code class="language-bash">c1:0
+c2:0
+c1:1
+c2:1
+c1:2
+c2:2
+rejected: limit reached.
+rejected: limit reached.
+</code></pre>
+<h4 id="mixing-callbacks-and-promises">Mixing callbacks and promises</h4>
+<p>Returning to the earlier example with API call and file write operations, we now can rewrite the example as follows by introducing promises.</p>
+<pre><code class="language-js">1: import XMLHttpRequest from 'xhr2';
+2: import { writeFile } from 'node:fs';
+3: 
+4: var xhr = new XMLHttpRequest();
+5: var args = process.argv;
+6: if (args.length &gt; 2) {
+7:     var input = args[2];
+8:     let apiPromise = new Promise( function (resolve, reject) {
+9:         xhr.onreadystatechange = function() {
+10:            if (xhr.readyState == 4) {
+11:                var res = xhr.responseText;
+12:                resolve(res);
+13:            }
+14:        };
+15:        xhr.open('GET', `https://postman-echo.com/get?x=${input}`);
+16:        xhr.send();
+17:    });
+18: 
+19:    function feedResultToFile(result) {
+20:        return new Promise( function (resolve, reject) {
+21:            writeFile('api_result.txt', result, (err) =&gt; {
+22:                if (err) { 
+23:                    reject(err);
+24:                } else {
+25:                    resolve('The file has been saved!');
+26:                } 
+27:            }); 
+28:        });
+29:    }
+30:    apiPromise
+31:        .then(feedResultToFile)
+32:        .then( (res) =&gt; console.log(res))
+33:        .catch((err) =&gt; console.log(err)) ;
+34:} else {
+35:    console.log(&quot;USAGE: node api_fs_callback_2nd_attempt input&quot;);
+36:}
+</code></pre>
+<p>First we wrap the API call into a promise, <code>apiPromise</code>, which is chained with a resolve function
+<code>feedResultToFile</code>, in which we wrap the operation of writing into the a file into another promise.  When the above is executed, </p>
+<table>
+<thead>
+<tr>
+<th>program counter (line num)</th>
+<th>call stack</th>
+<th>micro queue</th>
+<th>promises</th>
+<th>macro queue</th>
+<th>event reg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8</td>
+<td>[main()]</td>
+<td>[]</td>
+<td>{promise@8}</td>
+<td>[]</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>[main()]</td>
+<td>[]</td>
+<td>{promise@8}</td>
+<td>[]</td>
+<td>{xhr.readystatechange : function@9 }</td>
+</tr>
+<tr>
+<td>15,16</td>
+<td>[main()]</td>
+<td>[]</td>
+<td>{promise@8}</td>
+<td>[]</td>
+<td>{xhr.readystatechange : function@9 }</td>
+</tr>
+<tr>
+<td>30</td>
+<td>[main()]</td>
+<td>[]</td>
+<td>{promise@8}</td>
+<td>[]</td>
+<td>{xhr.readystatechange : function@9 }</td>
+</tr>
+<tr>
+<td>eof</td>
+<td>[]</td>
+<td>[]</td>
+<td>{promise@8}</td>
+<td>[]</td>
+<td>{xhr.readystatechange : function@9 }</td>
+</tr>
+</tbody>
+</table>
+<p>When the program counter is at line 8, we instantiate a promise, which is unresolved.
+At line 9, we register the <code>xhr.headystatechange</code> event with a callback function <code>function@9</code>.
+At lines 15-16, we are setting up the API calls and send the request, which does not affect the micro nor macro queues.
+At line 30, though we see a <code>.then()</code> chaining with promise@8, however, promise@8 is not yet resovled until function@9 is called. Hence we skip the rest.
+At the end of the JavaScript program, 
+the call stack is empty and the micro task queue is also empty. 
+Suppose at this moment, <code>xhr</code>'s <code>readystatechange</code> event is triggered, and <code>function@9</code> will be added to the call stack. Suppose <code>xhr.readyState == 4</code> and the <code>responseText</code> is <code>hello</code>.</p>
+<table>
+<thead>
+<tr>
+<th>program counter (line num)</th>
+<th>call stack</th>
+<th>micro queue</th>
+<th>promises</th>
+<th>macro queue</th>
+<th>event reg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>eof</td>
+<td>[]</td>
+<td>[]</td>
+<td>{promise@8}</td>
+<td>[function@9]</td>
+<td>{xhr.readystatechange : function@9}</td>
+</tr>
+<tr>
+<td>9</td>
+<td>[function@9()]</td>
+<td>[]</td>
+<td>{promise@8}</td>
+<td>[]</td>
+<td>{xhr.readystatechange : function@9}</td>
+</tr>
+<tr>
+<td>11,12</td>
+<td>[function@9()]</td>
+<td>[]</td>
+<td>{promise@8}</td>
+<td>[]</td>
+<td>{xhr.readystatechange : function@9}</td>
+</tr>
+<tr>
+<td>31</td>
+<td>[]</td>
+<td>[promise@8.resolve("hello") = feedResultToFile("hello")]</td>
+<td>{promise@8}</td>
+<td>[]</td>
+<td>{xhr.readystatechange : function@9}</td>
+</tr>
+</tbody>
+</table>
+<p>We put the function@9 to call stack and execute it, which in term resolves <code>promise@8</code>. Then we proceed to line 31 <code>.then(feedResultToFile)</code> as <code>promise@8</code> is resolved, in which <code>promise@8.resolve</code> is enqueued to the micro task queue. When <code>function@8</code> finishes, the run-time will deqeue <code>promise@8.resolve</code> and put <code>feedResultToFile</code> into the call stack to execute, which generate a  promise <code>promise@31</code>, which is not resolved until the <code>fileClose</code> event is triggered.
+If we follow the steps, we will get the desired behavior. </p>
+<table>
+<thead>
+<tr>
+<th>program counter (line num)</th>
+<th>call stack</th>
+<th>micro queue</th>
+<th>promises</th>
+<th>macro queue</th>
+<th>event reg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>19</td>
+<td>[feedResultToFile("hello")]</td>
+<td>[]</td>
+<td>{promise@8}</td>
+<td>[]</td>
+<td>{xhr.readystatechange : function@9}</td>
+</tr>
+<tr>
+<td>20</td>
+<td>[feedResultToFile("hello")]</td>
+<td>[]</td>
+<td>{promise@8, promise@31}</td>
+<td>[]</td>
+<td>{xhr.readystatechange : function@9, fs.fileClose: function@21}</td>
+</tr>
+<tr>
+<td>eof</td>
+<td>[]</td>
+<td>[]</td>
+<td>{promise@8, promise@31}</td>
+<td>[]</td>
+<td>{xhr.readystatechange : function@9, fs.fileClose: function@21}</td>
+</tr>
+</tbody>
+</table>
+<p>In this example, we see how promises (micro tasks) and event callbacks (macro tasks) being executed together. In summary, </p>
+<ol>
+<li>A call to <code>resolve</code> does not immendiately trigger the actual <code>resolve</code> function. It searches for a resolver defined in the current scope, resolves if it is found.</li>
+<li><code>o.then(f)</code> chaining is pending until the promise object <code>o</code> is resolved, then <code>o.resolve=f</code> is enqeueued into the micro task queue.</li>
+<li>When the call stack is empty, the run-time tries to look into the micro task queue before checking hte macro task queue. </li>
+</ol>
+<h4 id="full-of-promises">Full of promises</h4>
+<p>For ease of use, many node.js libraries provides both callback (lower level) and promise (higher level) APIs, some even provides synchronous APIs.  For instance, <code>node:fs</code> library offers all three types of APIs.</p>
+<p>Unfortunatately, <code>xhr2</code> is one of those that do not provide promise APIs. To rewrite the earlier example using promise API only, we replace <code>xhr2</code> with <code>node-fetch</code>.</p>
+<pre><code class="language-js">import fetch from 'node-fetch';
+import { promises } from 'node:fs';
+
+var args = process.argv;
+if (args.length &gt; 2) {
+    var input = args[2];
+    let apiPromise = fetch(`https://postman-echo.com/get?x=${input}`);
+    apiPromise
+        .then((response) =&gt; response.text())
+        .then((text) =&gt; promises.writeFile('api_result.txt', text))
+        .then((res) =&gt; { 
+            console.log('The file has been saved!'); 
+            return res;
+        })
+        .catch((err) =&gt; console.log(err));
+} else {
+    console.log(&quot;USAGE: node api_fs_call_back_3rd_attempt input&quot;);
+}
+</code></pre>
+<h4 id="nicer-syntax">Nicer syntax</h4>
+<p>Let <code>p</code> be a promise that eventually produces result <code>r</code>,  let <code>(r) =&gt; e</code> be a function takes <code>r</code> and produces a new promise.</p>
+<pre><code class="language-js">p.then((r)=&gt; e)
+</code></pre>
+<p>can be rewritten </p>
+<pre><code class="language-js">let r = await p
+e
+</code></pre>
+<p>The reverse direction also works. In otherwords, we can rewrite our earlier API and file writing example as follows, </p>
+<pre><code class="language-js">import fetch from 'node-fetch';
+import { promises } from 'node:fs';
+
+var args = process.argv;
+if (args.length &gt; 2) {
+    var input    = args[2];
+    let response = await fetch(`https://postman-echo.com/get?x=${input}`);
+    let text     = await response.text();
+    let res      = await promises.writeFile('api_result.txt', text);
+    console.log('The file has been saved!');
+} else {
+    console.log(&quot;USAGE: node index.js input&quot;);
+}
+</code></pre>
+<p>which will be translated to the version with <code>.then()</code>.</p>
+<p>When we want to use <code>await</code> style programming in a function, we should declare the function as <code>async</code>. For instance, if we rewrite the above example, by moving the main routine in to a main function.</p>
+<pre><code class="language-js">import fetch from 'node-fetch';
+import { promises } from 'node:fs';
+
+async function main(args){
+    if (args.length &gt; 2) {
+        var input    = args[2];
+        let response = await fetch(`https://postman-echo.com/get?x=${input}`);
+        let text     = await response.text();
+        let res      = await promises.writeFile('api_result.txt', text);
+        console.log('The file has been saved!');
+    } else {
+        console.log(&quot;USAGE: node index.js input&quot;);
+    }
+}
+
+main(process.argv);
+</code></pre>
+<h3 id="user-defined-events">User Defined Events</h3>
+<p>We can define customized events to trigger callbacks in Node.js.</p>
+<p>For instance</p>
+<pre><code class="language-js">import EventEmitter from 'events';
+
+const myEvtEmt = new EventEmitter();
+
+myEvtEmt.on('start', (data) =&gt; {
+    console.log(`data ${data} received`);
+})
+
+myEvtEmt.emit('start', 1);
+</code></pre>
+<p>we make use of the <code>EventEmitter</code> class imported from the <code>events</code> library. In the above code, we define an <code>EventEmitter</code> object <code>myEvtEmt</code>. Then we use <code>.on()</code> method to register a customized event <code>start</code> with a callback function, in this case the call back is an anonymous function taking the data and printing it out.
+In the third statement, we trigger the event by calling <code>.emit()</code> method.</p>
+<p>In case the callback does not take any parameters, the <code>.emit()</code> will only be called with one argument, i.e. the event.</p>
+<pre><code class="language-js">myEvtEmt.on('end', () =&gt; {
+    console.log(`bye`);
+})
+
+myEvtEmt.emit('end');
+</code></pre>
+<h2 id="when-will-the-event-loop-stop">When will the event loop stop?</h2>
+<p>For Node.js, some of the events are expecting a closure, e.g. API call, file operation, the Node.js event loop will keep looping until all expected closures have returned and there is no more pending tasks in the micro nor the macro queues.</p>
+<p>For browsers, the event loop will continue as it waits for the user's next input.</p>
+<h2 id="further-readings">Further Readings</h2>
+<ul>
+<li>An interactive example showing how promise and callback works.</li>
+</ul>
+<pre><code class="language-url">https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/
+</code></pre>
+<ul>
+<li>Synchronous vs Asynchronous JavaScript – Call Stack, Promises, and More</li>
+</ul>
+<pre><code class="language-url">https://www.freecodecamp.org/news/synchronous-vs-asynchronous-in-javascript/#:~:text=JavaScript%20is%20a%20single%2Dthreaded,language%20with%20lots%20of%20flexibility.
+</code></pre>
+<ul>
+<li>Node.js Event loop behavior</li>
+</ul>
+<pre><code class="language-url">https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick
+</code></pre>
+<ul>
+<li>Node.js API for timer functions, <code>setTimeout</code>, <code>setImmediate</code>, <code>setInterval</code>.</li>
+</ul>
+<pre><code class="language-url">https://nodejs.org/en/docs/guides/timers-in-node
+</code></pre>
+<h3 id="corhort-exercise-graded">Corhort Exercise (Graded)</h3>
+<p>Using the callstack-microtask-macrotask table, illustrate the execution of the following JavaScript program</p>
+<pre><code class="language-js">import EventEmitter from 'events';
+
+const ev1 = new EventEmitter();
+const ev2 = new EventEmitter();
+
+let count = 0;
+
+let promise1 = new Promise( (resolve, reject) =&gt; {
+    resolve(count);
+})
+
+let promise2 = new Promise( (resolve, reject) =&gt; {
+    resolve(count);
+})
+
+function foo(x) {
+    return new Promise((resolve, reject) =&gt; {
+        if (x &gt; 10) {
+            resolve();
+        } else if (x % 2 == 0) {
+            ev1.emit('run', ++x);
+        } else {
+            ev2.emit('run', ++x);
+        }
+    })
+}
+
+ev1.on('run', (data) =&gt; {
+    console.log(`data ${data} received by ev1`);
+    promise2.then(foo(data));
+})
+
+ev2.on('run', (data) =&gt; {
+    console.log(`data ${data} received by ev2`);
+    promise1.then(foo(data));
+})
+
+ev2.emit('run', count);
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/jquery-3.6.0.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

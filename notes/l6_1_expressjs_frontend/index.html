@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>50.003 - Express.js Frontend View and JQuery - Elements of Software Construction 50.003</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Elements of Software Construction 50.003</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../l1_course_handout/" class="nav-link">Handout</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#50003-expressjs-frontend-view-and-jquery" class="nav-link">50.003 - Express.js Frontend View and JQuery</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#learning-outcomes" class="nav-link">Learning Outcomes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#view" class="nav-link">View</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="50003-expressjs-frontend-view-and-jquery">50.003 - Express.js Frontend View and JQuery</h1>
+<h2 id="learning-outcomes">Learning Outcomes</h2>
+<p>By the end of this unit, you should be able to</p>
+<ol>
+<li>Develop web app frontend using HTML Form</li>
+<li>Develop web app frontend using AJAX </li>
+</ol>
+<p>This is unit, we study the different approaches of developing frontend components of a web application.</p>
+<p>Recall that the View modules in a MVC model are dedicated to handle user inputs and renders the requested results.</p>
+<h2 id="view">View</h2>
+<p>Let's take our echo app as example, when we visit </p>
+<pre><code class="language-url">https://localhost:3000/
+</code></pre>
+<p>The web app is triggering the following route in the <code>routes/index.js</code>.</p>
+<pre><code class="language-js">/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+</code></pre>
+<p>In the above we call <code>res.render()</code> which takes two parameters. 
+1. <code>index</code>, the view template, (<code>./views/index.ejs</code>).
+2. An object <code>{ title: 'Express'}</code>. 
+it passes the object to the view template </p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;
+    &lt;link rel='stylesheet' href='/stylesheets/style.css' /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;
+    &lt;p&gt;Welcome to &lt;%= title %&gt;&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Note that in the view template, we are using mostly HTML syntax, except that we 
+have some special tagged element <code>&lt;%= title %&gt;</code> which are the place-holders for the data to displayed. When <code>res.render()</code> is called with the view template and the object, the value associated with <code>title</code>, i.e. <code>Express</code> is being substituted to the tagged elements.</p>
+<p>As result, the following will be rendered on the client browser,</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Express&lt;/title&gt;
+    &lt;link rel='stylesheet' href='/stylesheets/style.css' /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Express&lt;/h1&gt;
+    &lt;p&gt;Welcome to Express&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h4 id="exercise">Exercise</h4>
+<p>Change the value <code>Express</code> in the object to <code>Echo App</code>, restart the app and see the change.</p>
+<h3 id="adding-view-to-the-echo-app">Adding View to the Echo App</h3>
+<p>Let's create a template in <code>views/</code> named <code>echo.ejs</code>, with the following</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;
+    &lt;link rel='stylesheet' href='/stylesheets/style.css' /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div&gt;Enter Your Message:&lt;/div&gt;
+    &lt;div&gt;&lt;input id=&quot;message&quot; type=&quot;text&quot;/&gt; &lt;/div&gt;
+    &lt;div&gt;&lt;input id=&quot;sendButton&quot; type=&quot;button&quot; value=&quot;Send&quot;/&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Next we modify the <code>routes/echo.js</code> by inserting the following code snippet before the export statement.</p>
+<pre><code class="language-js">router.get('/', function(req, res, next) {
+    res.render(`echo`, { 'title': &quot;Echo App&quot;});
+})
+</code></pre>
+<p>Now if we launch our web app, and open the link</p>
+<pre><code class="language-url">http://localhost:3000/echo/
+</code></pre>
+<p>we should see a page with a text label, a text field input and a button. 
+But clicking on the button renders no effect. </p>
+<p>There are at least two ways to add the effect of clicking the <code>Send</code> button and sending the message to the database.</p>
+<h4 id="approach-1-using-a-form">Approach 1: using a form</h4>
+<p>For now let's go with the approach which involves a <em>form</em></p>
+<p>Duplicate the template <code>echo.ejs</code> into another file <code>echoform.ejs</code>, with the following adjustment</p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;
+    &lt;link rel='stylesheet' href='/stylesheets/style.css' /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;form action=&quot;/echo/submit&quot; method=&quot;post&quot;&gt;
+        &lt;div&gt;Enter Your Message:&lt;/div&gt;
+        &lt;div&gt;&lt;input id=&quot;message&quot; name=&quot;message&quot; type=&quot;text&quot;/&gt; &lt;/div&gt;
+        &lt;div&gt;&lt;input type=&quot;submit&quot; value=&quot;Send&quot;/&gt;&lt;/div&gt;
+    &lt;/form&gt;
+    &lt;ol&gt;
+        &lt;% for (var i = 0; i &lt; messages.length; i++) { %&gt;
+        &lt;li&gt;
+            &lt;div&gt;&lt;%=messages[i].time%&gt;&lt;/div&gt;&lt;div&gt;&lt;%=messages[i].msg%&gt;&lt;/div&gt;
+        &lt;/li&gt;
+        &lt;% } %&gt;
+    &lt;/ol&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>First we wrapped the 3 <code>div</code> elements in the body with a form tag. A HTML form capture the inputs from its child elements and converts into a form, where each input value is assocated with a name. Thus in the input text element, we added a name attribute <code>message</code>. For the button, we changed its type from <code>button</code> to <code>submit</code> to indicate that when 
+this button is clicked the form should be submitted. The <code>action</code> attribute of the form element indicate the destination of the end point, the method is HTTP POST.
+Below the form, we have an HTML order list element <code>ol</code>, whose content will be generated via the embedded javscript template language. In this case, we expect that the 
+route handler will return an object containing a <code>title</code> and a <code>messages</code> list. By using a for loop, we expand the list of messages into 
+a sequence of list items <code>li</code>. Within each <code>li</code> element, we render the message's time and text.</p>
+<p>Next we update the <code>routes/echo.js</code> as follows</p>
+<pre><code class="language-js">const express = require('express'); // existing
+const model = require('../models/message.js'); // existing
+var router = express.Router(); // existing
+
+/* GET echo listing. */
+router.get('/:msg', async function(req, res, next) { // existing
+    const msg = req.params.msg;
+    const message = new model.Message(msg, new Date());
+    await model.insertMany([message]);
+    const messages = await model.all();
+    console.log(messages);
+    res.send(`${JSON.stringify(messages)}`);
+});
+
+router.get('/', async function(req, res, next) { // updated
+    const messages = await model.all();
+    res.render(`echoform`, { 'title': &quot;Echo App&quot;,'messages': messages});
+});
+
+router.post('/submit', async function(req, res, next) { // new
+    const msg = req.body.message;
+    const message = new model.Message(msg, new Date());
+    await model.insertMany([message]);
+    const messages = await model.all();
+    console.log(messages);
+    res.render(`echoform`, { 'title': &quot;Echo App&quot;, 'messages': messages});
+});
+
+module.exports = router; // existing
+</code></pre>
+<p>In the second routing rule, we listen to the local URL path <code>/echo/</code>, and retrieve all the messags, and render the result in the <code>echoform</code> template. This is to handle 
+user accessing </p>
+<pre><code class="language-url">http://localhost:3000/echo
+</code></pre>
+<p>In the third routing rule, we liste ot the local URL path <code>/echo/submit</code> over HTTP POST, we retrieve the message (via element name attribute = "message"), create a new message, retrieve all the messages from the model and render the result in the <code>echoform</code> template.</p>
+<p>Being different from HTTP GET, parameters of the requests submited via HTTP POST are packaged into the body of the request instead of being exposed as part of the URL. 
+Technically speaking, users can't access a HTTP POST endpoint directly via the browser URL links or navigation bar. </p>
+<p>To allow the form data embeded in the HTTP POST request to be parsed, we add the following to the <code>app.js</code></p>
+<pre><code class="language-js">const bodyParser = require('body-parser'); // new 
+app.use(bodyParser.urlencoded({ extended: true })); // new
+
+app.use('/', indexRouter); // existing
+app.use('/users', usersRouter) // existing
+</code></pre>
+<p><img alt="" src="../images/echoform.png" /></p>
+<h4 id="approach-2-using-ajax">Approach 2 Using AJAX</h4>
+<p>The advantage of Approach 1 is that it is relatively simple to implement and codes are pretty structured.
+One issue with Approach 1 is that the page <code>echoform</code> is reloaded each time we submit a new message. 
+This is not a big deal when the page is simple with little content. It affects the user experience as the content of the page get complex and a single click would cause the entire page to refresh. </p>
+<p>To address this issue, we could use AJAX. 
+The idea of AJAX is to divide the view template HTML into sub regions, when a user input is detected, we use the client side javascript to update the affected sub region. </p>
+<p>We re-start from the point of <code>echo.ejs</code> template again. We copy and modify its content into a new template <code>echoajax.ejs</code></p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;
+    &lt;script src='/javascripts/echoajaxclient.js'&gt; &lt;/script&gt;
+    &lt;link rel='stylesheet' href='/stylesheets/style.css' /&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div&gt;Enter Your Message:&lt;/div&gt;
+    &lt;div&gt;&lt;input id=&quot;message&quot; type=&quot;text&quot;/&gt; &lt;/div&gt;
+    &lt;div&gt;&lt;input id=&quot;sendButton&quot; type=&quot;button&quot; value=&quot;Send&quot;/&gt;&lt;/div&gt;
+
+    &lt;ol id=&quot;messagesregion&quot;&gt; 
+    &lt;/ol&gt; 
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Note that only change we introduce is the <code>div</code> element with id <code>messagesregion</code> and the inclusion of the 
+client side javascript <code>echoajaxclient</code>.</p>
+<p>Next we add <code>echoajaxclient.js</code> file into the subfolder <code>public/javascripts/</code>.</p>
+<pre><code class="language-js">// update the ol with id  = &quot;messagesregion&quot; in the curent page
+// input: json contains list of messages 
+// output : none
+function update_messagesregion(json) {
+    var html = &quot;&quot;;
+    for (let i = 0; i &lt; json.length; i++) {
+        const message = json[i];
+        html += `&lt;li&gt;&lt;div&gt;${message.time}&lt;/div&gt;&lt;div&gt;${message.msg}&lt;/div&gt;&lt;/li&gt;`;  
+    }
+    var region = document.getElementById(&quot;messagesregion&quot;);
+    region.innerHTML = html;
+}
+
+
+function handleSendButtonClick() {
+    var message = document.getElementById(&quot;message&quot;);
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            var res = xhr.responseText;
+            var json = JSON.parse(res);
+            update_messagesregion(json);
+        }
+    }; 
+
+    // constructing a HTTP POST request
+    var params = `msg=${message.value}`;
+    xhr.open('POST', `/echo/submit/`, true);
+    //Send the proper header information along with the request
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.send(params);
+}
+
+
+// set up the event listener for the send button
+// call /echo/all to get the current list of messages
+function run() {
+    var sendButton = document.getElementById(&quot;sendButton&quot;);
+    sendButton.addEventListener(&quot;click&quot;, handleSendButtonClick);
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            var res = xhr.responseText;
+            var json = JSON.parse(res);
+            update_messagesregion(json);
+        }
+    }
+    xhr.open('GET', `/echo/all`);
+    xhr.send();
+}
+
+document.addEventListener( &quot;DOMContentLoaded&quot;, run);
+</code></pre>
+<p>In the above <em>client</em> side javascript, we call function <code>run</code> when the HTML document is fully rendered. 
+Function <code>run</code> performs two tasks</p>
+<ol>
+<li>register a call back function <code>handleSendButtonClick</code> to the event of <code>sendButton</code> being click. </li>
+<li>make an API call to the <code>/echo/all</code> end point  to get the list of messages and render it in the <code>messagesregion</code> ordered list.</li>
+</ol>
+<p>Function <code>handleSendButtonClick</code> is triggered when the button is clicked, it retrieves the value from the input text box and
+submit an HTTP POST request to the <code>/echo/submit</code> end point to add the message, then extract the lst of messages from the response
+and render it.</p>
+<p>We adjust the <code>routes/echo.js</code> with the following routing rules.</p>
+<pre><code class="language-js">router.get('/', async function(req, res, next) {
+    res.render(`echoajax`, { 'title': &quot;Echo App&quot;});
+});
+
+router.get('/all', async function(req, res, next) {
+    const messages = await model.all();
+    res.send(`${JSON.stringify(messages)}`);
+});
+
+router.post('/submit/', async function(req, res, next) {
+    const msg = req.body.msg;
+    const message = new model.Message(msg, new Date());
+    await model.insertMany([message]);
+    const messages = await model.all();
+    res.send(`${JSON.stringify(messages)}`);
+});
+</code></pre>
+<h3 id="cohort-exercise-graded">Cohort Exercise (Graded)</h3>
+<p>Continue with the staff and dept app (with either Mongo or MySQL database), and create the following views</p>
+<ol>
+<li>a view to add staff</li>
+<li>a view to add dept</li>
+<li>a view to retrieve a list of departments</li>
+<li>a view to retrieve a list of staffs</li>
+</ol></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/jquery-3.6.0.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

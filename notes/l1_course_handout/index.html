@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Handout - Elements of Software Construction 50.003</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Elements of Software Construction 50.003</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Handout</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../.." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#50003-elements-of-software-construction-course-handout" class="nav-link">50.003 Elements of Software Construction  Course Handout</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#this-page-will-be-updated-regularly-sync-up-often" class="nav-link">This page will be updated regularly. Sync up often.</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#course-description" class="nav-link">Course Description</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#prerequisites" class="nav-link">Prerequisites</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#module-learning-outcomes" class="nav-link">Module Learning Outcomes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#resource" class="nav-link">Resource</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#instructors" class="nav-link">Instructors</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#tas" class="nav-link">TAs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#communication" class="nav-link">Communication</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#grading" class="nav-link">Grading</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#things-you-need-to-prepare" class="nav-link">Things you need to prepare</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#project" class="nav-link">Project</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#submission-policy-and-plagiarism" class="nav-link">Submission Policy and Plagiarism</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#schedule-12-may-2024-17-aug-2024" class="nav-link">Schedule (12 May 2024 - 17 Aug 2024)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#make-up-and-alternative-assessment" class="nav-link">Make Up and Alternative Assessment</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="50003-elements-of-software-construction-course-handout">50.003 Elements of Software Construction  Course Handout</h1>
+<h2 id="this-page-will-be-updated-regularly-sync-up-often">This page will be updated regularly. Sync up often.</h2>
+<h2 id="course-description">Course Description</h2>
+<p>This course is an introduction to the fundamental principles and techniques of software construction that have the greatest impact on practice. Topics include capturing the essence of a problem by recognizing and inventing suitable abstractions; key paradigms, including basic concepts of software design and their expression using notations from Unified Modeling Language (UML); software testing, automated software test generation, automated software security testing via black box, greybox and whitebox fuzzing approaches, detection and removal of software code smells, software coding standards to avoid security loopholes, concurrent programming, including programming with threads and processes, understanding concurrency problems like deadlock and data race. This course includes exercises in software design, implementation, testing and reasoning.  </p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>50.001 Information Systems &amp; Programming </p>
+<h2 id="module-learning-outcomes">Module Learning Outcomes</h2>
+<p>By the end of this module, students are able to </p>
+<p>Design medium-scale software systems from scratch: formulating and analysing the problem to be solved; writing formal software requirements, exploring and formulating system designs; and using extensive and systematic testing and reasoning to ensure quality. </p>
+<ol>
+<li>Apply key software engineering ideas, including invariants, decoupling, and data abstraction. </li>
+<li>Apply key software engineering ideas, including software design, specification, abstraction, verification and correctness. </li>
+<li>Apply widely used design concepts and notations (UML diagrams) and patterns in exploring and articulating problems and designs. </li>
+<li>Learning effective techniques on ensuring quality of large-scale software systems. </li>
+<li>Apply concepts of systematic software testing to discover bugs (including security vulnerabilities) in large-scale software systems. </li>
+<li>Apply concepts to reason about the security loopholes in software systems. </li>
+<li>Learning secure software coding standards. </li>
+<li>Learning key concepts in developing concurrent programs. </li>
+<li>Learning key concepts in reasoning and testing concurrent programs. </li>
+</ol>
+<h2 id="resource">Resource</h2>
+<p>The main resources are lecture slides, tutorial sessions, and online documentations. There are no official textbooks. But the following are useful for reference and deeper understanding of some topics.</p>
+<ul>
+<li>Brian Goetz et al., Java Concurrency in Practice, 1st ed.  Boston, MA: Addison-Wesley, 2006. </li>
+</ul>
+<h2 id="instructors">Instructors</h2>
+<ul>
+<li>
+<p>Prof Kenny Lu (kenny_lu@sutd.edu.sg) 
+Office Hour: Wednesday 3:00-4:30pm (please send email to arrange)</p>
+</li>
+<li>
+<p>Prof Fredy Tantri (fredy_tantri@sutd.edu.sg)
+Office Hour:</p>
+</li>
+<li>
+<p>Prof TC Tan </p>
+</li>
+</ul>
+<h2 id="tas">TAs</h2>
+<ul>
+<li></li>
+</ul>
+<h2 id="communication">Communication</h2>
+<p>If you have course/assignment/project related questions, please post it on the dedicated MS teams channel.</p>
+<h2 id="grading">Grading</h2>
+<p>Your final grade is computed as follows:</p>
+<ul>
+<li>Cohort exercises – 18% </li>
+<li>Course Feedback – 2% </li>
+<li>Quizzes – 10% </li>
+<li>Course Project – 40% <ul>
+<li>Project Meetings 1, 2, 3, 4 (each 5%) </li>
+<li>Final presentation, demo and report (20%) </li>
+</ul>
+</li>
+<li>Final Exam – 30%  </li>
+</ul>
+<h2 id="things-you-need-to-prepare">Things you need to prepare</h2>
+<ul>
+<li>Git </li>
+<li>Node.js (version &gt; 20) </li>
+<li>Visual Studio Code (or whatever IDE you prefer) </li>
+<li>Ubuntu subsystem if you are using Windows </li>
+<li>MongoDB </li>
+<li>MySQL &gt;8 </li>
+</ul>
+<h2 id="project">Project</h2>
+<p>Please refer to the project <a href="some where in edimension">page</a>.</p>
+<h2 id="submission-policy-and-plagiarism">Submission Policy and Plagiarism</h2>
+<ol>
+<li>You will do the assignment/project on your own (own teams) and will not copy paste solutions from someone else.</li>
+<li>You will not post any solutions related to this course to a private/public repository that is accessible by the public/others.</li>
+<li>Students are allowed to have a private repository for their assignment which no one can access. </li>
+<li>For projects, students can only invite their partners as collaborators to a private repository.</li>
+<li>Failing to follow the Code of Honour will result in failing the course and/or being submitted to the University Disciplinary Committee. The consequences apply to both the person who shares their work and the person who copies the work.</li>
+</ol>
+<h2 id="schedule-12-may-2024-17-aug-2024">Schedule (12 May 2024 - 17 Aug 2024)</h2>
+<table>
+<thead>
+<tr>
+<th>Week</th>
+<th>Lecture 1</th>
+<th>Lecture 2</th>
+<th>Cohort Class</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 (12/5)</td>
+<td>Software Development Process and Software Design</td>
+<td>Software Development Process and Software Design</td>
+<td>Software Development Process and Software Design</td>
+<td></td>
+</tr>
+<tr>
+<td>2 (19/5)</td>
+<td>Software Design and UML</td>
+<td>Software Design and UML</td>
+<td>Software Design and UML</td>
+<td><a href="TODO">Project Team Submission</a> (26/5 23:59)</td>
+</tr>
+<tr>
+<td>3 (26/5)</td>
+<td>Use Case Studies of Software Development</td>
+<td>Use Case Studies of Software Development</td>
+<td>Use Case Studies of Software Development</td>
+<td>Wednesday is  public holiday</td>
+</tr>
+<tr>
+<td>4 (2/6)</td>
+<td><a href="./l4_1_web_prog_basics.md">Basic Web App Architecture</a></td>
+<td><a href="../l4_2_nodejs/">JavaScript and Node.js</a></td>
+<td><a href="https://github.com/sutd50003/cohortproblems/tree/main/ce4">JavaScript and Node.js</a></td>
+<td></td>
+</tr>
+<tr>
+<td>5 (9/6)</td>
+<td><a href="../l5_1_expressjs_backend_mongo/">Web App Backend Architecture</a></td>
+<td><a href="../l5_2_mysql/">Web App Backend Architecture</a></td>
+<td><a href="https://github.com/sutd50003/cohortproblems/tree/main/ce5">Web App Backend Architecture</a></td>
+<td>Submit project meeting 1 presentation video by 17/6 2359</td>
+</tr>
+<tr>
+<td>6 (16/6)</td>
+<td></td>
+<td><a href="../l6_1_expressjs_frontend/">Web App Frontend Architecture</a></td>
+<td>Project Meeting 1</td>
+<td>Monday is a public holiday</td>
+</tr>
+<tr>
+<td>7 (23/6)</td>
+<td>Recess Week</td>
+<td>Recess Week</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8 (30/6)</td>
+<td><a href="../l6_2_react/">Web App Frontend Architecture</a></td>
+<td><a href="../l8_1_softwaretesting/">Software Testing</a></td>
+<td><a href="https://github.com/sutd50003/cohortproblems/tree/main/ce8">Web App Frontend Architecture</a></td>
+<td>Submit project meeting 2 presentation video by 8/7 2359</td>
+</tr>
+<tr>
+<td>9 (7/7)</td>
+<td><a href="../l9_1_blackbox_unittest/">Blackbox unit testing</a></td>
+<td><a href="../l9_2_integrationtest/">Blackbox integration / system testing</a></td>
+<td>Project Meeting 2</td>
+<td></td>
+</tr>
+<tr>
+<td>10 (14/7)</td>
+<td>UI Testing</td>
+<td><a href="../l10_2_whitebox_testing/">Whitebox / Path base testing</a></td>
+<td><a href="https://github.com/sutd50003/cohortproblems/tree/main/ce10">Blackbox Testing</a></td>
+<td>Submit project meeting 3 presentation video by 22/7 2359</td>
+</tr>
+<tr>
+<td>11 (21/7)</td>
+<td><a href="../l11_1_auto_test_generation/">Test generation: Fuzzing</a></td>
+<td><a href="../l11_2_auto_test_generation2/">Test generation: Genetic algorithm, Symbolic Execution</a></td>
+<td>Project Meeting 3</td>
+<td></td>
+</tr>
+<tr>
+<td>12 (28/7)</td>
+<td>Concurrency and Concurrent Program Testing</td>
+<td><a href="../l12_2_code_std/">Secure Software Coding Standard, Code smells and Maintenance</a></td>
+<td>Project Meeting 4</td>
+<td></td>
+</tr>
+<tr>
+<td>13 (4/8)</td>
+<td>Final Presentation</td>
+<td>Final Presentation</td>
+<td>Final Presentation</td>
+<td>Friday is a public holiday</td>
+</tr>
+<tr>
+<td>14 (11/8)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="make-up-and-alternative-assessment">Make Up and Alternative Assessment</h2>
+<p>Make ups for Final exam will be administered when there is an official Leave of Absence from OSA. There will be only one make up. There will be no make-up if students miss the make up test. </p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/jquery-3.6.0.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>50.003 - Code-based Testing : Path testing - Elements of Software Construction 50.003</title>
+<link href="../../css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../css/font-awesome.min.css" rel="stylesheet"/>
+<link href="../../css/base.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body>
+<div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+<div class="container">
+<a class="navbar-brand" href="../..">Elements of Software Construction 50.003</a>
+<!-- Expander button -->
+<button class="navbar-toggler" data-target="#navbar-collapse" data-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<!-- Expanded navigation -->
+<div class="navbar-collapse collapse" id="navbar-collapse">
+<!-- Main navigation -->
+<ul class="nav navbar-nav">
+<li class="navitem">
+<a class="nav-link" href="../..">Home</a>
+</li>
+<li class="navitem">
+<a class="nav-link" href="../l1_course_handout/">Handout</a>
+</li>
+</ul>
+<ul class="nav navbar-nav ml-auto">
+<li class="nav-item">
+<a class="nav-link" data-target="#mkdocs_search_modal" data-toggle="modal" href="#">
+<i class="fa fa-search"></i> Search
+                            </a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+<div class="navbar-header">
+<button class="navbar-toggler collapsed" data-target="#toc-collapse" data-toggle="collapse" title="Table of Contents" type="button">
+<span class="fa fa-angle-down"></span>
+</button>
+</div>
+<div class="navbar-collapse collapse card bg-secondary" id="toc-collapse">
+<ul class="nav flex-column">
+<li class="nav-item" data-level="1"><a class="nav-link" href="#50003-code-based-testing-path-testing">50.003 - Code-based Testing : Path testing</a>
+<ul class="nav flex-column">
+<li class="nav-item" data-level="2"><a class="nav-link" href="#learning-outcomes">Learning Outcomes</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-level="2"><a class="nav-link" href="#recall">Recall</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-level="2"><a class="nav-link" href="#code-based-testing">Code-based Testing</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-level="2"><a class="nav-link" href="#programs-as-graphs">Programs as Graphs</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div></div>
+<div class="col-md-9" role="main">
+<h1 id="50003-code-based-testing-path-testing">50.003 - Code-based Testing : Path testing</h1>
+<h2 id="learning-outcomes">Learning Outcomes</h2>
+<ol>
+<li>Construct a control flow graph from a structured program</li>
+<li>Explain different types of test coverage metrics based on program graph</li>
+<li>Apply path testing techniques to generate test case to attain path coverage and MCDC coverage.</li>
+</ol>
+<h2 id="recall">Recall</h2>
+<ul>
+<li>Specification based testing</li>
+<li>Test cases are derived from the specification</li>
+<li>
+<p>The goal is to <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>_</p>
+</li>
+<li>
+<p>Code-based testing</p>
+</li>
+<li>Test cases are defined by making use of the knowledge of the internal structure and algorithm used in the test subject.</li>
+<li>The goal is to <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>_</li>
+</ul>
+<h2 id="code-based-testing">Code-based Testing</h2>
+<p>If there exists some bug in the program, it must be triggered by some sequence of statements from the program.</p>
+<p>In order to find faults, the tests must cover all possible sequences of statements. </p>
+<h2 id="programs-as-graphs">Programs as Graphs</h2>
+<p>As a convention, we write <span class="arithmatex">\(\overline{S}\)</span> to denote a sequence of statement <span class="arithmatex">\(S_1;...;S_n\)</span>,
+<span class="arithmatex">\(e\)</span> to denote an expression, i.e. <span class="arithmatex">\(x &gt; 1\)</span>, <span class="arithmatex">\(isTrue\)</span>, etc.</p>
+<p>Let <span class="arithmatex">\(P\)</span> be a program, and <span class="arithmatex">\(G\)</span> to be the control flow graph of <span class="arithmatex">\(P\)</span>, then
+* Each statement <span class="arithmatex">\(S\)</span> in <span class="arithmatex">\(P\)</span> denotes a vertex <span class="arithmatex">\(V\)</span> in <span class="arithmatex">\(G\)</span>, written, <span class="arithmatex">\(S \in P \vdash V \in G\)</span>, sometimes we omit the <span class="arithmatex">\(P\)</span> and <span class="arithmatex">\(G\)</span> for simplicity.
+* An edge <span class="arithmatex">\((V_1,V_2)\)</span> exists in <span class="arithmatex">\(G\)</span> iff <span class="arithmatex">\(S_1;S_2\)</span> are two statements in sequence in <span class="arithmatex">\(P\)</span> such that <span class="arithmatex">\(S_1 \vdash V_1\)</span> and <span class="arithmatex">\(S_2 \vdash V_2\)</span>.
+* Let <span class="arithmatex">\({\tt if}\ e\ \{\overline{S_1}\} {\tt else} \{\overline{S_2}\} \vdash V\)</span> then edges <span class="arithmatex">\((V,V_1)\)</span> and <span class="arithmatex">\((V, V_2)\)</span> exist in <span class="arithmatex">\(G\)</span> iff 
+  * <span class="arithmatex">\(S_1\)</span> is the first statement in <span class="arithmatex">\(\overline{S_1}\)</span> and <span class="arithmatex">\(S_1 \vdash V_1\)</span> and 
+  * <span class="arithmatex">\(S_2\)</span> is the first statement in <span class="arithmatex">\(\overline{S_2}\)</span> and <span class="arithmatex">\(S_2 \vdash V_2\)</span>.
+* Let <span class="arithmatex">\({\tt if}\ e\ \{\overline{S_1}\} {\tt else} \{\overline{S_2}\}; S'\)</span> in <span class="arithmatex">\(P\)</span> and <span class="arithmatex">\(S' \vdash V'\)</span> then edges <span class="arithmatex">\((V_1',V')\)</span> and <span class="arithmatex">\((V_2',V')\)</span> exist in <span class="arithmatex">\(G\)</span> iff 
+  * <span class="arithmatex">\(S_1'\)</span> is the last statement in <span class="arithmatex">\(\overline{S_1}\)</span> and <span class="arithmatex">\(S_1' \vdash V_1'\)</span> and 
+  * <span class="arithmatex">\(S_2'\)</span> is the last statement in <span class="arithmatex">\(\overline{S_2}\)</span> and <span class="arithmatex">\(S_2' \vdash V_2'\)</span>.
+* Let <span class="arithmatex">\({\tt while}\ e\ \{\overline{S_1}\} \vdash V\)</span>. Then edges <span class="arithmatex">\((V, V_1)\)</span> exist in <span class="arithmatex">\(G\)</span> iff
+  * <span class="arithmatex">\(S_1\)</span> is the first stataement in <span class="arithmatex">\(\overline{S_1}\)</span> and <span class="arithmatex">\(S_1 \vdash V_1\)</span>.
+* Let <span class="arithmatex">\({\tt while}\ e\ \{\overline{S_1}\} \vdash V\)</span>. Then edges <span class="arithmatex">\((V_1', V)\)</span> exist in <span class="arithmatex">\(G\)</span> iff
+  * <span class="arithmatex">\(V_1'\)</span> is the last stataement in <span class="arithmatex">\(\overline{S_1}\)</span>.</p>
+<p>We can compile for loops to while loops before generating the control flow graph.</p>
+<p>For example, consider the following program</p>
+<pre><code class="language-js">// example A
+function sum_all(arr) {
+  let sum = 0;
+  for (let i in arr) {
+    sum = arr[i] + sum;
+  }
+  return sum;
+}
+</code></pre>
+<p>will be compiled into</p>
+<pre><code class="language-js">// example A
+function sum_all(arr) {
+  let sum = 0;
+  let i = 0;
+  while (i &lt; arr.length) {
+    sum = arr[i] + sum;
+    i++;
+  }
+  return sum;
+}
+</code></pre>
+<p>We can generate a control flow graph from <code>sum_all</code></p>
+<div class="mermaid">graph
+  1--&gt;2
+  2--&gt;3
+  3--&gt;4
+  4--&gt;5
+  5--&gt;3
+  3--&gt;7
+</div>
+<p>where the vertex IDs are the line number of the statement.</p>
+<h3 id="path">Path</h3>
+<p>Given a graph <span class="arithmatex">\(G\)</span>, a path <span class="arithmatex">\(p\)</span> is a sequence of vertices, <span class="arithmatex">\(V_1,...,V_n\)</span> in <span class="arithmatex">\(G\)</span> such that for all <span class="arithmatex">\(i \in [1,n-1]\)</span>, <span class="arithmatex">\((V_i, V_{i+1})\)</span> is an edge in <span class="arithmatex">\(G\)</span>.</p>
+<p>For example, in the above control flow graph, we have the following paths</p>
+<ul>
+<li><span class="arithmatex">\(1\)</span></li>
+<li><span class="arithmatex">\(1,2,3\)</span></li>
+<li><span class="arithmatex">\(1,2,3,7\)</span></li>
+<li><span class="arithmatex">\(1,2,3,4,5,7\)</span></li>
+<li><span class="arithmatex">\(2,3\)</span></li>
+<li>...</li>
+</ul>
+<h3 id="test-coverage-metrics">Test Coverage Metrics</h3>
+<h4 id="program-graph-based-coverage">Program Graph-based coverage</h4>
+<p>There are following different levels of test coverage metrics for program testing</p>
+<p>A set of tests constitute
+1. <em>node coverage</em> if all nodes in the control flow graph are visited when the tests are executed.
+1. <em>edge coverage</em> if all the edges in the control flow graph are viisted when the tests are executed.
+1. <em>condition coverage</em> if all conditional predicates are evaluated to both true and false. 
+1. <em>path coverage</em> if all the paths in the control flow graph are visited when the tests are executed. </p>
+<p>Note that condition coverage often works better than edge coverage as it forces the tests to 
+exercise every single atomic predicates, i.e those are not formed by conjunction, disjunction and negation operator. Consider the following example </p>
+<pre><code class="language-js">// example B
+function div_by_zero(x,y) {
+  if ((x==0) || (y&gt;0)) {
+    y = y/x;
+  } else {
+    x = y++;
+  }
+  return x + y;
+}
+</code></pre>
+<p>Given the test cases
+* <code>x = 5, y = -5</code>
+* <code>x = 7, y = 5</code>
+covers all the edges, however it does not discover the division by zero bug.</p>
+<p>To trigger the bug, we would need to include the following test case</p>
+<ul>
+<li><code>x = 0, y = 1</code></li>
+</ul>
+<p>Which gives us condition coverage.</p>
+<p>Note that path coverage is impossible the achieved without approximation in the presence of loops.
+In practice we are required to traverse each loop with a fixed number of times, often 1. Then we apply graph condensation, in which the cycles in the control flow graph is replaced by a single node.</p>
+<p>For instance, in our running example, the result of the condensation processing is </p>
+<div class="mermaid">graph
+  1--&gt;2
+  2--&gt;3'
+  3'--&gt;7
+</div>
+<p>in which the loop 3-4-5 is merged into a single node 3' by assuming the loop terminates after <span class="arithmatex">\(X\)</span> of iterations.</p>
+<h4 id="condition-coverage-vs-path-coverage">Condition coverage vs path coverage</h4>
+<p>Note that neither path coverage entails condition coverage nor vice versa.</p>
+<p>For example, </p>
+<pre><code class="language-js">// example C
+if ((x&gt;0) || (x &lt;-1)) {
+  res = 1;
+} else {
+  res = 0;
+}
+</code></pre>
+<p>To obtain path coverage, we could have two tests, i.e. <code>x=1</code> and <code>x = 0</code>, which voilates condition coverage.</p>
+<p>On the other hand,</p>
+<pre><code class="language-js">// example D
+if (x &amp;&amp; y) {
+  res = 1;
+} else {
+  res = 0;
+}
+</code></pre>
+<p>Having {(<code>x = true, y = false</code>), (<code>x = false, y = true</code>)} we achieve condition coverage, but not path coverage nor edge coverage.</p>
+<p>Note that condition coverage and edge coverage do not imply path coverage, either.</p>
+<pre><code class="language-js">// example E
+function f(x) {
+  if (x &gt; 1) {
+    y = 1;
+  } else {
+    y = 0;
+  }
+  if (x &gt; 0) {
+    z = 1;
+  } else {
+    z = 0;
+  }
+  return y * z;
+}
+</code></pre>
+<p>The test cases {(<code>x = 2</code>), (<code>x = -1</code>)} give us condition coverage and edge coverage. But we have not attained path coverage. e.g. we have not visited the path of taking the then-branch of the first if-statement followed by the else-branch of the second if-statement.</p>
+<h4 id="mcdc-coverage">MCDC coverage</h4>
+<p>MCDC stands for Modified Condition Decision Coverage. </p>
+<p>MCDC requires </p>
+<ol>
+<li>Each statement must be executed at least once.</li>
+<li>Every program entry point and exit point must be invoked at least once.</li>
+<li>All possible outcomes of every control statement are taken at least once.</li>
+<li>Every nonconstant Boolean expression has been evaluated to both true and false outcomes. A boolean expression is constant iff it is a tautology, e.g. <code>a==a</code>, <code>a!=a</code> and <code>p &amp;&amp; !p</code></li>
+<li>Every nonconstant condition in a Boolean expression has been evaluated to both true and
+false outcomes.</li>
+<li>Every nonconstant condition in a Boolean expression has been shown to independently
+affect the outcomes (of the expression).</li>
+</ol>
+<p>Points 1 and 2 entail node coverage, 3 and 4 imply edge coverage. 5 implies condition coverage.
+6 requires more explaination.  </p>
+<p>In the example D, to achieve MCDC coverage, we generate a decision table </p>
+<table>
+<thead>
+<tr>
+<th>cond</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x</td>
+<td>T</td>
+<td>T</td>
+<td>F</td>
+<td>F</td>
+</tr>
+<tr>
+<td>y</td>
+<td>T</td>
+<td>F</td>
+<td>T</td>
+<td>F</td>
+</tr>
+<tr>
+<td>x &amp;&amp; y</td>
+<td>T</td>
+<td>F</td>
+<td>F</td>
+<td>F</td>
+</tr>
+<tr>
+<td>actions</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>res = 0</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>res = 1</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+</tbody>
+</table>
+<p>In the above table, we conclude that if we fix <code>x</code> with one value, and toggle <code>y</code>'s value 
+we are able to obtain both actions. Similar observation applies when we fix <code>y</code> and toggle <code>x</code>.
+So we argue that we achieve MCDC coverage if we pick either </p>
+<ul>
+<li>{ (<code>x = true, y = true</code>), (<code>x = false, y = true</code>), (<code>x = true, y = false</code>) } or </li>
+<li>{ (<code>x = true, y = true</code>), (<code>x = false, y = true</code>), (<code>x = false, y = false</code>) } </li>
+</ul>
+<p>While for example C</p>
+<table>
+<thead>
+<tr>
+<th>cond</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>x&gt;0</td>
+<td>T</td>
+<td>F</td>
+<td>F</td>
+</tr>
+<tr>
+<td>x&lt;-1</td>
+<td>F</td>
+<td>T</td>
+<td>F</td>
+</tr>
+<tr>
+<td>x &gt;0 || x&lt;-1</td>
+<td>T</td>
+<td>T</td>
+<td>F</td>
+</tr>
+<tr>
+<td>actions</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>res = 1</td>
+<td>X</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>res = 0</td>
+<td></td>
+<td></td>
+<td>X</td>
+</tr>
+</tbody>
+</table>
+<p>In the above table we realize that the two sub condition expresssions <code>x&gt;0</code> and <code>x&lt;-1</code> are dependent mutually, i.e. we can't hold <code>x&gt;0</code> to be <code>true</code> and toggle <code>x&lt;-1</code>.  In this example, we can still attain MCDC coverage by considering <code>{x=1, x =-2, x=0}</code>. If we adjust the example by replacing <code>x &gt;0 || x&lt;-1</code> with <code>x &gt;0 &amp;&amp; x &lt; -1</code>, there is no way we can attain MCDC coverage, because it is impossoble to find such a value of <code>x</code> to satisfy the condition.</p>
+<h3 id="coverage-report-in-jest">Coverage Report in Jest</h3>
+<p>In Jest, we can enable to coverage report by adding the following to the <code>package.json</code>, assuming Jest has been enabled and installed.</p>
+<pre><code class="language-json">  "jest": {
+    "collectCoverage": true
+    ,"coverageReporters": ["text", "html"]
+  },
+</code></pre>
+<p>Assuming we have the <code>sum_all.js</code> file with code describe in the example A and the corresponding test code as follows,</p>
+<pre><code class="language-js">// test/sum_all.test.js
+const sum_all = require('../src/sum_all');
+describe("test suite for sum_all", () =&gt; {
+    test ("test 1 for sum_all", () =&gt; {
+        const expected = 55;
+        expect(sum_all([1,2,3,4,5,6,7,8,9,10])).toBe(expected);
+    })
+})
+</code></pre>
+<p>when we run <code>npm run test sum_all.test.js</code>, we see the following additional output</p>
+<pre><code> PASS  test/sum_all.test.js
+  test suite for sum_all
+    ✓ test 1 for sum_all (3 ms)
+
+------------|---------|----------|---------|---------|-------------------
+File        | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+------------|---------|----------|---------|---------|-------------------
+All files   |     100 |      100 |     100 |     100 |                   
+ sum_all.js |     100 |      100 |     100 |     100 |                   
+------------|---------|----------|---------|---------|-------------------
+</code></pre>
+<p>We may also refer to the <code>.html</code> report generated in the <code>coverage</code> folder.</p>
+<p>Unfortunately, we don't get condition coverage from <code>jest</code> builtin coverage analyzer. Consider the <code>div_by_zero</code> test.
+Given the <code>div_by_zero</code> function in example B and the test code as follows</p>
+<pre><code class="language-js">// test/div_by_zero.test.js
+const f = require('../src/div_by_zero');
+
+describe("test suite for div_by_zero", () =&gt; {
+    test ("test 1 for f", () =&gt; {
+        const expected = -9;
+        expect(f(5,-5)).toBe(expected);
+    })
+    test ("test 2 for f", () =&gt; {
+        const expected = 7.714285714285714;
+        expect(f(7,5)).toBeCloseTo(expected,5);
+    })
+})
+</code></pre>
+<p>running <code>npm run test div_by_zero.test.js</code> we find</p>
+<pre><code>----------------|---------|----------|---------|---------|-------------------
+File            | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+----------------|---------|----------|---------|---------|-------------------
+All files       |     100 |      100 |     100 |     100 |                   
+ div_by_zero.js |     100 |      100 |     100 |     100 |                   
+----------------|---------|----------|---------|---------|-------------------
+</code></pre>
+<h3 id="path-testing">Path Testing</h3>
+<p>To conduct path testing, a general approach is </p>
+<ul>
+<li>to generate enough test cases cover all paths with condensation (if possible).</li>
+<li>in case of complex condition expression (esp with dependent condition expressions), we should construct a decision table to check impossibilities and generate additional test cases to ensure condition coverage.</li>
+</ul>
+<p>In regard to the path generation, we first need to find out how many unique paths exist.
+Recall notion of cyclomatic complexity from graph theory class, that defines the number of linearly independent paths from the entry to the exit node.</p>
+<p>$$
+V(G) = e - n + 2p
+$$
+where <span class="arithmatex">\(e\)</span> is the number of edges in <span class="arithmatex">\(G\)</span> and <span class="arithmatex">\(n\)</span> is the number of nodes in <span class="arithmatex">\(G\)</span> and <span class="arithmatex">\(p\)</span> denotes the number of connected components. Since we are dealing with one program at a time, the number of connected compoment is 1. (Note <span class="arithmatex">\(p\)</span> is not strongly connected component.)</p>
+<p>By applying the above formula to  the control flow graph from the <code>max_all</code> function, we find that in total there are 6 - 6 + 2 * 1 = 2 linearly unique paths from the entry to the exit, namely</p>
+<ul>
+<li><span class="arithmatex">\(1,2,3,7\)</span></li>
+<li><span class="arithmatex">\(1,2,3,4,5,7\)</span></li>
+</ul>
+<p>We generate the test cases as follows,</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>arr</th>
+<th>expected output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>[]</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>[1,2,3,4,5,6,7,8,9,10]</td>
+<td>55</td>
+</tr>
+</tbody>
+</table>
+<p>Note that Cyclomatic Complexity only measures the number of uniquely linearly paths, which serves as the <strong>lower-bound</strong> of the path coverage. For instance, recall example E, the cyclomatic complexity of function <code>f</code> is 8-7+2*1 = 3. But there exist 4 executable paths. This is because when counting linearly paths, the first if-else gives us two paths, by including a second if-else adds an extra 1 uniquely linearly path (as alternative). To find all executale paths (with max 1-loop-unrolling), we need to rely on the condition coverage.</p>
+<p>Now we have to verify whether we have attained MCDC for <code>max_all</code>. Since there is only one predicate <code>i &lt; arr.length</code>
+we have already covered both possible outcome of the predicate, namely, we executed the body the loop as well as exit from the loop. Hence we argue that the above test cases is providing path and MCDC coverage.</p>
+<h3 id="cohort-exercise-graded">Cohort Exercise (Graded)</h3>
+<p>Let's consider another example </p>
+<pre><code class="language-js">function gcd(x,y) {
+  let r = null;
+  if ((x &lt; 1) || (y &lt; 1)) {
+    r = null;
+  } else {
+    while (x != y) {
+      if (x &gt; y) {
+        let t = x - y;
+        x = y;
+        y = t
+      } else {
+        let t = y - x;
+        y = x;
+        x = t;
+      }
+    }
+    r = x;
+  }
+  return r;
+}
+</code></pre>
+<ol>
+<li>construct CFG of the above program.</li>
+<li>find the cyclomatic complexity of the CFG.</li>
+<li>generate the test cases to cover all paths.</li>
+<li>generate extra test cases (if needed) to attain MCDC coverage.</li>
+<li>verify your test cases's coverage using jest (though it is only up to edge coverage)</li>
+</ol></div>
+</div>
+</div>
+<footer class="col-md-12">
+<hr/>
+<p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+</footer>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+<script src="../../js/base.js"></script>
+<script src="../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="../../search/main.js"></script>
+<div aria-hidden="true" aria-labelledby="searchModalLabel" class="modal" id="mkdocs_search_modal" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="searchModalLabel">Search</h4>
+<button class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+</div>
+<div class="modal-body">
+<p>From here you can search these documents. Enter your search terms below.</p>
+<form>
+<div class="form-group">
+<input class="form-control" id="mkdocs-search-query" placeholder="Search..." title="Type search term here" type="search"/>
+</div>
+</form>
+<div data-no-results-text="No results found" id="mkdocs-search-results"></div>
+</div>
+<div class="modal-footer">
+</div>
+</div>
+</div>
+</div><div aria-hidden="true" aria-labelledby="keyboardModalLabel" class="modal" id="mkdocs_keyboard_modal" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+<button class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+</div>
+<div class="modal-body">
+<table class="table">
+<thead>
+<tr>
+<th style="width: 20%;">Keys</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="help shortcut"><kbd>?</kbd></td>
+<td>Open this help</td>
+</tr>
+<tr>
+<td class="next shortcut"><kbd>n</kbd></td>
+<td>Next page</td>
+</tr>
+<tr>
+<td class="prev shortcut"><kbd>p</kbd></td>
+<td>Previous page</td>
+</tr>
+<tr>
+<td class="search shortcut"><kbd>s</kbd></td>
+<td>Search</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="modal-footer">
+</div>
+</div>
+</div>
+</div>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>

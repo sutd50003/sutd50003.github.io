@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>50.003 - Express.js and MySQL - Elements of Software Construction 50.003</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Elements of Software Construction 50.003</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../l1_course_handout/" class="nav-link">Handout</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#50003-expressjs-and-mysql" class="nav-link">50.003 - Express.js and MySQL</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#learning-outcomes" class="nav-link">Learning Outcomes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#relational-databases" class="nav-link">Relational Databases</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="50003-expressjs-and-mysql">50.003 - Express.js and MySQL</h1>
+<h2 id="learning-outcomes">Learning Outcomes</h2>
+<p>By the end of this unit, you should be able to</p>
+<ol>
+<li>Use MySQL to manage a relational database</li>
+<li>Integrate the restful API with MySQL as the database.</li>
+<li>Use view to present user requested information</li>
+<li>Use AJAX and JSON end-points to present user requested information</li>
+</ol>
+<h2 id="relational-databases">Relational Databases</h2>
+<p>From the previous unit, we learn that Relational Database is an alternative to provide a logical model (and physical model) to a database design. Relational Database, informally speaking, represent data in terms of relations (or tables). A table is a set of records that have the same set of attributes.</p>
+<p>For instance, given the ER diagram </p>
+<p><img alt="" src="../images/er3.png" /> </p>
+<p>We could </p>
+<ol>
+<li>represent the <code>staff</code> entity as a table 
+    | id | name |
+    |---|---|
+    | 1 | aaron |
+    | 2 | betty |
+    <code>id</code> is the primary key</li>
+<li>
+<p>reprsent the <code>dept</code> entity as a table
+    | code | 
+    |---|
+    | HR|
+    <code>code</code> is the primary key.</p>
+</li>
+<li>
+<p>represent the <code>Work</code> relationship as a table
+    | id | code |
+    |---|---|
+    | 1 | HR|
+    | 2 | HR|
+    <code>id</code> and <code>code</code> together form the primary key.</p>
+</li>
+<li>represent the <code>Manage</code> relationship as a table
+    | id | code |
+    |---|---|
+    | 2 | HR |
+    either <code>id</code> or <code>code</code> can be the primary key.</li>
+</ol>
+<p>Sometimes, we just represent the above using a simpler schema representation for documentation purposes.
+* staff(<u>id</u>, name)
+* dept(<u>code</u>)
+* work(<u>id, code</u>)
+* manage(id, <u>code</u>)</p>
+<p>Next let's implement the above logical design using MySQL</p>
+<h3 id="mysql">MySQL</h3>
+<p>To install MySQL, </p>
+<ul>
+<li>If you are using windows or Mac, you can download and install from 
+  <code>url
+  https://dev.mysql.com/downloads/mysql/</code></li>
+<li>If you are using Ubuntu or Ubuntu subsystem in Windows<br />
+  ```bash
+  sudo apt install mysql-server
+  ````</li>
+</ul>
+<p>To create a database in MySQL, we use the mysql client shell</p>
+<pre><code class="language-bash">sudo mysql 
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql&gt; create database staffdir;
+Query OK, 1 row affected (0.04 sec)
+
+mysql&gt; use staffdir;
+Database changed
+mysql&gt; 
+</code></pre>
+<p>In the above we login to the <code>mysql</code> client as the root user. In the MySQL Shell, 
+we create a databse name <code>staffdir</code>.  We then use <code>use</code> commnad to switch the current working database to <code>staffdir</code>.</p>
+<h4 id="data-definition-language">Data Definition Language</h4>
+<p>As a standard option for SQL compatible database, MySQL offers a subset of the language to enable the user to define the database tables, AKA Data Definition Language.</p>
+<p>First let's create the <code>staff</code> table and the <code>dept</code> table</p>
+<pre><code class="language-sql">CREATE TABLE staff(
+    id INTEGER PRIMARY KEY,
+    name VARCHAR(255)
+);
+
+CREATE TABLE dept(
+    code CHAR(2) PRIMARY KEY
+);
+</code></pre>
+<p>The create table statement specifies the table name (preceding the paranthesis),
+and the attributes (inbetewen the parenthesis). We have to define the type of the attribute, <code>INTEGER</code> as integer, <code>VARCHAR(255)</code> as a variable length character array with max length 255. In addition, we specify the primary key using the <code>PRIMRAY KEY</code> keyword.
+Note that SQL statements are case insensitive. </p>
+<p>Next we consider the tables for the two relationships,</p>
+<pre><code class="language-sql">CREATE TABLE work(
+    id INTEGER,
+    code CHAR(2),
+    PRIMARY KEY (id, code),
+    FOREIGN KEY (id) REFERENCES staff(id),
+    FOREIGN KEY (code) REFERENCES dept(code)
+);
+
+CREATE TABLE manage(
+    id INTEGER UNIQUE,
+    code CHAR(2) PRIMARY KEY,
+    FOREIGN KEY (id) REFERENCES staff(id),
+    FOREIGN KEY (code) REFERENCES dept(code)
+);
+</code></pre>
+<p>Since the attribtues of the <code>work</code> table (similarly, <code>manage</code>) are dependent on those defined in the entities tables, namely <code>staff</code> and <code>dept</code>. There must be some kind of integerity checking to be done by the database. The <code>FOREIGN KEY</code> key word specify that <code>id</code> in <code>work</code> must be an existing <code>id</code> in <code>staff</code> table. Similar obsevation applies ot the <code>code</code> attribute. </p>
+<p>The database will return an error if</p>
+<ol>
+<li>a record with id not existing in <code>staff</code> being inserted into <code>work</code>.</li>
+<li>a record with id used <code>work</code> being deleted from <code>staff</code>.</li>
+<li>...</li>
+</ol>
+<p>To drop a table, we can use a <code>DROP TABLE</code> statement</p>
+<pre><code class="language-sql">DROP TABLE manage;
+</code></pre>
+<p>For the full set of DDL operations for MySQL,</p>
+<pre><code class="language-url">https://dev.mysql.com/doc/refman/8.0/en/innodb-online-ddl-operations.html
+</code></pre>
+<h4 id="data-manipulation-language">Data Manipulation Language</h4>
+<p>To insert records into the tables, we use the <code>INSERT</code> statements</p>
+<pre><code class="language-sql">INSERT INTO staff (id, name) VALUES (1, &quot;aaron&quot;), (2, &quot;betty&quot;);
+INSERT INTO dept (code) VALUES (&quot;HR&quot;);
+INSERT INTO work (id, code) VALUES (1, &quot;HR&quot;), (2, &quot;HR&quot;);
+INSERT INTO manage (id, code) VALUES (2, &quot;HR&quot;);
+</code></pre>
+<p>To retrieve the records from a table, we use the <code>SELECT</code> statement</p>
+<p>For instance</p>
+<pre><code class="language-sql">SELECT * FROM work;
+</code></pre>
+<p>returns the list of records (<code>id</code> and <code>code</code>) in the <code>work</code> table.</p>
+<p>The query below</p>
+<pre><code class="language-sql">SELECT id FROM work where code = &quot;HR&quot;;
+</code></pre>
+<p>returns the list of staff id from the HR department.</p>
+<p>The query below</p>
+<pre><code class="language-sql">-- find all names of staff who are working in the HR department
+SELECT staff.name FROM work INNER JOIN staff ON work.id WHERE work.code = &quot;HR&quot;;
+</code></pre>
+<p>finds the list of staff names from the HR department.</p>
+<p>We can also perform aggregation. </p>
+<pre><code class="language-sql">SELECT count(id), code FROM work 
+GROUP BY code;
+</code></pre>
+<p>finds the number of staff for each department.</p>
+<p>To update a set of records in a table, we use the <code>UPDATE</code> statement.</p>
+<p>For example the following statement change the name of staff with id = 2 to "beatrice".</p>
+<pre><code class="language-sql">UPDATE staff SET name = &quot;beatrice&quot; WHERE id = 2;
+</code></pre>
+<p>To delete a set of records in a table, we use the <code>DELETE</code> statement.</p>
+<pre><code class="language-sql">DELETE FROM manage WHERE code = &quot;HR&quot;;
+</code></pre>
+<h3 id="expressjs-with-mysql">Express.js with MySQL</h3>
+<p>Let's create a similar project structure</p>
+<pre><code>mkdir my_mysql_app
+cd my_mysql_app
+npx express-generator --view=ejs
+npm i
+npm i mysql2
+</code></pre>
+<p>Next login to mysql client shell and create a database and a databse user;</p>
+<pre><code class="language-sql">CREATE DATABASE echo; 
+CREATE USER 'pichu'@'localhost' IDENTIFIED BY 'pikaP!'; -- we may replace % by hostname/ip to restrict the access
+GRANT ALL PRIVILEGES ON echo.* TO 'pichu'@'localhost';
+FLUSH PRIVILEGES;
+</code></pre>
+<p>The first statement creates a database named <code>echo</code>. The second statement create a database user with name <code>pichu</code> located at the <code>localhost</code> with password as <code>pikaP!</code>.
+The third statement grants all the privileges on the <code>echo</code> database to this user. The last statement ensure all the privilege updates are written to the disk.</p>
+<p>Go to the express.js project root folder, namely <code>my_mysql_app</code>, create a sub folder with name <code>models</code>. In folder <code>models</code>, create a <code>db.js</code> file with the following content.</p>
+<pre><code class="language-js">const mysql = require('mysql2')
+
+let pool = mysql
+  .createPool({
+    host: &quot;localhost&quot;,
+    user: &quot;pichu&quot;,
+    database: &quot;echo&quot;,
+    password: &quot;pikaP!&quot;,
+    connectionLimit: 10,
+  })
+  .promise();
+
+async function cleanup() {
+    await pool.end();
+}
+
+module.exports = {pool, cleanup};
+</code></pre>
+<p>In the second statement, we create a connection pool to the mysql database. A connection pool allows us to regular the resource usage for database operations. </p>
+<p>The rest are similar to the one we learned using mongodb.</p>
+<p>Next in the same folder (<code>models</code>), create a file named <code>message.js</code> with the following content. </p>
+<pre><code class="language-js">const db = require('./db.js');
+
+const tableName = 'message';
+
+class Message {
+    constructor(msg, time) {
+        this.msg = msg;
+        this.time = time;
+    }
+}
+
+async function sync() {
+    try {
+        db.pool.query(`
+        CREATE TABLE IF NOT EXISTS ${tableName} (
+            msg VARCHAR(255),
+            time DATETIME PRIMARY KEY
+        )
+        `);
+    } catch (error) {
+        console.error(&quot;database connection failed. &quot; + error);
+        throw error;
+    }
+}
+
+async function all() {
+    try {
+
+        const [rows, fieldDefs] = await db.pool.query(`
+            SELECT msg, time FROM ${tableName}
+        `);
+        var list = [];
+        for (let row of rows) {
+            let message = new Message(row.msg, row.time);
+            list.push(message);
+        }
+        return list;
+    } catch (error) {
+        console.error(&quot;database connection failed. &quot; + error);
+        throw error;
+    }
+}
+
+async function insertOne(message) {
+    try {
+
+        const [rows, fieldDefs] = await db.pool.query(`
+            INSERT INTO ${tableName} (msg, time) VALUES (?, ?)
+        `, [message.msg, message.time]);
+
+    } catch (error) {
+        console.error(&quot;database connection failed. &quot; + error);
+        throw error;
+    }
+}
+
+async function insertMany(messages) {
+    for (let message of messages) {
+        await insertOne(message);
+    }
+}
+
+
+module.exports =  { Message, all, sync, insertOne, insertMany }
+</code></pre>
+<p>Similar to how <code>my_mongo_app</code>, we define a class <code>Message</code> to model each message received and saved. MySQL data must be stored in a table with schema definition.
+We define a <code>sync</code> function which creates the table in the database if it is not there. This function will be called in the <code>app.js</code> when the web app starts.
+We provide a set of functions. </p>
+<ul>
+<li>Function <code>all</code> retrieves all the messages from the table.</li>
+<li>Function <code>insertOne</code> inserts a message using the INSERT statement. In this case we find two <code>?</code>s in the statement, these two question marks are the placeholders for the verified values. In this case <code>message.msg</code> and <code>message.time</code> will be subsituted in the statement if they are valid. The <code>mysql2</code> library will verify that the values substituting <code>?</code> do not contain illegal characters which might cause some security issues, (which will be discussed in some class later).</li>
+<li>Function <code>insertMany</code> inserts a list of messages.</li>
+</ul>
+<p>Next we create a <code>routes/echo.js</code> file with the following content, </p>
+<pre><code class="language-js">const express = require('express');
+const model = require('../models/message.js');
+var router = express.Router();
+
+/* GET echo listing. */
+
+router.get('/:msg', async function(req, res, next) {
+    const msg = req.params.msg;
+    const message = new model.Message(msg, new Date());
+    await model.insertMany([message]);
+    const messages = await model.all();
+    console.log(messages);
+    res.send(`${JSON.stringify(messages)}`);
+});
+
+module.exports = router;
+</code></pre>
+<p>which is similar to what we have seen in the <code>my_mongo_app</code>.</p>
+<p>Finally, in the <code>app.js</code> file, we include the following </p>
+<pre><code class="language-js">var logger = require('morgan');
+// adding the following
+const db = require('./models/db.js');
+const process = require('process');
+
+process.on('SIGINT', db.cleanup);
+process.on('SIGTERM', db.cleanup);
+const message = require('./models/message.js');
+message.sync();
+// end
+</code></pre>
+<p>We imported the <code>db.js</code> file we created and <code>process</code> library so that we can register the <code>db.cleanup</code> function as the callback when the web app terminates.
+We also imported the <code>message</code> model module so that we can call <code>message.sync()</code> to make sure the table exists.</p>
+<p>Finally we add the following to <code>app.js</code> so that we can call the <code>echo</code> router on the URL path <code>/echo</code>.</p>
+<pre><code class="language-js">app.use('/echo', echoRouter);
+</code></pre>
+<h3 id="exercise-not-graded">Exercise (Not Graded)</h3>
+<p>Can you modify the <code>echo</code> router so that it will return the most recent 3 messages?</p>
+<p>In the above example, we incorporate the model layer to the web app. The models abstract away the underlying database operations in forms of function calls and 
+class object instantiation. </p>
+<p>Alternatively, we could use the <code>sequelize</code> library to help us to generate some of these codes. You are encouraged to check out the <code>sequelize</code> library.</p>
+<pre><code class="language-url">https://sequelize.org/
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/jquery-3.6.0.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

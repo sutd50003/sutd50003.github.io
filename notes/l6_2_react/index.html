@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>50.003 - Frontend Development using React.js - Elements of Software Construction 50.003</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Elements of Software Construction 50.003</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../l1_course_handout/" class="nav-link">Handout</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#50003-frontend-development-using-reactjs" class="nav-link">50.003 - Frontend Development using React.js</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#learning-outcomes" class="nav-link">Learning Outcomes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#issues-with-a-single-monolith-web-app" class="nav-link">Issues with a single monolith web app</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#front-end-web-app" class="nav-link">Front End Web App</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#building-a-reactjs-app" class="nav-link">Building a ReactJS App</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="50003-frontend-development-using-reactjs">50.003 - Frontend Development using React.js</h1>
+<h2 id="learning-outcomes">Learning Outcomes</h2>
+<p>By the end of this unit, you should be able to</p>
+<ol>
+<li>Explain React Components</li>
+<li>Explain React States</li>
+<li>Explain React Lifecycle</li>
+<li>Explain React Effect</li>
+<li>Develop a frontend app using React JS</li>
+</ol>
+<h2 id="issues-with-a-single-monolith-web-app">Issues with a single monolith web app</h2>
+<ol>
+<li>routes / controllers for view rendering and AJAX calls are intertwined</li>
+<li>client side JS in the views are not so reusable and not so testable</li>
+</ol>
+<h2 id="front-end-web-app">Front End Web App</h2>
+<p>A front end web app detachs the view components from a monolith web app.
+For example, the following diagram shows that a <code>react.js</code> app runs separately from 
+the <code>express.js</code> web app. </p>
+<p><img alt="" src="../images/frontendapp1.png" /></p>
+<p>In this settings, the <code>express.js</code> becomes a backend API server. The views are now hosted in the <code>react.js</code> app in a separate host address and port. When the client first accesses a page, it vists the <code>react.js</code> app for the desired web page. The <code>React.js</code> app renders the web page by making an API call to the backend server. When it has the JSON data, it  inserts the data into the result rendered. In addition, it bundles all the client side JS codes and other static content and sends them client browser as the response.</p>
+<p>The bundle JS codes becomes the client app which runs in the client browser. In the subsequent requests (initiated by UI control), the AJAX calls are maded directly from the client browser through the client app. This frees up some of the processing time from the web server as more codes are executed within the client browser.
+<img alt="" src="../images/frontendapp2.png" /></p>
+<p>Further more, the client side JS codes are hosted and executed (at least during the first request) on the <code>react.js</code> app server. This allows JS codes to be better modularized via a Node JS project, thus testing can be conducted systematically.</p>
+<h2 id="building-a-reactjs-app">Building a ReactJS App</h2>
+<p>To initiate the project, we need to execute</p>
+<pre><code class="language-bash">npx create-react-app my_react_app
+cd my_react_app
+</code></pre>
+<p>We find a project folder with the following content.</p>
+<pre><code>.
+├── package.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── manifest.json
+│   ├── logo512.png
+│   └── logo192.png
+└── src
+    ├── index.css
+    ├── index.js
+    ├── App.css
+    ├── App.js
+    ├── App.test.js
+    ├── setupTests.js
+    ├── reportWebVitals.js
+    └── logo.svg
+</code></pre>
+<p><code>src/index.js</code> is the main function (application entry point). </p>
+<pre><code class="language-jsx">import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  &lt;React.StrictMode&gt;
+    &lt;App /&gt;
+  &lt;/React.StrictMode&gt;
+);
+
+reportWebVitals();
+</code></pre>
+<p>From the above we noted a few points,</p>
+<ol>
+<li>We are using ES6 syntax</li>
+<li>We mix JavaScript syntax with HTML (XHTML) syntax (as well as CSS). The file is actually in type of JSX instead of JS.</li>
+<li><code>index.js</code> is creating a page with a root element and embedding the <code>App</code> element inside.</li>
+<li>the <code>App</code> element is imported from <code>src/App.js</code>.</li>
+</ol>
+<p>Let's take a look at the <code>App.js</code></p>
+<pre><code class="language-jsx">import logo from './logo.svg';
+import './App.css';
+
+function App() {
+  return (
+    &lt;div className=&quot;App&quot;&gt;
+      &lt;header className=&quot;App-header&quot;&gt;
+        &lt;img src={logo} className=&quot;App-logo&quot; alt=&quot;logo&quot; /&gt;
+        &lt;p&gt;
+          Edit &lt;code&gt;src/App.js&lt;/code&gt; and save to reload.
+        &lt;/p&gt;
+        &lt;a
+          className=&quot;App-link&quot;
+          href=&quot;https://reactjs.org&quot;
+          target=&quot;_blank&quot;
+          rel=&quot;noopener noreferrer&quot;
+        &gt;
+          Learn React
+        &lt;/a&gt;
+      &lt;/header&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;
+</code></pre>
+<p>To run the app, we run </p>
+<pre><code class="language-bash">npm start
+</code></pre>
+<p>which will start the reach app at <code>https://localhost:3000</code>. To stop it, we press control-C in the terminal.</p>
+<p>As we are going to run both react server and express server simultanously, we need to run the react app in a different port. </p>
+<p>In the project root folder, create a file <code>.env</code> with the following content</p>
+<pre><code>PORT=5000
+</code></pre>
+<p>Re-run <code>npm start</code>, it will re-start the react web app at <code>https://localhost:5000</code>.</p>
+<h3 id="appjs">App.js</h3>
+<p>Let's modify <code>src/App.js</code> to see how the web app change.</p>
+<pre><code class="language-jsx">import logo from './logo.svg';
+import './App.css';
+
+function App() {
+  return (
+      &lt;div&gt;
+        &lt;h1&gt; Echo App &lt;/h1&gt;
+          &lt;div&gt; TODO &lt;/div&gt;
+      &lt;/div&gt;
+  );
+}
+
+export default App;
+</code></pre>
+<p>As we save the file, the browser with the web app running will automatically refresh. We see </p>
+<p><img alt="" src="../images/react1.png" /></p>
+<p>If we check the source of the HTML page in the browser, </p>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;link rel=&quot;icon&quot; href=&quot;/favicon.ico&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;
+    &lt;meta name=&quot;theme-color&quot; content=&quot;#000000&quot; /&gt;
+    &lt;meta
+      name=&quot;description&quot;
+      content=&quot;Web site created using create-react-app&quot;
+    /&gt;
+    &lt;link rel=&quot;apple-touch-icon&quot; href=&quot;/logo192.png&quot; /&gt;
+    &lt;!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    --&gt;
+    &lt;link rel=&quot;manifest&quot; href=&quot;/manifest.json&quot; /&gt;
+    &lt;!--
+      Notice the use of  in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike &quot;/favicon.ico&quot; or &quot;favicon.ico&quot;, &quot;/favicon.ico&quot; will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    --&gt;
+    &lt;title&gt;React App&lt;/title&gt;
+  &lt;script defer src=&quot;/static/js/bundle.js&quot;&gt;&lt;/script&gt;&lt;/head&gt;
+  &lt;body&gt;
+    &lt;noscript&gt;You need to enable JavaScript to run this app.&lt;/noscript&gt;
+    &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;
+    &lt;!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the &lt;body&gt; tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>Nothing from the above reflects the change that we made in <code>App.js</code>.
+If we follow the link <code>/static/js/bundle.js</code> in the browser, we find the following 
+code snippet in the JavaScript file.</p>
+<pre><code class="language-js">function App() {
+  return /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)(&quot;div&quot;, {
+    children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)(&quot;h1&quot;, {
+      children: &quot; Echo App &quot;
+    }, void 0, false, {
+      fileName: _jsxFileName,
+      lineNumber: 10,
+      columnNumber: 9
+    }, this), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)(&quot;div&quot;, {
+      children: &quot; This is a test app for ESC. &quot;
+    }, void 0, false, {
+      fileName: _jsxFileName,
+      lineNumber: 11,
+      columnNumber: 11
+    }, this)]
+  }, void 0, true, {
+    fileName: _jsxFileName,
+    lineNumber: 9,
+    columnNumber: 7
+  }, this);
+}
+_c = App;
+</code></pre>
+<h3 id="react-js-compilation">React JS Compilation</h3>
+<p>React frameworks focus in building applications which can be targeted for multiple platforms, i.e. web browser, windows application, mobile app and etc. 
+It takes a single stack of source languages, i.e. JSX and CSS, compiles them into 
+a single output. In this case, since we are using React JS to build a web app, the output will be in a single JavaScript file. </p>
+<p><img alt="" src="../images/compiling.png" /></p>
+<p>Image credits <code>https://nextjs.org/learn/foundations/how-nextjs-works/compiling</code></p>
+<h3 id="components">Components</h3>
+<p>Unlike Web Application developed using other frameworks, e.g. express.js, React JS develops applications with a single page in mind. With the control of basic components, the React JS app is able to dynamicalliy update and replace components and sub-components within the same page in the event of user interaction and data update.</p>
+<p>In our running example, function <code>App</code> constructs a <em>component</em> which is used by the <code>index.js</code> at the root level. Function <code>App</code> returns the static HTML code as result.</p>
+<p>Let's make some change to <code>App.js</code> as follows,</p>
+<pre><code class="language-jsx">import logo from './logo.svg';
+import './App.css';
+import Echo from './Echo'; 
+
+function App() {
+  return (
+      &lt;div&gt;
+        &lt;h1&gt; Echo App &lt;/h1&gt;
+        &lt;Echo /&gt; 
+      &lt;/div&gt;
+  );
+}
+
+export default App;
+</code></pre>
+<p>In the above we import and include an <code>Echo</code> component from <code>./src/Echo.js</code>, which is defined as as follows,</p>
+<pre><code class="language-jsx">function Echo() {
+    return (
+        &lt;div&gt;
+          This message is defined in the Echo component.
+        &lt;/div&gt;
+    );
+}
+
+export default Echo;
+</code></pre>
+<p>After reloading the app in the browser, we have
+<img alt="" src="../images/react2.png" /></p>
+<h3 id="top-down-design-process-static">Top Down design process (static)</h3>
+<p>From the earlier example we see a hierachical structures in the components and elements used in our app.</p>
+<ul>
+<li>index.js</li>
+<li>App<ul>
+<li>div</li>
+<li>h1</li>
+<li>Echo<ul>
+<li>div</li>
+<li>text</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>When we design the UI using React JS we should follow and exted the same structure.</p>
+<p>Suppose we would like to build a frontend app to interact with the express.js app by submitting new messages and displaying the list of submitted messages.
+By breaking down the UI components we might have the following</p>
+<p><img alt="" src="../images/react3.png" /></p>
+<p>By following the UI structural breakdown, we modify the <code>Echo.js</code> as follows,</p>
+<pre><code class="language-jsx">function NewMessageBar({message, onSubmitClick}) {
+    return (
+        &lt;div&gt;
+            &lt;input type=&quot;text&quot; placeholder=&quot;&quot; value={message}&gt;&lt;/input&gt;
+            &lt;button onClick={onSubmitClick}&gt; Submit &lt;/button&gt;
+        &lt;/div&gt;
+    );
+}
+
+function MessageList({messages}) {
+    let rows = [];
+    for (let i in messages) {
+        rows.push(
+            &lt;tr&gt;&lt;td&gt;{messages[i].time}&lt;/td&gt;&lt;td&gt;{messages[i].msg}&lt;/td&gt;&lt;/tr&gt;
+        );
+    }
+    return (
+        &lt;table&gt;
+            &lt;tbody&gt;
+                &lt;tr&gt;&lt;th&gt;Date Time&lt;/th&gt;&lt;th&gt;Message&lt;/th&gt;&lt;/tr&gt;
+                {rows}
+            &lt;/tbody&gt;
+        &lt;/table&gt;
+    );
+}
+
+function Echo() {
+    const messages = [ 
+        {'time' : (new Date()).toDateString(), 'msg': 'hello'},
+        {'time' : (new Date()).toDateString(), 'msg': 'bye'}
+    ];
+    return (
+        &lt;div&gt;
+            &lt;NewMessageBar message=&quot;&quot; onSubmitClick={() =&gt; {}}/&gt;
+            &lt;MessageList messages={messages}/&gt;
+        &lt;/div&gt;
+    );
+}
+
+export default Echo;
+</code></pre>
+<p>In the above version of <code>Echo.js</code>, we define two sub components, namely <code>NewMessageBar</code> and <code>MessageList</code>. Note that both functions take some object as the arguments, these objects arguments are referred as <code>props</code> in React's terminlogies.</p>
+<ul>
+<li><code>NewMessageBar()</code> takes an object with two attributes, <code>message</code> and <code>onSubmitClick</code>. <code>message</code> stores the text value in the text field and <code>onSubmitclick</code> is a callback when the <code>Submit</code> button is clicked. The function returns a text input field and a button <code>Submit</code> as HTML code.</li>
+<li><code>MessageList()</code> takes an object with an attribute, <code>messages</code> which is a list of message objects. It returns a HTML table whose rows are constructed by mapping each message in the list to a row of the table.</li>
+<li><code>Echo()</code>, we hard code the data (which is supposed to be returned by the AJAX call to the backend), and pass them to <code>MessageList</code> component during the component construction.</li>
+</ul>
+<p>Note that we might re-write the component definition using class instead of function.</p>
+<pre><code class="language-jsx">class NewMessageBar extends React.Component {
+    constructor(props) {
+        this.message = props.message;
+        this.onSubmitClick = props.onSubmitClick;
+    }
+    render () {
+        return (
+            &lt;div&gt;
+                &lt;input type=&quot;text&quot; placeholder=&quot;&quot; value={this.message}&gt;&lt;/input&gt;
+                &lt;button onClick={this.onSubmitClick}&gt; Submit &lt;/button&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+</code></pre>
+<h4 id="props">Props</h4>
+<p>As shown in the earlier example, props are the objects arguments being passed to the constructor of a React Component, props carried data and information passed down from the use-site, (or the outer component).</p>
+<h3 id="make-it-interactive-dynamic">Make it interactive (dynamic)</h3>
+<p>Now we need to make the echo app functional. First let's make the button click to respond to the text entered in the input text field.</p>
+<p>We modify <code>NewMessageBar</code> as follows,</p>
+<pre><code class="language-jsx">function NewMessageBar({message, onMessageChange, onSubmitClick}) {
+    return (
+        &lt;div&gt;
+            &lt;input type=&quot;text&quot; placeholder=&quot;&quot; 
+                value={message} 
+                onChange={(e) =&gt; {onMessageChange(e.target.value)}}&gt;
+            &lt;/input&gt;
+            &lt;button onClick={onSubmitClick}&gt; Submit &lt;/button&gt;
+        &lt;/div&gt;
+    )
+}
+</code></pre>
+<p>We introduce a new props attribtue <code>onMessageChange</code> which is used as the handler for the text field <code>onChange</code> event. Without this, the text field is read-only. </p>
+<p>Next we modify the <code>Echo</code> function as follows,</p>
+<pre><code class="language-jsx">function Echo() {
+    const [msgTxt, setMsgTxt] = useState(&quot;&quot;);
+    function handleSubmitClick() {
+        alert(&quot;clicked &quot; + msgTxt);
+    }
+    const messages = [ 
+        {'time' : (new Date()).toDateString(), 'msg': 'hello'},
+        {'time' : (new Date()).toDateString(), 'msg': 'bye'}
+    ];
+    return (
+        &lt;div&gt;
+            &lt;NewMessageBar message={msgTxt} onMessageChange={setMsgTxt} onSubmitClick={handleSubmitClick}/&gt;
+            &lt;MessageList messages={messages}/&gt;
+        &lt;/div&gt;
+    );
+}
+</code></pre>
+<h4 id="state">State</h4>
+<p>The <code>useState</code> builtin function initializes a <em>state</em>. 
+In Reach terminology, a state is a pair of items, an object for reading the state and a callback to signal the change of the state. In this case we have a string object (since we initilaize an empty string), and a callback function which should be called when the string is updated.  </p>
+<p>In addition, we define a function <code>handleSubmitClick</code> which is used as the event handler of the <code>Submit</code> button click. Now we can interact with the app by entering the text in the message text field and pressing the button to trigger a pop up.</p>
+<h3 id="interfacing-with-the-backend-app">Interfacing with the backend app</h3>
+<p>Lastly we need to remove the hard-coded data and make use the data returned by the backend API end-point. </p>
+<p>We encounter an error of the api Call. By checking the console in the browser, we find that it is related to the Cross Origin Resource Sharing (CORS) restriction, which prevents the JS from React app to pull data from an exernal app. </p>
+<p>To lift the restriction, we modify the router code at the backend app, i.e. <code>my_mysql_app</code>. </p>
+<p>For all the AJAX call end-points to be accessed by our react app, (which is running on port 5000), we add the following statement before the <code>res.send()</code> is called.</p>
+<pre><code class="language-js">res.set('Access-Control-Allow-Origin', 'http://localhost:5000');
+</code></pre>
+<p>Coming back to our React App, we adjust the <code>Echo</code> function as follows,</p>
+<pre><code class="language-jsx">function Echo() {
+    const [msgTxt, setMsgTxt] = useState(&quot;&quot;);
+    function handleSubmitClick() {
+        submitNewMessage();    
+    }
+    const [messages, setMessages] = useState([]);
+    async function submitNewMessage() {
+        const response = await fetch(`http://localhost:3000/echo/submit`,
+        {
+            method: 'POST',
+            body: `msg=${msgTxt}`,
+            headers: {
+                'Content-type': 'application/x-www-form-urlencoded'
+            }              
+        });
+        const text = await response.text();
+        const json = JSON.parse(text);
+        setMessages(json);
+    }
+    return (
+        &lt;div&gt;
+            &lt;NewMessageBar message={msgTxt} onMessageChange={setMsgTxt} onSubmitClick={handleSubmitClick}/&gt;
+            &lt;MessageList messages={messages}/&gt;
+        &lt;/div&gt;
+    );
+}
+</code></pre>
+<p>The changes we made include</p>
+<ul>
+<li>remove the hard coded messages.</li>
+<li>introduce a new state <code>[messages, setMessages]</code>.</li>
+<li>define a function <code>submitNewMessage()</code> which make the HTTP POST api request to the backend app and update the message.</li>
+<li>update the body of <code>handleSubmitClick()</code> to incorporate <code>submitNewMessage()</code>. </li>
+</ul>
+<p>When the button is clicked, a sequence of operations were carried out in the following order.
+1. <code>handleSubmitClick()</code> invokes <code>submitNewMessage()</code>
+1. <code>submitNewMessage()</code> make the api call
+1. when the api call returns the result, the body text is extracted and parsed as JSON.
+1. <code>setMessages()</code> update the messages state, which triggers the re-rendering of the <code>Echo()</code> component. </p>
+<p>Lastly, let's make the app to displays all the existing messages when it is firstly loaded. Naively, we might added the following function definitions and function call statements before the <code>return</code> statement in the <code>Echo()</code> function.</p>
+<pre><code class="language-jsx">    async function submitNewMessage() { ... } // existing
+    async function initMessages() { // newly added
+        const response = await fetch(`http://localhost:3000/echo/all`);
+        const text = await response.text();
+        const json = JSON.parse(text);
+        setMessages(json);
+    }
+    initMessages(); // newly added, causing loop
+    return ( ... ); // existing 
+</code></pre>
+<p>With this fix, our App seems to work on the first launch but subsequently it gets into an infinite loop. This is because <code>initMessages()</code> is now part of the render routine of the <code>Echo</code> component, when the <code>Echo</code> is rendered, the <code>messages</code> list is updated, which causes the component to re-render. </p>
+<h3 id="life-cycle-of-react-components">Life Cycle of React Components</h3>
+<p>In order to fix this issue, we need to understand the life cycle of React Component. </p>
+<p><img alt="" src="../images/reactlifecycle.jpeg" /></p>
+<p>image credits <code>https://levelup.gitconnected.com/componentdidmakesense-react-lifecycle-explanation-393dcb19e459</code></p>
+<p>When a React Component is spawned, sever methods are called at the sever end (i.e. when our react app is hosted). After which, it calls <code>componentDidMount</code>, then goes into a kind of loop based on states or propos changes, it will re-renders. The loop goes on until it unmount, (i.e. the component is destroyed).</p>
+<p>To access each of the stages of the React Component, let's rewrite the <code>Echo</code> component in class style</p>
+<pre><code class="language-jsx">class Echo extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { msgTxt : &quot;&quot;, messages: []}; 
+    }
+
+    componentDidMount() {    
+    }
+
+    componentDidUpdate() {    
+    }
+
+    async submitNewMessage() {
+        const response = await fetch(`http://localhost:3000/echo/submit`,
+        {
+            method: 'POST',
+            body: `msg=${this.state.msgTxt}`,
+            headers: {
+                'Content-type': 'application/x-www-form-urlencoded'
+            }              
+        });
+        const text = await response.text();
+        const json = JSON.parse(text);
+        this.setMessages(json);
+    }
+
+    setMsgTxt(s) {
+        this.setState({ msgTxt: s, messages : this.state.messages });
+    }
+
+    setMessages(l) {
+        this.setState({ msgTxt: this.state.msgTxt, messages : l});
+    }
+
+    handleSubmitClick() {
+        this.submitNewMessage();    
+    }
+
+    render() {
+        return (
+            &lt;div&gt;
+                &lt;NewMessageBar message={this.state.msgTxt} onMessageChange={(s) =&gt; this.setMsgTxt(s)} onSubmitClick={() =&gt; this.handleSubmitClick()}/&gt;
+                &lt;MessageList messages={this.state.messages}/&gt;
+            &lt;/div&gt;
+        );
+    }
+}
+</code></pre>
+<p>In the above version, we refactor the parts using the <code>useState()</code> using  the inherited attribute of the <code>Component</code> class, <code>state</code> and <code>setState()</code>. In the above example, we put <code>msgTxt</code> and <code>messages</code> in <code>this.state</code> and implement <code>setMsgTxt</code> and <code>setMessages</code> using <code>this.setState</code>. In addition, we lift all the nested functions up by turning them into methods. Since functions are different from method internally, we need to turn the props arguments into lambdas, e.g. <code>onMessageChange={(s) =&gt; this.setMsgTxt(s)}</code> instead of <code>onMessageChange={setMsgTxt}</code>. Finally we override the <code>componentDidMount</code> and <code>componentDidUpdate</code> methods. </p>
+<h4 id="exercise-non-graded">Exercise (Non Graded)</h4>
+<p>Add some log messages to the <code>constructor</code>, <code>componentDidUpdate</code>, <code>componentDidMount</code>
+and <code>render</code>. 
+Run the program to observe the order of the log messages being printed. Can you identify which message is printed from which part of the life cycle?</p>
+<p>As suggested by the life cycle, it is better to initilize the state outside the loop, i.e. <code>componentDidMount</code>.</p>
+<p>Hence we change the <code>componentDidMount</code> as follows, and introduce a new function to retrieve all existing messages from the API and update the state.</p>
+<pre><code class="language-jsx">    async initMessages() {
+        const response = await fetch(`http://localhost:3000/echo/all`);
+        const text = await response.text();
+        const json = JSON.parse(text);
+        this.setMessages(json);
+    }
+
+    componentDidMount() {    
+        this.initMessages();
+    }
+</code></pre>
+<p>With this change, the App behaves as what we want.</p>
+<h3 id="effect">Effect</h3>
+<p>Some of us might argue, rewriting the component in the class form allows us to access the different stage of the life-cycle. The code could be too verbose. </p>
+<p>To do archieve the same result in the function form component, we need to use the effect hook.</p>
+<p>Recall the earlier version in function form.</p>
+<pre><code class="language-jsx">function Echo() {
+    const [msgTxt, setMsgTxt] = useState(&quot;&quot;);
+    function handleSubmitClick() {
+        submitNewMessage();    
+    }
+    const [messages, setMessages] = useState([]);
+
+    async function submitNewMessage() {
+        const response = await fetch(`http://localhost:3000/echo/submit`,
+        {
+            method: 'POST',
+            body: `msg=${msgTxt}`,
+            headers: {
+                'Content-type': 'application/x-www-form-urlencoded'
+            }              
+        });
+        const text = await response.text();
+        const json = JSON.parse(text);
+        setMessages(json);
+    }
+
+    useEffect( () =&gt; { // useEffect
+        console.log(&quot;from effect&quot;);
+    });
+
+    return (
+        &lt;div&gt;
+            &lt;NewMessageBar message={msgTxt} onMessageChange={setMsgTxt} onSubmitClick={handleSubmitClick}/&gt;
+            &lt;MessageList messages={messages}/&gt;
+        &lt;/div&gt;
+    );
+}
+</code></pre>
+<p>The statement calling <code>useEffect</code> defines a call-back to be called every time 
+the component re-renders.  We can restrict the call-back to be triggered only when certain states have updated, e.g. </p>
+<pre><code class="language-jsx">    useEffect( () =&gt; {
+        console.log(&quot;from effect&quot;);
+    }, [msgTxt]);
+</code></pre>
+<p>will be triggered whenever <code>msgTxt</code> state changes. </p>
+<p>If the 2nd argument is an empty list <code>[]</code>. the call-back will only be triggered when the component is mounted.  Hence to achieve what we want, i.e. to get all the existing messages and assign them to the state <code>messages</code>, we neeed to include the following in the body of the <code>Echo</code> function.</p>
+<pre><code class="language-jsx">    async function initMessages() {
+        const response = await fetch(`http://localhost:3000/echo/all`);
+        const text = await response.text();
+        const json = JSON.parse(text);
+        setMessages(json);
+    }
+    useEffect( () =&gt; {
+        initMessages();
+    }, []);
+</code></pre>
+<p>We could think of <code>useEffect</code> with only 1 argument is behaving like <code>componentDidUpdate</code>. <code>useEffect</code> with a 2nd argument as a non empty list is behaving like <code>componentDidUpdate</code> with conditional update (depeneding on whether the given state has changed). When <code>useEffect</code> is used with a 2nd argument as an empty list it is behaving like <code>componentDidMount</code>. </p>
+<h3 id="exercise-graded">Exercise (Graded)</h3>
+<ol>
+<li>Complete the tasks in ce8_q1. Refer to ce8.</li>
+<li>Complete the tasks in ce8_q2. Refer to ce8.</li>
+</ol>
+<h3 id="further-reading">Further Reading</h3>
+<ol>
+<li>Thinking in React <code>https://react.dev/learn/thinking-in-react</code></li>
+<li>React JS and Express JS <code>https://www.freecodecamp.org/news/create-a-react-frontend-a-node-express-backend-and-connect-them-together-c5798926047c/</code></li>
+<li>React JS life cycle <code>https://levelup.gitconnected.com/componentdidmakesense-react-lifecycle-explanation-393dcb19e459</code></li>
+<li>Multi page React <code>https://www.geeksforgeeks.org/how-to-create-a-multi-page-website-using-react-js/</code></li>
+<li>Multi page with state <code>https://www.microverse.org/blog/how-to-get-set-up-with-react-redux-in-your-next-multi-page-project</code></li>
+<li>React JS and Express JS with Login and Token authentication <code>https://www.digitalocean.com/community/tutorials/how-to-add-login-authentication-to-react-applications</code></li>
+</ol></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/jquery-3.6.0.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

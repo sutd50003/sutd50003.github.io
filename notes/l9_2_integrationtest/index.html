@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="../../img/favicon.ico" rel="shortcut icon"/>
+<title>50.003 - Specification-based Integration Testing and System Testing - Elements of Software Construction 50.003</title>
+<link href="../../css/bootstrap.min.css" rel="stylesheet"/>
+<link href="../../css/font-awesome.min.css" rel="stylesheet"/>
+<link href="../../css/base.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body>
+<div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+<div class="container">
+<a class="navbar-brand" href="../..">Elements of Software Construction 50.003</a>
+<!-- Expander button -->
+<button class="navbar-toggler" data-target="#navbar-collapse" data-toggle="collapse" type="button">
+<span class="navbar-toggler-icon"></span>
+</button>
+<!-- Expanded navigation -->
+<div class="navbar-collapse collapse" id="navbar-collapse">
+<!-- Main navigation -->
+<ul class="nav navbar-nav">
+<li class="navitem">
+<a class="nav-link" href="../..">Home</a>
+</li>
+<li class="navitem">
+<a class="nav-link" href="../l1_course_handout/">Handout</a>
+</li>
+</ul>
+<ul class="nav navbar-nav ml-auto">
+<li class="nav-item">
+<a class="nav-link" data-target="#mkdocs_search_modal" data-toggle="modal" href="#">
+<i class="fa fa-search"></i> Search
+                            </a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+<div class="navbar-header">
+<button class="navbar-toggler collapsed" data-target="#toc-collapse" data-toggle="collapse" title="Table of Contents" type="button">
+<span class="fa fa-angle-down"></span>
+</button>
+</div>
+<div class="navbar-collapse collapse card bg-secondary" id="toc-collapse">
+<ul class="nav flex-column">
+<li class="nav-item" data-level="1"><a class="nav-link" href="#50003-specification-based-integration-testing-and-system-testing">50.003 - Specification-based Integration Testing and System Testing</a>
+<ul class="nav flex-column">
+<li class="nav-item" data-level="2"><a class="nav-link" href="#learning-outcomes">Learning Outcomes</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-level="2"><a class="nav-link" href="#levels-of-testing">Levels of testing</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-level="2"><a class="nav-link" href="#integration-test">Integration Test</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-level="2"><a class="nav-link" href="#system-testing">System Testing</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-level="2"><a class="nav-link" href="#life-cycle-based-testing">Life-cycle based testing</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+<li class="nav-item" data-level="2"><a class="nav-link" href="#futher-reading">Futher Reading</a>
+<ul class="nav flex-column">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div></div>
+<div class="col-md-9" role="main">
+<h1 id="50003-specification-based-integration-testing-and-system-testing">50.003 - Specification-based Integration Testing and System Testing</h1>
+<h2 id="learning-outcomes">Learning Outcomes</h2>
+<ol>
+<li>Identify the difference between decomposition-based integration testing and call graph-based integration testing.</li>
+<li>Conduct integration test using Jest.</li>
+<li>Derive system testing test cases based on the user case documentations.</li>
+<li>Develop testing strategies based different software development life cycle.</li>
+</ol>
+<h2 id="levels-of-testing">Levels of testing</h2>
+<p>Recall </p>
+<table>
+<thead>
+<tr>
+<th>Design abstraction level</th>
+<th>Testing level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Requirement Specifications</td>
+<td>System testing</td>
+</tr>
+<tr>
+<td>Preliminary Design</td>
+<td>Integration testing</td>
+</tr>
+<tr>
+<td>Detailed Design</td>
+<td>Unit testing</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Unit testing - test individual smallest units of the system.</li>
+<li>Integration testing - test related units/subcomponents of the system, which are related (according to the system design)</li>
+<li>System testing - test the system as a whole, (often according to the user cases).</li>
+</ul>
+<p>In this unit, we study integration testing.</p>
+<h2 id="integration-test">Integration Test</h2>
+<p>There are two main approaches of performing integration tests</p>
+<ul>
+<li>Decomposition-based testing</li>
+<li>Call graph-based testing</li>
+</ul>
+<h3 id="decomposition-based-testing">Decomposition-based testing</h3>
+<p>In Decomposition-based integration testing, we follow the modular structure of the system design.</p>
+<div class="mermaid">graph
+  Program--&gt;Function1
+  Program--&gt;Function2
+  Program--&gt;Function3
+  Function1--&gt;SubFunction1
+  Function1--&gt;SubFunction2
+  Function2--&gt;SubFunction3
+  Function2--&gt;SubFunction4
+  Function3--&gt;SubFunction5
+</div>
+<p>We perform integration test by following the structure. There are two possible directions.
+1. Top-down integration testing
+1. Bottom-up integration testing</p>
+<h4 id="top-down-integration-testing">Top-Down Integration testing</h4>
+<p>In top-down decomposition-based integration testing, we mock up all the sub-components below the main program, and test the main program.</p>
+<div class="mermaid">graph
+  Program--&gt;Function1*
+  Program--&gt;Function2*
+  Program--&gt;Function3*
+  Function1*--&gt;SubFunction1*
+  Function1*--&gt;SubFunction2*
+  Function2*--&gt;SubFunction3*
+  Function2*--&gt;SubFunction4*
+  Function3*--&gt;SubFunction5*
+</div>
+<p>We put an asterix to denote that function is mocked. 
+After the main program being tested against the mocked functions, we start to replace the mockded codes with the actual codes starting from the first left child until the bottom right child following the breadth first search order. </p>
+<div class="mermaid">graph
+  Program--&gt;Function1
+  Program--&gt;Function2*
+  Program--&gt;Function3*
+  Function1--&gt;SubFunction1*
+  Function1--&gt;SubFunction2*
+  Function2*--&gt;SubFunction3*
+  Function2*--&gt;SubFunction4*
+  Function3*--&gt;SubFunction5*
+</div>
+<p>The rationale of the top-down integration test is that when we encounter an error, the error must be caused by the integration of the newly unmocked code. </p>
+<h4 id="bottom-up-integration-testing">Bottom-up Integration testing</h4>
+<p>Bottom-up decomposition-based integration testing starts from the bottom left-most or the right most leaf function. We test the leaf functions by making use of the unit test codes (now we call it the driver code). </p>
+<div class="mermaid">graph
+  Program*--&gt;Function1*
+  Program*--&gt;Function2*
+  Program*--&gt;Function3*
+  Function1*--&gt;SubFunction1
+  Function1*--&gt;SubFunction2
+  Function2*--&gt;SubFunction3
+  Function2*--&gt;SubFunction4
+  Function3*--&gt;SubFunction5
+</div>
+<p>Note that in the above diagram, the components associated with an asterix are yet to be integrated in the integration test.
+We then move up the structure by integrating the parents of the leaf functions, (and using the unit test code). We repeat the process until we reach the top.</p>
+<div class="mermaid">graph
+  Program*--&gt;Function1
+  Program*--&gt;Function2
+  Program*--&gt;Function3
+  Function1--&gt;SubFunction1
+  Function1--&gt;SubFunction2
+  Function2--&gt;SubFunction3
+  Function2--&gt;SubFunction4
+  Function3--&gt;SubFunction5
+</div>
+<p>By doing so, we need not mock up the code as we can reuse (or modify) the unit-test code as drivers.</p>
+<h4 id="limitation">Limitation</h4>
+<p>The limitation of decomposition-based testing is that the structure is defined by the lexical structure of the source code (definition structure), which often does not reflect the execution and function call relation.</p>
+<p>For example, recall in our Echo App (the restful API version), we have two major components in the app. By following the code structure we have.</p>
+<div class="mermaid">graph
+  app--&gt;EchoRouter
+  app--&gt;MessageModel
+  EchoRouter--&gt;get.all
+  EchoRouter--&gt;post.submit
+  MessageModel--&gt;all
+  MessageModel--&gt;insertOne
+  MessageModel--&gt;insertMany
+</div>
+<p>However, we find that we hardly have code from app to call MessageModel directly. In most of the situation, the call sequence is app--&gt;EchoRouter--&gt;MessageModel.</p>
+<h3 id="call-graph-based-integration">Call-graph based integration</h3>
+<p>To address the issue with Decomposition based integration, we define the integration structure by following the call graph. For instance, here is the call graph of our Echo App</p>
+<div class="mermaid">graph
+  app--&gt;EchoRouter
+  EchoRouter--&gt;get.all
+  EchoRouter--&gt;post.submit
+  get.all--&gt;MessageModel.all
+  post.submit--&gt;MessageModel.all
+  post.submit--&gt;MessageModel.insertMany
+  MessageModel.insertMany--&gt; MessageModel.insertOne 
+</div>
+<p>Note that <code>insertMany()</code> is never used.</p>
+<p>Now we can apply the similar top-down or bottom-up integration test strategies. </p>
+<h4 id="example">Example</h4>
+<p>We reuse the <code>my_mysql_app</code> developed in the earlier units. 
+We start by including <code>jest</code> and <code>supertest</code> in the project</p>
+<pre><code class="language-bash">npm i jest supertest
+</code></pre>
+<p>and modify <code>package.json</code>
+to change</p>
+<pre><code class="language-json">  "scripts": {
+    "start": "node ./bin/www"
+  },
+</code></pre>
+<p>to </p>
+<pre><code class="language-json">  "scripts": {
+    "start": "node ./bin/www",
+    "test": "jest" // added 
+  },
+</code></pre>
+<p>Then we create a sub folder <code>__test__</code> under the project root folder.</p>
+<p>Now we should have a project folder structure as the following</p>
+<pre><code>.
+├── __test__
+├── app.js
+├── bin
+│   └── www
+├── models
+│   ├── db.js
+│   └── message.js
+├── package.json
+├── public
+│   ├── images
+│   ├── javascripts
+│   └── stylesheets
+│       └── style.css
+├── routes
+│   ├── index.js
+│   ├── echo.js
+│   └── users.js
+└── views
+    ├── error.ejs
+    └── index.ejs
+</code></pre>
+<h5 id="unit-testing-model-messageall">Unit Testing Model message.all</h5>
+<p>First we define a unit test on on <code>models/message.js</code>'s function <code>all()</code>.</p>
+<p>In the <code>__test__</code> folder we add a test file <code>message.test.js</code> with the following content</p>
+<pre><code class="language-js">const db = require('../../models/db.js');
+const message = require('../../models/message.js');
+
+async function setup() {
+    try {
+        await db.pool.query(`
+            DELETE FROM message;`
+        );
+        await db.pool.query(`
+            INSERT INTO message (msg, time) 
+            VALUES ('msg a', '2009-01-01:00:00:00'),
+                   ('msg b', '2009-01-02:00:00:00')
+        `);
+    } catch (error) {
+        console.error("setup failed. " + error);
+        throw error;
+    }
+}
+
+async function teardown() {
+    try {
+        await db.pool.query(`
+            DELETE FROM message;`
+        );
+        await db.cleanup();
+    } catch (error) {
+        console.error("teardown failed. " + error);
+        throw error;
+    }
+}
+
+describe("models.message.all() tests", () =&gt; {
+    beforeAll(async () =&gt; {
+        await setup();
+    });
+    test ("testing message.all()", () =&gt; {
+        const expected = [ new message.Message('msg a', new Date('2009-01-01:00:00:00')), 
+                           new message.Message('msg b', new Date('2009-01-02:00:00:00'))]
+        const result_promise = message.all();
+        result_promise.then((result) =&gt; {
+            expect(result.sort()).toEqual(expected.sort());
+        });
+    });
+    afterAll(async () =&gt; {
+        await teardown();
+    });
+})
+</code></pre>
+<p>The <code>setup</code> and <code>teardown</code> define the setup and tear-down routine of this test suite.
+Note that in the actual project, you might consider backing up and restoring the actual table data in the <code>setup</code> and <code>teardown</code> functions.</p>
+<p>In the test suite, we define only one test. </p>
+<p>When we run</p>
+<pre><code class="language-bash">npm run test message.test.js
+</code></pre>
+<p>we see</p>
+<pre><code class="language-bash">&gt; my-mysql-app@0.0.0 test
+&gt; jest --detectOpenHandles message.test.js
+
+  console.log
+    2
+
+      at Object.log (models/message.js:36:17)
+
+ PASS  __test__/models/message.test.js
+  models.message.all() tests
+    ✓ testing message.all() (3 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        0.496 s, estimated 1 s
+Ran all test suites matching /message.test.js/i.
+
+</code></pre>
+<h5 id="integration-test-with-echo-router-and-model-messageall">Integration Test with Echo Router and Model message.all</h5>
+<p>Next we define a bottom-up integration testing by integrating the path from <code>get.all</code> to 
+<code>message.all()</code>.</p>
+<div class="mermaid">graph
+  app--&gt;EchoRouter
+  EchoRouter--&gt;get.all
+  get.all--&gt;MessageModel.all
+</div>
+<p>In the <code>__test__</code> folder we define a new test file <code>echo.test.js</code> with the following content</p>
+<pre><code class="language-js">const db = require('../../models/db.js');
+const message = require('../../models/message.js');
+const request = require('supertest')
+const app = require('../../app');
+
+async function setup() {
+    try {
+        // TODO backup the existing data to a temp table?
+        await db.pool.query(`
+            DELETE FROM message;`
+        );
+        await db.pool.query(`
+            INSERT INTO message (msg, time) 
+            VALUES ('msg a', '2009-01-01:00:00:00'),
+                   ('msg b', '2009-01-02:00:00:00')
+        `);
+    } catch (error) {
+        console.error("setup failed. " + error);
+        throw error;
+    }
+}
+
+async function teardown() {
+    // TODO restore the table from the backup;
+    try {
+        await db.pool.query(`
+            DELETE FROM message;`
+        );
+        await db.cleanup();
+    } catch (error) {
+        console.error("teardown failed. " + error);
+        throw error;
+    }
+}
+
+describe("routes.echo endpoint integration tests", () =&gt; {
+    beforeAll(async () =&gt; {
+        await setup();
+    });
+    test ("testing /echo/all", async () =&gt; {
+        const res = await request(app).get('/echo/all');
+        const expected = [ new message.Message('msg a', new Date('2009-01-01:00:00:00')), 
+                           new message.Message('msg b', new Date('2009-01-02:00:00:00'))]
+        expect(res.statusCode).toEqual(200);
+        const json = JSON.parse(res.text);
+        const received = [];
+        for (let i in json) {
+            received.push(new message.Message(json[i].msg, new Date(json[i].time)))
+        }
+        expect(received.sort()).toEqual(expected.sort());
+    });
+    afterAll(async () =&gt; {
+        await teardown();
+    });
+
+})
+</code></pre>
+<p>The setup and teardown routines are similar to the unit test for <code>message.all()</code>. 
+The only difference is that in the test case, we initiate the call from the app level which trigger the router handler with URL path <code>/echo/all</code>. We then extract the returned text returned from the handler, and parse it back to a json object. Finally we compared the received results (created from <code>json</code>) and the expected result.</p>
+<p>When we run</p>
+<pre><code class="language-bash">npm run test echo.test.js
+</code></pre>
+<p>we see</p>
+<pre><code class="language-bash">&gt; my-mysql-app@0.0.0 test
+&gt; jest --detectOpenHandles echo.test.js
+
+  console.log
+    2
+
+      at Object.log (models/message.js:36:17)
+
+GET /echo/all 200 28.616 ms - 101
+ PASS  __test__/models/echo.test.js
+  routes.echo endpoint integration tests
+    ✓ testing /echo/all (66 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        0.678 s, estimated 1 s
+Ran all test suites matching /echo.test.js/i.
+</code></pre>
+<h4 id="cyclic-call-graph">Cyclic call-graph</h4>
+<p>In case that the call-graph contains cycles, i.e. due to mutual recursion, we have to test the strong connected components as a unit</p>
+<h4 id="pairwise-testing">Pairwise testing</h4>
+<p>Besides top-down or bottom-up strategies, an alternative is to perform pair-wise testing.
+The idea is to test each edge of the call-graph. Similar to bottom-up strategy, we could convert unit tests for invidiual unit into test drivers for every pair, saving some effort in mock-up effort. One advantage of pairwise testing is to higher degree of fault isolation. </p>
+<h2 id="system-testing">System Testing</h2>
+<p>System testing is often less formal compared to unit testing and integration test.
+Test cases of the system testing can be derived from </p>
+<ul>
+<li>The use case documents and use case diagrams</li>
+<li>The sequence diagrams</li>
+<li>The state machine diagrams</li>
+</ul>
+<p>For instance given the following use case document </p>
+<table>
+<thead>
+<tr>
+<th>Use case ID</th>
+<th>UC 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Use case name</td>
+<td>Create New Message</td>
+</tr>
+<tr>
+<td>Objective</td>
+<td>The user creates a new message which will be stored in the Echo app DB</td>
+</tr>
+<tr>
+<td>Pre-conditions</td>
+<td>nil</td>
+</tr>
+<tr>
+<td>Primary Actor</td>
+<td>User</td>
+</tr>
+<tr>
+<td>Secondary Actor</td>
+<td>Echo App</td>
+</tr>
+<tr>
+<td>Normal Flow</td>
+<td>1. User navigates to <code>https://localhost:3000/echo/</code></td>
+</tr>
+<tr>
+<td></td>
+<td>2. User enters a new text message and submits</td>
+</tr>
+<tr>
+<td></td>
+<td>3. Echo App receives the message and inserts it into the database</td>
+</tr>
+<tr>
+<td></td>
+<td>4. Echo App returns the list of all messages in the database and display in the UI</td>
+</tr>
+<tr>
+<td>Alternative Flow</td>
+<td></td>
+</tr>
+<tr>
+<td>Post-conditions</td>
+<td>nil</td>
+</tr>
+</tbody>
+</table>
+<p>We can define a system test case as follows</p>
+<table>
+<thead>
+<tr>
+<th>Test case ID</th>
+<th>TC 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Test case name</td>
+<td>Create New Message</td>
+</tr>
+<tr>
+<td>Objective</td>
+<td>The user creates a new message which will be stored in the Echo app DB</td>
+</tr>
+<tr>
+<td>Pre-conditions</td>
+<td>nil</td>
+</tr>
+<tr>
+<td>Event Sequence</td>
+<td></td>
+</tr>
+<tr>
+<td>Input</td>
+<td>User navigates to <code>https://localhost:3000/echo/</code></td>
+</tr>
+<tr>
+<td>Output</td>
+<td>The new message form is displayed</td>
+</tr>
+<tr>
+<td>Input</td>
+<td>User enters a new text message and submits</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>The list of messages in the system is returned and rendered, which includes the newly submitted message.</td>
+</tr>
+<tr>
+<td>Post-conditions</td>
+<td>nil</td>
+</tr>
+</tbody>
+</table>
+<h2 id="life-cycle-based-testing">Life-cycle based testing</h2>
+<p>In this section, we discuss how to incoporate the testing activities along with the software development life-cycle.</p>
+<h3 id="waterfall-testing">Waterfall testing</h3>
+<p>In Walterfall software life-cycle, we could easily incoprate the testing activities as the last few phases.</p>
+<div class="mermaid">graph
+  A("Requirements Specification") --&gt; B
+  B("Analysis") --&gt;  C
+  C("Design") --&gt; D
+  D("Coding") --&gt; E
+  E("Unit Testing") --&gt; F
+  F("Integration Test") --&gt; G("System Test")
+</div>
+<p>As highlighted in the earlier lesson, Waterfall testing as part of the waterfall development life-cycle, suffers from the long feedback interval issues.</p>
+<h3 id="iterative-life-cycle-testing">Iterative Life Cycle testing</h3>
+<p>In Iterative Software Dvelopment Life Cycle, we break and stage different parts/levels of the system components to be developed in different iterations. </p>
+<div class="mermaid">graph
+  Z("Previous Iteration") --&gt; A
+  A("Specification") --&gt; B
+  B("Analysis") --&gt;  C
+  C("Design") --&gt; D
+  D("Coding") --&gt; E
+  E("Unit Testing") --&gt; F
+  F("Integration Testing") --&gt; G
+  G("Regression Testing") --&gt; H
+  H("Progression Testing") --&gt; I("Next Iteration")
+</div>
+<p>In terms of testing, we follow a similar structure of waterfall testing for each iteration, except that towards the end, we conduct regression testing and 
+progression testing instead of system test. </p>
+<ul>
+<li>Regression testing - to re-test the test cases defined and passed in the previous iterations.</li>
+<li>Progress testing - to pre-test the test cases defined in the upcoming iterations, some of them should fail.  </li>
+</ul>
+<h3 id="agile-testing">Agile Testing</h3>
+<p>Recall in Agile development, the development plans are engineered to focus</p>
+<ul>
+<li>Customer-driven</li>
+<li>Bottom–up development</li>
+<li>Flexibility with respect to changing requirements</li>
+<li>Early delivery of fully functional components</li>
+</ul>
+<p>Agile Development is often divided into sprints. In each sprints, development team liaise with the project users to identify the deliverables that should be delivered in the particular sprint. In the testing aspect, the testing must be aligned with the user story development for each sprint. </p>
+<div class="mermaid">graph
+  A("Customer Expectation")--&gt;B
+  B("Iteration Plan")--&gt;C
+  C("User Story")--&gt;D
+  D("Design")--&gt;E
+  E("Coding")--&gt;F
+  F("Unit Testing")--&gt;G
+  G("Integration Testing")--&gt;H
+  H("Regression Testing")--&gt;C
+</div>
+<h2 id="futher-reading">Futher Reading</h2>
+<ol>
+<li><code>https://lambtsa.medium.com/rest-api-with-express-router-jest-and-supertest-10832a23016f</code></li>
+<li><code>https://medium.com/geekculture/testing-express-js-with-jest-8c6855945f03</code></li>
+</ol></div>
+</div>
+</div>
+<footer class="col-md-12">
+<hr/>
+<p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+</footer>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+<script src="../../js/base.js"></script>
+<script src="../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="../../search/main.js"></script>
+<div aria-hidden="true" aria-labelledby="searchModalLabel" class="modal" id="mkdocs_search_modal" role="dialog" tabindex="-1">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="searchModalLabel">Search</h4>
+<button class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+</div>
+<div class="modal-body">
+<p>From here you can search these documents. Enter your search terms below.</p>
+<form>
+<div class="form-group">
+<input class="form-control" id="mkdocs-search-query" placeholder="Search..." title="Type search term here" type="search"/>
+</div>
+</form>
+<div data-no-results-text="No results found" id="mkdocs-search-results"></div>
+</div>
+<div class="modal-footer">
+</div>
+</div>
+</div>
+</div><div aria-hidden="true" aria-labelledby="keyboardModalLabel" class="modal" id="mkdocs_keyboard_modal" role="dialog" tabindex="-1">
+<div class="modal-dialog">
+<div class="modal-content">
+<div class="modal-header">
+<h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+<button class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+</div>
+<div class="modal-body">
+<table class="table">
+<thead>
+<tr>
+<th style="width: 20%;">Keys</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="help shortcut"><kbd>?</kbd></td>
+<td>Open this help</td>
+</tr>
+<tr>
+<td class="next shortcut"><kbd>n</kbd></td>
+<td>Next page</td>
+</tr>
+<tr>
+<td class="prev shortcut"><kbd>p</kbd></td>
+<td>Previous page</td>
+</tr>
+<tr>
+<td class="search shortcut"><kbd>s</kbd></td>
+<td>Search</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="modal-footer">
+</div>
+</div>
+</div>
+</div>
+<script type="module">import mermaid from "https://unpkg.com/mermaid@10.4.0/dist/mermaid.esm.min.mjs";
+mermaid.initialize({});</script></body>
+</html>

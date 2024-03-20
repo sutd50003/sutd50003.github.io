@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>50.003 - Specification-based Unit Testing - Elements of Software Construction 50.003</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Elements of Software Construction 50.003</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../l1_course_handout/" class="nav-link">Handout</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#50003-specification-based-unit-testing" class="nav-link">50.003 - Specification-based Unit Testing</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#learning-outcomes" class="nav-link">Learning Outcomes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#types-of-testing" class="nav-link">Types of testing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#levels-of-testing" class="nav-link">Levels of testing</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="50003-specification-based-unit-testing">50.003 - Specification-based Unit Testing</h1>
+<h2 id="learning-outcomes">Learning Outcomes</h2>
+<p>By the end of this unit, you should be able to </p>
+<ol>
+<li>Explain the differences between Specification-based testing and code-based testing</li>
+<li>Identify different levels of testing based on the design abstraction level</li>
+<li>Develop specification-based unit testing using boundary value testing</li>
+<li>Develop specification-based unit testing using equivalence class testing</li>
+<li>Develop specification-based unit testing using decision table testing</li>
+</ol>
+<h2 id="types-of-testing">Types of testing</h2>
+<p>Depending on how the test cases being identified and defined, we find two types
+of testings</p>
+<h3 id="specification-based-testing">Specification-based Testing</h3>
+<p>In specification-based testing, the test subject is treated as a function that maps values from its domain (input) into values in its co-domain (output). 
+The mapping can be defined as a mathemethical relation according to the specification.
+Specification-based testing is also known as black box testing, as the test cases are defined without the knowledge of the internal implementation of the test subject. 
+One main advantage of specification-based testing is that it focuses the test effort on the actualization of the specification, i.e. building up confidence. In some literature, specification-based testing is also called functional testing.</p>
+<h3 id="code-based-testing">Code-based Testing</h3>
+<p>On the other hand, one could define test cases by exploiting the knowledge of the internal structure and algorithm used in the target program. This type of testing is called code-based testing. Code-based testing is also known as white box testing.
+The main advantage of code-based testing is that it tries to ensure all the written codes are covered by the test, i.e. fault finding. In some literature, code-based testing is also called structural testing.</p>
+<h2 id="levels-of-testing">Levels of testing</h2>
+<p>Recall from the earlier lesson, software design often uses abstraction. 
+Based on different levels of design abstractions, we identify the correspondent level of testings.</p>
+<table>
+<thead>
+<tr>
+<th>Design abstraction level</th>
+<th>Testing level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Requirement Specifications</td>
+<td>System testing</td>
+</tr>
+<tr>
+<td>Preliminary Design</td>
+<td>Integration testing</td>
+</tr>
+<tr>
+<td>Detailed Design</td>
+<td>Unit testing</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Unit testing - test individual smallest units of the system.</li>
+<li>Integration testing - test related units/subcomponents of the system, which are related (according to the system design)</li>
+<li>System testing - test the system as a whole, (often according to the user cases).</li>
+</ul>
+<h3 id="unit-testing">Unit Testing</h3>
+<p>Unit Testing is the test conducted against a software system in the smallest granularity.
+The smallest granularity is loosely defined. Depending on the choice of detailed design, implementation, programming language and framework, a unit can be either</p>
+<ol>
+<li>A function</li>
+<li>A class</li>
+<li>A module</li>
+<li>A UI component</li>
+</ol>
+<h3 id="specification-based-unit-testing">Specification-based Unit Testing</h3>
+<p>The following are some common techniques of defining test cases of specification-based unit testing</p>
+<ol>
+<li>Boundary value testing</li>
+<li>Equivalence class testing</li>
+<li>Decision table testing</li>
+</ol>
+<p>Based on the type, the domain and the dependencies of the inputs, we shortlist the techniques which more appropriate</p>
+<table>
+<thead>
+<tr>
+<th>Assumption on input</th>
+<th>Techniques</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Numerical value, ordinal value</td>
+<td>boundary value, equivalence class</td>
+</tr>
+<tr>
+<td>Inputs are independent</td>
+<td>boundary value, equivalence class</td>
+</tr>
+<tr>
+<td>Inputs are depenedent</td>
+<td>Decision table</td>
+</tr>
+</tbody>
+</table>
+<h4 id="boundary-value-testing">Boundary Value Testing</h4>
+<p>In Boundary value testing, to define the test cases, we analyse the inputs to the test subject by identifying </p>
+<ol>
+<li>what are the input variables.</li>
+<li>what are the valid ranges.</li>
+</ol>
+<p>For example, consider a function <code>f(x1,x2)</code> takes two arguments <code>x1</code> and <code>x2</code> and compute some output. Based on the specification, we note that the following conditions should apply</p>
+<div class="arithmatex">\[
+a \leq x_1 \leq b
+\]</div>
+<div class="arithmatex">\[
+c \leq x_2 \leq d 
+\]</div>
+<p>If we plot out a graph</p>
+<p><img alt="" src="../images/boundary1.png" /></p>
+<p>The grey region denotes the domain of function <code>f</code>.</p>
+<p>One way to generate test case based on the given domain of <code>f</code> is to identify the boundaries of the grey region and we pick the values from the boundary
+The rationale behind the boundary value testing is that errors tend to occur near the extreme values of its inputs, e.g. starting/ending indices of an array, off-by-one errors in a loop, etc. </p>
+<h5 id="normal-boundary-value-testing">Normal Boundary Value Testing</h5>
+<p>We consider the following two assumptions.</p>
+<ol>
+<li>assuming that our source language is strongly type and the type checker would reject values of the inputs out side of the domain.</li>
+<li>assuming when an error occurs it is solely caused by one of the inputs but not both.</li>
+</ol>
+<p>With these two assumptions, we can select values as input for testing as </p>
+<div class="arithmatex">\[
+\begin{array}{c}
+(x^{min}_1, x^{mean}_2) \\
+(x^{min}_1+1, x^{mean}_2) \\
+(x^{mean}_1, x^{mean}_2) \\ 
+(x^{max}_1-1, x^{mean}_2) \\
+(x^{max}_1, x^{mean}_2) \\
+(x^{mean}_1, x^{min}_2) \\
+(x^{mean}_1, x^{min}_2+1) \\
+(x^{mean}_1, x^{max}_2-1) \\
+(x^{mean}_1, x^{max}_2)
+\end{array}
+\]</div>
+<p>where $x^{min}_1 = a, x^{max}_1 = b, x^{mean}_1 = (b-a)/2 $
+$x^{min}_2 = c, x^{max}_2 = d, x^{mean}_2 = (d-c)/2 $</p>
+<p><img alt="" src="../images/boundary2.png" /></p>
+<h4 id="example">Example</h4>
+<p>Consider the following function </p>
+<pre><code class="language-js">/**
+ * 
+ * @param {number} h - the current time in source timezone, in hour, in range of [0,23]
+ * @param {number} stz - the source timezone, in range of [-12, +14]
+ * timezone list https://www.ibm.com/docs/en/cloudpakw3700/2.3.0.0?topic=SS6PD2_2.3.0/doc/psapsys_restapi/time_zone_list.htm
+ * @param {number} ttz - the target timezone, in range of [-12, +14]
+ * @returns {[number,number]} - the current time in target timezone, in hour, in range of [0,23] and a day offset in the range of {-2,-1,0,1,2}  */
+function tzconvert(h, stz, ttz) {
+    // not yet implemented
+}
+</code></pre>
+<p>Applying Normal Boundary Value Test, We identify the following test cases</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>h</th>
+<th>stz</th>
+<th>ttz</th>
+<th>expected output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>[0,0]</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>[1,0]</td>
+</tr>
+<tr>
+<td>3</td>
+<td>11</td>
+<td>1</td>
+<td>1</td>
+<td>[11,0]</td>
+</tr>
+<tr>
+<td>4</td>
+<td>22</td>
+<td>1</td>
+<td>1</td>
+<td>[22,0]</td>
+</tr>
+<tr>
+<td>5</td>
+<td>23</td>
+<td>1</td>
+<td>1</td>
+<td>[23,0]</td>
+</tr>
+<tr>
+<td>6</td>
+<td>11</td>
+<td>-12</td>
+<td>1</td>
+<td>[0,1]</td>
+</tr>
+<tr>
+<td>7</td>
+<td>11</td>
+<td>-11</td>
+<td>1</td>
+<td>[23,0]</td>
+</tr>
+<tr>
+<td>8</td>
+<td>11</td>
+<td>13</td>
+<td>1</td>
+<td>[23,-1]</td>
+</tr>
+<tr>
+<td>9</td>
+<td>11</td>
+<td>14</td>
+<td>1</td>
+<td>[22,-1]</td>
+</tr>
+<tr>
+<td>10</td>
+<td>11</td>
+<td>1</td>
+<td>-12</td>
+<td>[22,-1]</td>
+</tr>
+<tr>
+<td>11</td>
+<td>11</td>
+<td>1</td>
+<td>-11</td>
+<td>[23,-1]</td>
+</tr>
+<tr>
+<td>12</td>
+<td>11</td>
+<td>1</td>
+<td>13</td>
+<td>[23, 0]</td>
+</tr>
+<tr>
+<td>13</td>
+<td>11</td>
+<td>1</td>
+<td>14</td>
+<td>[0, 1]</td>
+</tr>
+</tbody>
+</table>
+<h5 id="robust-boundary-value-testing">Robust Boundary Value Testing</h5>
+<p>If drop the first assumption, we should also include the out of range values in our test cases, namely besides the 9 tuples listed earlier, we include the following</p>
+<div class="arithmatex">\[
+\begin{array}{c}
+(x^{min}_1-1, x^{mean}_2) \\
+(x^{max}_1+1, x^{mean}_2) \\
+(x^{mean}_1, x^{min}_2-1) \\
+(x^{mean}_1, x^{max}_2+1) 
+\end{array}
+\]</div>
+<p><img alt="" src="../images/boundary3.png" /></p>
+<h4 id="example_1">Example</h4>
+<p>If we apply Robust Boundary Value Testing to the previous example i.e. <code>tzconvert()</code> function , we identify a few extra test cases as follows</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>h</th>
+<th>stz</th>
+<th>ttz</th>
+<th>expected output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>14</td>
+<td>-1</td>
+<td>1</td>
+<td>1</td>
+<td>invalid</td>
+</tr>
+<tr>
+<td>15</td>
+<td>24</td>
+<td>1</td>
+<td>1</td>
+<td>invalid</td>
+</tr>
+<tr>
+<td>16</td>
+<td>11</td>
+<td>-13</td>
+<td>1</td>
+<td>invalid</td>
+</tr>
+<tr>
+<td>17</td>
+<td>11</td>
+<td>15</td>
+<td>1</td>
+<td>invalid</td>
+</tr>
+<tr>
+<td>18</td>
+<td>11</td>
+<td>1</td>
+<td>-13</td>
+<td>invalid</td>
+</tr>
+<tr>
+<td>19</td>
+<td>11</td>
+<td>1</td>
+<td>15</td>
+<td>invalid</td>
+</tr>
+</tbody>
+</table>
+<h4 id="worst-boundary-value-testing">Worst Boundary Value Testing</h4>
+<p>If we drop the second assumption, we need to consider those points near the "corners".</p>
+<p>For Normal Worst Boundary Value test, we include</p>
+<div class="arithmatex">\[
+\begin{array}{c}
+(x^{min}_1, x^{min}_2) \\
+(x^{min}_1, x^{min}_2+1) \\
+(x^{min}_1+1, x^{min}_2) \\
+(x^{min}_1+1, x^{min}_2+1) \\
+(x^{max}_1, x^{max}_2) \\
+(x^{max}_1-1, x^{max}_2) \\
+(x^{max}_1, x^{max}_2-1) \\
+(x^{max}_1-1, x^{max}_2-1) \\
+(x^{min}_1, x^{max}_2) \\
+(x^{min}_1, x^{max}_2-1) \\
+(x^{min}_1+1, x^{max}_2) \\
+(x^{min}_1+1, x^{max}_2-1) \\
+(x^{max}_1, x^{min}_2) \\
+(x^{max}_1-1, x^{min}_2) \\
+(x^{max}_1, x^{min}_2+1) \\
+(x^{max}_1-1, x^{min}_2+1) 
+\end{array}
+\]</div>
+<p><img alt="" src="../images/boundary4.png" /></p>
+<p>For Robust Worst Boundary Value test, we include,</p>
+<div class="arithmatex">\[
+\begin{array}{c}
+(x^{min}_1-1, x^{min}_2-1) \\
+(x^{min}_1-1, x^{min}_2) \\
+(x^{min}_1-1, x^{min}_2+1) \\
+(x^{min}_1, x^{min}_2-1) \\
+(x^{min}_1+1, x^{min}_2-1) \\
+(x^{max}_1+1, x^{max}_2+1) \\ 
+(x^{max}_1+1, x^{max}_2) \\ 
+(x^{max}_1+1, x^{max}_2-1) \\ 
+(x^{max}_1, x^{max}_2+1) \\ 
+(x^{max}_1-1, x^{max}_2+1) \\ 
+(x^{min}_1-1, x^{max}_2+1) \\ 
+(x^{min}_1, x^{max}_2+1) \\ 
+(x^{min}_1+1, x^{max}_2+1) \\ 
+(x^{min}_1-1, x^{max}_2) \\ 
+(x^{min}_1-1, x^{max}_2-1) \\ 
+(x^{max}_1+1, x^{min}_2-1) \\ 
+(x^{max}_1+1, x^{min}_2) \\ 
+(x^{max}_1+1, x^{min}_2+1) \\ 
+(x^{max}_1, x^{min}_2-1) \\ 
+(x^{max}_1-1, x^{min}_2-1) 
+\end{array}
+\]</div>
+<p><img alt="" src="../images/boundary5.png" /></p>
+<h3 id="exercises-non-graded">Exercises (Non graded)</h3>
+<p>Can you find out what are the extra test cases generated if we apply Robust Worst Boundary Value Testing to the <code>tzconvert()</code> function?</p>
+<h4 id="equivalence-class-testing">Equivalence Class Testing</h4>
+<p>One issue with Boundary Value Testing is that there could be too many test cases and many of them could be redundant. </p>
+<p>The intuition of the equivalence is to avoid redundancy in test cases and yet to offer a complete test.</p>
+<p>The term <em>equivalence class</em> refers to the math definition of equivalence relation in set theory. Given  Given a domain <span class="arithmatex">\(A\)</span>, a relation <span class="arithmatex">\(R \subseteq A \times A\)</span> is a equivalence relation iff <span class="arithmatex">\(R\)</span> is reflexive, symmetric and transitive. We can think of <span class="arithmatex">\(R\)</span> defines a partition peer relation. For instance, we have</p>
+<ol>
+<li>for any <span class="arithmatex">\(a \in A\)</span>, <span class="arithmatex">\(a R\ a\)</span>, i.e. <span class="arithmatex">\(a_i\)</span>s are in its own partition</li>
+<li>for any <span class="arithmatex">\(a_1, a_2 \in A\)</span>, we have <span class="arithmatex">\(a_1 R\ a_2\)</span> implies <span class="arithmatex">\(a_2 R\ a_1\)</span>, i.e. if <span class="arithmatex">\(a_1\)</span> in the partition of <span class="arithmatex">\(a_2\)</span>, then <span class="arithmatex">\(a_2\)</span> is in the parition of <span class="arithmatex">\(a_1\)</span>.</li>
+<li>for any <span class="arithmatex">\(a_1, a_2, a_3 \in A\)</span>, we have <span class="arithmatex">\(a_1 R\ a_2\)</span> and <span class="arithmatex">\(a_2 R\ a_3\)</span> imply <span class="arithmatex">\(a_1 R\ a_3\)</span>, i.e. if <span class="arithmatex">\(a_1\)</span> and <span class="arithmatex">\(a_2\)</span> are in the same partition, and <span class="arithmatex">\(a_2\)</span> and <span class="arithmatex">\(a_3\)</span> are in the same partition, then <span class="arithmatex">\(a_1\)</span> and <span class="arithmatex">\(a_3\)</span> are in the same partition.</li>
+</ol>
+<p>Equivalence class testing means to test with an element from each input partition. 
+For example, recall the previous example, we would pick one point for each cell in "grid"</p>
+<p><img alt="" src="../images/eqclass1.png" /></p>
+<p>Note that in the Strong Robust  Equivalence Class Testing , we would include the dots from the top-left, top-right, bottom-left and bottom-right cells.</p>
+<h5 id="example_2">Example</h5>
+<p>For instance if we apply Equivalence Class Testing (not strong robust) to the <code>tzconvert()</code> function, we only need to consider  test cases <code>3, 14, 15, 16, 17, 18, 19</code>.
+If we argue that the valid test cases are too fews, we could further partition the valid input region, into 2 or 4 sub regions. </p>
+<p>As we can observe equivalence class testing help to reduce the number of cases based on the assumption that data points in the same partition yield the same outcome. Its reliability depends on how to partitions.</p>
+<h4 id="decision-table-testing">Decision Table Testing</h4>
+<p>When there exists some dependency among the inputs, it is more applicable to use Decision Table Testing.</p>
+<p>Consider the following function</p>
+<pre><code class="language-js">/**
+ * 
+ * @param {number} d - the day in digit, [1,31]
+ * @param {number} m - the month in digit, [1,12]
+ * @param {number} y - the year in digit, [0,inf)
+ * @returns {[number,number,number]} - the next day in date [day,month,year] 
+ */
+function nextdate(d,m,y) {
+    // TODO
+}
+</code></pre>
+<p>Applying boundary value testing and equivalence class testing might not make too much sense in this case, since the domain (partitions) are not well defined, e.g. there are too many special cases. For instance,</p>
+<ol>
+<li>Feb 28 days in non-leap years, 29 days in leap years; </li>
+<li>Jan, Mar, May, Jul, Aug, Oct, Dec have 31 days, while Apr, Jun, Sep and Nov have 30 days;</li>
+<li>Years that not in <code>dd00</code> patterns and can be divisible by 4 are leap years, Given a Year in <code>dd00</code> pattern and <code>dd</code> is divisible by 4 then the year is leap. </li>
+</ol>
+<p>Let's define</p>
+<ul>
+<li>M1 = {month: month has 30 days}</li>
+<li>M2 = {month: month has 31 days except December} </li>
+<li>M3 = {month: month is December}</li>
+<li>M4 = {month: month is February}</li>
+<li>D1 = {day: 1 <span class="arithmatex">\(\leq\)</span> day <span class="arithmatex">\(\leq\)</span> 27}</li>
+<li>D2 = {day: day = 28}</li>
+<li>D3 = {day: day = 29}</li>
+<li>D4 = {day: day = 30}</li>
+<li>D5 = {day: day = 31}</li>
+<li>Y1 = {year: year is a leap year}</li>
+<li>Y2 = {year: year is a common year}</li>
+</ul>
+<p>We list down the input constaints combination and output possibilities in a table</p>
+<table>
+<thead>
+<tr>
+<th>~</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>m</td>
+<td>M1</td>
+<td>M1</td>
+<td>M1</td>
+<td>M1</td>
+<td>M1</td>
+<td>M2</td>
+<td>M2</td>
+<td>M2</td>
+<td>M2</td>
+<td>M2</td>
+</tr>
+<tr>
+<td>d</td>
+<td>D1</td>
+<td>D2</td>
+<td>D3</td>
+<td>D4</td>
+<td>D5</td>
+<td>D1</td>
+<td>D2</td>
+<td>D3</td>
+<td>D4</td>
+<td>D5</td>
+</tr>
+<tr>
+<td>y</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>actions</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>impossible</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>d+1</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>d=1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+</tr>
+<tr>
+<td>m+1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+</tr>
+<tr>
+<td>m=1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>y+1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>~</th>
+<th>11</th>
+<th>12</th>
+<th>13</th>
+<th>14</th>
+<th>15</th>
+<th>16</th>
+<th>17</th>
+<th>18</th>
+<th>19</th>
+<th>20</th>
+<th>21</th>
+<th>22</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>m</td>
+<td>M3</td>
+<td>M3</td>
+<td>M3</td>
+<td>M3</td>
+<td>M3</td>
+<td>M4</td>
+<td>M4</td>
+<td>M4</td>
+<td>M4</td>
+<td>M4</td>
+<td>M4</td>
+<td>M4</td>
+</tr>
+<tr>
+<td>d</td>
+<td>D1</td>
+<td>D2</td>
+<td>D3</td>
+<td>D4</td>
+<td>D5</td>
+<td>D1</td>
+<td>D2</td>
+<td>D2</td>
+<td>D3</td>
+<td>D3</td>
+<td>D4</td>
+<td>D5</td>
+</tr>
+<tr>
+<td>y</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>Y1</td>
+<td>Y2</td>
+<td>Y1</td>
+<td>Y2</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>actions</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>impossible</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr>
+<td>d+1</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>d=1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>m+1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>m=1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>y+1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>X</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Rows above <strong>actions</strong> are the combinations of input constgraints
+Rows below <strong>actions</strong> are the output possibilities.</p>
+<p>Based on the above table, we can generate the test cases by randomly generate
+a set of <code>d</code>, <code>m</code> and <code>y</code> that satisfy the rule id, as follow</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>d</th>
+<th>m</th>
+<th>y</th>
+<th>expected output</th>
+<th>rule id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>10</td>
+<td>4</td>
+<td>1999</td>
+<td>11,4,1999</td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>28</td>
+<td>6</td>
+<td>2001</td>
+<td>29,6, 2001</td>
+<td>2</td>
+</tr>
+<tr>
+<td>...</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/jquery-3.6.0.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
