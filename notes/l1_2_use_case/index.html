@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>50.003 - Use Case - Elements of Software Construction 50.003</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Elements of Software Construction 50.003</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../l1_course_handout/" class="nav-link">Handout</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#50003-use-case" class="nav-link">50.003 - Use Case</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#learning-outcomes" class="nav-link">Learning Outcomes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#use-case" class="nav-link">Use case</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#use-case-diagram" class="nav-link">Use Case Diagram</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#deriving-use-case-text-and-use-case-diagram" class="nav-link">Deriving Use Case Text and Use Case Diagram</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#optional-use-case-vs-user-story" class="nav-link">(Optional) Use case vs User story</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#summary" class="nav-link">Summary</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="50003-use-case">50.003 - Use Case</h1>
+<h2 id="learning-outcomes">Learning Outcomes</h2>
+<p>By the end of this unit, you should be able to</p>
+<ol>
+<li>Describe the different components of a use case.</li>
+<li>Desscibe the different components of a use case diagram.</li>
+<li>Analyse the given system requirements using use cases and use case diagrams. </li>
+</ol>
+<h2 id="use-case">Use case</h2>
+<p>A use case (or a use case text, or use case document) captures a particular scenario or related scenarios in a user-system interaction. Our goal to find out all relevant user-system interaction in the existing system to be fixed and in the newly proposed system that the users want us to build. </p>
+<h3 id="an-example-fast-food-kiosk">An example - Fast Food Kiosk</h3>
+<p>Consider the following user interaction with a food ordering Kiosk system to-be deployed in the fast food outlets. </p>
+<blockquote>
+<p>The customer browses the menu and adds the food or drink items into her order. When she finishes adding items into her order, she can choose to pay using her credit card and enter her mobile number for collection notification. The Fast Food Kiosk System (simplified as <em>system</em> from now onwards) checks the authorization on the credit card and confirms the sales by issuing a queue number. The system records the ordered items and sets the order status as <em>new</em>.</p>
+</blockquote>
+<p>Although in general there is no fixed format of use case text documents, for consistency, we try to adhere to the following convention. </p>
+<table>
+<tr>
+<td> ID: </td> <td> UC1 </td>
+<td> Name: </td> <td> Place Order </td> 
+</tr>
+<tr>
+    <td> Description: </td> 
+    <td colspan=3> Customer orders food and drinks using a Kiosk machine </td> 
+</tr>
+<tr>
+<td> <i> Created By:</i> </td><td>  Kenny Lu </td>
+<td> <i>Date Created:</i> </td><td> 1st May 2024 </td> 
+</tr>
+<tr> 
+    <td> <i> Last Updated By: </i> </td>
+    <td> Kenny Lu </td>
+    <td> <i> Date Updated: </i> </td>
+    <td> 3rd May 2024 </td>
+</tr>
+<tr>
+    <td> Actors: </td> 
+    <td colspan=3> Customer </td>
+</tr>
+<tr>
+    <td> Triggers: </td> 
+    <td colspan=3> Customer accesses the Place Order interface of the Kiosk System. </td>
+</tr>
+<tr>
+    <td> Preconditions: </td> 
+    <td colspan=3> Nil </td>
+</tr>
+<tr>
+    <td> Postconditions: </td> 
+    <td colspan=3> 
+    1. The system creates a new order with the ordered items. <br/>
+    2. The customer receives a queue number. <br/>
+    </td>
+</tr>
+    <td> Error States: </td> 
+    <td colspan=3> 
+    The order is cancelled and the ordered items are not recorded by the system.
+    </td>
+<tr>
+</tr>
+<tr>
+    <td>Flow:</td>
+    <td colspan=3> 
+    1. The customer browses the menu. <br/>
+    2. The customer adds the food or drink items into her order. <br/>
+    3. The customer makes payment using her credit card. <br/> 
+    4. The customer enters her mobile number. <br/>
+    5. The System authorizes the purchase. <br/>
+    6. The System confirms the order by creating a new order and saving the ordered items. <br/>
+    7. The System issues a queue number. <br/>
+    </td>
+</tr>
+<tr> <td colspan=4> ... </td> </tr>
+</table>
+
+<p>In the table above, we define the use case. All non-italic fields are mandatory. 
+* For tracking purpose, every use case should be given a unique ID and a informative name. 
+* The description summarizes the gist of the user-system interaction
+* Though optional (hence in italic), it is also good to keep track of the creator and updater's names and the dates.
+* The actors field includes a set of actors involved in this interaction. In this example, the customer is the primary actor since she is the one who initiates the interaction. The rest are secondary actors if there is any. Every use case should have at least one actor.
+* The triggers field describes what activates this use case, which can be a user action or another user case's action. 
+* The preconditions field includes a list of mandatory criteria must be met before this user-system interaction is initiated. Sometimes, if a precondition is a common to a set of use cases, we convert it into a <em>common requirement</em> field.
+* The postcondictions field includes a list of possible output states when the use case completes successfully
+* The error states field capture the failed outcomes. 
+* The flow contains a sequence of actions performed by the actors in chronological order. </p>
+<p>Note that there is the <code>...</code> in the above table, and there is no visible way to trigger the failed postcondition. This is because the use case is incomplete. </p>
+<p>Suppose the user requirement continues as follows.</p>
+<p>"
+Before the payment is authorized, the order can be cancelled either by
+the customer or by a 10-second inactivity timeout. 
+"</p>
+<p>With this we continue our use case as follows</p>
+<table>
+<tr>
+<td> ID: </td> <td> UC1 </td>
+<td> Name: </td> <td> Place Order </td> 
+</tr>
+<tr>
+    <td colspan=4> Continue from the previous table </td> 
+</tr>
+<tr>
+<td> <i> Alternative Flow:</i> </td> 
+<td colspan=3> 3'. The customer cancels the order before making payment. <br/>
+ 5'. The credit card authorization fails.  </td>
+</tr>
+</table>
+
+<p>In the above, we specify the alternative flow. In the event of either of the alternative-flow actions occur, the error states will be result. In this case, the order is cancelled. </p>
+<p>Now next consider another paragraph of user requirement. </p>
+<p>"
+The kitchen staff selects a newly generated order by the system and processes the order. The system changes the status of the order from <em>new</em> to <em>processing</em>. When the order is ready the kitcen staff changes the order's system status from <em>processing</em> to <em>ready</em>. The ordered items are placed at the collection counter, and the customer is informed by the system via SMS. After the customer picks up the ordered items. The system changes the order's status to <em>completed</em>. 
+"</p>
+<table>
+<tr>
+<td> ID: </td> <td> UC2 </td>
+<td> Name: </td> <td> Process Order </td> 
+</tr>
+<tr>
+    <td> Description: </td> 
+    <td colspan=3> Kitchen staff processes the customer's order </td> 
+</tr>
+<tr>
+<td> <i> Created By:</i> </td><td>  Kenny Lu </td>
+<td> <i>Date Created:</i> </td><td> 1st May 2024 </td> 
+</tr>
+
+<tr> 
+    <td> <i> Last Updated By: </i> </td>
+    <td> Kenny Lu </td>
+    <td> <i> Date Updated: </i> </td>
+    <td> 3rd May 2024 </td>
+</tr>
+<tr>
+    <td> Actors: </td> 
+    <td colspan=3> Kitchen Staff, SMS Gateway, Customer </td>
+</tr>
+<tr>
+    <td> Triggers: </td> 
+    <td colspan=3> The kitchen Staff selects a newly created order from the system. </td>
+</tr>
+<tr>
+    <td> Preconditions: </td> 
+    <td colspan=3> There exists some new order in the System </td>
+</tr>
+<tr>
+    <td> Postconditions: </td> 
+    <td colspan=3> 
+    1. the customer collects the ordered items.<br/>
+    2. the status of the order is set to *completed*.
+    </td>
+</tr>
+    <td> Error States:  </td> 
+    <td colspan=3> nil
+    </td>
+<tr>
+</tr>
+<tr>
+    <td>Flow:</td>
+    <td colspan=3> 
+    1. The kitchen staff selects a newly generated order from the order tracking system. <br/>
+    2. The order tracking system sets the state of the order as "processing". <br/>
+    3. The kitchen staff processes the order. <br/>
+    4. The kitchen staff finishes processing the order. <br/>
+    5. The kitchen staff changes the state of the order as "ready". <br/>
+    6. The system informs the customer that her order is ready for pick-up via SMS. <br/>
+    7. The kitchen staff places ordered items at the collection counter.  <br/>
+    8. The customer picks up the ordered items.
+    9. The system changes the status of the order to "completed." <br/>
+    </td>
+</tr>
+<tr>
+    <td> Alternative Flow:
+    </td>
+    <td colspan=3> nil </td>
+</tr>
+</table>
+
+<p>In the above use case, we find the kitchen staff as the primary actor, and the customer and the SMS gateway are the secondary actors. </p>
+<h2 id="use-case-diagram">Use Case Diagram</h2>
+<p>Use case diagrams allow us to organize the related use cases into a single diagram. It is like the bird-eye's view. </p>
+<p>Now we have two use cases. We can summarize them into the following use case diagram</p>
+<p><img alt="" src="../images/kiosksystem.png" /></p>
+<ul>
+<li>The rectangle box denotes the system boundary.</li>
+<li>Each stick man denotes an actor. </li>
+<li>Each oval bubble denotes a use case. </li>
+<li>The solid lines denote the association between an actor and a use case. Note that in our notation we do not visually distinguish a primary actor from the secondary actors. We can also infer or clarify using the use case texts. </li>
+</ul>
+<h3 id="extend-relationship">Extend Relationship</h3>
+<p>There are scenarios in which we want to include an optional sub use case of the base use case.</p>
+<p>When a use case <code>E</code> extends  a use case <code>B</code>, <code>E</code> is an optional step in <code>B</code>, in other words, <code>B</code> can be completed with or without <code>E</code> being triggered. </p>
+<p>To put it into a concrete example, let's consider a use case text as follows</p>
+<table>
+<tr>
+<td> ID: </td> <td> UC3 </td>
+<td> Name: </td> <td> Give Rating </td> 
+</tr>
+<tr>
+    <td> Description: </td> 
+    <td colspan=3> The customer gives a rating to the system </td> 
+</tr>
+<tr>
+<td> <i> Created By:</i> </td><td>  Kenny Lu </td>
+<td> <i>Date Created:</i> </td><td> 1st May 2024 </td> 
+</tr>
+
+<tr> 
+    <td> <i> Last Updated By: </i> </td>
+    <td> Kenny Lu </td>
+    <td> <i> Date Updated: </i> </td>
+    <td> 3rd May 2024 </td>
+</tr>
+<tr>
+    <td> Actors: </td> 
+    <td colspan=3> Customer </td>
+</tr>
+<tr>
+    <td> Triggers: </td> 
+    <td colspan=3> The customer accesses the rating interface. </td>
+</tr>
+<tr>
+    <td> Preconditions: </td> 
+    <td colspan=3> The customer just placed an order in the system.  </td>
+</tr>
+<tr>
+    <td> Postconditions: </td> 
+    <td colspan=3> 
+    1. The rating is recorded. <br/>
+    </td>
+</tr>
+    <td> Error States:  </td> 
+    <td colspan=3> nil
+    </td>
+<tr>
+</tr>
+<tr>
+    <td>Flow:</td>
+    <td colspan=3> 
+    1. The customer selects a rating. <br/> 
+    2. The system saves the rating. <br/>
+    </td>
+</tr>
+<tr>
+    <td> Alternative Flow:
+    </td>
+    <td colspan=3> nil </td>
+</tr>
+</table>
+
+<p>We can make <code>UC3</code> extends to <code>UC1</code>.  Note that the extension use case and the base use case should have the same primary actor.</p>
+<h3 id="include-relationship">Include Relationship</h3>
+<p>Sometimes we need to include a mandatory sub use case into another use case so that we can reuse
+the common routine (it is kind of like a function call).</p>
+<p>Suppose the following extension to the  project requirements </p>
+<blockquote>
+<p>A customer can cancel her unprocessed order. She needs to enter her mobile number to the system and selects the unprocessed order that she wants to cancel. Upon confirmation, an SMS acknowedgement is sent to her mobile and the system process the refund. </p>
+</blockquote>
+<table>
+<tr>
+<td> ID: </td> <td> UC4 </td>
+<td> Name: </td> <td> Cancel Order </td> 
+</tr>
+<tr>
+    <td> Description: </td> 
+    <td colspan=3> The customer cancels an order </td> 
+</tr>
+<tr>
+<td> <i> Created By:</i> </td><td>  Kenny Lu </td>
+<td> <i>Date Created:</i> </td><td> 1st May 2024 </td> 
+</tr>
+
+<tr> 
+    <td> <i> Last Updated By: </i> </td>
+    <td> Kenny Lu </td>
+    <td> <i> Date Updated: </i> </td>
+    <td> 3rd May 2024 </td>
+</tr>
+<tr>
+    <td> Actors: </td> 
+    <td colspan=3> Customer </td>
+</tr>
+<tr>
+    <td> Triggers: </td> 
+    <td colspan=3> Customer accesses the cancel order interface of the Kiosk System.  </td>
+</tr>
+<tr>
+    <td> Preconditions: </td> 
+    <td colspan=3>  </td>
+</tr>
+<tr>
+    <td> Postconditions: </td> 
+    <td colspan=3> 
+    1. The SMS notification is sent. <br/>
+    2. The order is marked as "canceled". <br/>
+    3. The refund process is initiated by the system. <br/> 
+    </td>
+</tr>
+    <td> Error States:  </td> 
+    <td colspan=3> nil
+    </td>
+<tr>
+</tr>
+<tr>
+    <td>Flow:</td>
+    <td colspan=3> 
+    1. The customer enters her mobile number. <br/>
+    2. The system retrieves a list of orders by the customer's mobile number and displays them in reversed chronological order. <br/>
+    3. The customer selects a newly created order which has not been processed. <br/>
+    4. The customer cancels the order selected. <br/>
+    5. The system starts the refund application. <br/>
+    6. The system changed the status of the order from "new" to "canceled".  <br/> 
+    7. The system sends an SMS to the customer's mobile to notify the cancel of order. 
+    </td>
+</tr>
+<tr>
+    <td> Alternative Flow:
+    </td>
+    <td colspan=3> nil </td>
+</tr>
+</table>
+
+<p><img alt="" src="../images/kiosksystemv3.png" /></p>
+<p>Note that both <code>UC1</code> and <code>UC4</code> have some common step, e.g. customer enters the mobile number. 
+Though it is unncessary, we would like to turn it into a common use case. </p>
+<table>
+<tr>
+<td> ID: </td> <td> UC5 </td>
+<td> Name: </td> <td> Enter mobile </td> 
+</tr>
+<tr>
+    <td> Description: </td> 
+    <td colspan=3> The customer enters her mobile number. </td> 
+</tr>
+<tr>
+<td> <i> Created By:</i> </td><td>  Kenny Lu </td>
+<td> <i>Date Created:</i> </td><td> 1st May 2024 </td> 
+</tr>
+
+<tr> 
+    <td> <i> Last Updated By: </i> </td>
+    <td> Kenny Lu </td>
+    <td> <i> Date Updated: </i> </td>
+    <td> 3rd May 2024 </td>
+</tr>
+<tr>
+    <td> Actors: </td> 
+    <td colspan=3> Customer </td>
+</tr>
+<tr>
+    <td> Triggers: </td> 
+    <td colspan=3> Customer accesses the mobile number input interface of the Kiosk System.  </td>
+</tr>
+<tr>
+    <td> Preconditions: </td> 
+    <td colspan=3>  </td>
+</tr>
+<tr>
+    <td> Postconditions: </td> 
+    <td colspan=3> 
+    The customer's mobile number is captured by the system. <br/>
+    </td>
+</tr>
+    <td> Error States:  </td> 
+    <td colspan=3> The mobile number is not captured by the system.
+    </td>
+<tr>
+</tr>
+<tr>
+    <td>Flow:</td>
+    <td colspan=3> 
+    1. The customer enters her mobile number. <br/>
+    2. The system validates and saves the mobile number. <br/>
+    </td>
+</tr>
+<tr>
+    <td> Alternative Flow:
+    </td>
+    <td colspan=3> 
+    1'. The customer leaves the mobile input interface. <br/>
+    2'. The mobile number entered in step 1 is invalid. <br/>
+    </td>
+</tr>
+</table>
+
+<p>The advantage of doing so is that the mobile input use case <code>UC5</code> can be reused. </p>
+<p>We can make <code>UC5</code> as an "inclusion" test case for use case <code>UC1</code> and use case <code>UC4</code>.</p>
+<p><img alt="" src="../images/kiosksystemv4.png" /></p>
+<p>Note that when a use case <code>A</code> includes another use case <code>B</code>, <code>B</code> is a mandatory step in <code>A</code>, <code>A</code> and <code>B</code> must be sharing the same primary actor.</p>
+<h3 id="other-relationships">Other relationships</h3>
+<p>There exist other relationships in use case diagrams. </p>
+<p>For instance,</p>
+<ul>
+<li>Inheritance relation among use cases to allow a use case <code>A</code> to inherit the base  use case <code>B</code> by sharing the same results with different behaviors. </li>
+<li>Inheritance relation among actors to allow multiple actors to share the same base actor's use cases. </li>
+</ul>
+<p>We omit the details for these relationships and encourage you to self explore them in the text references. </p>
+<h2 id="deriving-use-case-text-and-use-case-diagram">Deriving Use Case Text and Use Case Diagram</h2>
+<p>To derive the use case diagram, we could either find out the answers of the following questions through documentation study or user study.</p>
+<p>To identify the actors, we need to find out</p>
+<ol>
+<li>Who are the users of the system? </li>
+<li>Who are responsible for the system administration? </li>
+<li>Who is interested in the tasks results?</li>
+<li>Do they need any external devices/sub-systems which the system communicates?</li>
+</ol>
+<p>To define the use case and use case text, we need to find out</p>
+<ol>
+<li>What are the main tasks that an actor perform?</li>
+<li>Does the actor query or retrieve information from the system?</li>
+<li>Does the actor need to inform the system the changes in other external system?</li>
+<li>Should an actor be informed about unexpected events within the system?</li>
+</ol>
+<p>After going through the above questions (some times a few rounds), we can map out all the actors, and the main use cases (the oval bubbles) and their relationship. </p>
+<p>For each individual use case, we then need to find out what the exact sequence of actions a user needs to perform to complete the use case. </p>
+<p>Note that use case is a tool for communication, it is not a mathematical statement. The quality of a use case is determined by how effective it conveys the information. </p>
+<p>For instance, in our running example, we could have combine <code>UC1</code> and <code>UC2</code> into one bigger use case. However for now we believe that having them separate helps us to describe the system requirements better.</p>
+<blockquote>
+<p>At least, I find it easier for me to explain how use case works in this way. =). </p>
+</blockquote>
+<h2 id="optional-use-case-vs-user-story">(Optional) Use case vs User story</h2>
+<p>User story (AKA feature) is another form of capturing the user requirements. It is often used in combination with iterative style development processes. </p>
+<p>Contrasting with use case, user stories are more specific to system functionality rather than the user-system interation. Use cases are more "narrative" than user stories and providing a bigger picture. User stories are often more fine-grain than use cases and are helpful for us to divide the development tasks.</p>
+<p>We can use both when approriate, for instance, we could start with use cases, then we break down the use cases into smaller user stories. Another way could be starting with user stories, then we can reconstruct the use cases by organizing all the user stories created. </p>
+<h2 id="summary">Summary</h2>
+<p>In this we studied use case texts and use case diagrams and how to apply them to describe the system requirements. </p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/jquery-3.6.0.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
