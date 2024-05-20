@@ -257,14 +257,18 @@ app.use('/echo', echoRouter);   // added by us
 <p>Suppose we would like to keep track of the messages being processed by the echoer, we need to add a model (a database entity) to handle how the data is stored and retrieved. </p>
 <h3 id="mongo-db">Mongo DB</h3>
 <p>There are multiple choices of databases which affects the choice of model framework.</p>
-<ol>
-<li>Relational Database. Data are stored as records in tables. Data queries are performed by joining data from multiple tables.</li>
+<ul>
+<li>Relational Database. Data are stored as records in tables. Data queries are performed by joining data from multiple tables.<ul>
 <li>Pros: Very concise and strict design. Close resemblance of domain models, class diagram. Data update are guaranteed to be consistent immediately. Data redundancy is eliminated. Concurrency is handled by the database system.</li>
 <li>Cons: Difficult to design, Difficult to be distributed. Join operations may be expensive. </li>
-<li>Document Database. Data are stored as documents. Data queries are performed by traversing between documents and references. </li>
+</ul>
+</li>
+<li>Document Database. Data are stored as documents. Data queries are performed by traversing between documents and references. <ul>
 <li>Pros: A natural representation of human's perception of how data are stored. Easy to distribute the data into multiple servers. Queries operation could be faster.</li>
 <li>Cons: Data update are not consistent immediately. It could lead to poor design with many data redundancy. Some level of concurrency is handled by the database system.</li>
-</ol>
+</ul>
+</li>
+</ul>
 <p>In this unit, we consider using a document database, MongoDB.</p>
 <p>Let's install mongodb. Follow this guide.</p>
 <pre><code class="language-url">https://www.mongodb.com/docs/manual/administration/install-community/
