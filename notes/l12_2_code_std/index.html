@@ -85,19 +85,25 @@
 
 <h1 id="50003-code-standards">50.003 - Code Standards</h1>
 <h2 id="learning-outcomes">Learning Outcomes</h2>
-<p>By the end  of this unit, you should be able to 
-1. Apply SEI CERT Java Coding Standard to improve security level of a software system
-1. Eliminate racing conditions in web application via transaction.</p>
+<p>By the end  of this unit, you should be able to </p>
+<ol>
+<li>Apply SEI CERT Java Coding Standard to improve security level of a software system</li>
+<li>Eliminate racing conditions in web application via transaction.</li>
+</ol>
 <h2 id="coding-standard">Coding Standard</h2>
-<p>Coding standard is a common guideline for a group of software engineers to follows so as to 
-1. have a uniform structure of most of the codes
-1. improve readability 
-1. improve referenceability 
-1. improve maintainability
-1. minimize exploitability</p>
-<p>Example, we find 
-* https://google.github.io/styleguide/
-* https://wiki.sei.cmu.edu/confluence/display/java/SEI+CERT+Oracle+Coding+Standard+for+Java</p>
+<p>Coding standard is a common guideline for a group of software engineers to follows so as to </p>
+<ol>
+<li>have a uniform structure of most of the codes</li>
+<li>improve readability </li>
+<li>improve referenceability </li>
+<li>improve maintainability</li>
+<li>minimize exploitability</li>
+</ol>
+<p>Example, we find </p>
+<ul>
+<li>https://google.github.io/styleguide/</li>
+<li>https://wiki.sei.cmu.edu/confluence/display/java/SEI+CERT+Oracle+Coding+Standard+for+Java</li>
+</ul>
 <h2 id="sei-cert-java-coding-standard">SEI CERT Java Coding Standard</h2>
 <p>Let's take SEI CERT Java Coding Standard as an example.
 It consists of a set of rules which are meant to provide normative requirements for code. Each rule is associated with a metrics for severity (low, medium, and high), likelihood (unlikely, probably, and likely) and remediation cost (high, medium, and low). Conformance to the rule can be determined through automated analysis (either static or dynamic), formal methods, or manual inspection techniques.</p>
@@ -259,9 +265,11 @@ function set_bal(acc, new_bal) {
 }
 </code></pre>
 <p>In the above we instantiate three objects to simulate some separates accounts.
-We define 
-* a <code>get_bal()</code> promise builder function which returns a promise that resolves on the account's balance.
-* a <code>set_bal()</code> promise builder function which returns a promise that updates the account's balance.</p>
+We define </p>
+<ul>
+<li>a <code>get_bal()</code> promise builder function which returns a promise that resolves on the account's balance.</li>
+<li>a <code>set_bal()</code> promise builder function which returns a promise that updates the account's balance.</li>
+</ul>
 <p>Next we define a <code>transfer()</code> function which transfer some amount from two accounts, by calling <code>get_bal()</code> and <code>set_bal()</code></p>
 <pre><code class="language-js">async function transfer(src, dst, amt) {
     let src_bal = await get_bal(src);

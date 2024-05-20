@@ -211,8 +211,9 @@ The rationale behind the boundary value testing is that errors tend to occur nea
 (x^{mean}_1, x^{max}_2)
 \end{array}
 \]</div>
-<p>where $x^{min}_1 = a, x^{max}_1 = b, x^{mean}_1 = (b-a)/2 $
-$x^{min}_2 = c, x^{max}_2 = d, x^{mean}_2 = (d-c)/2 $</p>
+<p>where 
+<span class="arithmatex">\(x^{min}_1 = a, x^{max}_1 = b, x^{mean}_1 = (b-a)/2\)</span>
+<span class="arithmatex">\(x^{min}_2 = c, x^{max}_2 = d, x^{mean}_2 = (d-c)/2\)</span></p>
 <p><img alt="" src="../images/boundary2.png" /></p>
 <h4 id="example">Example</h4>
 <p>Consider the following function </p>
@@ -333,7 +334,7 @@ function tzconvert(h, stz, ttz) {
 </tbody>
 </table>
 <h5 id="robust-boundary-value-testing">Robust Boundary Value Testing</h5>
-<p>If drop the first assumption, we should also include the out of range values in our test cases, namely besides the 9 tuples listed earlier, we include the following</p>
+<p>If we drop the first assumption, we should also include the out of range values in our test cases, namely besides the 9 tuples listed earlier, we include the following</p>
 <div class="arithmatex">\[
 \begin{array}{c}
 (x^{min}_1-1, x^{mean}_2) \\

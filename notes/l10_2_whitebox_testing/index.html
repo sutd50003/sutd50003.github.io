@@ -86,16 +86,20 @@
 </ol>
 <h2 id="recall">Recall</h2>
 <ul>
-<li>Specification based testing</li>
-<li>Test cases are derived from the specification</li>
 <li>
-<p>The goal is to <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>_</p>
+<p>Specification based testing</p>
+<ul>
+<li>Test cases are derived from the specification</li>
+<li>The goal is to <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>_</li>
+</ul>
 </li>
 <li>
 <p>Code-based testing</p>
-</li>
+<ul>
 <li>Test cases are defined by making use of the knowledge of the internal structure and algorithm used in the test subject.</li>
 <li>The goal is to <strong><em>_</em></strong><strong><em>_</em></strong><strong><em>_</em></strong>_</li>
+</ul>
+</li>
 </ul>
 <h2 id="code-based-testing">Code-based Testing</h2>
 <p>If there exists some bug in the program, it must be triggered by some sequence of statements from the program.</p>
@@ -103,19 +107,29 @@
 <h2 id="programs-as-graphs">Programs as Graphs</h2>
 <p>As a convention, we write <span class="arithmatex">\(\overline{S}\)</span> to denote a sequence of statement <span class="arithmatex">\(S_1;...;S_n\)</span>,
 <span class="arithmatex">\(e\)</span> to denote an expression, i.e. <span class="arithmatex">\(x &gt; 1\)</span>, <span class="arithmatex">\(isTrue\)</span>, etc.</p>
-<p>Let <span class="arithmatex">\(P\)</span> be a program, and <span class="arithmatex">\(G\)</span> to be the control flow graph of <span class="arithmatex">\(P\)</span>, then
-* Each statement <span class="arithmatex">\(S\)</span> in <span class="arithmatex">\(P\)</span> denotes a vertex <span class="arithmatex">\(V\)</span> in <span class="arithmatex">\(G\)</span>, written, <span class="arithmatex">\(S \in P \vdash V \in G\)</span>, sometimes we omit the <span class="arithmatex">\(P\)</span> and <span class="arithmatex">\(G\)</span> for simplicity.
-* An edge <span class="arithmatex">\((V_1,V_2)\)</span> exists in <span class="arithmatex">\(G\)</span> iff <span class="arithmatex">\(S_1;S_2\)</span> are two statements in sequence in <span class="arithmatex">\(P\)</span> such that <span class="arithmatex">\(S_1 \vdash V_1\)</span> and <span class="arithmatex">\(S_2 \vdash V_2\)</span>.
-* Let <span class="arithmatex">\({\tt if}\ e\ \{\overline{S_1}\} {\tt else} \{\overline{S_2}\} \vdash V\)</span> then edges <span class="arithmatex">\((V,V_1)\)</span> and <span class="arithmatex">\((V, V_2)\)</span> exist in <span class="arithmatex">\(G\)</span> iff 
-  * <span class="arithmatex">\(S_1\)</span> is the first statement in <span class="arithmatex">\(\overline{S_1}\)</span> and <span class="arithmatex">\(S_1 \vdash V_1\)</span> and 
-  * <span class="arithmatex">\(S_2\)</span> is the first statement in <span class="arithmatex">\(\overline{S_2}\)</span> and <span class="arithmatex">\(S_2 \vdash V_2\)</span>.
-* Let <span class="arithmatex">\({\tt if}\ e\ \{\overline{S_1}\} {\tt else} \{\overline{S_2}\}; S'\)</span> in <span class="arithmatex">\(P\)</span> and <span class="arithmatex">\(S' \vdash V'\)</span> then edges <span class="arithmatex">\((V_1',V')\)</span> and <span class="arithmatex">\((V_2',V')\)</span> exist in <span class="arithmatex">\(G\)</span> iff 
-  * <span class="arithmatex">\(S_1'\)</span> is the last statement in <span class="arithmatex">\(\overline{S_1}\)</span> and <span class="arithmatex">\(S_1' \vdash V_1'\)</span> and 
-  * <span class="arithmatex">\(S_2'\)</span> is the last statement in <span class="arithmatex">\(\overline{S_2}\)</span> and <span class="arithmatex">\(S_2' \vdash V_2'\)</span>.
-* Let <span class="arithmatex">\({\tt while}\ e\ \{\overline{S_1}\} \vdash V\)</span>. Then edges <span class="arithmatex">\((V, V_1)\)</span> exist in <span class="arithmatex">\(G\)</span> iff
-  * <span class="arithmatex">\(S_1\)</span> is the first stataement in <span class="arithmatex">\(\overline{S_1}\)</span> and <span class="arithmatex">\(S_1 \vdash V_1\)</span>.
-* Let <span class="arithmatex">\({\tt while}\ e\ \{\overline{S_1}\} \vdash V\)</span>. Then edges <span class="arithmatex">\((V_1', V)\)</span> exist in <span class="arithmatex">\(G\)</span> iff
-  * <span class="arithmatex">\(V_1'\)</span> is the last stataement in <span class="arithmatex">\(\overline{S_1}\)</span>.</p>
+<p>Let <span class="arithmatex">\(P\)</span> be a program, and <span class="arithmatex">\(G\)</span> to be the control flow graph of <span class="arithmatex">\(P\)</span>, then</p>
+<ul>
+<li>Each statement <span class="arithmatex">\(S\)</span> in <span class="arithmatex">\(P\)</span> denotes a vertex <span class="arithmatex">\(V\)</span> in <span class="arithmatex">\(G\)</span>, written, <span class="arithmatex">\(S \in P \vdash V \in G\)</span>, sometimes we omit the <span class="arithmatex">\(P\)</span> and <span class="arithmatex">\(G\)</span> for simplicity.</li>
+<li>An edge <span class="arithmatex">\((V_1,V_2)\)</span> exists in <span class="arithmatex">\(G\)</span> iff <span class="arithmatex">\(S_1;S_2\)</span> are two statements in sequence in <span class="arithmatex">\(P\)</span> such that <span class="arithmatex">\(S_1 \vdash V_1\)</span> and <span class="arithmatex">\(S_2 \vdash V_2\)</span>.</li>
+<li>Let <span class="arithmatex">\({\tt if}\ e\ \{\overline{S_1}\} {\tt else} \{\overline{S_2}\} \vdash V\)</span> then edges <span class="arithmatex">\((V,V_1)\)</span> and <span class="arithmatex">\((V, V_2)\)</span> exist in <span class="arithmatex">\(G\)</span> iff <ul>
+<li><span class="arithmatex">\(S_1\)</span> is the first statement in <span class="arithmatex">\(\overline{S_1}\)</span> and <span class="arithmatex">\(S_1 \vdash V_1\)</span> and </li>
+<li><span class="arithmatex">\(S_2\)</span> is the first statement in <span class="arithmatex">\(\overline{S_2}\)</span> and <span class="arithmatex">\(S_2 \vdash V_2\)</span>.</li>
+</ul>
+</li>
+<li>Let <span class="arithmatex">\({\tt if}\ e\ \{\overline{S_1}\} {\tt else} \{\overline{S_2}\}; S'\)</span> in <span class="arithmatex">\(P\)</span> and <span class="arithmatex">\(S' \vdash V'\)</span> then edges <span class="arithmatex">\((V_1',V')\)</span> and <span class="arithmatex">\((V_2',V')\)</span> exist in <span class="arithmatex">\(G\)</span> iff <ul>
+<li><span class="arithmatex">\(S_1'\)</span> is the last statement in <span class="arithmatex">\(\overline{S_1}\)</span> and <span class="arithmatex">\(S_1' \vdash V_1'\)</span> and </li>
+<li><span class="arithmatex">\(S_2'\)</span> is the last statement in <span class="arithmatex">\(\overline{S_2}\)</span> and <span class="arithmatex">\(S_2' \vdash V_2'\)</span>.</li>
+</ul>
+</li>
+<li>Let <span class="arithmatex">\({\tt while}\ e\ \{\overline{S_1}\} \vdash V\)</span>. Then edges <span class="arithmatex">\((V, V_1)\)</span> exist in <span class="arithmatex">\(G\)</span> iff<ul>
+<li><span class="arithmatex">\(S_1\)</span> is the first stataement in <span class="arithmatex">\(\overline{S_1}\)</span> and <span class="arithmatex">\(S_1 \vdash V_1\)</span>.</li>
+</ul>
+</li>
+<li>Let <span class="arithmatex">\({\tt while}\ e\ \{\overline{S_1}\} \vdash V\)</span>. Then edges <span class="arithmatex">\((V_1', V)\)</span> exist in <span class="arithmatex">\(G\)</span> iff<ul>
+<li><span class="arithmatex">\(V_1'\)</span> is the last stataement in <span class="arithmatex">\(\overline{S_1}\)</span>.</li>
+</ul>
+</li>
+</ul>
 <p>We can compile for loops to while loops before generating the control flow graph.</p>
 <p>For example, consider the following program</p>
 <pre><code class="language-js">// example A
@@ -163,11 +177,13 @@ function sum_all(arr) {
 <h3 id="test-coverage-metrics">Test Coverage Metrics</h3>
 <h4 id="program-graph-based-coverage">Program Graph-based coverage</h4>
 <p>There are following different levels of test coverage metrics for program testing</p>
-<p>A set of tests constitute
-1. <em>node coverage</em> if all nodes in the control flow graph are visited when the tests are executed.
-1. <em>edge coverage</em> if all the edges in the control flow graph are viisted when the tests are executed.
-1. <em>condition coverage</em> if all conditional predicates are evaluated to both true and false. 
-1. <em>path coverage</em> if all the paths in the control flow graph are visited when the tests are executed. </p>
+<p>A set of tests constitute</p>
+<ol>
+<li><em>node coverage</em> if all nodes in the control flow graph are visited when the tests are executed.</li>
+<li><em>edge coverage</em> if all the edges in the control flow graph are viisted when the tests are executed.</li>
+<li><em>condition coverage</em> if all conditional predicates are evaluated to both true and false. </li>
+<li><em>path coverage</em> if all the paths in the control flow graph are visited when the tests are executed. </li>
+</ol>
 <p>Note that condition coverage often works better than edge coverage as it forces the tests to 
 exercise every single atomic predicates, i.e those are not formed by conjunction, disjunction and negation operator. Consider the following example </p>
 <pre><code class="language-js">// example B
@@ -180,10 +196,12 @@ function div_by_zero(x,y) {
   return x + y;
 }
 </code></pre>
-<p>Given the test cases
-* <code>x = 5, y = -5</code>
-* <code>x = 7, y = 5</code>
-covers all the edges, however it does not discover the division by zero bug.</p>
+<p>Given the test cases</p>
+<ul>
+<li><code>x = 5, y = -5</code></li>
+<li><code>x = 7, y = 5</code></li>
+</ul>
+<p>covers all the edges, however it does not discover the division by zero bug.</p>
 <p>To trigger the bug, we would need to include the following test case</p>
 <ul>
 <li><code>x = 0, y = 1</code></li>
