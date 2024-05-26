@@ -1,0 +1,819 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.22" name="generator"/>
+<title>50.003 - Specification-based Integration Testing and System Testing - Elements of Software Construction 50.003</title>
+<link href="../../../assets/stylesheets/main.732c4fb1.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#50003-specification-based-integration-testing-and-system-testing">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Elements of Software Construction 50.003" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Elements of Software Construction 50.003">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Elements of Software Construction 50.003
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              50.003 - Specification-based Integration Testing and System Testing
+            
+          </span>
+</div>
+</div>
+</div>
+<script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Elements of Software Construction 50.003" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Elements of Software Construction 50.003">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    Elements of Software Construction 50.003
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+<span class="md-ellipsis">
+    Home
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../notes/l1_course_handout/">
+<span class="md-ellipsis">
+    Handout
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#learning-outcomes">
+<span class="md-ellipsis">
+      Learning Outcomes
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#levels-of-testing">
+<span class="md-ellipsis">
+      Levels of testing
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#integration-test">
+<span class="md-ellipsis">
+      Integration Test
+    </span>
+</a>
+<nav aria-label="Integration Test" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#decomposition-based-testing">
+<span class="md-ellipsis">
+      Decomposition-based testing
+    </span>
+</a>
+<nav aria-label="Decomposition-based testing" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#top-down-integration-testing">
+<span class="md-ellipsis">
+      Top-Down Integration testing
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#bottom-up-integration-testing">
+<span class="md-ellipsis">
+      Bottom-up Integration testing
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#limitation">
+<span class="md-ellipsis">
+      Limitation
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#call-graph-based-integration">
+<span class="md-ellipsis">
+      Call-graph based integration
+    </span>
+</a>
+<nav aria-label="Call-graph based integration" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#example">
+<span class="md-ellipsis">
+      Example
+    </span>
+</a>
+<nav aria-label="Example" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#unit-testing-model-messageall">
+<span class="md-ellipsis">
+      Unit Testing Model message.all
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#integration-test-with-echo-router-and-model-messageall">
+<span class="md-ellipsis">
+      Integration Test with Echo Router and Model message.all
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cyclic-call-graph">
+<span class="md-ellipsis">
+      Cyclic call-graph
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#pairwise-testing">
+<span class="md-ellipsis">
+      Pairwise testing
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#system-testing">
+<span class="md-ellipsis">
+      System Testing
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#life-cycle-based-testing">
+<span class="md-ellipsis">
+      Life-cycle based testing
+    </span>
+</a>
+<nav aria-label="Life-cycle based testing" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#waterfall-testing">
+<span class="md-ellipsis">
+      Waterfall testing
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#iterative-life-cycle-testing">
+<span class="md-ellipsis">
+      Iterative Life Cycle testing
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#agile-testing">
+<span class="md-ellipsis">
+      Agile Testing
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#futher-reading">
+<span class="md-ellipsis">
+      Futher Reading
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="50003-specification-based-integration-testing-and-system-testing">50.003 - Specification-based Integration Testing and System Testing</h1>
+<h2 id="learning-outcomes">Learning Outcomes</h2>
+<ol>
+<li>Identify the difference between decomposition-based integration testing and call graph-based integration testing.</li>
+<li>Conduct integration test using Jest.</li>
+<li>Derive system testing test cases based on the user case documentations.</li>
+<li>Develop testing strategies based different software development life cycle.</li>
+</ol>
+<h2 id="levels-of-testing">Levels of testing</h2>
+<p>Recall </p>
+<table>
+<thead>
+<tr>
+<th>Design abstraction level</th>
+<th>Testing level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Requirement Specifications</td>
+<td>System testing</td>
+</tr>
+<tr>
+<td>Preliminary Design</td>
+<td>Integration testing</td>
+</tr>
+<tr>
+<td>Detailed Design</td>
+<td>Unit testing</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Unit testing - test individual smallest units of the system.</li>
+<li>Integration testing - test related units/subcomponents of the system, which are related (according to the system design)</li>
+<li>System testing - test the system as a whole, (often according to the user cases).</li>
+</ul>
+<p>In this unit, we study integration testing.</p>
+<h2 id="integration-test">Integration Test</h2>
+<p>There are two main approaches of performing integration tests</p>
+<ul>
+<li>Decomposition-based testing</li>
+<li>Call graph-based testing</li>
+</ul>
+<h3 id="decomposition-based-testing">Decomposition-based testing</h3>
+<p>In Decomposition-based integration testing, we follow the modular structure of the system design.
+<pre class="mermaid"><code>graph
+  Program--&gt;Function1
+  Program--&gt;Function2
+  Program--&gt;Function3
+  Function1--&gt;SubFunction1
+  Function1--&gt;SubFunction2
+  Function2--&gt;SubFunction3
+  Function2--&gt;SubFunction4
+  Function3--&gt;SubFunction5</code></pre>
+We perform integration test by following the structure. There are two possible directions.
+1. Top-down integration testing
+1. Bottom-up integration testing</p>
+<h4 id="top-down-integration-testing">Top-Down Integration testing</h4>
+<p>In top-down decomposition-based integration testing, we mock up all the sub-components below the main program, and test the main program.</p>
+<p><pre class="mermaid"><code>graph
+  Program--&gt;Function1*
+  Program--&gt;Function2*
+  Program--&gt;Function3*
+  Function1*--&gt;SubFunction1*
+  Function1*--&gt;SubFunction2*
+  Function2*--&gt;SubFunction3*
+  Function2*--&gt;SubFunction4*
+  Function3*--&gt;SubFunction5*</code></pre>
+We put an asterix to denote that function is mocked. 
+After the main program being tested against the mocked functions, we start to replace the mockded codes with the actual codes starting from the first left child until the bottom right child following the breadth first search order. </p>
+<pre class="mermaid"><code>graph
+  Program--&gt;Function1
+  Program--&gt;Function2*
+  Program--&gt;Function3*
+  Function1--&gt;SubFunction1*
+  Function1--&gt;SubFunction2*
+  Function2*--&gt;SubFunction3*
+  Function2*--&gt;SubFunction4*
+  Function3*--&gt;SubFunction5*</code></pre>
+<p>The rationale of the top-down integration test is that when we encounter an error, the error must be caused by the integration of the newly unmocked code. </p>
+<h4 id="bottom-up-integration-testing">Bottom-up Integration testing</h4>
+<p>Bottom-up decomposition-based integration testing starts from the bottom left-most or the right most leaf function. We test the leaf functions by making use of the unit test codes (now we call it the driver code). </p>
+<p><pre class="mermaid"><code>graph
+  Program*--&gt;Function1*
+  Program*--&gt;Function2*
+  Program*--&gt;Function3*
+  Function1*--&gt;SubFunction1
+  Function1*--&gt;SubFunction2
+  Function2*--&gt;SubFunction3
+  Function2*--&gt;SubFunction4
+  Function3*--&gt;SubFunction5</code></pre>
+Note that in the above diagram, the components associated with an asterix are yet to be integrated in the integration test.
+We then move up the structure by integrating the parents of the leaf functions, (and using the unit test code). We repeat the process until we reach the top.</p>
+<pre class="mermaid"><code>graph
+  Program*--&gt;Function1
+  Program*--&gt;Function2
+  Program*--&gt;Function3
+  Function1--&gt;SubFunction1
+  Function1--&gt;SubFunction2
+  Function2--&gt;SubFunction3
+  Function2--&gt;SubFunction4
+  Function3--&gt;SubFunction5</code></pre>
+<p>By doing so, we need not mock up the code as we can reuse (or modify) the unit-test code as drivers.</p>
+<h4 id="limitation">Limitation</h4>
+<p>The limitation of decomposition-based testing is that the structure is defined by the lexical structure of the source code (definition structure), which often does not reflect the execution and function call relation.</p>
+<p>For example, recall in our Echo App (the restful API version), we have two major components in the app. By following the code structure we have.</p>
+<pre class="mermaid"><code>graph
+  app--&gt;EchoRouter
+  app--&gt;MessageModel
+  EchoRouter--&gt;get.all
+  EchoRouter--&gt;post.submit
+  MessageModel--&gt;all
+  MessageModel--&gt;insertOne
+  MessageModel--&gt;insertMany</code></pre>
+<p>However, we find that we hardly have code from app to call MessageModel directly. In most of the situation, the call sequence is app--&gt;EchoRouter--&gt;MessageModel.</p>
+<h3 id="call-graph-based-integration">Call-graph based integration</h3>
+<p>To address the issue with Decomposition based integration, we define the integration structure by following the call graph. For instance, here is the call graph of our Echo App</p>
+<p><pre class="mermaid"><code>graph
+  app--&gt;EchoRouter
+  EchoRouter--&gt;get.all
+  EchoRouter--&gt;post.submit
+  get.all--&gt;MessageModel.all
+  post.submit--&gt;MessageModel.all
+  post.submit--&gt;MessageModel.insertMany
+  MessageModel.insertMany--&gt; MessageModel.insertOne </code></pre>
+Note that <code>insertMany()</code> is never used.</p>
+<p>Now we can apply the similar top-down or bottom-up integration test strategies. </p>
+<h4 id="example">Example</h4>
+<p>We reuse the <code>my_mysql_app</code> developed in the earlier units. 
+We start by including <code>jest</code> and <code>supertest</code> in the project
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>npm<span class="w"> </span>i<span class="w"> </span>jest<span class="w"> </span>supertest
+</span></code></pre></div></p>
+<p>and modify <code>package.json</code>
+to change</p>
+<p><div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="w">  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node ./bin/www"</span>
+</span><span id="__span-1-3"><a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">  </span><span class="p">},</span>
+</span></code></pre></div>
+to 
+<div class="language-json highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="w">  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node ./bin/www"</span><span class="p">,</span>
+</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="nt">"test"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jest"</span><span class="w"> </span><span class="c1">// added </span>
+</span><span id="__span-2-4"><a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">  </span><span class="p">},</span>
+</span></code></pre></div></p>
+<p>Then we create a sub folder <code>__test__</code> under the project root folder.</p>
+<p>Now we should have a project folder structure as the following</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>.
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>├── __test__
+</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>├── app.js
+</span><span id="__span-3-4"><a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>├── bin
+</span><span id="__span-3-5"><a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a>│   └── www
+</span><span id="__span-3-6"><a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a>├── models
+</span><span id="__span-3-7"><a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a>│   ├── db.js
+</span><span id="__span-3-8"><a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a>│   └── message.js
+</span><span id="__span-3-9"><a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a>├── package.json
+</span><span id="__span-3-10"><a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a>├── public
+</span><span id="__span-3-11"><a href="#__codelineno-3-11" id="__codelineno-3-11" name="__codelineno-3-11"></a>│   ├── images
+</span><span id="__span-3-12"><a href="#__codelineno-3-12" id="__codelineno-3-12" name="__codelineno-3-12"></a>│   ├── javascripts
+</span><span id="__span-3-13"><a href="#__codelineno-3-13" id="__codelineno-3-13" name="__codelineno-3-13"></a>│   └── stylesheets
+</span><span id="__span-3-14"><a href="#__codelineno-3-14" id="__codelineno-3-14" name="__codelineno-3-14"></a>│       └── style.css
+</span><span id="__span-3-15"><a href="#__codelineno-3-15" id="__codelineno-3-15" name="__codelineno-3-15"></a>├── routes
+</span><span id="__span-3-16"><a href="#__codelineno-3-16" id="__codelineno-3-16" name="__codelineno-3-16"></a>│   ├── index.js
+</span><span id="__span-3-17"><a href="#__codelineno-3-17" id="__codelineno-3-17" name="__codelineno-3-17"></a>│   ├── echo.js
+</span><span id="__span-3-18"><a href="#__codelineno-3-18" id="__codelineno-3-18" name="__codelineno-3-18"></a>│   └── users.js
+</span><span id="__span-3-19"><a href="#__codelineno-3-19" id="__codelineno-3-19" name="__codelineno-3-19"></a>└── views
+</span><span id="__span-3-20"><a href="#__codelineno-3-20" id="__codelineno-3-20" name="__codelineno-3-20"></a>    ├── error.ejs
+</span><span id="__span-3-21"><a href="#__codelineno-3-21" id="__codelineno-3-21" name="__codelineno-3-21"></a>    └── index.ejs
+</span></code></pre></div>
+<h5 id="unit-testing-model-messageall">Unit Testing Model message.all</h5>
+<p>First we define a unit test on on <code>models/message.js</code>'s function <code>all()</code>.</p>
+<p>In the <code>__test__</code> folder we add a test file <code>message.test.js</code> with the following content</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'../../models/db.js'</span><span class="p">);</span>
+</span><span id="__span-4-2"><a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'../../models/message.js'</span><span class="p">);</span>
+</span><span id="__span-4-3"><a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-5"><a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-6"><a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">pool</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="sb">`</span>
+</span><span id="__span-4-7"><a href="#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="sb">            DELETE FROM message;`</span>
+</span><span id="__span-4-8"><a href="#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="w">        </span><span class="p">);</span>
+</span><span id="__span-4-9"><a href="#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">pool</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="sb">`</span>
+</span><span id="__span-4-10"><a href="#__codelineno-4-10" id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="sb">            INSERT INTO message (msg, time) </span>
+</span><span id="__span-4-11"><a href="#__codelineno-4-11" id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="sb">            VALUES ('msg a', '2009-01-01:00:00:00'),</span>
+</span><span id="__span-4-12"><a href="#__codelineno-4-12" id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="sb">                   ('msg b', '2009-01-02:00:00:00')</span>
+</span><span id="__span-4-13"><a href="#__codelineno-4-13" id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="sb">        `</span><span class="p">);</span>
+</span><span id="__span-4-14"><a href="#__codelineno-4-14" id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-15"><a href="#__codelineno-4-15" id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"setup failed. "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+</span><span id="__span-4-16"><a href="#__codelineno-4-16" id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span>
+</span><span id="__span-4-17"><a href="#__codelineno-4-17" id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-18"><a href="#__codelineno-4-18" id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="p">}</span>
+</span><span id="__span-4-19"><a href="#__codelineno-4-19" id="__codelineno-4-19" name="__codelineno-4-19"></a>
+</span><span id="__span-4-20"><a href="#__codelineno-4-20" id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">teardown</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-21"><a href="#__codelineno-4-21" id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-22"><a href="#__codelineno-4-22" id="__codelineno-4-22" name="__codelineno-4-22"></a><span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">pool</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="sb">`</span>
+</span><span id="__span-4-23"><a href="#__codelineno-4-23" id="__codelineno-4-23" name="__codelineno-4-23"></a><span class="sb">            DELETE FROM message;`</span>
+</span><span id="__span-4-24"><a href="#__codelineno-4-24" id="__codelineno-4-24" name="__codelineno-4-24"></a><span class="w">        </span><span class="p">);</span>
+</span><span id="__span-4-25"><a href="#__codelineno-4-25" id="__codelineno-4-25" name="__codelineno-4-25"></a><span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">cleanup</span><span class="p">();</span>
+</span><span id="__span-4-26"><a href="#__codelineno-4-26" id="__codelineno-4-26" name="__codelineno-4-26"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-27"><a href="#__codelineno-4-27" id="__codelineno-4-27" name="__codelineno-4-27"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"teardown failed. "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+</span><span id="__span-4-28"><a href="#__codelineno-4-28" id="__codelineno-4-28" name="__codelineno-4-28"></a><span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span>
+</span><span id="__span-4-29"><a href="#__codelineno-4-29" id="__codelineno-4-29" name="__codelineno-4-29"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-30"><a href="#__codelineno-4-30" id="__codelineno-4-30" name="__codelineno-4-30"></a><span class="p">}</span>
+</span><span id="__span-4-31"><a href="#__codelineno-4-31" id="__codelineno-4-31" name="__codelineno-4-31"></a>
+</span><span id="__span-4-32"><a href="#__codelineno-4-32" id="__codelineno-4-32" name="__codelineno-4-32"></a><span class="nx">describe</span><span class="p">(</span><span class="s2">"models.message.all() tests"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-33"><a href="#__codelineno-4-33" id="__codelineno-4-33" name="__codelineno-4-33"></a><span class="w">    </span><span class="nx">beforeAll</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-34"><a href="#__codelineno-4-34" id="__codelineno-4-34" name="__codelineno-4-34"></a><span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">setup</span><span class="p">();</span>
+</span><span id="__span-4-35"><a href="#__codelineno-4-35" id="__codelineno-4-35" name="__codelineno-4-35"></a><span class="w">    </span><span class="p">});</span>
+</span><span id="__span-4-36"><a href="#__codelineno-4-36" id="__codelineno-4-36" name="__codelineno-4-36"></a><span class="w">    </span><span class="nx">test</span><span class="w"> </span><span class="p">(</span><span class="s2">"testing message.all()"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-37"><a href="#__codelineno-4-37" id="__codelineno-4-37" name="__codelineno-4-37"></a><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">expected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">message</span><span class="p">.</span><span class="nx">Message</span><span class="p">(</span><span class="s1">'msg a'</span><span class="p">,</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="s1">'2009-01-01:00:00:00'</span><span class="p">)),</span><span class="w"> </span>
+</span><span id="__span-4-38"><a href="#__codelineno-4-38" id="__codelineno-4-38" name="__codelineno-4-38"></a><span class="w">                           </span><span class="ow">new</span><span class="w"> </span><span class="nx">message</span><span class="p">.</span><span class="nx">Message</span><span class="p">(</span><span class="s1">'msg b'</span><span class="p">,</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="s1">'2009-01-02:00:00:00'</span><span class="p">))]</span>
+</span><span id="__span-4-39"><a href="#__codelineno-4-39" id="__codelineno-4-39" name="__codelineno-4-39"></a><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">result_promise</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">message</span><span class="p">.</span><span class="nx">all</span><span class="p">();</span>
+</span><span id="__span-4-40"><a href="#__codelineno-4-40" id="__codelineno-4-40" name="__codelineno-4-40"></a><span class="w">        </span><span class="nx">result_promise</span><span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">result</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-41"><a href="#__codelineno-4-41" id="__codelineno-4-41" name="__codelineno-4-41"></a><span class="w">            </span><span class="nx">expect</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">sort</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">expected</span><span class="p">.</span><span class="nx">sort</span><span class="p">());</span>
+</span><span id="__span-4-42"><a href="#__codelineno-4-42" id="__codelineno-4-42" name="__codelineno-4-42"></a><span class="w">        </span><span class="p">});</span>
+</span><span id="__span-4-43"><a href="#__codelineno-4-43" id="__codelineno-4-43" name="__codelineno-4-43"></a><span class="w">    </span><span class="p">});</span>
+</span><span id="__span-4-44"><a href="#__codelineno-4-44" id="__codelineno-4-44" name="__codelineno-4-44"></a><span class="w">    </span><span class="nx">afterAll</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-45"><a href="#__codelineno-4-45" id="__codelineno-4-45" name="__codelineno-4-45"></a><span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">teardown</span><span class="p">();</span>
+</span><span id="__span-4-46"><a href="#__codelineno-4-46" id="__codelineno-4-46" name="__codelineno-4-46"></a><span class="w">    </span><span class="p">});</span>
+</span><span id="__span-4-47"><a href="#__codelineno-4-47" id="__codelineno-4-47" name="__codelineno-4-47"></a><span class="p">})</span>
+</span></code></pre></div>
+<p>The <code>setup</code> and <code>teardown</code> define the setup and tear-down routine of this test suite.
+Note that in the actual project, you might consider backing up and restoring the actual table data in the <code>setup</code> and <code>teardown</code> functions.</p>
+<p>In the test suite, we define only one test. </p>
+<p>When we run</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>npm<span class="w"> </span>run<span class="w"> </span><span class="nb">test</span><span class="w"> </span>message.test.js
+</span></code></pre></div>
+<p>we see</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>&gt;<span class="w"> </span>my-mysql-app@0.0.0<span class="w"> </span><span class="nb">test</span>
+</span><span id="__span-6-2"><a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a>&gt;<span class="w"> </span>jest<span class="w"> </span>--detectOpenHandles<span class="w"> </span>message.test.js
+</span><span id="__span-6-3"><a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a href="#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">  </span>console.log
+</span><span id="__span-6-5"><a href="#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="w">    </span><span class="m">2</span>
+</span><span id="__span-6-6"><a href="#__codelineno-6-6" id="__codelineno-6-6" name="__codelineno-6-6"></a>
+</span><span id="__span-6-7"><a href="#__codelineno-6-7" id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="w">      </span>at<span class="w"> </span>Object.log<span class="w"> </span><span class="o">(</span>models/message.js:36:17<span class="o">)</span>
+</span><span id="__span-6-8"><a href="#__codelineno-6-8" id="__codelineno-6-8" name="__codelineno-6-8"></a>
+</span><span id="__span-6-9"><a href="#__codelineno-6-9" id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="w"> </span>PASS<span class="w">  </span>__test__/models/message.test.js
+</span><span id="__span-6-10"><a href="#__codelineno-6-10" id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="w">  </span>models.message.all<span class="o">()</span><span class="w"> </span>tests
+</span><span id="__span-6-11"><a href="#__codelineno-6-11" id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="w">    </span>✓<span class="w"> </span>testing<span class="w"> </span>message.all<span class="o">()</span><span class="w"> </span><span class="o">(</span><span class="m">3</span><span class="w"> </span>ms<span class="o">)</span>
+</span><span id="__span-6-12"><a href="#__codelineno-6-12" id="__codelineno-6-12" name="__codelineno-6-12"></a>
+</span><span id="__span-6-13"><a href="#__codelineno-6-13" id="__codelineno-6-13" name="__codelineno-6-13"></a>Test<span class="w"> </span>Suites:<span class="w"> </span><span class="m">1</span><span class="w"> </span>passed,<span class="w"> </span><span class="m">1</span><span class="w"> </span>total
+</span><span id="__span-6-14"><a href="#__codelineno-6-14" id="__codelineno-6-14" name="__codelineno-6-14"></a>Tests:<span class="w">       </span><span class="m">1</span><span class="w"> </span>passed,<span class="w"> </span><span class="m">1</span><span class="w"> </span>total
+</span><span id="__span-6-15"><a href="#__codelineno-6-15" id="__codelineno-6-15" name="__codelineno-6-15"></a>Snapshots:<span class="w">   </span><span class="m">0</span><span class="w"> </span>total
+</span><span id="__span-6-16"><a href="#__codelineno-6-16" id="__codelineno-6-16" name="__codelineno-6-16"></a>Time:<span class="w">        </span><span class="m">0</span>.496<span class="w"> </span>s,<span class="w"> </span>estimated<span class="w"> </span><span class="m">1</span><span class="w"> </span>s
+</span><span id="__span-6-17"><a href="#__codelineno-6-17" id="__codelineno-6-17" name="__codelineno-6-17"></a>Ran<span class="w"> </span>all<span class="w"> </span><span class="nb">test</span><span class="w"> </span>suites<span class="w"> </span>matching<span class="w"> </span>/message.test.js/i.
+</span></code></pre></div>
+<h5 id="integration-test-with-echo-router-and-model-messageall">Integration Test with Echo Router and Model message.all</h5>
+<p>Next we define a bottom-up integration testing by integrating the path from <code>get.all</code> to 
+<code>message.all()</code>.</p>
+<pre class="mermaid"><code>graph
+  app--&gt;EchoRouter
+  EchoRouter--&gt;get.all
+  get.all--&gt;MessageModel.all</code></pre>
+<p>In the <code>__test__</code> folder we define a new test file <code>echo.test.js</code> with the following content</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'../../models/db.js'</span><span class="p">);</span>
+</span><span id="__span-7-2"><a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'../../models/message.js'</span><span class="p">);</span>
+</span><span id="__span-7-3"><a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'supertest'</span><span class="p">)</span>
+</span><span id="__span-7-4"><a href="#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">'../../app'</span><span class="p">);</span>
+</span><span id="__span-7-5"><a href="#__codelineno-7-5" id="__codelineno-7-5" name="__codelineno-7-5"></a>
+</span><span id="__span-7-6"><a href="#__codelineno-7-6" id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-7"><a href="#__codelineno-7-7" id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-8"><a href="#__codelineno-7-8" id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="w">        </span><span class="c1">// TODO backup the existing data to a temp table?</span>
+</span><span id="__span-7-9"><a href="#__codelineno-7-9" id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">pool</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="sb">`</span>
+</span><span id="__span-7-10"><a href="#__codelineno-7-10" id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="sb">            DELETE FROM message;`</span>
+</span><span id="__span-7-11"><a href="#__codelineno-7-11" id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="w">        </span><span class="p">);</span>
+</span><span id="__span-7-12"><a href="#__codelineno-7-12" id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">pool</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="sb">`</span>
+</span><span id="__span-7-13"><a href="#__codelineno-7-13" id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="sb">            INSERT INTO message (msg, time) </span>
+</span><span id="__span-7-14"><a href="#__codelineno-7-14" id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="sb">            VALUES ('msg a', '2009-01-01:00:00:00'),</span>
+</span><span id="__span-7-15"><a href="#__codelineno-7-15" id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="sb">                   ('msg b', '2009-01-02:00:00:00')</span>
+</span><span id="__span-7-16"><a href="#__codelineno-7-16" id="__codelineno-7-16" name="__codelineno-7-16"></a><span class="sb">        `</span><span class="p">);</span>
+</span><span id="__span-7-17"><a href="#__codelineno-7-17" id="__codelineno-7-17" name="__codelineno-7-17"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-18"><a href="#__codelineno-7-18" id="__codelineno-7-18" name="__codelineno-7-18"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"setup failed. "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+</span><span id="__span-7-19"><a href="#__codelineno-7-19" id="__codelineno-7-19" name="__codelineno-7-19"></a><span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span>
+</span><span id="__span-7-20"><a href="#__codelineno-7-20" id="__codelineno-7-20" name="__codelineno-7-20"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-21"><a href="#__codelineno-7-21" id="__codelineno-7-21" name="__codelineno-7-21"></a><span class="p">}</span>
+</span><span id="__span-7-22"><a href="#__codelineno-7-22" id="__codelineno-7-22" name="__codelineno-7-22"></a>
+</span><span id="__span-7-23"><a href="#__codelineno-7-23" id="__codelineno-7-23" name="__codelineno-7-23"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">teardown</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-24"><a href="#__codelineno-7-24" id="__codelineno-7-24" name="__codelineno-7-24"></a><span class="w">    </span><span class="c1">// TODO restore the table from the backup;</span>
+</span><span id="__span-7-25"><a href="#__codelineno-7-25" id="__codelineno-7-25" name="__codelineno-7-25"></a><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-26"><a href="#__codelineno-7-26" id="__codelineno-7-26" name="__codelineno-7-26"></a><span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">pool</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="sb">`</span>
+</span><span id="__span-7-27"><a href="#__codelineno-7-27" id="__codelineno-7-27" name="__codelineno-7-27"></a><span class="sb">            DELETE FROM message;`</span>
+</span><span id="__span-7-28"><a href="#__codelineno-7-28" id="__codelineno-7-28" name="__codelineno-7-28"></a><span class="w">        </span><span class="p">);</span>
+</span><span id="__span-7-29"><a href="#__codelineno-7-29" id="__codelineno-7-29" name="__codelineno-7-29"></a><span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">cleanup</span><span class="p">();</span>
+</span><span id="__span-7-30"><a href="#__codelineno-7-30" id="__codelineno-7-30" name="__codelineno-7-30"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-31"><a href="#__codelineno-7-31" id="__codelineno-7-31" name="__codelineno-7-31"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"teardown failed. "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+</span><span id="__span-7-32"><a href="#__codelineno-7-32" id="__codelineno-7-32" name="__codelineno-7-32"></a><span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span>
+</span><span id="__span-7-33"><a href="#__codelineno-7-33" id="__codelineno-7-33" name="__codelineno-7-33"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-34"><a href="#__codelineno-7-34" id="__codelineno-7-34" name="__codelineno-7-34"></a><span class="p">}</span>
+</span><span id="__span-7-35"><a href="#__codelineno-7-35" id="__codelineno-7-35" name="__codelineno-7-35"></a>
+</span><span id="__span-7-36"><a href="#__codelineno-7-36" id="__codelineno-7-36" name="__codelineno-7-36"></a><span class="nx">describe</span><span class="p">(</span><span class="s2">"routes.echo endpoint integration tests"</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-37"><a href="#__codelineno-7-37" id="__codelineno-7-37" name="__codelineno-7-37"></a><span class="w">    </span><span class="nx">beforeAll</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-38"><a href="#__codelineno-7-38" id="__codelineno-7-38" name="__codelineno-7-38"></a><span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">setup</span><span class="p">();</span>
+</span><span id="__span-7-39"><a href="#__codelineno-7-39" id="__codelineno-7-39" name="__codelineno-7-39"></a><span class="w">    </span><span class="p">});</span>
+</span><span id="__span-7-40"><a href="#__codelineno-7-40" id="__codelineno-7-40" name="__codelineno-7-40"></a><span class="w">    </span><span class="nx">test</span><span class="w"> </span><span class="p">(</span><span class="s2">"testing /echo/all"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-41"><a href="#__codelineno-7-41" id="__codelineno-7-41" name="__codelineno-7-41"></a><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">request</span><span class="p">(</span><span class="nx">app</span><span class="p">).</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/echo/all'</span><span class="p">);</span>
+</span><span id="__span-7-42"><a href="#__codelineno-7-42" id="__codelineno-7-42" name="__codelineno-7-42"></a><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">expected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">message</span><span class="p">.</span><span class="nx">Message</span><span class="p">(</span><span class="s1">'msg a'</span><span class="p">,</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="s1">'2009-01-01:00:00:00'</span><span class="p">)),</span><span class="w"> </span>
+</span><span id="__span-7-43"><a href="#__codelineno-7-43" id="__codelineno-7-43" name="__codelineno-7-43"></a><span class="w">                           </span><span class="ow">new</span><span class="w"> </span><span class="nx">message</span><span class="p">.</span><span class="nx">Message</span><span class="p">(</span><span class="s1">'msg b'</span><span class="p">,</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="s1">'2009-01-02:00:00:00'</span><span class="p">))]</span>
+</span><span id="__span-7-44"><a href="#__codelineno-7-44" id="__codelineno-7-44" name="__codelineno-7-44"></a><span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mf">200</span><span class="p">);</span>
+</span><span id="__span-7-45"><a href="#__codelineno-7-45" id="__codelineno-7-45" name="__codelineno-7-45"></a><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">text</span><span class="p">);</span>
+</span><span id="__span-7-46"><a href="#__codelineno-7-46" id="__codelineno-7-46" name="__codelineno-7-46"></a><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">received</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+</span><span id="__span-7-47"><a href="#__codelineno-7-47" id="__codelineno-7-47" name="__codelineno-7-47"></a><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">json</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-48"><a href="#__codelineno-7-48" id="__codelineno-7-48" name="__codelineno-7-48"></a><span class="w">            </span><span class="nx">received</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">message</span><span class="p">.</span><span class="nx">Message</span><span class="p">(</span><span class="nx">json</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">msg</span><span class="p">,</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="nx">json</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">time</span><span class="p">)))</span>
+</span><span id="__span-7-49"><a href="#__codelineno-7-49" id="__codelineno-7-49" name="__codelineno-7-49"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-7-50"><a href="#__codelineno-7-50" id="__codelineno-7-50" name="__codelineno-7-50"></a><span class="w">        </span><span class="nx">expect</span><span class="p">(</span><span class="nx">received</span><span class="p">.</span><span class="nx">sort</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">expected</span><span class="p">.</span><span class="nx">sort</span><span class="p">());</span>
+</span><span id="__span-7-51"><a href="#__codelineno-7-51" id="__codelineno-7-51" name="__codelineno-7-51"></a><span class="w">    </span><span class="p">});</span>
+</span><span id="__span-7-52"><a href="#__codelineno-7-52" id="__codelineno-7-52" name="__codelineno-7-52"></a><span class="w">    </span><span class="nx">afterAll</span><span class="p">(</span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-53"><a href="#__codelineno-7-53" id="__codelineno-7-53" name="__codelineno-7-53"></a><span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">teardown</span><span class="p">();</span>
+</span><span id="__span-7-54"><a href="#__codelineno-7-54" id="__codelineno-7-54" name="__codelineno-7-54"></a><span class="w">    </span><span class="p">});</span>
+</span><span id="__span-7-55"><a href="#__codelineno-7-55" id="__codelineno-7-55" name="__codelineno-7-55"></a>
+</span><span id="__span-7-56"><a href="#__codelineno-7-56" id="__codelineno-7-56" name="__codelineno-7-56"></a><span class="p">})</span>
+</span></code></pre></div>
+<p>The setup and teardown routines are similar to the unit test for <code>message.all()</code>. 
+The only difference is that in the test case, we initiate the call from the app level which trigger the router handler with URL path <code>/echo/all</code>. We then extract the returned text returned from the handler, and parse it back to a json object. Finally we compared the received results (created from <code>json</code>) and the expected result.</p>
+<p>When we run</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>npm<span class="w"> </span>run<span class="w"> </span><span class="nb">test</span><span class="w"> </span>echo.test.js
+</span></code></pre></div>
+<p>we see
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>&gt;<span class="w"> </span>my-mysql-app@0.0.0<span class="w"> </span><span class="nb">test</span>
+</span><span id="__span-9-2"><a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a>&gt;<span class="w"> </span>jest<span class="w"> </span>--detectOpenHandles<span class="w"> </span>echo.test.js
+</span><span id="__span-9-3"><a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="w">  </span>console.log
+</span><span id="__span-9-5"><a href="#__codelineno-9-5" id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="w">    </span><span class="m">2</span>
+</span><span id="__span-9-6"><a href="#__codelineno-9-6" id="__codelineno-9-6" name="__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a href="#__codelineno-9-7" id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="w">      </span>at<span class="w"> </span>Object.log<span class="w"> </span><span class="o">(</span>models/message.js:36:17<span class="o">)</span>
+</span><span id="__span-9-8"><a href="#__codelineno-9-8" id="__codelineno-9-8" name="__codelineno-9-8"></a>
+</span><span id="__span-9-9"><a href="#__codelineno-9-9" id="__codelineno-9-9" name="__codelineno-9-9"></a>GET<span class="w"> </span>/echo/all<span class="w"> </span><span class="m">200</span><span class="w"> </span><span class="m">28</span>.616<span class="w"> </span>ms<span class="w"> </span>-<span class="w"> </span><span class="m">101</span>
+</span><span id="__span-9-10"><a href="#__codelineno-9-10" id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="w"> </span>PASS<span class="w">  </span>__test__/models/echo.test.js
+</span><span id="__span-9-11"><a href="#__codelineno-9-11" id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="w">  </span>routes.echo<span class="w"> </span>endpoint<span class="w"> </span>integration<span class="w"> </span>tests
+</span><span id="__span-9-12"><a href="#__codelineno-9-12" id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="w">    </span>✓<span class="w"> </span>testing<span class="w"> </span>/echo/all<span class="w"> </span><span class="o">(</span><span class="m">66</span><span class="w"> </span>ms<span class="o">)</span>
+</span><span id="__span-9-13"><a href="#__codelineno-9-13" id="__codelineno-9-13" name="__codelineno-9-13"></a>
+</span><span id="__span-9-14"><a href="#__codelineno-9-14" id="__codelineno-9-14" name="__codelineno-9-14"></a>Test<span class="w"> </span>Suites:<span class="w"> </span><span class="m">1</span><span class="w"> </span>passed,<span class="w"> </span><span class="m">1</span><span class="w"> </span>total
+</span><span id="__span-9-15"><a href="#__codelineno-9-15" id="__codelineno-9-15" name="__codelineno-9-15"></a>Tests:<span class="w">       </span><span class="m">1</span><span class="w"> </span>passed,<span class="w"> </span><span class="m">1</span><span class="w"> </span>total
+</span><span id="__span-9-16"><a href="#__codelineno-9-16" id="__codelineno-9-16" name="__codelineno-9-16"></a>Snapshots:<span class="w">   </span><span class="m">0</span><span class="w"> </span>total
+</span><span id="__span-9-17"><a href="#__codelineno-9-17" id="__codelineno-9-17" name="__codelineno-9-17"></a>Time:<span class="w">        </span><span class="m">0</span>.678<span class="w"> </span>s,<span class="w"> </span>estimated<span class="w"> </span><span class="m">1</span><span class="w"> </span>s
+</span><span id="__span-9-18"><a href="#__codelineno-9-18" id="__codelineno-9-18" name="__codelineno-9-18"></a>Ran<span class="w"> </span>all<span class="w"> </span><span class="nb">test</span><span class="w"> </span>suites<span class="w"> </span>matching<span class="w"> </span>/echo.test.js/i.
+</span></code></pre></div></p>
+<h4 id="cyclic-call-graph">Cyclic call-graph</h4>
+<p>In case that the call-graph contains cycles, i.e. due to mutual recursion, we have to test the strong connected components as a unit</p>
+<h4 id="pairwise-testing">Pairwise testing</h4>
+<p>Besides top-down or bottom-up strategies, an alternative is to perform pair-wise testing.
+The idea is to test each edge of the call-graph. Similar to bottom-up strategy, we could convert unit tests for invidiual unit into test drivers for every pair, saving some effort in mock-up effort. One advantage of pairwise testing is to higher degree of fault isolation. </p>
+<h2 id="system-testing">System Testing</h2>
+<p>System testing is often less formal compared to unit testing and integration test.
+Test cases of the system testing can be derived from </p>
+<ul>
+<li>The use case documents and use case diagrams</li>
+<li>The sequence diagrams</li>
+<li>The state machine diagrams</li>
+</ul>
+<p>For instance given the following use case document </p>
+<table>
+<thead>
+<tr>
+<th>Use case ID</th>
+<th>UC 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Use case name</td>
+<td>Create New Message</td>
+</tr>
+<tr>
+<td>Objective</td>
+<td>The user creates a new message which will be stored in the Echo app DB</td>
+</tr>
+<tr>
+<td>Pre-conditions</td>
+<td>nil</td>
+</tr>
+<tr>
+<td>Primary Actor</td>
+<td>User</td>
+</tr>
+<tr>
+<td>Secondary Actor</td>
+<td>Echo App</td>
+</tr>
+<tr>
+<td>Normal Flow</td>
+<td>1. User navigates to <code>https://localhost:3000/echo/</code></td>
+</tr>
+<tr>
+<td></td>
+<td>2. User enters a new text message and submits</td>
+</tr>
+<tr>
+<td></td>
+<td>3. Echo App receives the message and inserts it into the database</td>
+</tr>
+<tr>
+<td></td>
+<td>4. Echo App returns the list of all messages in the database and display in the UI</td>
+</tr>
+<tr>
+<td>Alternative Flow</td>
+<td></td>
+</tr>
+<tr>
+<td>Post-conditions</td>
+<td>nil</td>
+</tr>
+</tbody>
+</table>
+<p>We can define a system test case as follows</p>
+<table>
+<thead>
+<tr>
+<th>Test case ID</th>
+<th>TC 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Test case name</td>
+<td>Create New Message</td>
+</tr>
+<tr>
+<td>Objective</td>
+<td>The user creates a new message which will be stored in the Echo app DB</td>
+</tr>
+<tr>
+<td>Pre-conditions</td>
+<td>nil</td>
+</tr>
+<tr>
+<td>Event Sequence</td>
+<td></td>
+</tr>
+<tr>
+<td>Input</td>
+<td>User navigates to <code>https://localhost:3000/echo/</code></td>
+</tr>
+<tr>
+<td>Output</td>
+<td>The new message form is displayed</td>
+</tr>
+<tr>
+<td>Input</td>
+<td>User enters a new text message and submits</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>The list of messages in the system is returned and rendered, which includes the newly submitted message.</td>
+</tr>
+<tr>
+<td>Post-conditions</td>
+<td>nil</td>
+</tr>
+</tbody>
+</table>
+<h2 id="life-cycle-based-testing">Life-cycle based testing</h2>
+<p>In this section, we discuss how to incoporate the testing activities along with the software development life-cycle.</p>
+<h3 id="waterfall-testing">Waterfall testing</h3>
+<p>In Walterfall software life-cycle, we could easily incoprate the testing activities as the last few phases.</p>
+<pre class="mermaid"><code>graph
+  A("Requirements Specification") --&gt; B
+  B("Analysis") --&gt;  C
+  C("Design") --&gt; D
+  D("Coding") --&gt; E
+  E("Unit Testing") --&gt; F
+  F("Integration Test") --&gt; G("System Test")</code></pre>
+<p>As highlighted in the earlier lesson, Waterfall testing as part of the waterfall development life-cycle, suffers from the long feedback interval issues.</p>
+<h3 id="iterative-life-cycle-testing">Iterative Life Cycle testing</h3>
+<p>In Iterative Software Dvelopment Life Cycle, we break and stage different parts/levels of the system components to be developed in different iterations. </p>
+<pre class="mermaid"><code>graph
+  Z("Previous Iteration") --&gt; A
+  A("Specification") --&gt; B
+  B("Analysis") --&gt;  C
+  C("Design") --&gt; D
+  D("Coding") --&gt; E
+  E("Unit Testing") --&gt; F
+  F("Integration Testing") --&gt; G
+  G("Regression Testing") --&gt; H
+  H("Progression Testing") --&gt; I("Next Iteration")</code></pre>
+<p>In terms of testing, we follow a similar structure of waterfall testing for each iteration, except that towards the end, we conduct regression testing and 
+progression testing instead of system test. </p>
+<ul>
+<li>Regression testing - to re-test the test cases defined and passed in the previous iterations.</li>
+<li>Progress testing - to pre-test the test cases defined in the upcoming iterations, some of them should fail.  </li>
+</ul>
+<h3 id="agile-testing">Agile Testing</h3>
+<p>Recall in Agile development, the development plans are engineered to focus</p>
+<ul>
+<li>Customer-driven</li>
+<li>Bottom–up development</li>
+<li>Flexibility with respect to changing requirements</li>
+<li>Early delivery of fully functional components</li>
+</ul>
+<p>Agile Development is often divided into sprints. In each sprints, development team liaise with the project users to identify the deliverables that should be delivered in the particular sprint. In the testing aspect, the testing must be aligned with the user story development for each sprint. </p>
+<pre class="mermaid"><code>graph
+  A("Customer Expectation")--&gt;B
+  B("Iteration Plan")--&gt;C
+  C("User Story")--&gt;D
+  D("Design")--&gt;E
+  E("Coding")--&gt;F
+  F("Unit Testing")--&gt;G
+  G("Integration Testing")--&gt;H
+  H("Regression Testing")--&gt;C</code></pre>
+<h2 id="futher-reading">Futher Reading</h2>
+<ol>
+<li><code>https://lambtsa.medium.com/rest-api-with-express-router-jest-and-supertest-10832a23016f</code></li>
+<li><code>https://medium.com/geekculture/testing-express-js-with-jest-8c6855945f03</code></li>
+</ol>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../../../assets/javascripts/bundle.5cfa9459.min.js"></script>
+<script src="../../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

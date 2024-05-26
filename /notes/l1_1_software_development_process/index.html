@@ -1,0 +1,470 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.22" name="generator"/>
+<title>50.003 - Software Development Process - Elements of Software Construction 50.003</title>
+<link href="../../../assets/stylesheets/main.732c4fb1.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#50003-software-development-process">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Elements of Software Construction 50.003" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Elements of Software Construction 50.003">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Elements of Software Construction 50.003
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              50.003 - Software Development Process
+            
+          </span>
+</div>
+</div>
+</div>
+<script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Elements of Software Construction 50.003" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Elements of Software Construction 50.003">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    Elements of Software Construction 50.003
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+<span class="md-ellipsis">
+    Home
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../notes/l1_course_handout/">
+<span class="md-ellipsis">
+    Handout
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#learning-outcomes">
+<span class="md-ellipsis">
+      Learning Outcomes
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#what-is-software-development">
+<span class="md-ellipsis">
+      What is Software Development
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#what-is-software-development-process">
+<span class="md-ellipsis">
+      What is Software Development Process
+    </span>
+</a>
+<nav aria-label="What is Software Development Process" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#requirement-analysis">
+<span class="md-ellipsis">
+      Requirement Analysis
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#design">
+<span class="md-ellipsis">
+      Design
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#development">
+<span class="md-ellipsis">
+      Development
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#testing">
+<span class="md-ellipsis">
+      Testing
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#deployment">
+<span class="md-ellipsis">
+      Deployment
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#types-of-software-development-processes">
+<span class="md-ellipsis">
+      Types of Software Development Processes
+    </span>
+</a>
+<nav aria-label="Types of Software Development Processes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#waterfall-model">
+<span class="md-ellipsis">
+      Waterfall model
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#iterative-model">
+<span class="md-ellipsis">
+      Iterative model
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#agile-model">
+<span class="md-ellipsis">
+      Agile "model"
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#uml-models">
+<span class="md-ellipsis">
+      UML Models
+    </span>
+</a>
+<nav aria-label="UML Models" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#structure-diagrams">
+<span class="md-ellipsis">
+      Structure Diagrams
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#behavior-diagrams">
+<span class="md-ellipsis">
+      Behavior Diagrams
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fitting-uml-models-into-sdlc">
+<span class="md-ellipsis">
+      Fitting UML models into SDLC
+    </span>
+</a>
+<nav aria-label="Fitting UML models into SDLC" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#requirement-analysis_1">
+<span class="md-ellipsis">
+      Requirement Analysis
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#design_1">
+<span class="md-ellipsis">
+      Design
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#development-and-test">
+<span class="md-ellipsis">
+      Development and Test
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#summary">
+<span class="md-ellipsis">
+      Summary
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="50003-software-development-process">50.003 - Software Development Process</h1>
+<h2 id="learning-outcomes">Learning Outcomes</h2>
+<p>By the end of this unit, you should be able to</p>
+<ol>
+<li>Articulate the different types of Software development process.</li>
+<li>Apply different types of software development process based on the project constraints and criteria.</li>
+<li>Name different types UML models.</li>
+<li>Identify the right UML models to be applied based on the software development phases. </li>
+</ol>
+<h2 id="what-is-software-development">What is Software Development</h2>
+<p>In modern days, software development is a process of solving existing (business, organizational, personal)
+problems by applying software engineering techniques and process to develop a software solution. </p>
+<p>The main objective is to identify the cause of the pain points, gaps or inefficacy in process, then to design 
+and (re-)develop a solution that operates around a set of software tools so as to address the pain points, bridge the gaps and fix the inefficacy. </p>
+<p>Besides the functional needs, there exists non-functional needs to be satisfied. For instance, the end product must be easy to modify, update and maintain without major system overhaul, the end product must be user friendly, with a flat learning curve, and the end product must be highly secured and robust.</p>
+<h2 id="what-is-software-development-process">What is Software Development Process</h2>
+<p>Software Development Process (AKA Software Development Life Cycle) is an approach to organize the different stages/steps required to develop a software based solution to address the user needs. </p>
+<p>After decades of software development, software engineers estalished a common consensus that most of the software development should include the following phases. </p>
+<ol>
+<li>Requirement Analysis </li>
+<li>Design</li>
+<li>Development</li>
+<li>Testing </li>
+<li>Deployment</li>
+</ol>
+<h3 id="requirement-analysis">Requirement Analysis</h3>
+<p>It is sometimes divided into requirement gathering and analysis. 
+For this module, we keep it simple by comining these two phases.</p>
+<p>In this phase, the system analysts or designers (and sometimes the software developers) research and study the existing problems (and the user needs) and determine what the software system can do to help. At the end of this phase, a set of system requirements is documented and agreed by both the system analysts and the project stack holders.</p>
+<h3 id="design">Design</h3>
+<p>In this phase, the system analysts or designers work closely with the software developers sketch out the overall structure, features, processes, user-interaction and information flows in the software system to be developed. The goal is to </p>
+<ol>
+<li>establish a common design among the design and development teams.</li>
+<li>check for feasibility of the potential solution alternatives. </li>
+<li>divde the system to be developed into parts so that they could be tackled in parallel or in different phases.</li>
+<li>plan out the required resource and effort to develop the system parts.</li>
+<li>prioritize and fix an order of development. </li>
+</ol>
+<h3 id="development">Development</h3>
+<p>In this phase, the developers implement the software system parts according to the design. </p>
+<h3 id="testing">Testing</h3>
+<p>In this phase, sometimes interwined with the development phase, the software developers perform testing to verify that the developed software system parts are functioning according to the system requirements. </p>
+<h3 id="deployment">Deployment</h3>
+<p>In this phase, the tested software system is setup and installed in the target environment. The new operation processes related to the new system is setup and communicated to the end users.  </p>
+<h2 id="types-of-software-development-processes">Types of Software Development Processes</h2>
+<p>Based on how the project development is organized and divided by mixing the above-mentioned phases, there are a few commonly adopted models.  </p>
+<h3 id="waterfall-model">Waterfall model</h3>
+<p>In this model, we simply break down the project by the above-mentioned phases and follow the order of execution as follows</p>
+<pre class="mermaid"><code>flowchart TB;
+    analysis["Requirement Analysis"] --&gt; Design --&gt; Development --&gt; Testing --&gt; Deployment</code></pre>
+<p>Although there are "back-flow" activities some times, for example, when during the design phase, the team discover a new issue which requires the project stack holder's clarification, the related activities in "Requirement Analysis" phase will be re-conducted.
+Similarly, during development and testing phases, when new constraints are encountered, the design has to be revisited and adjusted. These "back-flow" activities should remain as ad-hoc requests. In general, a project executed in waterfall model should not roll back to the earlier phases.</p>
+<p>One major advantage of the Waterfall model is <em>predictability</em>. By breaking down the project in this manner, we only need to execute each phase once. We often believe (sometimes try to deceive ourselves) that we could prescribe a precise schedule for the system development. </p>
+<p>However in reality, this level of predictability does not exist. 
+It is hard to provide an accurate prediction on how many man-day does a software development project require, even though the project comes with a fixed set of requirements. </p>
+<p>This is one of the main reasons why Waterfall model has been avoided by many projects. The break down by analysis-design-develop-test-deployment in one-shot gives us a fallacy, which tries to define "progress" as "moving from phase to phase". However, we are not sure the progress has been made until some code is written and tested against the requirements. </p>
+<h3 id="iterative-model">Iterative model</h3>
+<p>In an iterative model, unlike Waterfall model, a project is divided into multiple iterative cycles. Each cycle consists of a mini round of ananlysis-design-develop-test sequence. In each cycle, a subset of system features is scoped, design and develop. Each cycle must be time-boxed. Any slip of schedule could result in postponing some feature to the next iteration.  At the begining of each iteration, the team ( maybe with the users) discuss what to be built in this iteration. At the end of the iteration, the team review (maybe with the users) the features have been delivered in this iteration and make some adjustment to address the new issues found in the upcoming iteration. </p>
+<pre class="mermaid"><code>flowchart TB;
+    subgraph iteration one 
+    analysis1["Requirement Analysis I1"] --&gt; design1["Design I1"] --&gt; development1["Development I1"]--&gt; testing1["Testing I1"] --&gt; release1["Release I1"]
+    end
+    subgraph iteration two
+    analysis2["Requirement Analysis I2"] --&gt; design2["Design I2"] --&gt; development2["Development I2"]--&gt; testing2["Testing I2"] --&gt; release2["Release I2"]
+    end 
+    subgraph iteration three
+    analysis3["Requirement Analysis I3"] --&gt; dotdotdot["..."] 
+    end
+    release1 --&gt; analysis2
+    release2 --&gt; analysis3</code></pre>
+<p>An advantage of the Iterative model over Waterfall model is <em>progress</em>. 
+At the end of each iteration, the team and the users both see progress as features are delievered. 
+Another advantage is <em>adaptability</em>. The project development can adapt to the changes of requirements and external factors. </p>
+<h3 id="agile-model">Agile "model"</h3>
+<p>In the recent decade, the Agile methods gained popularity. 
+However there exists no Agile model. What was defined and presented is a manisfesto with 12 principles.</p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>https://agilemanifesto.org/principles.html
+</span></code></pre></div>
+There is no concrete method or process defined. The central idea is that there exists a key factor to the success of a project, which is how well the team of people work together. </p>
+<p>There are many instances of Agile methods exist. For instance,</p>
+<ol>
+<li>Extreme Programming </li>
+<li>Scrum</li>
+<li>...</li>
+</ol>
+<p>Let's take Extreme Programming for example. In this Agile method, the team of people is assumed to have equal of similar skill levels. They must be co-located together to establish effective communication. The project is divided into smaller releases in weekly, bi-weekly or monthly cycles. Pair programming is encouraged which reduces the chance of being interupted and reduce the need of code review and excessive documentation. Each feature is implemented using the simpliest solution as possible. Automated testin and continuous integration must be put in-place. </p>
+<p>In many Agile methods, one common assumption is that there exist frequent changes to the project requirements. Thus the smaller release cycle, the active engagement of the users help to prevent useless features being developed.  </p>
+<p>Note that the low documentation Agile methods is a by-product of having active user engagement, small co-located team and highly automated software development processes.  Low documentation does not mean no documentation. </p>
+<h2 id="uml-models">UML Models</h2>
+<p>UML is a short-form for Unified Modelling Language. Though it is a language, it is considered a graphical tool. 
+It consists a set of (mostly) graph based tools that allows us to build models for analysis and design. Most of these tools are used for building software systems, whilst some even go beyond to be applied in other engineering domains.</p>
+<p><img alt="" src="../images/UML_diagrams_overview.png"/>
+Image source: https://en.wikipedia.org/wiki/Unified_Modeling_Language</p>
+<p>Based on functionalities, UML models can be classified into two major categories,  Behaviour Diagrams and Structure diagrams</p>
+<h3 id="structure-diagrams">Structure Diagrams</h3>
+<p>Structure diagrams define or describe the structure of a target system, which could be a program, a software system, or even a physical product. </p>
+<ul>
+<li>
+<p>A Class Diagram describes the structure of a software system by modelling each sub components as an instance of a class. Following the idea of OOP, instances of a class share the same internal structures, i.e. a set of properties and a set of methods. We will go into details of class diagram in the week 2 lessons. </p>
+</li>
+<li>
+<p>A Composite Structure Diagram is similar to a class diagram but focusing on the details with the class/component internals. </p>
+</li>
+</ul>
+<p><img alt="" src="../images/07-car-collaboration.png"/></p>
+<p>Image source (https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-composite-structure-diagram/)</p>
+<ul>
+<li>
+<p>A Package Diagram describes the layers of a (software) systems. </p>
+</li>
+<li>
+<p>Unlike the class diagram captures the static relation among various components in a system, an object diagram describe a the running objects/compoents in the system in a particular instance. </p>
+</li>
+<li>
+<p>A deployment diagram captures the physical running system processes. It can be used to model the overall architecture of a softare system.</p>
+</li>
+</ul>
+<p><img alt="" src="../images/Deployment_Diagram.png"/>
+Image source (https://en.wikipedia.org/wiki/Deployment_diagram)</p>
+<h3 id="behavior-diagrams">Behavior Diagrams</h3>
+<p>Behavior Diagrams define or describe the behavior of a target system. </p>
+<ul>
+<li>
+<p>If a class in a class diagram has specific order or sequence of changes of properties, we use a state machine diagram to augment the class diagram. </p>
+</li>
+<li>
+<p>A use case diagram describes how users might interact with the target system. It is often augemented with a set of use cases (or use case texts) to capture a sceniaro during the user-system interactions. We will dive into the details of usse case and use case diagram in the next lesson.</p>
+</li>
+<li>
+<p>A sequence diagram shows the internal interactions between various sub-components within the target system to support a system feature or a system process. We will study sequence diagram in the 2nd week of this module.</p>
+</li>
+<li>
+<p>An activity diagram is a kind of flow chart. It is used to model the actions or flows of data in a system. It is often used in describing a business process. </p>
+</li>
+</ul>
+<p><img alt="" src="../images/Activity_conducting.png"/>
+Image source (https://en.wikipedia.org/wiki/Activity_diagram)</p>
+<h2 id="fitting-uml-models-into-sdlc">Fitting UML models into SDLC</h2>
+<h3 id="requirement-analysis_1">Requirement Analysis</h3>
+<p>The common tool used in this phase is the use case diagram, which is more user and feature oriented. The goal is to capture the system requirement in a less ambiguous way so that a common understanding between the users and the project team can be established. The use case diagrams and documents can be also served as the starting points for conducting system and end-to-end testing during the later phases of the software development process. </p>
+<p>Note that in some rare occasion class diagram and sequence diagrams could be used to explain to the project stack holders how the system is being developed. </p>
+<p>Another point to take note is that the focus for requirement analysis is to establish the common understanding of the system requirements. Use case is one of the tools but not the only tool. Sometimes we use non-UML models if it conveys the right messages, e.g. screen flow diagram, user story board etc.</p>
+<h3 id="design_1">Design</h3>
+<p>In this phase, the commonly used UML models are class diagram, deployment diagrams and sequence diagrams. </p>
+<h3 id="development-and-test">Development and Test</h3>
+<p>During coding phase, the developers implement the designated parts based on the use case documents, the sequence diagram and class diagram. </p>
+<p>Note that the use of class diagram does not dictate the choice of programming languages and frameworks. Though class diagrams are presented in an OOP style, they often describe the design in terms of how different components are related/interfaced with each other. The actual implementation can be done in non OOP programming language and framework. </p>
+<p>Sequence diagrams specifies how the methods and API invocation take place given a particular use case scenario. They serve as a base reference of how to develop unit tests and integration tests. </p>
+<h2 id="summary">Summary</h2>
+<p>In summary we have covered software development processes and types. 
+We discussed what UML models could used in different phases of software development life cycle. </p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../../../assets/javascripts/bundle.5cfa9459.min.js"></script>
+<script src="../../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

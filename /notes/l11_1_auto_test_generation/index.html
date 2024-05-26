@@ -1,0 +1,470 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.22" name="generator"/>
+<title>50.003 - Auto Test Generation - Elements of Software Construction 50.003</title>
+<link href="../../../assets/stylesheets/main.732c4fb1.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#50003-auto-test-generation">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Elements of Software Construction 50.003" class="md-header__button md-logo" data-md-component="logo" href="../../.." title="Elements of Software Construction 50.003">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Elements of Software Construction 50.003
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              50.003 - Auto Test Generation
+            
+          </span>
+</div>
+</div>
+</div>
+<script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Elements of Software Construction 50.003" class="md-nav__button md-logo" data-md-component="logo" href="../../.." title="Elements of Software Construction 50.003">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    Elements of Software Construction 50.003
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../..">
+<span class="md-ellipsis">
+    Home
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../notes/l1_course_handout/">
+<span class="md-ellipsis">
+    Handout
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#learning-outcomes">
+<span class="md-ellipsis">
+      Learning Outcomes
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#test-generation">
+<span class="md-ellipsis">
+      Test Generation
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fuzz-testing">
+<span class="md-ellipsis">
+      Fuzz Testing
+    </span>
+</a>
+<nav aria-label="Fuzz Testing" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#why-fuzzing">
+<span class="md-ellipsis">
+      Why fuzzing
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#the-base-line-random-testing">
+<span class="md-ellipsis">
+      The Base Line - Random Testing
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#mutation-based-fuzzing">
+<span class="md-ellipsis">
+      Mutation based fuzzing
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#corhort-exercise-graded">
+<span class="md-ellipsis">
+      Corhort Exercise (Graded)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#generation-based-fuzzing">
+<span class="md-ellipsis">
+      Generation based fuzzing
+    </span>
+</a>
+<nav aria-label="Generation based fuzzing" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#formal-grammar">
+<span class="md-ellipsis">
+      Formal Grammar
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#parse-tree">
+<span class="md-ellipsis">
+      Parse Tree
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#generate-fuzz-test-using-the-grammar">
+<span class="md-ellipsis">
+      Generate Fuzz test using the grammar
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cohort-exercise-graded">
+<span class="md-ellipsis">
+      Cohort Exercise (Graded)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#limitations-of-fuzzing">
+<span class="md-ellipsis">
+      Limitations of Fuzzing
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#feedback-based-fuzzing">
+<span class="md-ellipsis">
+      Feedback-based Fuzzing
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#exercise-not-graded">
+<span class="md-ellipsis">
+      Exercise (Not Graded)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#api-fuzzing">
+<span class="md-ellipsis">
+      API Fuzzing
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#fuzzing-test-on-ui">
+<span class="md-ellipsis">
+      Fuzzing test on UI
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="50003-auto-test-generation">50.003 - Auto Test Generation</h1>
+<h2 id="learning-outcomes">Learning Outcomes</h2>
+<p>By the end of this unit you should be able to</p>
+<ol>
+<li>explain the roles and functionalities of the test generator.</li>
+<li>apply mutation-based fuzzing to generate test cases.</li>
+<li>apply generation-based function to synthesize test cases.</li>
+</ol>
+<h2 id="test-generation">Test Generation</h2>
+<p>Recall that process of software testing.</p>
+<pre class="mermaid"><code>graph
+  Input--&gt;Program
+  Program--&gt;TO
+  TO["Test Oracle"]--&gt;Pass
+  TO["Test Oracle"]--&gt;Fail</code></pre>
+<p>So far we have been defining, curating and generating test cases manually.</p>
+<p>In this unit we consider some approaches that generates test cases automatically. </p>
+<pre class="mermaid"><code>graph
+  TG["Test Generator"]--&gt;Input
+  Input--&gt;Program
+  Program--&gt;TO
+  TO["Test Oracle"]--&gt;Pass
+  TO["Test Oracle"]--&gt;Fail</code></pre>
+<h2 id="fuzz-testing">Fuzz Testing</h2>
+<p>Fuzzing or fuzz testing is an automated software testing technique that involves providing invalid, unexpected, or random data as inputs to a computer program. </p>
+<p>Fuzzing aims to identify test inputs which reveal exploitable vulnerabilities.</p>
+<p>One downside for fuzzing is that it can't generate the expected outputs. This drawback is minor since for most of the fuzzing test cases, error should be expected outputs. </p>
+<h3 id="why-fuzzing">Why fuzzing</h3>
+<p>Besides test case generation automation, there are several extra reasons why fuzzing should be considered.</p>
+<ul>
+<li>A study found that one-quarter to one-third of all utilities on every UNIX system that the evaluators could get their hands on would crash in the presence of random input.</li>
+<li>A study that looked at 30 different Windows applications found that 21% of programs crashed and 24% hung when sent random mouse and keyboard input, and every single application crashed or hung when sent random Windows event messages.</li>
+<li>A study found that OS X applications, including Acrobat Reader, Apple Mail, Firefox, iChat, iTunes, MS Office, Opera, and Xcode, were even worse than the Windows ones.</li>
+</ul>
+<h3 id="the-base-line-random-testing">The Base Line - Random Testing</h3>
+<p>The base line of fuzzing is to randomly generate inputs as sequences of characters or bytes. Such a approach can be easily implemented. </p>
+<p>For instance, consider the javascript program <code>simple-fuzzer.js</code></p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">random_fuzz</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="p">;</span>
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="c1">// strings of any length between 0 and 1024</span>
+</span><span id="__span-0-4"><a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1024</span><span class="p">);</span>
+</span><span id="__span-0-5"><a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="c1">//generate a random character at each location of the string</span>
+</span><span id="__span-0-7"><a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="mf">0</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">length</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-8"><a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">        </span><span class="c1">//generate a character between ASCII 32 and 128</span>
+</span><span id="__span-0-9"><a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">String</span><span class="p">.</span><span class="nx">fromCharCode</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">96</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">32</span><span class="p">);</span>
+</span><span id="__span-0-10"><a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">        </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">c</span><span class="p">;</span>
+</span><span id="__span-0-11"><a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-12"><a href="#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">;</span>
+</span><span id="__span-0-13"><a href="#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="p">}</span>
+</span><span id="__span-0-14"><a href="#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a>
+</span><span id="__span-0-15"><a href="#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">random_fuzz</span><span class="p">())</span>
+</span></code></pre></div>
+<p>Running <code>node simple-fuzzer.js</code> produces</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>.u/m:SKx[-:\3t3b?z87f)6'35!t1Y``fGR[_JS:&amp;9^RSIA6svw8G~!%!%_lHA9b\-a"cw$&lt;|$2Gc^8&amp;A*c$eT#wd&lt;QUd}Y1ua&gt;yDxh:=NC^3jI~KMivT'.j{Cp%cDco\2aG/cw3d$&lt;Ih|vIm,_4d,oE8;nV!VXc:[1T,X{F)pIh8=+_[Xtm=_2X:9EWU_Oo*$|^0}nw~Dr1cQ(&lt;dr}Y7/lH&amp;mS$7?fx(F(]j)^9#j8.m2`&lt;v_]="PAI{qvD+yxPusDx!/5ZXMFf'b"Q,.pt7K\\?i7Yj 8Tx)/E'`M[}=v{&gt;GtDbijU%mwEZB?PG]Fo{{6]jXRD[0(&lt;zgbsah1J!D&amp;m\`aGQ8ehDbQN9&gt;^C&lt;I[AZ2;s'%_oj1}#RuCj~i=O"vG]Q!FJ`UP:?{Y|]o\P#7zi'8\Ck@!vC./j:C.\)iGx&gt;Q]@zffZ24]lZw4L7BKk0dA{/ Z6`3v:NN8:h:@/qOC.oq{O^kgYD(#;|@_\i,l!x2P14G(|T+KL!bml:&lt;[P+Sh!*]JY|\y\dL[
+</span></code></pre></div>
+<p>In the older days when softwares were developed using less advanced tools and techniques, this approach was effective. In modern days, in which many softwares were developed with proper design and having standard input validation in-place, e.g. type checking, regex and parser etc. Most of the randomly generated input will be immediately rejected, without reaching very "deep" in the test subject. </p>
+<h3 id="mutation-based-fuzzing">Mutation based fuzzing</h3>
+<p>One of the possible ways to overcome the limitation with the random testing is that we could consider generating fuzzy test cases based on known valid test inputs.</p>
+<p>For instance, assuming that we note that one of the valid inputs to the test subject is the following string</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>ISTDisApillarInSUTDbutItsNameiSGoingToChange
+</span></code></pre></div>
+<p>One possible way to mutate it is to choose a character at a random position and replace it by ssomething else.</p>
+<p>For instance, we randoml choose position (say 13) and replace the character <code>I</code> by character <code>Y</code></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>ISTDisApillarYnSUTDbutItsNameiSGoingToChange
+</span></code></pre></div>
+<p>The above is consdered an mutant of the original input. </p>
+<p>Here are some basic operations for mutation at some randomly chosen location.</p>
+<ul>
+<li>Flipping a bit/boolean/integer/character</li>
+<li>Trimming</li>
+<li>Swapping characters/bits</li>
+<li>Insert characters</li>
+</ul>
+<h3 id="corhort-exercise-graded">Corhort Exercise (Graded)</h3>
+<p>Given an input string, implement a mutation operator that chooses a random position in the string and swaps the adjacent characters. Meaning if <code>SUTD</code> is an input string and 2 is chosen as the random position, the output should be <code>SUDT</code>. Careful about the string length bound check. </p>
+<h3 id="generation-based-fuzzing">Generation based fuzzing</h3>
+<p>An alternative to Mutation-based fuzzing is touse generation based fuzzing. 
+In generation based fuzzing, we assume that we have access to a set of grammar rules that defines the possible syntatically valid inputs to the test subject. </p>
+<h4 id="formal-grammar">Formal Grammar</h4>
+<p>In computer science, we often use formal grammar as the specification of a language. A language denotes a set of sequences of terminals. A terminal is often a symbol, a byte, or a number. </p>
+<p>For example, consider a language of arithmetic expressions which consists of 
+<code>+,-,*,/</code> as the operators and numbers as operands. In addition, we allow to use <code>()</code> to disambiguate ambiguous terms.</p>
+<p>For instance <code>5 + 2 * 3</code> is one of the valid expressions according to the following EBNF grammar rules</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>S ::= Expr
+</span><span id="__span-4-2"><a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a>Expr ::= Expr + Term | Expr - Term | Term
+</span><span id="__span-4-3"><a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a>Term ::= Term * Factor | Term / Factor | Factor
+</span><span id="__span-4-4"><a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a>Factor ::= -Integer | (Expr) | Integer | Integer.Integer
+</span><span id="__span-4-5"><a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a>Integer ::= Digit | IntegerDigit
+</span><span id="__span-4-6"><a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a>Digit ::=  0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 
+</span></code></pre></div>
+<p>In the above, each line denotes a rule. A rule consists of a left-hand-side, a define operator <code>::=</code> and a right-hand-side. The LHS is a <em>non-terminal</em>.
+A non-terminal is a meta symbol in the grammar which defines a potential expension. As a dual, we have terminals, which are the atomic/elementary symbols in the languages, such as <code>0, 1, 2, 3, 4, 5, 6, 7, 8, 9, +, -, *, /, ,., (, )</code> and white space. The RHS of a rule is a set of alternatives sepearated by <code>|</code>. Each alternative is a sequence of terminals and non-terminals. </p>
+<p>We could interpret each rule as the LHS non-terminal can be potentially expanded into the one of the alternatives in the RHS. For example, we consider the rule with <code>Expr</code> as the LHS, which says the expression non-terminal can be either a + expression (which consists another <code>Expr</code>, a <code>+</code> and a non-terminal <code>Term</code>), or a - expression, or a <code>Term</code> by itself.</p>
+<h4 id="parse-tree">Parse Tree</h4>
+<p>Given a grammar, a parser normally validates the input sequence by attempting to construct a parse tree. A parse tree records from which grammar rules the input sequence can be validated according to the grammar. 
+We can also think of the parse tree as the result of the parsing. </p>
+<p>For example, the exxpression <code>5 + 2 * 3</code> can be parsed into the following parse tree</p>
+<p><pre class="mermaid"><code>graph
+   N0("S") --&gt; N1
+   N1("Expr") --&gt; N2
+   N1("Expr") --&gt; N3("+")
+   N1("Expr") --&gt; N4
+   N2("Expr") --&gt; N5
+   N5("Term") --&gt; N6
+   N6("Factor") --&gt; N7
+   N7("Integer") --&gt; N8
+   N8("Digit") --&gt; N9("5")
+   N4("Term") --&gt; N10
+   N4("Term") --&gt; N11("*")
+   N4("Term") --&gt; N12
+   N10("Term") --&gt; N13
+   N13("Factor") --&gt; N14
+   N14("Integer") --&gt; N15
+   N15("Digit") --&gt; 2
+   N12("Factor") --&gt; N16
+   N16("Integer") --&gt; N17
+   N17("Digit") --&gt; N18("3")
+
+</code></pre>
+In the above parse tree, starting from the root, we find that the first rule we applied in parsing <code>5 + 2 * 3</code> is <code>S ::= Expr</code>. The subtree indicates that the second rule/alternative we apply is <code>Expr ::= Expr + Term</code>. The left subtree contains no branches, which leads us to the digit <code>5</code>. The right subtree indicates that the  rule we applied to parse the sub expression <code>2 * 3</code> is <code>Term ::= Factor</code>. </p>
+<h4 id="generate-fuzz-test-using-the-grammar">Generate Fuzz test using the grammar</h4>
+<p>Given we understand the input requirement, we can now define a better fuzzer w.r.t to the grammar.<br/>
+The idea is to starting from the starting rule's nonterminal, randomly choose one grammar rule given the current non-terminal to generate a sub term (sub parse tree). We need to take note of</p>
+<ol>
+<li>Do not over expand with the recursive alternative.</li>
+<li>Do not always expand the same sub-tree / node. </li>
+</ol>
+<p>With this we can generate a good set of fuzz test input passing the syntax checking of the target software and yet having enough randomness.</p>
+<h3 id="cohort-exercise-graded">Cohort Exercise (Graded)</h3>
+<p>Use JavaScript to implement a fuzzer that will randomly generate inputs to the calculator conforming to the grammar. For now, you can hardcode the expression grammar. </p>
+<p>Hint: Start with the initial rule <code>S ::= Expr</code> and at each point, apply a rule at random. For example, randomly choose any of the rules <code>Expr ::= Term</code>, <code>Expr ::= Expr + Term</code> or <code>Expr – Term</code> in the next step. Continue until a valid expression for the calculator is obtained. Make sure you do not expand the rules forever to avoid infinite loop. </p>
+<h3 id="limitations-of-fuzzing">Limitations of Fuzzing</h3>
+<p>Fuzzing offers many perks to maintain goodd quality of softwares.</p>
+<ul>
+<li>Can provide results with little effort</li>
+<li>Can reveal bugs that were missed in a manual audit</li>
+<li>Provides an overall picture of the robustness of the target software</li>
+</ul>
+<p>It also shares certain limitations</p>
+<ul>
+<li>Will not find all bugs </li>
+<li>The crashing test cases that are produced may be difficult to analyse, as the act of fuzzing does not give you much knowledge of how the software operates internally</li>
+<li>Programs with complex inputs can require much more work to produce a smart enough fuzzer to get sufficient code coverage</li>
+</ul>
+<h3 id="feedback-based-fuzzing">Feedback-based Fuzzing</h3>
+<p>Besides getting the fuzzer to leverage the input specification, another orthothongal approach is to gather feedback from the test report. </p>
+<p>The idea is to turn the test case generation problem into an optimization problem.</p>
+<p><pre class="mermaid"><code>graph
+    N1--&gt;N2
+    N2("Execute Test Cases")--&gt;N3
+    N3("Collect Feedback")--&gt;N1("Generate Test Cases")</code></pre>
+As illustrated by the above diagram, in a feedback-baed fuzzing testing framework, we first use a fuzzer to generate the test cases, Then execute the test cases against the test subject. Finally we collect the test outcomes and report as a feedback to the fuzzer which should improve the test effectivness.</p>
+<p>One common way to measure test effectiveness is to measure the code coverage. </p>
+<h3 id="exercise-not-graded">Exercise (Not Graded)</h3>
+<p>Recall that in Jest, we can generate the coverage report in text or html. Note that it can also generate json report. With it, we can feed the json report back to the fuzzer to generate a better set of tests to increase the code coverage. </p>
+<p>Discuss among your team members to think of a possible implementation to incorporate feedback-based fuzzing</p>
+<h3 id="api-fuzzing">API Fuzzing</h3>
+<p>Fuzz testing can be applied to API testing in several aspect</p>
+<ol>
+<li>Fuzzing the low level request - generates random bytes as HTTP requests to test the robustness of the API service.</li>
+<li>Fuzzing the routes - through fuzzers, we could generate sequences of random valid / invalid requests to the test the API routers.</li>
+<li>Fuzzing the high level request - generate GET/POST/DEL/PUT HTTP requests by fuzzing HTTP parameters or form parameters.</li>
+</ol>
+<p>Some references can be found in the following</p>
+<ul>
+<li><code>https://medium.com/@Magii/fuzzing-with-postman-599dce6317c7</code></li>
+<li><code>https://github.com/KissPeter/APIFuzzer</code></li>
+<li><code>https://docs.gitlab.com/ee/user/application_security/api_fuzzing/</code></li>
+</ul>
+<h3 id="fuzzing-test-on-ui">Fuzzing test on UI</h3>
+<p>Fuzz testing can be applied to UI too.</p>
+<ol>
+<li>Fuzzing the UI element event handler by generating random input actions.</li>
+<li>Fuzzing the inputs to the HTML forms.</li>
+</ol>
+<p>Some reference can be found in the following</p>
+<ul>
+<li><code>https://www.fuzzingbook.org/html/GUIFuzzer.html</code></li>
+</ul>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../../../assets/javascripts/bundle.5cfa9459.min.js"></script>
+<script src="../../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

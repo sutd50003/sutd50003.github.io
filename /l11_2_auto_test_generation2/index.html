@@ -1,0 +1,503 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.22" name="generator"/>
+<title>50.003 - Auto Test Generation Part 2 - Elements of Software Construction 50.003</title>
+<link href="../../assets/stylesheets/main.732c4fb1.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#50003-auto-test-generation-part-2">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Elements of Software Construction 50.003" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Elements of Software Construction 50.003">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Elements of Software Construction 50.003
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              50.003 - Auto Test Generation Part 2
+            
+          </span>
+</div>
+</div>
+</div>
+<script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Elements of Software Construction 50.003" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Elements of Software Construction 50.003">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    Elements of Software Construction 50.003
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Home
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../notes/l1_course_handout/">
+<span class="md-ellipsis">
+    Handout
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#learning-outcomes">
+<span class="md-ellipsis">
+      Learning Outcomes
+    </span>
+</a>
+<nav aria-label="Learning Outcomes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#recap">
+<span class="md-ellipsis">
+      Recap
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#genetic-algorithm">
+<span class="md-ellipsis">
+      Genetic algorithm
+    </span>
+</a>
+<nav aria-label="Genetic algorithm" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#using-ga-in-test-generation">
+<span class="md-ellipsis">
+      Using GA in test generation
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#limitation-of-ga-based-test-generation">
+<span class="md-ellipsis">
+      Limitation of GA based test generation
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#symbolic-execution">
+<span class="md-ellipsis">
+      Symbolic execution
+    </span>
+</a>
+<nav aria-label="Symbolic execution" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#limitation-of-symbolic-execution">
+<span class="md-ellipsis">
+      Limitation of Symbolic execution
+    </span>
+</a>
+<nav aria-label="Limitation of Symbolic execution" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#limitation-of-the-solvers">
+<span class="md-ellipsis">
+      Limitation of the solvers
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#memory-object-aliasing">
+<span class="md-ellipsis">
+      Memory object aliasing
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#treatment-of-loops">
+<span class="md-ellipsis">
+      Treatment of loops
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="50003-auto-test-generation-part-2">50.003 - Auto Test Generation Part 2</h1>
+<h2 id="learning-outcomes">Learning Outcomes</h2>
+<p>By the end of this unit, you should be able to </p>
+<ol>
+<li>Apply Genetic algorithm for software testing.</li>
+<li>Apply Symbolic exeuction for software testing.</li>
+<li>Explain how to use symbolic execution for software verification.</li>
+</ol>
+<h3 id="recap">Recap</h3>
+<p>Recall from the last unit, we learned a special version fuzzing technique which leverages on the feedback givem by the test reports.</p>
+<pre class="mermaid"><code>graph
+    N1--&gt;N2
+    N2("Execute Test Cases")--&gt;N3
+    N3("Collect Feedback")--&gt;N1("Generate Test Cases")</code></pre>
+<p>In each iteration, we take the feedback from the previous test execution to generate the next test cases, hoping the next test cases will perform better. The process of translating the feedback to a new version of test case might be quite tricky to implement as a rule-based system.</p>
+<h3 id="genetic-algorithm">Genetic algorithm</h3>
+<p>A possible way to automate the process of feedback-to-generate-better-test-cases is to adopt the genetic algorithm.</p>
+<p>Genetic Algorithms were invented to mimic some of the processes observed in natural evolution. The idea with GA is to use this power of evolution to solve optimization problems. The father of the original Genetic Algorithm was John Holland who invented it in the early 1970's.</p>
+<p>The main idea is to represent the set of all possible results, good or bad, intermediate or final as an entire population. Any subset of the entire population is considered as a generation. </p>
+<p><img alt="" src="../images/ga1.png"/></p>
+<p>The algorithm starts with randomly pick a subset as the first generation. The following steps are taken in each iteration</p>
+<ol>
+<li>compute the fitness score for each member in the current generation <span class="arithmatex">\(G_i\)</span>.</li>
+<li>pick a subset of <span class="arithmatex">\(G_i\)</span>, say <span class="arithmatex">\(G_i'\)</span> such that all members in <span class="arithmatex">\(G_i'\)</span> are fitter than the rest by a threshold. </li>
+<li>Use members in <span class="arithmatex">\(G_i'\)</span> as "parents" to "breed" the next generation <span class="arithmatex">\(G_{i+1}\)</span>. </li>
+<li>set the current generation as <span class="arithmatex">\(G_{i+1}\)</span>.</li>
+</ol>
+<p>The above loop terminates when either 
+* the maximum number of iterations is reached or 
+* the overall fitness meets the minimum requirement or 
+* the fitness increment is smaller than threshold <span class="arithmatex">\(fit(G_{i+1}) - fit(G_i) &lt; \epsilon\)</span>.</p>
+<h4 id="using-ga-in-test-generation">Using GA in test generation</h4>
+<p>for software testing, it is natural to apply GA. </p>
+<ol>
+<li>Let the set of all possible test inputs be the entire population. Each generatation is a proper subset of the entire population.</li>
+<li>Let the code coverage score be the fitness score for each test input.</li>
+<li>Viewing each test input as a sequence of bytes. There are at least two possible "breeding" operations.</li>
+<li>Cross-over. Taking two test inputs, say A and B from the <span class="arithmatex">\(G_i'\)</span>, and pick some random byte offsets that are common to both. Replace the bytes in A by those bytes from B based on the offsets. The result of this operation will be the member of the next generation.
+   <img alt="" src="../images/ga2.png"/></li>
+<li>Mutatation.  Take one test input say C from <span class="arithmatex">\(G_i'\)</span>, randomly pick a position and change the byte at the position which form a new input in the next generation.
+   <img alt="" src="../images/ga3.png"/></li>
+</ol>
+<h4 id="limitation-of-ga-based-test-generation">Limitation of GA based test generation</h4>
+<p>GA automates the search of best test cases for the given test subject. However it might take many iterations to reach the optimal set. Consider </p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">example</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[[</span><span class="mf">1</span><span class="p">],[</span><span class="mf">2</span><span class="p">],[</span><span class="mf">3</span><span class="p">],[</span><span class="mf">4</span><span class="p">],[</span><span class="mf">5</span><span class="p">]]</span>
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">y</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">42342531</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-4"><a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">        </span><span class="nx">a</span><span class="p">[</span><span class="nx">x</span><span class="p">][</span><span class="mf">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="c1">// x must be [0..4]</span>
+</span><span id="__span-0-5"><a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-0-6"><a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>In the above example, it will take a long time for the GA test case search to discover the bug is prensent when <code>x=5</code> and  <code>y=42342531</code>.</p>
+<p>To reach that branch fast, we need to exploit the code structure of <code>example()</code>, it is kind of white box fuzzing.</p>
+<h3 id="symbolic-execution">Symbolic execution</h3>
+<p>Symbolic exeuction is a kind of dynamic analysis that tries to reach to all executable paths in a function. It differs from concreate execution and testing for not giving concrete values to the function being invoked, instead, some symbolic arguments are given so as to collect the information. It differs from static analysis techniques as it retains a per path level of information for analysis, (which could also be a drawback, we will discuss it shortly).</p>
+<p>Given the function <code>example(x,y)</code>, invoking it with a concrete value say <code>example(100,42342531)</code> is known as a <em>concrete execution</em>. Symbolic execution on the other hand, does not invoke the funciton with concrete values, instead symoblic values are passed in. </p>
+<p>Supose <code>A</code> and <code>B</code> are two symbolic values, we can think of them as logical terms, not variable.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="mf">1</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">example</span><span class="p">(</span><span class="nx">A</span><span class="p">,</span><span class="nx">B</span><span class="p">){</span>
+</span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="mf">2</span><span class="o">:</span><span class="w">    </span><span class="c1">// A can be anything, B can be anything</span>
+</span><span id="__span-1-3"><a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="mf">3</span><span class="o">:</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[[</span><span class="mf">1</span><span class="p">],[</span><span class="mf">2</span><span class="p">],[</span><span class="mf">3</span><span class="p">],[</span><span class="mf">4</span><span class="p">],[</span><span class="mf">5</span><span class="p">]]</span>
+</span><span id="__span-1-4"><a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="mf">4</span><span class="o">:</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">B</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">42342531</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-5"><a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="mf">5</span><span class="o">:</span><span class="w">        </span><span class="c1">// B must be 42342531</span>
+</span><span id="__span-1-6"><a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="mf">6</span><span class="o">:</span><span class="w">        </span><span class="nx">a</span><span class="p">[</span><span class="nx">A</span><span class="p">][</span><span class="mf">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">B</span><span class="w"> </span><span class="c1">// 0 &lt;= A &lt; 5</span>
+</span><span id="__span-1-7"><a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="mf">7</span><span class="o">:</span><span class="w">    </span><span class="p">}</span><span class="w"> </span>
+</span><span id="__span-1-8"><a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="mf">8</span><span class="o">:</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p>From the above, we find that for the path 3-&gt;4-&gt;6-&gt;7 to be covered, <code>B</code> must be <code>42342531</code>. By doing so, we can figure out the test case to cover that path.</p>
+<p>Besides generating test cases, Symbolic execution can detect bugs, dead codes and redunant assertion. </p>
+<p>For example, if we add an assertion statement at line 6,</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="mf">1</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">example</span><span class="p">(</span><span class="nx">A</span><span class="p">,</span><span class="nx">B</span><span class="p">){</span>
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="mf">2</span><span class="o">:</span><span class="w">    </span><span class="c1">// A can be anything, B can be anything</span>
+</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="mf">3</span><span class="o">:</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[[</span><span class="mf">1</span><span class="p">],[</span><span class="mf">2</span><span class="p">],[</span><span class="mf">3</span><span class="p">],[</span><span class="mf">4</span><span class="p">],[</span><span class="mf">5</span><span class="p">]]</span>
+</span><span id="__span-2-4"><a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="mf">4</span><span class="o">:</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">B</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">42342531</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-5"><a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="mf">5</span><span class="o">:</span><span class="w">        </span><span class="c1">// B must be 42342531</span>
+</span><span id="__span-2-6"><a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="mf">6</span><span class="o">:</span><span class="w">        </span><span class="nx">assert</span><span class="p">(</span><span class="nx">B</span><span class="o">&gt;</span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="c1">// B &gt; 0</span>
+</span><span id="__span-2-7"><a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="mf">7</span><span class="o">:</span><span class="w">        </span><span class="nx">a</span><span class="p">[</span><span class="nx">A</span><span class="p">][</span><span class="mf">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">B</span><span class="w"> </span><span class="c1">// 0 &lt;= A &lt; 5</span>
+</span><span id="__span-2-8"><a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="mf">8</span><span class="o">:</span><span class="w">    </span><span class="p">}</span><span class="w"> </span>
+</span><span id="__span-2-9"><a href="#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="mf">9</span><span class="o">:</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p>The symbolic execution framework generates the following set of constraints for the path 3-&gt;4-&gt;6-&gt;7-&gt;8,
+<div class="language-js highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="p">{</span><span class="w"> </span><span class="nx">B</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">42342531</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">  </span><span class="nx">B</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
+</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">  </span><span class="mf">0</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">A</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
+</span><span id="__span-3-4"><a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">  </span><span class="nx">A</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">5</span><span class="w"> </span>
+</span><span id="__span-3-5"><a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="p">}</span>
+</span></code></pre></div>
+since the first constraint implies the second one, the second constraint is redundant.</p>
+<p>Similarly if we have the following code</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="mf">1</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">example</span><span class="p">(</span><span class="nx">A</span><span class="p">,</span><span class="nx">B</span><span class="p">){</span>
+</span><span id="__span-4-2"><a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="mf">2</span><span class="o">:</span><span class="w">    </span><span class="c1">// A can be anything, B can be anything</span>
+</span><span id="__span-4-3"><a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="mf">3</span><span class="o">:</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[[</span><span class="mf">1</span><span class="p">],[</span><span class="mf">2</span><span class="p">],[</span><span class="mf">3</span><span class="p">],[</span><span class="mf">4</span><span class="p">],[</span><span class="mf">5</span><span class="p">]]</span>
+</span><span id="__span-4-4"><a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="mf">4</span><span class="o">:</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">B</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">42342531</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-5"><a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="mf">5</span><span class="o">:</span><span class="w">        </span><span class="c1">// B must be 42342531</span>
+</span><span id="__span-4-6"><a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="mf">6</span><span class="o">:</span><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">B</span><span class="o">&lt;</span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// B &lt; 0</span>
+</span><span id="__span-4-7"><a href="#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="mf">7</span><span class="o">:</span><span class="w">          </span><span class="nx">a</span><span class="p">[</span><span class="nx">A</span><span class="p">][</span><span class="mf">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">B</span><span class="w"> </span><span class="c1">// 0 &lt;= A &lt; 5</span>
+</span><span id="__span-4-8"><a href="#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="mf">8</span><span class="o">:</span><span class="w">        </span><span class="p">}</span><span class="w"> </span>
+</span><span id="__span-4-9"><a href="#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="mf">9</span><span class="o">:</span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-10"><a href="#__codelineno-4-10" id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="mf">10</span><span class="o">:</span><span class="p">}</span>
+</span></code></pre></div>
+<p>The symbolic exuection framework generates the constraint set for the path 3-&gt;4-&gt;6-&gt;7-&gt;8-&gt;9-&gt;10, as </p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="p">{</span>
+</span><span id="__span-5-2"><a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">    </span><span class="nx">B</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">42342531</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
+</span><span id="__span-5-3"><a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">    </span><span class="nx">B</span><span class="o">&lt;</span><span class="mf">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
+</span><span id="__span-5-4"><a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="w">    </span><span class="mf">0</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">A</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
+</span><span id="__span-5-5"><a href="#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="w">    </span><span class="nx">A</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">5</span><span class="w">  </span>
+</span><span id="__span-5-6"><a href="#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>which can not be satisfied hence this path of code is not reachable.</p>
+<p>Finally if we have the following code</p>
+<p><div class="language-js highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="mf">1</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">example</span><span class="p">(</span><span class="nx">A</span><span class="p">,</span><span class="nx">B</span><span class="p">){</span>
+</span><span id="__span-6-2"><a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="mf">2</span><span class="o">:</span><span class="w">    </span><span class="c1">// A can be anything, B can be anything</span>
+</span><span id="__span-6-3"><a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="mf">3</span><span class="o">:</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[[</span><span class="mf">1</span><span class="p">],[</span><span class="mf">2</span><span class="p">],[</span><span class="mf">3</span><span class="p">],[</span><span class="mf">4</span><span class="p">],[</span><span class="mf">5</span><span class="p">]]</span>
+</span><span id="__span-6-4"><a href="#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="mf">4</span><span class="o">:</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">B</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">42342531</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-5"><a href="#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="mf">5</span><span class="o">:</span><span class="w">        </span><span class="c1">// B must be 42342531</span>
+</span><span id="__span-6-6"><a href="#__codelineno-6-6" id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="mf">6</span><span class="o">:</span><span class="w">        </span><span class="nx">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">B</span><span class="w"> </span><span class="c1">// A == B </span>
+</span><span id="__span-6-7"><a href="#__codelineno-6-7" id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="mf">7</span><span class="o">:</span><span class="w">        </span><span class="nx">a</span><span class="p">[</span><span class="nx">A</span><span class="p">][</span><span class="mf">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">B</span><span class="w"> </span><span class="c1">//0 &lt;= A &lt; 5</span>
+</span><span id="__span-6-8"><a href="#__codelineno-6-8" id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="mf">8</span><span class="o">:</span><span class="w">        </span>
+</span><span id="__span-6-9"><a href="#__codelineno-6-9" id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="mf">9</span><span class="o">:</span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-10"><a href="#__codelineno-6-10" id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="mf">10</span><span class="o">:</span><span class="p">}</span>
+</span></code></pre></div>
+we have the following set of constraints</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="p">{</span><span class="w"> </span><span class="nx">B</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">42342531</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">B</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">A</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">A</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">5</span><span class="w"> </span>
+</span><span id="__span-7-2"><a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>which is unsatifiable hence a bug must be present.</p>
+<p>As we observe, symbolic execution proceeds by 
+path following. For each path it traverse, it generates a set of constraints,</p>
+<ul>
+<li>if it is an assignment and the LHS is first time being assigned,  <code>x = e</code>, it generates an equality constraint <code>x == e</code>.</li>
+<li>if it is an re-assignment <code>x = e</code>, we need to create a fresh copy of <code>x</code>, say the last defined/assigned of <code>x</code> was  <code>x_i</code>, then add <code>x_{i+1} == e</code> to the constraint sets, and rename all the use of <code>x</code> to <code>x_{i+1}</code> in the statements that come after the current one.</li>
+<li>if it is an <code>if p { s1 } else { s2 }</code>, it generate two paths with the first path having <code>p</code> and the second path having <code>!(p)</code>.</li>
+<li>if it is a <code>while p { s }</code>, it generates a path into the loop body with <code>p</code> as part of the constraint set, and another path with <code>!p</code> as it exits the loops. </li>
+</ul>
+<p>We can also add extra constraints such as the reference of the array elements must be within range.</p>
+<p>For example,</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="mf">1</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">sum_upto</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-2"><a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="mf">2</span><span class="o">:</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-8-3"><a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="mf">3</span><span class="o">:</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-8-4"><a href="#__codelineno-8-4" id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="mf">4</span><span class="o">:</span><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-5"><a href="#__codelineno-8-5" id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="mf">5</span><span class="o">:</span><span class="w">        </span><span class="nx">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">i</span><span class="p">;</span>
+</span><span id="__span-8-6"><a href="#__codelineno-8-6" id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="mf">6</span><span class="o">:</span><span class="w">        </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+</span><span id="__span-8-7"><a href="#__codelineno-8-7" id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="mf">7</span><span class="o">:</span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-8-8"><a href="#__codelineno-8-8" id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="mf">8</span><span class="o">:</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">s</span><span class="p">;</span>
+</span><span id="__span-8-9"><a href="#__codelineno-8-9" id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="mf">9</span><span class="o">:</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<p>we first "get" rid of the while loop by unrolling it once and one.</p>
+<p>Path 1:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="mf">1</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">sum_upto</span><span class="p">(</span><span class="nx">N</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-2"><a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="mf">2</span><span class="o">:</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-9-3"><a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="mf">3</span><span class="o">:</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-9-4"><a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="mf">7</span><span class="o">:</span><span class="w">    </span><span class="nx">assert</span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">N</span><span class="p">)</span><span class="w"> </span><span class="c1">// !(i&lt;n)</span>
+</span><span id="__span-9-5"><a href="#__codelineno-9-5" id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="mf">8</span><span class="o">:</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">s</span><span class="p">;</span>
+</span><span id="__span-9-6"><a href="#__codelineno-9-6" id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="mf">9</span><span class="o">:</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div></p>
+<p>Path 2:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="mf">1</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">sum_upto</span><span class="p">(</span><span class="nx">N</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-2"><a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="mf">2</span><span class="o">:</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-10-3"><a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="mf">3</span><span class="o">:</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-10-4"><a href="#__codelineno-10-4" id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="mf">4</span><span class="o">:</span><span class="w">    </span><span class="nx">assert</span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">N</span><span class="p">)</span><span class="w"> </span><span class="c1">// (i&lt;n)</span>
+</span><span id="__span-10-5"><a href="#__codelineno-10-5" id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="mf">5</span><span class="o">:</span><span class="w">    </span><span class="nx">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">i</span><span class="p">;</span>
+</span><span id="__span-10-6"><a href="#__codelineno-10-6" id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="mf">6</span><span class="o">:</span><span class="w">    </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+</span><span id="__span-10-7"><a href="#__codelineno-10-7" id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="mf">7</span><span class="o">:</span><span class="w">    </span><span class="nx">assert</span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="nx">N</span><span class="p">)</span><span class="w"> </span><span class="c1">// !(i&lt;n)</span>
+</span><span id="__span-10-8"><a href="#__codelineno-10-8" id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="mf">8</span><span class="o">:</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">s</span><span class="p">;</span>
+</span><span id="__span-10-9"><a href="#__codelineno-10-9" id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="mf">9</span><span class="o">:</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div></p>
+<p>We then rename the variables used in the assignments into single assignment form.</p>
+<p>Path 1:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="mf">1</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">sum_upto</span><span class="p">(</span><span class="nx">N</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-2"><a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="mf">2</span><span class="o">:</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">s0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-11-3"><a href="#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="mf">3</span><span class="o">:</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">i0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-11-4"><a href="#__codelineno-11-4" id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="mf">7</span><span class="o">:</span><span class="w">    </span><span class="nx">assert</span><span class="p">(</span><span class="nx">i0</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="nx">N</span><span class="p">)</span><span class="w"> </span><span class="c1">// !(i&lt;n)</span>
+</span><span id="__span-11-5"><a href="#__codelineno-11-5" id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="mf">8</span><span class="o">:</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">s0</span><span class="p">;</span>
+</span><span id="__span-11-6"><a href="#__codelineno-11-6" id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="mf">9</span><span class="o">:</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div></p>
+<p>Path 2:
+<div class="language-js highlight"><pre><span></span><code><span id="__span-12-1"><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="mf">1</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">sum_upto</span><span class="p">(</span><span class="nx">N</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-2"><a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="mf">2</span><span class="o">:</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">s0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-12-3"><a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="mf">3</span><span class="o">:</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">i0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-12-4"><a href="#__codelineno-12-4" id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="mf">4</span><span class="o">:</span><span class="w">    </span><span class="nx">assert</span><span class="p">(</span><span class="nx">i0</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">N</span><span class="p">)</span><span class="w"> </span><span class="c1">// (i&lt;n)</span>
+</span><span id="__span-12-5"><a href="#__codelineno-12-5" id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="mf">5</span><span class="o">:</span><span class="w">    </span><span class="nx">s1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">s0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">i</span><span class="p">;</span>
+</span><span id="__span-12-6"><a href="#__codelineno-12-6" id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="mf">6</span><span class="o">:</span><span class="w">    </span><span class="nx">i1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">i0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+</span><span id="__span-12-7"><a href="#__codelineno-12-7" id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="mf">7</span><span class="o">:</span><span class="w">    </span><span class="nx">assert</span><span class="p">(</span><span class="nx">i1</span><span class="w"> </span><span class="o">&gt;=</span><span class="nx">N</span><span class="p">)</span><span class="w"> </span><span class="c1">// !(i&lt;n)</span>
+</span><span id="__span-12-8"><a href="#__codelineno-12-8" id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="mf">8</span><span class="o">:</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">s1</span><span class="p">;</span>
+</span><span id="__span-12-9"><a href="#__codelineno-12-9" id="__codelineno-12-9" name="__codelineno-12-9"></a><span class="mf">9</span><span class="o">:</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div></p>
+<p>Then we have two versions of the above.</p>
+<p>One version of not entering the while loop body.
+<div class="language-js highlight"><pre><span></span><code><span id="__span-13-1"><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="mf">1</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-2"><a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="mf">2</span><span class="o">:</span><span class="w">    </span><span class="nx">s0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+</span><span id="__span-13-3"><a href="#__codelineno-13-3" id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="mf">3</span><span class="o">:</span><span class="w">    </span><span class="nx">i0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+</span><span id="__span-13-4"><a href="#__codelineno-13-4" id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="mf">4</span><span class="o">:</span><span class="w">    </span><span class="o">!</span><span class="p">(</span><span class="nx">i0</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">N</span><span class="p">)</span><span class="w">  </span>
+</span><span id="__span-13-5"><a href="#__codelineno-13-5" id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="mf">9</span><span class="o">:</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+And another version of executing the while loop body once.</p>
+<p><div class="language-js highlight"><pre><span></span><code><span id="__span-14-1"><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="mf">1</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-2"><a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="mf">2</span><span class="o">:</span><span class="w">    </span><span class="nx">s0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+</span><span id="__span-14-3"><a href="#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="mf">3</span><span class="o">:</span><span class="w">    </span><span class="nx">i0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+</span><span id="__span-14-4"><a href="#__codelineno-14-4" id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="mf">4</span><span class="o">:</span><span class="w">    </span><span class="nx">i0</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">N</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
+</span><span id="__span-14-5"><a href="#__codelineno-14-5" id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="mf">5</span><span class="o">:</span><span class="w">    </span><span class="nx">s1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">s0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">i0</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+</span><span id="__span-14-6"><a href="#__codelineno-14-6" id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="mf">6</span><span class="o">:</span><span class="w">    </span><span class="nx">i1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">i0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+</span><span id="__span-14-7"><a href="#__codelineno-14-7" id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="mf">7</span><span class="o">:</span><span class="w">    </span><span class="o">!</span><span class="p">(</span><span class="nx">i1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">N</span><span class="p">)</span>
+</span><span id="__span-14-8"><a href="#__codelineno-14-8" id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="mf">9</span><span class="o">:</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+We could have more versions of having while loop being unrolled more than once, we just need to be adding extra superscripts to distinguish variables being re-assigned in different iterations.</p>
+<p>We finally can send these versions to constraint solvers to check for satisfiability.</p>
+<h4 id="limitation-of-symbolic-execution">Limitation of Symbolic execution</h4>
+<p>Symbolic execution was a nice framework with strong formalism behind and highly useful.
+There are several issues required more care. </p>
+<h5 id="limitation-of-the-solvers">Limitation of the solvers</h5>
+<p>It relias on the solver's capabilities. Hence in case of complex inequality, we might not get an answer.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-15-1"><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">f</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="nx">z</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-2"><a href="#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">x</span><span class="o">*</span><span class="nx">x</span><span class="o">*</span><span class="nx">x</span><span class="o">*</span><span class="nx">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">y</span><span class="o">*</span><span class="nx">y</span><span class="o">*</span><span class="nx">y</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">z</span><span class="o">*</span><span class="nx">z</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-15-3"><a href="#__codelineno-15-3" id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="w">        </span><span class="nx">assert</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
+</span><span id="__span-15-4"><a href="#__codelineno-15-4" id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-15-5"><a href="#__codelineno-15-5" id="__codelineno-15-5" name="__codelineno-15-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Existing SMT solvers support theories on linear integer arithmetic, bit vectors, string, etc. Existing SMT solvers are not particularly scalable or efficient for certain theories e.g., non-linear arithmetic.
+* In such cases symbolic execution will not (always) be able to evaluate which side of the branch should be taken. 
+* Thus, symbolic execution may randomly generate some inputs to find one of the feasible execution, losing opportunities to cover a large portion of code. </p>
+<h5 id="memory-object-aliasing">Memory object aliasing</h5>
+<p>Keeping track of constraints among variables with primitive values are straight-forward, it is not that simple when dealing with reference to objects in the heap.</p>
+<p>For instance consider </p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-16-1"><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="mf">1</span><span class="o">:</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">A</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-2"><a href="#__codelineno-16-2" id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="mf">2</span><span class="o">:</span><span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">attr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">x</span><span class="p">};</span>
+</span><span id="__span-16-3"><a href="#__codelineno-16-3" id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="mf">3</span><span class="o">:</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-16-4"><a href="#__codelineno-16-4" id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="mf">4</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">foo</span><span class="p">(</span><span class="nx">N</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-5"><a href="#__codelineno-16-5" id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="mf">5</span><span class="o">:</span><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">A</span><span class="p">(</span><span class="nx">N</span><span class="p">);</span><span class="w"> </span><span class="c1">// a == mloc1 &amp;&amp; mloc1.attr == N</span>
+</span><span id="__span-16-6"><a href="#__codelineno-16-6" id="__codelineno-16-6" name="__codelineno-16-6"></a><span class="mf">6</span><span class="o">:</span><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nx">attr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">N</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-7"><a href="#__codelineno-16-7" id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="mf">7</span><span class="o">:</span><span class="w">        </span><span class="kd">let</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">a</span><span class="p">;</span><span class="w"> </span><span class="c1">// b == a</span>
+</span><span id="__span-16-8"><a href="#__codelineno-16-8" id="__codelineno-16-8" name="__codelineno-16-8"></a><span class="mf">8</span><span class="o">:</span><span class="w">        </span><span class="nx">b</span><span class="p">.</span><span class="nx">attr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">N</span><span class="o">+</span><span class="mf">1</span><span class="p">;</span><span class="w"> </span><span class="c1">// mloc1.attr == N +1 </span>
+</span><span id="__span-16-9"><a href="#__codelineno-16-9" id="__codelineno-16-9" name="__codelineno-16-9"></a><span class="mf">9</span><span class="o">:</span><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-16-10"><a href="#__codelineno-16-10" id="__codelineno-16-10" name="__codelineno-16-10"></a><span class="mf">10</span><span class="o">:</span><span class="p">}</span>
+</span></code></pre></div>
+<p>If we naively construct a set of constraint from a path from 5--&gt;6--&gt;7--&gt;8--&gt;9, we have the following</p>
+<p><div class="language-js highlight"><pre><span></span><code><span id="__span-17-1"><a href="#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="p">{</span>
+</span><span id="__span-17-2"><a href="#__codelineno-17-2" id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="w">  </span><span class="nx">a</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">mloc1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
+</span><span id="__span-17-3"><a href="#__codelineno-17-3" id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="w">  </span><span class="nx">mloc1</span><span class="p">.</span><span class="nx">attr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">N</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+</span><span id="__span-17-4"><a href="#__codelineno-17-4" id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="w">  </span><span class="nx">mloc1</span><span class="p">.</span><span class="nx">attr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">N</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+</span><span id="__span-17-5"><a href="#__codelineno-17-5" id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="w">  </span><span class="nx">b</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+</span><span id="__span-17-6"><a href="#__codelineno-17-6" id="__codelineno-17-6" name="__codelineno-17-6"></a><span class="w">  </span><span class="nx">mloc1</span><span class="p">.</span><span class="nx">attr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">N</span><span class="o">+</span><span class="mf">1</span>
+</span><span id="__span-17-7"><a href="#__codelineno-17-7" id="__codelineno-17-7" name="__codelineno-17-7"></a><span class="p">}</span>
+</span></code></pre></div>
+which is not satisfiable, but the above path of executions should be valid. Clearly we need a better model to manage to heap objects.</p>
+<h5 id="treatment-of-loops">Treatment of loops</h5>
+<p>Symbolic Execution does not cover all the paths, e.g. we have to fix a limit to how many time the loop can be unrolled, or require the programmers to annotate the loop with invariant (which is uncommon for day-to-day programming). For example, if a program add an invariant constraint of the while loop <code>s &lt;= i * (i-1) / 2</code>, we could verify that for all 
+versions of <code>s_k</code> and <code>i_k</code>, satifies the invariant contraints, for example</p>
+<p><div class="language-js highlight"><pre><span></span><code><span id="__span-18-1"><a href="#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="nx">s0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">i0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">0</span><span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">i0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">N</span><span class="w">  </span><span class="o">==&gt;</span><span class="w"> </span><span class="nx">s0</span><span class="w"> </span><span class="o">&lt;=</span><span class="w">  </span><span class="nx">i0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nx">i_</span><span class="p">{</span><span class="o">-</span><span class="mf">1</span><span class="p">}</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span>
+</span></code></pre></div>
+<code>i_{-1}</code> is undefined but since <code>i0</code> is 0, hence the above holds</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-19-1"><a href="#__codelineno-19-1" id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="nx">s1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">s0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">i0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">i1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">i0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">i0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">i0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">N</span><span class="w">  </span><span class="o">==&gt;</span><span class="w"> </span><span class="nx">s1</span><span class="w"> </span><span class="o">&lt;=</span><span class="w">  </span><span class="nx">i1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="nx">i0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">2</span>
+</span></code></pre></div>
+<p>This generalizes to for all <code>k</code>. 
+Thus, when <code>N &gt;=0</code>, 
+We can then use the invariant plus the post condition <code>i==N</code> as the approximiated constraint set for the loop for the subsequent paths, this is to like combining static analysis with dynamic analysis.</p>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../../assets/javascripts/bundle.5cfa9459.min.js"></script>
+<script src="../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>

@@ -1,0 +1,660 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.22">
+    
+    
+      
+        <title>50.003 Elements of Software Construction Course Handout - Elements of Software Construction 50.003</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.732c4fb1.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#50003-elements-of-software-construction-course-handout" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Elements of Software Construction 50.003" class="md-header__button md-logo" aria-label="Elements of Software Construction 50.003" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Elements of Software Construction 50.003
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              50.003 Elements of Software Construction Course Handout
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Elements of Software Construction 50.003" class="md-nav__button md-logo" aria-label="Elements of Software Construction 50.003" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Elements of Software Construction 50.003
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/l1_course_handout/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Handout
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#this-page-will-be-updated-regularly-sync-up-often" class="md-nav__link">
+    <span class="md-ellipsis">
+      This page will be updated regularly. Sync up often.
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#course-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      Course Description
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#module-learning-outcomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Module Learning Outcomes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resource" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resource
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instructors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instructors
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tas" class="md-nav__link">
+    <span class="md-ellipsis">
+      TAs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gta" class="md-nav__link">
+    <span class="md-ellipsis">
+      GTA
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Communication
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grading
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#things-you-need-to-prepare" class="md-nav__link">
+    <span class="md-ellipsis">
+      Things you need to prepare
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submission-policy-and-plagiarism" class="md-nav__link">
+    <span class="md-ellipsis">
+      Submission Policy and Plagiarism
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schedule-12-may-2024-17-aug-2024" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schedule (12 May 2024 - 17 Aug 2024)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#make-up-and-alternative-assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Make Up and Alternative Assessment
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="50003-elements-of-software-construction-course-handout">50.003 Elements of Software Construction  Course Handout</h1>
+<h2 id="this-page-will-be-updated-regularly-sync-up-often">This page will be updated regularly. Sync up often.</h2>
+<h2 id="course-description">Course Description</h2>
+<p>This course is an introduction to the fundamental principles and techniques of software construction that have the greatest impact on practice. Topics include capturing the essence of a problem by recognizing and inventing suitable abstractions; key paradigms, including basic concepts of software design and their expression using notations from Unified Modeling Language (UML); software testing, automated software test generation, automated software security testing via black box, greybox and whitebox fuzzing approaches, detection and removal of software code smells, software coding standards to avoid security loopholes, concurrent programming, including programming with threads and processes, understanding concurrency problems like deadlock and data race. This course includes exercises in software design, implementation, testing and reasoning.  </p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>50.001 Information Systems &amp; Programming </p>
+<h2 id="module-learning-outcomes">Module Learning Outcomes</h2>
+<p>By the end of this module, students are able to </p>
+<p>Design medium-scale software systems from scratch: formulating and analysing the problem to be solved; writing formal software requirements, exploring and formulating system designs; and using extensive and systematic testing and reasoning to ensure quality. </p>
+<ol>
+<li>Apply key software engineering ideas, including invariants, decoupling, and data abstraction. </li>
+<li>Apply key software engineering ideas, including software design, specification, abstraction, verification and correctness. </li>
+<li>Apply widely used design concepts and notations (UML diagrams) and patterns in exploring and articulating problems and designs. </li>
+<li>Learning effective techniques on ensuring quality of large-scale software systems. </li>
+<li>Apply concepts of systematic software testing to discover bugs (including security vulnerabilities) in large-scale software systems. </li>
+<li>Apply concepts to reason about the security loopholes in software systems. </li>
+<li>Learning secure software coding standards. </li>
+<li>Learning key concepts in developing concurrent programs. </li>
+<li>Learning key concepts in reasoning and testing concurrent programs. </li>
+</ol>
+<h2 id="resource">Resource</h2>
+<p>The main resources are lecture slides, tutorial sessions, and online documentations. There are no official textbooks. But the following are useful for reference and deeper understanding of some topics.</p>
+<ul>
+<li>Martina Seidl, Marion Scholz, Christian Huemer and Gerti Kappel, UML @ Classroom: An Introduction to Object-Oriented Modeling, 2015</li>
+<li>Martin Fowler, UML Distilled, 3rd Edition, 2003.</li>
+<li>Brian Goetz et al., Java Concurrency in Practice, 1st Edition.  Boston, MA: Addison-Wesley, 2006. </li>
+<li>Paul C. Jorgense, Software Testing: A Craftsman's Approach, 4th Edition. 2013.</li>
+</ul>
+<h2 id="instructors">Instructors</h2>
+<ul>
+<li>
+<p>Prof Kenny Lu (kenny_lu@sutd.edu.sg) 
+Office Hour: Wednesday 3:00-4:30pm (please send email to arrange)</p>
+</li>
+<li>
+<p>Prof Fredy Tantri (fredy_tantri@sutd.edu.sg)
+Office Hour:</p>
+</li>
+<li>
+<p>Prof T.C. Tan (thiamchu_tan@sutd.edu.sg)
+Office Hour: </p>
+</li>
+</ul>
+<h2 id="tas">TAs</h2>
+<ul>
+<li>Rishika Banka <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#114;&#105;&#115;&#104;&#105;&#107;&#97;&#95;&#98;&#97;&#110;&#107;&#97;&#64;&#109;&#121;&#109;&#97;&#105;&#108;&#46;&#115;&#117;&#116;&#100;&#46;&#101;&#100;&#117;&#46;&#115;&#103;">&#114;&#105;&#115;&#104;&#105;&#107;&#97;&#95;&#98;&#97;&#110;&#107;&#97;&#64;&#109;&#121;&#109;&#97;&#105;&#108;&#46;&#115;&#117;&#116;&#100;&#46;&#101;&#100;&#117;&#46;&#115;&#103;</a></li>
+<li>Radhi Priya Janakiraman <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#114;&#97;&#100;&#104;&#105;&#112;&#114;&#105;&#121;&#97;&#95;&#106;&#97;&#110;&#97;&#107;&#105;&#114;&#97;&#109;&#97;&#110;&#64;&#109;&#121;&#109;&#97;&#105;&#108;&#46;&#115;&#117;&#116;&#100;&#46;&#101;&#100;&#117;&#46;&#115;&#103;">&#114;&#97;&#100;&#104;&#105;&#112;&#114;&#105;&#121;&#97;&#95;&#106;&#97;&#110;&#97;&#107;&#105;&#114;&#97;&#109;&#97;&#110;&#64;&#109;&#121;&#109;&#97;&#105;&#108;&#46;&#115;&#117;&#116;&#100;&#46;&#101;&#100;&#117;&#46;&#115;&#103;</a></li>
+<li>Advaitaa Kathavarayan <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#100;&#118;&#97;&#105;&#116;&#97;&#97;&#95;&#107;&#97;&#116;&#104;&#97;&#118;&#97;&#114;&#97;&#121;&#97;&#110;&#64;&#109;&#121;&#109;&#97;&#105;&#108;&#46;&#115;&#117;&#116;&#100;&#46;&#101;&#100;&#117;&#46;&#115;&#103;">&#97;&#100;&#118;&#97;&#105;&#116;&#97;&#97;&#95;&#107;&#97;&#116;&#104;&#97;&#118;&#97;&#114;&#97;&#121;&#97;&#110;&#64;&#109;&#121;&#109;&#97;&#105;&#108;&#46;&#115;&#117;&#116;&#100;&#46;&#101;&#100;&#117;&#46;&#115;&#103;</a></li>
+<li>Vanya Jalan <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#118;&#97;&#110;&#121;&#97;&#95;&#106;&#97;&#108;&#97;&#110;&#64;&#109;&#121;&#109;&#97;&#105;&#108;&#46;&#115;&#117;&#116;&#100;&#46;&#101;&#100;&#117;&#46;&#115;&#103;">&#118;&#97;&#110;&#121;&#97;&#95;&#106;&#97;&#108;&#97;&#110;&#64;&#109;&#121;&#109;&#97;&#105;&#108;&#46;&#115;&#117;&#116;&#100;&#46;&#101;&#100;&#117;&#46;&#115;&#103;</a></li>
+</ul>
+<h2 id="gta">GTA</h2>
+<ul>
+<li>Mohamed Meeran Sheik Abdul Kader <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#109;&#111;&#104;&#97;&#109;&#101;&#100;&#95;&#109;&#101;&#101;&#114;&#97;&#110;&#64;&#115;&#117;&#116;&#100;&#46;&#101;&#100;&#117;&#46;&#115;&#103;">&#109;&#111;&#104;&#97;&#109;&#101;&#100;&#95;&#109;&#101;&#101;&#114;&#97;&#110;&#64;&#115;&#117;&#116;&#100;&#46;&#101;&#100;&#117;&#46;&#115;&#103;</a></li>
+</ul>
+<h2 id="communication">Communication</h2>
+<p>If you have course/assignment/project related questions, please post it on the dedicated MS teams channel.</p>
+<h2 id="grading">Grading</h2>
+<p>Your final grade is computed as follows:</p>
+<ul>
+<li>Cohort exercises – 18% </li>
+<li>Course Feedback – 2% </li>
+<li>Quizzes – 10% </li>
+<li>Course Project – 40% <ul>
+<li>Project Meetings 1, 2, 3, 4 (each 5%) </li>
+<li>Final presentation, demo, report and peer review (20%) </li>
+</ul>
+</li>
+<li>Final Exam – 30%  </li>
+</ul>
+<h2 id="things-you-need-to-prepare">Things you need to prepare</h2>
+<ul>
+<li>Git </li>
+<li>Node.js (version &gt; 20) </li>
+<li>Visual Studio Code (or whatever IDE you prefer) </li>
+<li>Ubuntu subsystem if you are using Windows </li>
+<li>MongoDB </li>
+<li>MySQL &gt;8 </li>
+</ul>
+<h2 id="project">Project</h2>
+<p>Please refer to the project <a href="https://edimension.sutd.edu.sg/webapps/blackboard/execute/content/file?cmd=view&amp;content_id=_178354_1&amp;course_id=_5054_1&amp;launch_in_new=true">page</a>.</p>
+<h2 id="submission-policy-and-plagiarism">Submission Policy and Plagiarism</h2>
+<ol>
+<li>You will do the assignment/project on your own (own teams) and will not copy paste solutions from someone else.</li>
+<li>You will not post any solutions related to this course to a private/public repository that is accessible by the public/others.</li>
+<li>Students are allowed to have a private repository for their assignment which no one can access. </li>
+<li>For projects, students can only invite their partners as collaborators to a private repository.</li>
+<li>Failing to follow the Code of Honour will result in failing the course and/or being submitted to the University Disciplinary Committee. The consequences apply to both the person who shares their work and the person who copies the work.</li>
+</ol>
+<h2 id="schedule-12-may-2024-17-aug-2024">Schedule (12 May 2024 - 17 Aug 2024)</h2>
+<table>
+<thead>
+<tr>
+<th>Week</th>
+<th>Lecture 1</th>
+<th>Lecture 2</th>
+<th>Cohort Class</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 (12/5)</td>
+<td><a href="https://sutdapac-my.sharepoint.com/:b:/g/personal/kenny_lu_sutd_edu_sg/Eek_O5njV8RIkSxNMCufk_8BrRDlbB49lc-U24uxUJcNSA?e=BW0gH4">Introduction to Software Engineering Software Modelling UML</a></td>
+<td><a href="https://sutdapac-my.sharepoint.com/:b:/g/personal/kenny_lu_sutd_edu_sg/ETkU1YXFBitBmojmc25w1QEBhc2FJyTHS19ef_5HKGA-3g?e=IsgLjP">UML Use Cases and Use Case Descriptions</a></td>
+<td><a href="https://sutdapac-my.sharepoint.com/:b:/g/personal/kenny_lu_sutd_edu_sg/EWtknUKayrtEgrO0L3aBJ0EBFRrNMjdyQq4LbSA9cQ_reg?e=nuT7Xl">Corhort Exercise 1</a>, <a href="https://sutdapac-my.sharepoint.com/:b:/g/personal/kenny_lu_sutd_edu_sg/EVbLN1LTPKpNnEcUkpUYfEMB3L-61Lsb_5jh2W2wOrDbOA?e=ZBUXKw">Self Review Exercises 1</a></td>
+<td><a href="https://edimension.sutd.edu.sg/webapps/blackboard/content/listContentEditable.jsp?content_id=_177885_1&amp;course_id=_5054_1&amp;mode=reset">Cohort Exercise 1 Submission (31/5 23:59)</a></td>
+</tr>
+<tr>
+<td>2 (19/5)</td>
+<td><a href="https://sutdapac-my.sharepoint.com/:b:/g/personal/kenny_lu_sutd_edu_sg/ETPVnDgtKC1Isyo2YVOD604BGVv7ob78kKZ882zVLHf36g?e=cZFtjM">Domain Modelling and UML Class Diagrams</a></td>
+<td><a href="https://sutdapac-my.sharepoint.com/:b:/g/personal/kenny_lu_sutd_edu_sg/EVIqLpYqai9Glq2qeRBd2IsB-Blah0uPTo8ETd8x0OP8HA?e=ssvv26">UML  Sequence Diagrams 1</a></td>
+<td><a href="https://sutdapac-my.sharepoint.com/:b:/g/personal/kenny_lu_sutd_edu_sg/EbSFiYkMyqhPhTY_g_Wih6YBDVOKJ2-MtXPCTE51Zx-Bxw?e=g2cgeT">Cohort Exercise 2</a>, <a href="https://sutdapac-my.sharepoint.com/:b:/g/personal/kenny_lu_sutd_edu_sg/EaW2j65pQIhGqxeUhMYWbvEBddXFSwlEYSiGhaBGbCpB3w?e=NMuS6e">Self Review Exercises 2</a></td>
+<td>1. <a href="https://docs.google.com/spreadsheets/d/1fQGHFK-82R9q3YApP-UKq798kHTeOjgR64XtzQkNzb4/edit?usp=sharing">Project Team Submission (24/5 23:59)</a> <br/> 2. <a href="https://edimension.sutd.edu.sg/webapps/blackboard/content/listContentEditable.jsp?content_id=_177885_1&amp;course_id=_5054_1&amp;mode=reset">Cohort Exercise 2 Submission (7/6 23:59)</a> <br/> 3. Wednesday is  public holiday</td>
+</tr>
+<tr>
+<td>3 (26/5)</td>
+<td><a href="https://sutdapac-my.sharepoint.com/:b:/g/personal/kenny_lu_sutd_edu_sg/ETGt2kd3_-9Ckm9mRVrsgL4BzVFtZcFZQlLLLEX9Qk9q4Q?e=zQHIiK">UML Sequence Diagram 2 Software Architecture</a></td>
+<td><a href="https://sutdapac-my.sharepoint.com/:b:/g/personal/kenny_lu_sutd_edu_sg/ERSUGJyyaR9LitCApbzUfBcBs4qGw1Mhl_XTWn5WGF9eBQ?e=lfvYhQ">UML – Design Model/ Solution Class Diagram</a></td>
+<td><a href="https://sutdapac-my.sharepoint.com/:b:/g/personal/kenny_lu_sutd_edu_sg/EUorqOsR-f1GkfmUliVGGGoBRi6JnOxH0aWF0GnucXNE2Q?e=YSDV9p">Cohort Exercise 3</a>, <a href="https://sutdapac-my.sharepoint.com/:b:/g/personal/kenny_lu_sutd_edu_sg/EXXBfsM3OStMs9-cfAkPHzoB2YaeCUKzjMAZyUX7Akz62Q?e=sUSRb4">Self Review Exercises 3</a></td>
+<td>1. Quiz 1:UML (3%) <br/> 2. <a href="https://edimension.sutd.edu.sg/webapps/blackboard/content/listContentEditable.jsp?content_id=_177885_1&amp;course_id=_5054_1&amp;mode=reset">Cohort Exercise 3 Submission (14/6 23:59)</a></td>
+</tr>
+<tr>
+<td>4 (2/6)</td>
+<td><a href="../l4_1_web_prog_common_js/">Basic Web App Architecture</a></td>
+<td><a href="../l4_2_nodejs/">JavaScript and Node.js</a></td>
+<td><a href="https://github.com/sutd50003/cohortproblems/tree/main/ce4">JavaScript and Node.js</a></td>
+<td></td>
+</tr>
+<tr>
+<td>5 (9/6)</td>
+<td><a href="../l5_1_expressjs_backend_mongo/">Web App Backend Architecture</a></td>
+<td><a href="../l5_2_mysql/">Web App Backend Architecture</a></td>
+<td><a href="https://github.com/sutd50003/cohortproblems/tree/main/ce5">Web App Backend Architecture</a></td>
+<td>Submit project meeting 1 presentation video by 17/6 2359</td>
+</tr>
+<tr>
+<td>6 (16/6)</td>
+<td></td>
+<td><a href="../l6_1_expressjs_frontend/">Web App Frontend Architecture</a></td>
+<td>Project Meeting 1</td>
+<td>Monday is a public holiday <br/> Quiz 2: Node.js (3%)</td>
+</tr>
+<tr>
+<td>7 (23/6)</td>
+<td>Recess Week</td>
+<td>Recess Week</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8 (30/6)</td>
+<td><a href="../l6_2_react/">Web App Frontend Architecture</a></td>
+<td><a href="../l8_1_softwaretesting/">Software Testing</a></td>
+<td><a href="https://github.com/sutd50003/cohortproblems/tree/main/ce8">Web App Frontend Architecture</a></td>
+<td>Submit project meeting 2 presentation video by 8/7 2359</td>
+</tr>
+<tr>
+<td>9 (7/7)</td>
+<td><a href="../l9_1_blackbox_unittest/">Blackbox unit testing</a></td>
+<td><a href="../l9_2_integrationtest/">Blackbox integration / system testing</a></td>
+<td>Project Meeting 2</td>
+<td></td>
+</tr>
+<tr>
+<td>10 (14/7)</td>
+<td>UI Testing</td>
+<td><a href="../l10_2_whitebox_testing/">Whitebox / Path base testing</a></td>
+<td><a href="https://github.com/sutd50003/cohortproblems/tree/main/ce10">Blackbox Testing</a></td>
+<td>Submit project meeting 3 presentation video by 22/7 2359 <br/> Quiz 3: React.js and Unit Testing (4%)</td>
+</tr>
+<tr>
+<td>11 (21/7)</td>
+<td><a href="../l11_1_auto_test_generation/">Test generation: Fuzzing</a></td>
+<td><a href="../l11_2_auto_test_generation2/">Test generation: Genetic algorithm, Symbolic Execution</a></td>
+<td>Project Meeting 3</td>
+<td></td>
+</tr>
+<tr>
+<td>12 (28/7)</td>
+<td>Concurrency and Concurrent Program Testing</td>
+<td><a href="../l12_2_code_std/">Secure Software Coding Standard, Code smells and Maintenance</a></td>
+<td>Project Meeting 4</td>
+<td></td>
+</tr>
+<tr>
+<td>13 (4/8)</td>
+<td>Final Presentation</td>
+<td>Final Presentation</td>
+<td>Final Presentation</td>
+<td>Friday is a public holiday</td>
+</tr>
+<tr>
+<td>14 (11/8)</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Final Exam 15 Aug 2024 (Thu) 9:00 - 11:00am</td>
+</tr>
+</tbody>
+</table>
+<h2 id="make-up-and-alternative-assessment">Make Up and Alternative Assessment</h2>
+<p>Make ups for Final exam will be administered when there is an official Leave of Absence from OSA. There will be only one make up. There will be no make-up if students miss the make up test. </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.5cfa9459.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
