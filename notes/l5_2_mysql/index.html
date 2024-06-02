@@ -308,6 +308,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#cohort-exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cohort Exercise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#exercise-not-graded" class="md-nav__link">
     <span class="md-ellipsis">
       Exercise (Not Graded)
@@ -638,6 +647,12 @@ We also imported the <code>message</code> model module so that we can call <code
 <div class="language-js highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">echoRouter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./routes/echo&quot;</span><span class="p">);</span>
 </span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s2">&quot;/echo&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">echoRouter</span><span class="p">);</span>
 </span></code></pre></div>
+<h3 id="cohort-exercise">Cohort Exercise</h3>
+<p>Given the ER diagram below,</p>
+<p><img alt="" src="../images/er2.png" /></p>
+<p>give the step-by-step explanation on how we can implement API which returns the count of staff from each department.</p>
+<p><code>http://127.0.0.1:3000/dept/count</code> which yields</p>
+<p><code>[{"count":2,"dept":"HR"}]</code>.</p>
 <h3 id="exercise-not-graded">Exercise (Not Graded)</h3>
 <p>Can you modify the <code>echo</code> router so that it will return the most recent 3 messages?</p>
 <p>In the above example, we incorporate the model layer to the web app. The models abstract away the underlying database operations in forms of function calls and
