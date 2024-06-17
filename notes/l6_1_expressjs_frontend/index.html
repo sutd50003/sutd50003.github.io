@@ -479,8 +479,14 @@ Technically speaking, users can't access a HTTP POST endpoint directly via the b
 <p>The advantage of Approach 1 is that it is relatively simple to implement and codes are pretty structured.
 One issue with Approach 1 is that the page <code>echoform</code> is reloaded each time we submit a new message.
 This is not a big deal when the page is simple with little content. It affects the user experience as the content of the page get complex and a single click would cause the entire page to refresh.</p>
-<p>To address this issue, we could use AJAX.
-The idea of AJAX is to divide the view template HTML into sub regions, when a user input is detected, we use the client side javascript to update the affected sub region.</p>
+<p>To address this issue, we could use AJAX (A).</p>
+<p>AJAX stands for Asynchronous Javascript and XML. It is not a programming language, library, or a framework, but rather a technique that uses a combination of technologies to :</p>
+<ol>
+<li>Perform asynchronous communication with server</li>
+<li>Update a portion of page (HTML element) so the webapp is more responsive
+   In other words, AJAX is a term to describe the usage of Javascript+HTML DOM to display data, and XMLHttpRequest to request data from a server.</li>
+</ol>
+<p>The idea of AJAX is to divide the view template HTML into sub regions. When a user input is detected, we use the client side javascript to update the affected sub region.</p>
 <p>We re-start from the point of <code>echo.ejs</code> template again. We copy and modify its content into a new template <code>echoajax.ejs</code></p>
 <div class="language-html highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
