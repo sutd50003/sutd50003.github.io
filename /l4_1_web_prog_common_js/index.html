@@ -1,0 +1,1368 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.6.0, mkdocs-material-9.5.22" name="generator"/>
+<title>50.003 - Basics of Web Programming - Elements of Software Construction 50.003</title>
+<link href="../../assets/stylesheets/main.732c4fb1.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#50003-basics-of-web-programming">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Elements of Software Construction 50.003" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Elements of Software Construction 50.003">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Elements of Software Construction 50.003
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              50.003 - Basics of Web Programming
+            
+          </span>
+</div>
+</div>
+</div>
+<script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Elements of Software Construction 50.003" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Elements of Software Construction 50.003">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    Elements of Software Construction 50.003
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Home
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../notes/l1_course_handout/">
+<span class="md-ellipsis">
+    Handout
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#learning-outcomes">
+<span class="md-ellipsis">
+      Learning Outcomes
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#basic-components-of-a-web-application">
+<span class="md-ellipsis">
+      Basic Components of A Web Application
+    </span>
+</a>
+<nav aria-label="Basic Components of A Web Application" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#common-front-end-software-components">
+<span class="md-ellipsis">
+      Common front-end software components
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#common-back-end-software-components">
+<span class="md-ellipsis">
+      Common back-end software components
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#html">
+<span class="md-ellipsis">
+      HTML
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#css">
+<span class="md-ellipsis">
+      CSS
+    </span>
+</a>
+<nav aria-label="CSS" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#overlapping-css-rules">
+<span class="md-ellipsis">
+      Overlapping CSS rules
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#javascript">
+<span class="md-ellipsis">
+      JavaScript
+    </span>
+</a>
+<nav aria-label="JavaScript" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#a-simple-example">
+<span class="md-ellipsis">
+      A Simple Example
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#inputoutput">
+<span class="md-ellipsis">
+      Input/Output
+    </span>
+</a>
+<nav aria-label="Input/Output" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#first-attempt">
+<span class="md-ellipsis">
+      First attempt
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#second-attempt">
+<span class="md-ellipsis">
+      Second attempt
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#capturing-the-user-input">
+<span class="md-ellipsis">
+      Capturing the user input
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#javascript-variable">
+<span class="md-ellipsis">
+      JavaScript Variable
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#function-and-anonymous-function">
+<span class="md-ellipsis">
+      Function and Anonymous Function
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#basic-data-structures">
+<span class="md-ellipsis">
+      Basic Data Structures
+    </span>
+</a>
+<nav aria-label="Basic Data Structures" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#string">
+<span class="md-ellipsis">
+      String
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#array">
+<span class="md-ellipsis">
+      Array
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#object">
+<span class="md-ellipsis">
+      Object
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#control-flow-statements">
+<span class="md-ellipsis">
+      Control flow statements
+    </span>
+</a>
+<nav aria-label="Control flow statements" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#if-else">
+<span class="md-ellipsis">
+      if-else
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#for">
+<span class="md-ellipsis">
+      for
+    </span>
+</a>
+<nav aria-label="for" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#local-scope">
+<span class="md-ellipsis">
+      Local scope
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#for-in-and-for-of">
+<span class="md-ellipsis">
+      For-in and For-of
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#while">
+<span class="md-ellipsis">
+      While
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#foreach-and-map">
+<span class="md-ellipsis">
+      forEach and map
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#javascript-operators">
+<span class="md-ellipsis">
+      JavaScript Operators
+    </span>
+</a>
+<nav aria-label="JavaScript Operators" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#binary-operators">
+<span class="md-ellipsis">
+      Binary Operators
+    </span>
+</a>
+<nav aria-label="Binary Operators" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#things-for-you-to-check">
+<span class="md-ellipsis">
+      Things for you to check.
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#unary-operators">
+<span class="md-ellipsis">
+      Unary Operators
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#class">
+<span class="md-ellipsis">
+      Class
+    </span>
+</a>
+<nav aria-label="Class" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#inheritance-only-available-in-es6-onwards">
+<span class="md-ellipsis">
+      Inheritance (Only available in ES6 onwards)
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#higher-order-functions">
+<span class="md-ellipsis">
+      Higher order functions
+    </span>
+</a>
+<nav aria-label="Higher order functions" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#functions-as-inputs">
+<span class="md-ellipsis">
+      Functions as inputs
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#functions-as-a-returned-value-closure">
+<span class="md-ellipsis">
+      Functions as a returned value (Closure)
+    </span>
+</a>
+<nav aria-label="Functions as a returned value (Closure)" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#closure">
+<span class="md-ellipsis">
+      Closure
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#functions-as-call-backs">
+<span class="md-ellipsis">
+      Functions as call-backs
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#application-of-call-backs">
+<span class="md-ellipsis">
+      Application of Call-backs
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#asynchronous-programming">
+<span class="md-ellipsis">
+      Asynchronous Programming
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#single-threaded-event-driven-programming">
+<span class="md-ellipsis">
+      Single threaded Event-driven Programming
+    </span>
+</a>
+<nav aria-label="Single threaded Event-driven Programming" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#callback-queue">
+<span class="md-ellipsis">
+      Callback Queue
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#we-have-purposely-ignored-something">
+<span class="md-ellipsis">
+      We have purposely ignored something ...
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#cohort-exercise">
+<span class="md-ellipsis">
+      Cohort Exercise
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="50003-basics-of-web-programming">50.003 - Basics of Web Programming</h1>
+<h2 id="learning-outcomes">Learning Outcomes</h2>
+<p>By the end of this unit, you should be able to</p>
+<ol>
+<li>Define an HTML document with elements and attributes.</li>
+<li>Define the cosmetic and layouts of an HTML documents using CSS.</li>
+<li>Use JavaScript to capture user inputs from HTML documents.</li>
+<li>Use JavaScript to render output to the HTML documents.</li>
+<li>Apply JavaScript operators to compute results</li>
+<li>Define customized JavaScript datatype using class</li>
+<li>Define named and anonymous functions in JavaScript</li>
+</ol>
+<!-- 1. Describe the semantics of Common JavaScript  -->
+<h2 id="basic-components-of-a-web-application">Basic Components of A Web Application</h2>
+<p>A Web application consists of two major parts.</p>
+<ol>
+<li>Front-end - the user interface, is often presented with a browser on the PC or on the mobile devices. The front-end loads and presents the required data to the users. The front-end also captures the user's inputs and translates them into system actions to be performed by the web application (both frontend or backend).</li>
+<li>Back-end - the application's brain. It is often made up of the business logic layer and the data layer. The data layer takes care of the data storage, query and manipulation, while the business logic layer implements the defined actions to be performed given the user inputs (from the front-end).</li>
+</ol>
+<h3 id="common-front-end-software-components">Common front-end software components</h3>
+<ol>
+<li>HTML</li>
+<li>CSS</li>
+<li>JavaScript</li>
+</ol>
+<h3 id="common-back-end-software-components">Common back-end software components</h3>
+<ol>
+<li>A database or a set of databases</li>
+<li>A backend application server or a set of back-end application servers</li>
+<li>A set of cache storage (optional)</li>
+<li>A group of load balancers (optional)</li>
+</ol>
+<h2 id="html">HTML</h2>
+<p>Hyper Text Markup Language is a language to define the structure of a document (AKA a web page).</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-0-4"><a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"utf-8"</span> <span class="p">/&gt;</span>
+</span><span id="__span-0-5"><a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>50.003<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span><span id="__span-0-6"><a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-0-7"><a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-0-8"><a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"heading"</span><span class="p">&gt;</span>Welcome to 50.003!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-0-9"><a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a>    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"msg1"</span> <span class="na">class</span><span class="o">=</span><span class="s">"message"</span><span class="p">&gt;</span>It's about Software Engineering!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-0-10"><a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-0-11"><a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<p>There are many versions/standards of HTML. We only consider HTML5 in this unit.
+An HTML document consists of a doctype declaration, which tells the browser which version of HTML it is in. The second part is an <code>&lt;html&gt;</code> element.</p>
+<p>Each element consists of an open tag and a close tag and the children.
+For instance, <code>&lt;html&gt;</code> is the opening tag and <code>&lt;/html&gt;</code> is the closing.
+The children of an elemnent can be elements or texts. However there are a set of rules governing what contents could appear in a given element. In the above example, the content of the <code>&lt;html&gt;</code> element consists of a <code>&lt;head&gt;</code> element and a <code>&lt;body&gt;</code> element. Element without child/content can be written in a short form, e.g. <code>&lt;meta charset="utf-8" /&gt;</code> is a short hand of <code>&lt;meta charset="utf-8"&gt;&lt;/meta&gt;</code>. Note that <code>charset="utf-8"</code> denotes an attribute of this <code>&lt;meta&gt;</code> element.</p>
+<p>The HTML document in the above example defines a structure as follows,</p>
+<ul>
+<li>html</li>
+<li>head<ul>
+<li>meta</li>
+<li>title</li>
+<li>text</li>
+</ul>
+</li>
+<li>body<ul>
+<li>paragraph</li>
+<li>text</li>
+</ul>
+</li>
+</ul>
+<h2 id="css">CSS</h2>
+<p>Cascading Style Sheets is a language used in describing the presentation of a document. Being different from HTML, it focuses on the aesthetical requirement of the documents. For instance, it defines the answers to the following questions,</p>
+<ol>
+<li>Which font family should the title text be rendered in?</li>
+<li>How many pixels should the text margin be?</li>
+<li>... and etc.</li>
+</ol>
+<div class="language-css highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nt">p</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-1-3"><a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="p">}</span>
+</span><span id="__span-1-4"><a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="p">#</span><span class="nn">msg1</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-6"><a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">  </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="s2">"Courier New"</span><span class="p">,</span><span class="w"> </span><span class="n">Courier</span><span class="p">,</span><span class="w"> </span><span class="kc">monospace</span><span class="p">;</span>
+</span><span id="__span-1-7"><a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="p">}</span>
+</span><span id="__span-1-8"><a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a>
+</span><span id="__span-1-9"><a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="p">.</span><span class="nc">heading</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-10"><a href="#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="kc">larger</span><span class="p">;</span>
+</span><span id="__span-1-11"><a href="#__codelineno-1-11" id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>There are three rules in the above CSS. Each rule consists of two parts.</p>
+<ol>
+<li>terms preceding the <code>{</code> are called the selectors.</li>
+<li>terms being enclosed by <code>{</code> and <code>}</code> are called the declarations.</li>
+<li>Each declaration consists of a property (preceding the colon <code>:</code>) and a value (following the colon <code>:</code>).</li>
+<li>Declarations are terminated by a semi colon <code>;</code>.</li>
+</ol>
+<p>For instance, in the first rule, we find <code>p</code> as the selector, which means that this rule is applicable to all <code>&lt;p&gt;</code> elements in the target HTML document. For all applicable elements, we want to set the margin to be 10 pixel wide. The second rule applies to a particular element with id = <code>#msg1</code>. Note that ids in an HTML document must be unique. In this rule, we want to set the font family of the text contained in the applicable elements to <code>Courier New</code>.
+In the third rule, we would like to apply the declaration to all elements with <code>class</code> attribute equal to <code>heading</code>.</p>
+<p>Suppose the above css definitions are stored in a file named <code>hello.css</code>, we could add the following as one of the child element of the <code>&lt;head&gt;</code> element in the earlier html document.</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-2-4"><a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"utf-8"</span> <span class="p">/&gt;</span>
+</span><span id="__span-2-5"><a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>50.003<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span><span id="__span-2-6"><a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a>    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"hello.css"</span> <span class="p">/&gt;</span>
+</span><span id="__span-2-7"><a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-2-8"><a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-2-9"><a href="#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a>    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"heading"</span><span class="p">&gt;</span>Welcome to 50.003!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-2-10"><a href="#__codelineno-2-10" id="__codelineno-2-10" name="__codelineno-2-10"></a>    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"msg1"</span> <span class="na">class</span><span class="o">=</span><span class="s">"message"</span><span class="p">&gt;</span>It's about Software Engineering!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-2-11"><a href="#__codelineno-2-11" id="__codelineno-2-11" name="__codelineno-2-11"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-2-12"><a href="#__codelineno-2-12" id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<p>Note that selectors are <em>composable</em>, e.g. selector <code>p.heading</code> selects all <code>&lt;p&gt;</code> elements with <code>class</code> equal to <code>heading</code>.</p>
+<p>For information refers to</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>https://www.w3schools.com/cssref/css_selectors.php
+</span></code></pre></div>
+<h3 id="overlapping-css-rules">Overlapping CSS rules</h3>
+<p>Suppose we add a new CSS rule to the earlier CSS</p>
+<div class="language-css highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nt">p</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-4-3"><a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="p">}</span>
+</span><span id="__span-4-4"><a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="p">#</span><span class="nn">msg1</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-6"><a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">  </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="s2">"Courier New"</span><span class="p">,</span><span class="w"> </span><span class="n">Courier</span><span class="p">,</span><span class="w"> </span><span class="kc">monospace</span><span class="p">;</span>
+</span><span id="__span-4-7"><a href="#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="p">}</span>
+</span><span id="__span-4-8"><a href="#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a>
+</span><span id="__span-4-9"><a href="#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="p">.</span><span class="nc">heading</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-10"><a href="#__codelineno-4-10" id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="w">  </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="kc">larger</span><span class="p">;</span>
+</span><span id="__span-4-11"><a href="#__codelineno-4-11" id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="p">}</span>
+</span><span id="__span-4-12"><a href="#__codelineno-4-12" id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="o">//</span><span class="w"> </span><span class="nt">new</span><span class="w"> </span><span class="nt">rule</span>
+</span><span id="__span-4-13"><a href="#__codelineno-4-13" id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="nt">p</span><span class="p">.</span><span class="nc">message</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-14"><a href="#__codelineno-4-14" id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="kt">px</span><span class="p">;</span>
+</span><span id="__span-4-15"><a href="#__codelineno-4-15" id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>The first and the newly added rules are overlapping, i.e. the set of HTML elements they select are overlapping, i.e.</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"msg1"</span> <span class="na">class</span><span class="o">=</span><span class="s">"message"</span><span class="p">&gt;</span>It's about Software Engineering!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<p>is selected by both rules. However the declarations of the two rules are not compatible.
+In such a situation, CSS interpretors will pick the one with higher specificity to apply the selected HTML element.</p>
+<p>For details on how specificity score is calculated, refer to the following</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>https://www.w3.org/TR/CSS21/cascade.html#specificity
+</span></code></pre></div>
+<h2 id="javascript">JavaScript</h2>
+<p>JavaScript is a programming language that was initially designed to run in the browsers. Its internal design was influenced by Lisp and Scheme, it s external syntax was strongly influence by Java, though its behavior differs from Java. In the last decade, JavaScript was extended to run directly in the backend systems as well. In this unit, we consider the version of JavaScript that run in the browsers.</p>
+<h3 id="a-simple-example">A Simple Example</h3>
+<p>First we modify the HTML document introduced earlier to include a <code>&lt;script&gt;</code> element. Note that we can't use <code>&lt;script/&gt;</code> short-hand as it won't work in certain browsers.</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-7-1"><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span id="__span-7-2"><a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span><span id="__span-7-3"><a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a>  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-7-4"><a href="#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"utf-8"</span> <span class="p">/&gt;</span>
+</span><span id="__span-7-5"><a href="#__codelineno-7-5" id="__codelineno-7-5" name="__codelineno-7-5"></a>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>50.003<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span><span id="__span-7-6"><a href="#__codelineno-7-6" id="__codelineno-7-6" name="__codelineno-7-6"></a>    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"hello.css"</span> <span class="p">/&gt;</span>
+</span><span id="__span-7-7"><a href="#__codelineno-7-7" id="__codelineno-7-7" name="__codelineno-7-7"></a>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"hello.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-7-8"><a href="#__codelineno-7-8" id="__codelineno-7-8" name="__codelineno-7-8"></a>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-7-9"><a href="#__codelineno-7-9" id="__codelineno-7-9" name="__codelineno-7-9"></a>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-7-10"><a href="#__codelineno-7-10" id="__codelineno-7-10" name="__codelineno-7-10"></a>    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"heading"</span><span class="p">&gt;</span>Welcome to 50.003!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-7-11"><a href="#__codelineno-7-11" id="__codelineno-7-11" name="__codelineno-7-11"></a>    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">"msg1"</span> <span class="na">class</span><span class="o">=</span><span class="s">"message"</span><span class="p">&gt;</span>It's about Software Engineering!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span><span id="__span-7-12"><a href="#__codelineno-7-12" id="__codelineno-7-12" name="__codelineno-7-12"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-7-13"><a href="#__codelineno-7-13" id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<p>The content of the <code>hello.js</code> file is as follows.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-8-1"><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"hello"</span><span class="p">);</span>
+</span></code></pre></div>
+<p>In the above, we define a JavaScript program that prints a string <code>hello</code> in the console. Note that the printed string will not appear in the HTML page, instead it is printed in the console of the browser</p>
+<ul>
+<li>Chrome and Edge: "three vertical dot" -&gt; "More Tools" -&gt; "Developer Tools" -&gt; "Console"</li>
+<li>Firefox: "three horizontal bars" -&gt; "More Tools" -&gt; "Web Developer Tools" -&gt; "Console"</li>
+<li>Alternatively, we may also use online learning tools such as</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>https://jsfiddle.net/
+</span></code></pre></div>
+<p>To display "hello" message in a pop-up window, we could change the <code>console.log()</code> method with <code>alert()</code>.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-10-1"><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"hello"</span><span class="p">;</span>
+</span><span id="__span-10-2"><a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="c1">// console.log(msg);</span>
+</span><span id="__span-10-3"><a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="nx">alert</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+</span></code></pre></div>
+<p>In the above, we have 3 lines code JS codes. In the first statement we define a variable <code>msg</code> with value <code>"hello"</code>. In JavaScript <code>var</code> keyword in define a variable. The second statement the <code>console.log()</code> that we used previously and it is commented away. The third statement is a method call to <code>alert()</code> with <code>msg</code> as the actual argument.</p>
+<p>Lastly, if we want to add a string to the begining of the HTML document, we may use <code>document.write()</code> method.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-11-1"><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"hello"</span><span class="p">;</span>
+</span><span id="__span-11-2"><a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="cm">/* console.log(msg);</span>
+</span><span id="__span-11-3"><a href="#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="cm">alert(msg); */</span>
+</span><span id="__span-11-4"><a href="#__codelineno-11-4" id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">msg</span><span class="p">);</span>
+</span></code></pre></div>
+<p>In the above we use <code>/* ... */</code> to comment multiple lines.
+<code>document</code> is a predefined variable holding the reference of the current HTML document.
+<code>document.write()</code> takes a string and inserts it to the begining of the document.</p>
+<p>Note that the semi-colon at the end of each statment is optional.</p>
+<h3 id="inputoutput">Input/Output</h3>
+<p>One may ask, "what about displaying the message inside some of the HTML element?"</p>
+<h4 id="first-attempt">First attempt</h4>
+<p>Suppose we change the Javascript program as follows</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-12-1"><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"hello"</span><span class="p">;</span>
+</span><span id="__span-12-2"><a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">p_elem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"msg1"</span><span class="p">);</span>
+</span><span id="__span-12-3"><a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="nx">p_elem</span><span class="p">.</span><span class="nx">innerText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">msg</span><span class="p">;</span>
+</span></code></pre></div>
+<p>In the second statement, we call <code>document.getElementById()</code> to retrieve the reference to the element with id=<code>msg1</code> in the HTML document and store the reference in a variable <code>p_elem</code>.<br/>
+In the third statement, we set the inner HTML of this element as <code>msg</code>.</p>
+<p>Howe when we load the HTML with the above script, some error occured.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a>Uncaught TypeError: p_elem is null.
+</span></code></pre></div>
+<p>This is because we retrieve the element reference before the document is fully rendered hence <code>p_elem</code> is having a null reference.</p>
+<h4 id="second-attempt">Second attempt</h4>
+<p>To fix this problem, we need to postpone the JavaScript execution until =the doucment is fully rendered. There are two possible ways to do that.</p>
+<ol>
+<li>Write a busy loop to keep checking whether the document is fully rendered.</li>
+<li>Enclose the action (of updating the content of the <code>&lt;p id="msg1"&gt;</code> element) in a function. Make this function into a call-back, which will only be invoked when the document is done with rendered.</li>
+</ol>
+<p>To keep the resource usage low, JavaScript adopts the 2nd idea.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-14-1"><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"hello"</span><span class="p">;</span>
+</span><span id="__span-14-2"><a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="kd">function</span><span class="w"> </span><span class="nx">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-14-3"><a href="#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">p_elem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"msg1"</span><span class="p">);</span>
+</span><span id="__span-14-4"><a href="#__codelineno-14-4" id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="w">  </span><span class="nx">p_elem</span><span class="p">.</span><span class="nx">innerText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">msg</span><span class="p">;</span>
+</span><span id="__span-14-5"><a href="#__codelineno-14-5" id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="p">}</span>
+</span><span id="__span-14-6"><a href="#__codelineno-14-6" id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"DOMContentLoaded"</span><span class="p">,</span><span class="w"> </span><span class="nx">run</span><span class="p">);</span>
+</span></code></pre></div>
+<p>In the above, we define a function named <code>run</code> with no argument. The body of the function contains the action to be performed when the document is fully rendered.
+In the last statement, we <em>register</em> the <code>run()</code> function as the call-back of the
+event "DOMContentLoaded" of the <code>document</code> object. The function <code>run()</code> is able to access the variable <code>msg</code> defined outside. In JavaScript this is called <em>closure</em>.</p>
+<h4 id="capturing-the-user-input">Capturing the user input</h4>
+<p>Now let's add a textbox in the HTML document and capture the user's input in this textbox via a button click. Consider <code>textandbutton.html</code> as follows,</p>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-15-1"><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span id="__span-15-2"><a href="#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span><span id="__span-15-3"><a href="#__codelineno-15-3" id="__codelineno-15-3" name="__codelineno-15-3"></a>  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-15-4"><a href="#__codelineno-15-4" id="__codelineno-15-4" name="__codelineno-15-4"></a>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"textandbutton.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-15-5"><a href="#__codelineno-15-5" id="__codelineno-15-5" name="__codelineno-15-5"></a>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"utf-8"</span> <span class="p">/&gt;</span>
+</span><span id="__span-15-6"><a href="#__codelineno-15-6" id="__codelineno-15-6" name="__codelineno-15-6"></a>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>50.003 sample code: Text and Button<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span><span id="__span-15-7"><a href="#__codelineno-15-7" id="__codelineno-15-7" name="__codelineno-15-7"></a>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-15-8"><a href="#__codelineno-15-8" id="__codelineno-15-8" name="__codelineno-15-8"></a>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-15-9"><a href="#__codelineno-15-9" id="__codelineno-15-9" name="__codelineno-15-9"></a>    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>Your input: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">"textbox1"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="p">/&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-15-10"><a href="#__codelineno-15-10" id="__codelineno-15-10" name="__codelineno-15-10"></a>    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>Output: <span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"span1"</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-15-11"><a href="#__codelineno-15-11" id="__codelineno-15-11" name="__codelineno-15-11"></a>    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"button1"</span><span class="p">&gt;</span>Submit<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-15-12"><a href="#__codelineno-15-12" id="__codelineno-15-12" name="__codelineno-15-12"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-15-13"><a href="#__codelineno-15-13" id="__codelineno-15-13" name="__codelineno-15-13"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<p>In the above HTML document, we find three components in the body, an <code>&lt;input&gt;</code>, a <code>&lt;span&gt;</code> as output field and a <code>&lt;button&gt;</code>.</p>
+<p>In the <code>textandbutton.js</code> we have the following definitions.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-16-1"><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">handleButton1Click</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-2"><a href="#__codelineno-16-2" id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">textbox1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"textbox1"</span><span class="p">);</span>
+</span><span id="__span-16-3"><a href="#__codelineno-16-3" id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">span1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"span1"</span><span class="p">);</span>
+</span><span id="__span-16-4"><a href="#__codelineno-16-4" id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="w">  </span><span class="nx">span1</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">textbox1</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+</span><span id="__span-16-5"><a href="#__codelineno-16-5" id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="p">}</span>
+</span><span id="__span-16-6"><a href="#__codelineno-16-6" id="__codelineno-16-6" name="__codelineno-16-6"></a>
+</span><span id="__span-16-7"><a href="#__codelineno-16-7" id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="kd">function</span><span class="w"> </span><span class="nx">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-16-8"><a href="#__codelineno-16-8" id="__codelineno-16-8" name="__codelineno-16-8"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">button1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"button1"</span><span class="p">);</span>
+</span><span id="__span-16-9"><a href="#__codelineno-16-9" id="__codelineno-16-9" name="__codelineno-16-9"></a><span class="w">  </span><span class="nx">button1</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span><span class="w"> </span><span class="nx">handleButton1Click</span><span class="p">);</span>
+</span><span id="__span-16-10"><a href="#__codelineno-16-10" id="__codelineno-16-10" name="__codelineno-16-10"></a><span class="p">}</span>
+</span><span id="__span-16-11"><a href="#__codelineno-16-11" id="__codelineno-16-11" name="__codelineno-16-11"></a>
+</span><span id="__span-16-12"><a href="#__codelineno-16-12" id="__codelineno-16-12" name="__codelineno-16-12"></a><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"DOMContentLoaded"</span><span class="p">,</span><span class="w"> </span><span class="nx">run</span><span class="p">);</span>
+</span></code></pre></div>
+<h3 id="javascript-variable">JavaScript Variable</h3>
+<p>There are 2 ways to declare a variable: <code>var</code> and <code>let</code></p>
+<p>Use <code>const</code> to declare a constant</p>
+<p><code>let</code> and <code>const</code> was introduced in ES6 (ECMAScript 6) in 2015. ECMAScript is a language standard for JavaScript.</p>
+<p>The main difference between <code>var</code> and <code>let</code> mainly is the scope. <code>var</code> can be a global scope or function scope, while <code>let</code> is a block scope, meaning it only exists inside a code block. A code block is defined by curly brackets { }. Also, <code>var</code> variable can be redeclared, overriding the existing variable.</p>
+<p>When should you use <code>var</code> or <code>let</code>? Most of the time it does not matter. However, using <code>let</code> is preferred to prevent accidental variable overriding and it has a better memory management. Use <code>var</code> if the variable scope needs to be global or in the whole function. The code below demonstrate the difference:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-17-1"><a href="#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">varA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"varA"</span><span class="p">;</span><span class="w"> </span><span class="c1">// Global Scope</span>
+</span><span id="__span-17-2"><a href="#__codelineno-17-2" id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="kd">let</span><span class="w"> </span><span class="nx">letA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"letA"</span><span class="p">;</span><span class="w"> </span><span class="c1">// Global Scope</span>
+</span><span id="__span-17-3"><a href="#__codelineno-17-3" id="__codelineno-17-3" name="__codelineno-17-3"></a>
+</span><span id="__span-17-4"><a href="#__codelineno-17-4" id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="kd">function</span><span class="w"> </span><span class="nx">globalAccess</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-17-5"><a href="#__codelineno-17-5" id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">varA</span><span class="p">);</span><span class="w"> </span><span class="c1">// Accessible anywhere</span>
+</span><span id="__span-17-6"><a href="#__codelineno-17-6" id="__codelineno-17-6" name="__codelineno-17-6"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">letA</span><span class="p">);</span><span class="w"> </span><span class="c1">// Accessible anywhere</span>
+</span><span id="__span-17-7"><a href="#__codelineno-17-7" id="__codelineno-17-7" name="__codelineno-17-7"></a><span class="p">}</span>
+</span><span id="__span-17-8"><a href="#__codelineno-17-8" id="__codelineno-17-8" name="__codelineno-17-8"></a><span class="nx">globalAccess</span><span class="p">();</span>
+</span><span id="__span-17-9"><a href="#__codelineno-17-9" id="__codelineno-17-9" name="__codelineno-17-9"></a>
+</span><span id="__span-17-10"><a href="#__codelineno-17-10" id="__codelineno-17-10" name="__codelineno-17-10"></a><span class="kd">function</span><span class="w"> </span><span class="nx">outerFunc</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-17-11"><a href="#__codelineno-17-11" id="__codelineno-17-11" name="__codelineno-17-11"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mf">1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-17-12"><a href="#__codelineno-17-12" id="__codelineno-17-12" name="__codelineno-17-12"></a><span class="w">    </span><span class="c1">// Curly bracket defines a block</span>
+</span><span id="__span-17-13"><a href="#__codelineno-17-13" id="__codelineno-17-13" name="__codelineno-17-13"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">varB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"varB"</span><span class="p">;</span><span class="w"> </span><span class="c1">// Function Scope</span>
+</span><span id="__span-17-14"><a href="#__codelineno-17-14" id="__codelineno-17-14" name="__codelineno-17-14"></a><span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">letB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"letB"</span><span class="p">;</span><span class="w"> </span><span class="c1">// Block Scope</span>
+</span><span id="__span-17-15"><a href="#__codelineno-17-15" id="__codelineno-17-15" name="__codelineno-17-15"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-17-16"><a href="#__codelineno-17-16" id="__codelineno-17-16" name="__codelineno-17-16"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">varB</span><span class="p">);</span><span class="w"> </span><span class="c1">// varB is accessible</span>
+</span><span id="__span-17-17"><a href="#__codelineno-17-17" id="__codelineno-17-17" name="__codelineno-17-17"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">letB</span><span class="p">);</span><span class="w"> </span><span class="c1">// Error, letB is NOT accessible</span>
+</span><span id="__span-17-18"><a href="#__codelineno-17-18" id="__codelineno-17-18" name="__codelineno-17-18"></a><span class="p">}</span>
+</span><span id="__span-17-19"><a href="#__codelineno-17-19" id="__codelineno-17-19" name="__codelineno-17-19"></a><span class="nx">outerFunc</span><span class="p">();</span>
+</span></code></pre></div>
+<h3 id="function-and-anonymous-function">Function and Anonymous Function</h3>
+<p>The syntax of function is as follows:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-18-1"><a href="#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">functionName</span><span class="p">(</span><span class="nx">parameters</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-18-2"><a href="#__codelineno-18-2" id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="w">  </span><span class="c1">// function body</span>
+</span><span id="__span-18-3"><a href="#__codelineno-18-3" id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">output</span><span class="p">;</span>
+</span><span id="__span-18-4"><a href="#__codelineno-18-4" id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="p">}</span>
+</span><span id="__span-18-5"><a href="#__codelineno-18-5" id="__codelineno-18-5" name="__codelineno-18-5"></a>
+</span><span id="__span-18-6"><a href="#__codelineno-18-6" id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="c1">// Invoke function</span>
+</span><span id="__span-18-7"><a href="#__codelineno-18-7" id="__codelineno-18-7" name="__codelineno-18-7"></a><span class="nx">functionName</span><span class="p">(</span><span class="nx">args</span><span class="p">);</span>
+</span></code></pre></div>
+<p>In JavaScript, you can declare anonymous functions using either of these syntaxes:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-19-1"><a href="#__codelineno-19-1" id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">params</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-19-2"><a href="#__codelineno-19-2" id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="w">  </span><span class="c1">//function body</span>
+</span><span id="__span-19-3"><a href="#__codelineno-19-3" id="__codelineno-19-3" name="__codelineno-19-3"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">output</span><span class="p">;</span>
+</span><span id="__span-19-4"><a href="#__codelineno-19-4" id="__codelineno-19-4" name="__codelineno-19-4"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>or,</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-20-1"><a href="#__codelineno-20-1" id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="p">(</span><span class="nx">params</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-20-2"><a href="#__codelineno-20-2" id="__codelineno-20-2" name="__codelineno-20-2"></a><span class="w">  </span><span class="c1">//function body</span>
+</span><span id="__span-20-3"><a href="#__codelineno-20-3" id="__codelineno-20-3" name="__codelineno-20-3"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">output</span><span class="p">;</span>
+</span><span id="__span-20-4"><a href="#__codelineno-20-4" id="__codelineno-20-4" name="__codelineno-20-4"></a><span class="p">};</span>
+</span></code></pre></div>
+<p>Anonymous functions are commonly use for one-time use function. You will see and use a lot of this kind of function in JavaScript.</p>
+<h3 id="basic-data-structures">Basic Data Structures</h3>
+<h4 id="string">String</h4>
+<p>String in Javascript is a builtin datatype.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-21-1"><a href="#__codelineno-21-1" id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">myStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"hello"</span><span class="p">;</span>
+</span></code></pre></div>
+<p>We can access the characters in the string <code>myStr</code> by their positions.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-22-1"><a href="#__codelineno-22-1" id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="nx">myStr</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+</span></code></pre></div>
+<p>returns a string containing the first character of <code>myStr</code>.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-23-1"><a href="#__codelineno-23-1" id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="nx">myStr</span><span class="p">[</span><span class="nx">myStr</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">];</span>
+</span></code></pre></div>
+<p>returns a string containing the last character of <code>myStr</code>. <code>myStr.length</code> computes the length of <code>myStr</code>.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-24-1"><a href="#__codelineno-24-1" id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="nx">myStr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">" 123"</span><span class="p">;</span>
+</span></code></pre></div>
+<p>returns a new string by concatenating <code>myStr</code> to another string <code>" 123"</code>. Note that <code>myStr</code> remains unchanged. Alternatively, we could use <code>myStr.concat(" 123")</code>, which produces the same result. If we would to store the result of concatention, we need to assign it to a new variable.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-25-1"><a href="#__codelineno-25-1" id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">newStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">myStr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">" 123"</span><span class="p">;</span>
+</span></code></pre></div>
+<p>We can also use <code>${}</code> to embed a string variable into a template string.
+A template string is enclosed with (`) instead of (").</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-26-1"><a href="#__codelineno-26-1" id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">newStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">myStr</span><span class="si">}</span><span class="sb"> 123`</span><span class="p">;</span>
+</span></code></pre></div>
+<p>We may split a string by <code>.split()</code> method.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-27-1"><a href="#__codelineno-27-1" id="__codelineno-27-1" name="__codelineno-27-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">myStrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">newStr</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">" "</span><span class="p">);</span>
+</span><span id="__span-27-2"><a href="#__codelineno-27-2" id="__codelineno-27-2" name="__codelineno-27-2"></a><span class="c1">// Array(2) ["abc", "123"]</span>
+</span></code></pre></div>
+<p>In the above, we split <code>newStr</code> into an array of two substrings, with <code>" "</code> as the separator. We will discuss JavaScript arrays shortly.</p>
+<p>Note that we can call <code>.split("")</code>, we split the string into substrings where each substring is a character from the original string.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-28-1"><a href="#__codelineno-28-1" id="__codelineno-28-1" name="__codelineno-28-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">myChars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">newStr</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">""</span><span class="p">);</span>
+</span><span id="__span-28-2"><a href="#__codelineno-28-2" id="__codelineno-28-2" name="__codelineno-28-2"></a><span class="c1">// Array(7) [ "a", "b", "c", " ", "1", "2", "3" ]</span>
+</span></code></pre></div>
+<p>When we call <code>.split()</code> without any argument the string is not splitted and the result array contains one element which is the whole string.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-29-1"><a href="#__codelineno-29-1" id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">notSplitted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">newStr</span><span class="p">.</span><span class="nx">split</span><span class="p">();</span>
+</span><span id="__span-29-2"><a href="#__codelineno-29-2" id="__codelineno-29-2" name="__codelineno-29-2"></a><span class="c1">// Array [ "abc 123" ]</span>
+</span></code></pre></div>
+<p>There are three different methods for extracting a sub-string from a string in JavaScript</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-30-1"><a href="#__codelineno-30-1" id="__codelineno-30-1" name="__codelineno-30-1"></a><span class="nx">myStr</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span>
+</span><span id="__span-30-2"><a href="#__codelineno-30-2" id="__codelineno-30-2" name="__codelineno-30-2"></a><span class="c1">// "bc"</span>
+</span></code></pre></div>
+<p>extracts the subtring starting from index <code>1</code> until <code>2</code>. The first argument is the starting index and the second one is the end index (end index itself is excluded in the output). The second method is <code>.substr</code> method:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-31-1"><a href="#__codelineno-31-1" id="__codelineno-31-1" name="__codelineno-31-1"></a><span class="nx">myStr</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">);</span>
+</span><span id="__span-31-2"><a href="#__codelineno-31-2" id="__codelineno-31-2" name="__codelineno-31-2"></a><span class="c1">// "bc"</span>
+</span></code></pre></div>
+<p>extracts <code>2</code> characters starting from index <code>1</code>. The first argument is the starting index and the second one is the length of the substring. The third method is using <code>.slice</code>:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-32-1"><a href="#__codelineno-32-1" id="__codelineno-32-1" name="__codelineno-32-1"></a><span class="nx">myStr</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span>
+</span><span id="__span-32-2"><a href="#__codelineno-32-2" id="__codelineno-32-2" name="__codelineno-32-2"></a><span class="c1">// "bc"</span>
+</span></code></pre></div>
+<p>behaves the same as <code>.substring()</code>. However, when <code>.slice()</code> is given a single argument, it behaves like the index access.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-33-1"><a href="#__codelineno-33-1" id="__codelineno-33-1" name="__codelineno-33-1"></a><span class="nx">myStr</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">myStr</span><span class="p">[</span><span class="mf">2</span><span class="p">];</span>
+</span></code></pre></div>
+<p><code>.slice()</code> accepts negative integers as arguments.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-34-1"><a href="#__codelineno-34-1" id="__codelineno-34-1" name="__codelineno-34-1"></a><span class="nx">myStr</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mf">3</span><span class="p">);</span><span class="w"> </span><span class="c1">// last three</span>
+</span><span id="__span-34-2"><a href="#__codelineno-34-2" id="__codelineno-34-2" name="__codelineno-34-2"></a><span class="c1">// "abc"</span>
+</span><span id="__span-34-3"><a href="#__codelineno-34-3" id="__codelineno-34-3" name="__codelineno-34-3"></a><span class="nx">myStr</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mf">2</span><span class="p">);</span><span class="w"> </span><span class="c1">// last two</span>
+</span><span id="__span-34-4"><a href="#__codelineno-34-4" id="__codelineno-34-4" name="__codelineno-34-4"></a><span class="c1">// "bc"</span>
+</span><span id="__span-34-5"><a href="#__codelineno-34-5" id="__codelineno-34-5" name="__codelineno-34-5"></a><span class="nx">myStr</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mf">3</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// the third last followed by the second last.</span>
+</span><span id="__span-34-6"><a href="#__codelineno-34-6" id="__codelineno-34-6" name="__codelineno-34-6"></a><span class="c1">// "ab"</span>
+</span></code></pre></div>
+<h4 id="array">Array</h4>
+<p>In JavaScript, we use <code>[</code> and <code>]</code> to enclose a sequence of items to create an array.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-35-1"><a href="#__codelineno-35-1" id="__codelineno-35-1" name="__codelineno-35-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">myArr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"a"</span><span class="p">,</span><span class="w"> </span><span class="s2">"b"</span><span class="p">,</span><span class="w"> </span><span class="s2">"c"</span><span class="p">];</span>
+</span></code></pre></div>
+<p>Similar to String, we may use <code>[idx]</code> to access an element of an array at position <code>idx</code>.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-36-1"><a href="#__codelineno-36-1" id="__codelineno-36-1" name="__codelineno-36-1"></a><span class="nx">myArr</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+</span><span id="__span-36-2"><a href="#__codelineno-36-2" id="__codelineno-36-2" name="__codelineno-36-2"></a><span class="c1">// "a"</span>
+</span></code></pre></div>
+<p>And the <code>.slice()</code> method also works on array.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-37-1"><a href="#__codelineno-37-1" id="__codelineno-37-1" name="__codelineno-37-1"></a><span class="nx">myArr</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">);</span>
+</span><span id="__span-37-2"><a href="#__codelineno-37-2" id="__codelineno-37-2" name="__codelineno-37-2"></a><span class="c1">// Array ["b", "c"]</span>
+</span></code></pre></div>
+<p>The <code>.reverse()</code> method revesrse the array in-place.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-38-1"><a href="#__codelineno-38-1" id="__codelineno-38-1" name="__codelineno-38-1"></a><span class="nx">myArr</span><span class="p">.</span><span class="nx">reverse</span><span class="p">();</span>
+</span><span id="__span-38-2"><a href="#__codelineno-38-2" id="__codelineno-38-2" name="__codelineno-38-2"></a><span class="nx">myArr</span><span class="p">;</span>
+</span><span id="__span-38-3"><a href="#__codelineno-38-3" id="__codelineno-38-3" name="__codelineno-38-3"></a><span class="c1">// Array ["c", "b", "a"]</span>
+</span></code></pre></div>
+<p>Like string, <code>.concat()</code> method concatenates two arrays to produce a new one.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-39-1"><a href="#__codelineno-39-1" id="__codelineno-39-1" name="__codelineno-39-1"></a><span class="nx">myArr</span><span class="p">.</span><span class="nx">concat</span><span class="p">([</span><span class="s2">"d"</span><span class="p">]);</span>
+</span><span id="__span-39-2"><a href="#__codelineno-39-2" id="__codelineno-39-2" name="__codelineno-39-2"></a><span class="c1">// Array ["c", "b", "a", "d"]</span>
+</span></code></pre></div>
+<p>Note that the <code>+</code> operator does not concatenate arrays.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-40-1"><a href="#__codelineno-40-1" id="__codelineno-40-1" name="__codelineno-40-1"></a><span class="nx">myArr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">[</span><span class="s2">"d"</span><span class="p">];</span>
+</span><span id="__span-40-2"><a href="#__codelineno-40-2" id="__codelineno-40-2" name="__codelineno-40-2"></a><span class="c1">// 'c,b,ad'</span>
+</span></code></pre></div>
+<p>Method <code>join()</code> joins all the elements of an array back to a string, assuming all elements are string or can be converted to string.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-41-1"><a href="#__codelineno-41-1" id="__codelineno-41-1" name="__codelineno-41-1"></a><span class="nx">myArray</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="s2">","</span><span class="p">);</span>
+</span><span id="__span-41-2"><a href="#__codelineno-41-2" id="__codelineno-41-2" name="__codelineno-41-2"></a><span class="c1">// "c,b,a"</span>
+</span></code></pre></div>
+<p>Method <code>push()</code> inserts a new element at the end of the array and <code>pop()</code> removes the last element. These two elements turn an array into a stack data structure.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-42-1"><a href="#__codelineno-42-1" id="__codelineno-42-1" name="__codelineno-42-1"></a><span class="nx">myArr</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">"d"</span><span class="p">);</span>
+</span><span id="__span-42-2"><a href="#__codelineno-42-2" id="__codelineno-42-2" name="__codelineno-42-2"></a><span class="nx">myArr</span><span class="p">;</span>
+</span><span id="__span-42-3"><a href="#__codelineno-42-3" id="__codelineno-42-3" name="__codelineno-42-3"></a><span class="c1">// Array ["c", "b", "a", "d"]</span>
+</span><span id="__span-42-4"><a href="#__codelineno-42-4" id="__codelineno-42-4" name="__codelineno-42-4"></a><span class="nx">myArr</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+</span><span id="__span-42-5"><a href="#__codelineno-42-5" id="__codelineno-42-5" name="__codelineno-42-5"></a><span class="c1">// "d"</span>
+</span><span id="__span-42-6"><a href="#__codelineno-42-6" id="__codelineno-42-6" name="__codelineno-42-6"></a><span class="nx">myArr</span><span class="p">;</span>
+</span><span id="__span-42-7"><a href="#__codelineno-42-7" id="__codelineno-42-7" name="__codelineno-42-7"></a><span class="c1">// Array ["c", "b", "a"]</span>
+</span></code></pre></div>
+<p>To insert an element at the begining of an array, we may use the <code>.unshift()</code> method.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-43-1"><a href="#__codelineno-43-1" id="__codelineno-43-1" name="__codelineno-43-1"></a><span class="nx">myArr</span><span class="p">.</span><span class="nx">unshift</span><span class="p">(</span><span class="s2">"d"</span><span class="p">);</span>
+</span><span id="__span-43-2"><a href="#__codelineno-43-2" id="__codelineno-43-2" name="__codelineno-43-2"></a><span class="nx">myArr</span><span class="p">;</span>
+</span><span id="__span-43-3"><a href="#__codelineno-43-3" id="__codelineno-43-3" name="__codelineno-43-3"></a><span class="c1">// Array ["d", "c", "b", "a"]</span>
+</span></code></pre></div>
+<p>Note that <code>unshift</code> can insert more than one elements, e.g. <code>arr.unshift(e1, e2,...)</code>.</p>
+<p>To insert an element at a particular position of an array, we use <code>.splice()</code> method.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-44-1"><a href="#__codelineno-44-1" id="__codelineno-44-1" name="__codelineno-44-1"></a><span class="nx">myArr</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="s2">"z"</span><span class="p">);</span>
+</span><span id="__span-44-2"><a href="#__codelineno-44-2" id="__codelineno-44-2" name="__codelineno-44-2"></a><span class="nx">myArr</span><span class="p">;</span>
+</span><span id="__span-44-3"><a href="#__codelineno-44-3" id="__codelineno-44-3" name="__codelineno-44-3"></a><span class="c1">// Array ["d", "z", "c", "b", "a"]</span>
+</span></code></pre></div>
+<p>In the above, we call <code>splice()</code> with three arguments. The first argument denotes the index position of the array that we would like to insert the new element. the second argument specifies how many arguments we would like to remove from this position onwards before the insertion. In this case we don't want to remove any existing element. The third argument denotes the new element that we would like to insert.</p>
+<p>Without any surprise, we may also use <code>splice()</code> to remove elements from an array.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-45-1"><a href="#__codelineno-45-1" id="__codelineno-45-1" name="__codelineno-45-1"></a><span class="nx">myArr</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">1</span><span class="p">);</span>
+</span><span id="__span-45-2"><a href="#__codelineno-45-2" id="__codelineno-45-2" name="__codelineno-45-2"></a><span class="nx">myArr</span><span class="p">;</span>
+</span><span id="__span-45-3"><a href="#__codelineno-45-3" id="__codelineno-45-3" name="__codelineno-45-3"></a><span class="c1">// Array ["d", "c", "b", "a"]</span>
+</span></code></pre></div>
+<h4 id="object">Object</h4>
+<p>Objects in JavaScritpts are key-value collection. It is very similar to the dictionary found in Python.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-46-1"><a href="#__codelineno-46-1" id="__codelineno-46-1" name="__codelineno-46-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">myObj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">apple</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="nx">orange</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-46-2"><a href="#__codelineno-46-2" id="__codelineno-46-2" name="__codelineno-46-2"></a><span class="nx">myObj</span><span class="p">[</span><span class="s2">"apple"</span><span class="p">];</span>
+</span><span id="__span-46-3"><a href="#__codelineno-46-3" id="__codelineno-46-3" name="__codelineno-46-3"></a><span class="c1">// 100</span>
+</span><span id="__span-46-4"><a href="#__codelineno-46-4" id="__codelineno-46-4" name="__codelineno-46-4"></a><span class="nx">myObj</span><span class="p">[</span><span class="s2">"durian"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">200</span><span class="p">;</span>
+</span><span id="__span-46-5"><a href="#__codelineno-46-5" id="__codelineno-46-5" name="__codelineno-46-5"></a><span class="nx">myObj</span><span class="p">;</span>
+</span><span id="__span-46-6"><a href="#__codelineno-46-6" id="__codelineno-46-6" name="__codelineno-46-6"></a><span class="c1">// { 'apple': 100, 'orange': 50, 'durian': 200 }</span>
+</span></code></pre></div>
+<p>Given a key of an object is of string type, besides using <code>obj[key]</code> to access the value, we may use the dot operator to access the value associated with the key.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-47-1"><a href="#__codelineno-47-1" id="__codelineno-47-1" name="__codelineno-47-1"></a><span class="nx">myObj</span><span class="p">.</span><span class="nx">durian</span><span class="p">;</span>
+</span><span id="__span-47-2"><a href="#__codelineno-47-2" id="__codelineno-47-2" name="__codelineno-47-2"></a><span class="c1">// 200</span>
+</span></code></pre></div>
+<p>Besides strings as keys, we can use numbers as keys in JavaScript objects, though it is uncommon.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-48-1"><a href="#__codelineno-48-1" id="__codelineno-48-1" name="__codelineno-48-1"></a><span class="nx">myObj</span><span class="p">[</span><span class="mf">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1000</span><span class="p">;</span>
+</span><span id="__span-48-2"><a href="#__codelineno-48-2" id="__codelineno-48-2" name="__codelineno-48-2"></a><span class="nx">myObj</span><span class="p">[</span><span class="mf">1</span><span class="p">];</span>
+</span><span id="__span-48-3"><a href="#__codelineno-48-3" id="__codelineno-48-3" name="__codelineno-48-3"></a><span class="c1">// 1000</span>
+</span></code></pre></div>
+<p>However we cannot use dot operator to access values associated with number keys in JavaScript objects.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-49-1"><a href="#__codelineno-49-1" id="__codelineno-49-1" name="__codelineno-49-1"></a><span class="nx">myObj</span><span class="mf">.1</span><span class="p">;</span><span class="w"> </span><span class="c1">// syntax error</span>
+</span></code></pre></div>
+<p>To remove a key from a JavaScript object, we may use the <code>delete</code> operator.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-50-1"><a href="#__codelineno-50-1" id="__codelineno-50-1" name="__codelineno-50-1"></a><span class="ow">delete</span><span class="w"> </span><span class="nx">myObj</span><span class="p">[</span><span class="mf">1</span><span class="p">];</span>
+</span><span id="__span-50-2"><a href="#__codelineno-50-2" id="__codelineno-50-2" name="__codelineno-50-2"></a><span class="nx">myObj</span><span class="p">;</span>
+</span><span id="__span-50-3"><a href="#__codelineno-50-3" id="__codelineno-50-3" name="__codelineno-50-3"></a><span class="c1">// { 'apple': 100, 'orange': 50, 'durian': 200 }</span>
+</span></code></pre></div>
+<p>Given an object <code>o</code>, <code>Object.keys(o)</code> returns all the keys in this object and <code>Object.entries(o)</code> returns all the key-value pairs in the object.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-51-1"><a href="#__codelineno-51-1" id="__codelineno-51-1" name="__codelineno-51-1"></a><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">myObj</span><span class="p">);</span>
+</span><span id="__span-51-2"><a href="#__codelineno-51-2" id="__codelineno-51-2" name="__codelineno-51-2"></a><span class="c1">// ['apple', 'orange', 'durian']</span>
+</span><span id="__span-51-3"><a href="#__codelineno-51-3" id="__codelineno-51-3" name="__codelineno-51-3"></a><span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">myObj</span><span class="p">);</span>
+</span><span id="__span-51-4"><a href="#__codelineno-51-4" id="__codelineno-51-4" name="__codelineno-51-4"></a><span class="c1">// [['apple', 100], ['orange', 50], ['durian', 200]]</span>
+</span></code></pre></div>
+<h3 id="control-flow-statements">Control flow statements</h3>
+<p>Like other general purpose language, JavaScript offers the following standard control flow statements.</p>
+<h4 id="if-else">if-else</h4>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-52-1"><a href="#__codelineno-52-1" id="__codelineno-52-1" name="__codelineno-52-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">apple_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+</span><span id="__span-52-2"><a href="#__codelineno-52-2" id="__codelineno-52-2" name="__codelineno-52-2"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="s2">"apple"</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">myObj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-52-3"><a href="#__codelineno-52-3" id="__codelineno-52-3" name="__codelineno-52-3"></a><span class="w">  </span><span class="nx">apple_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">myObj</span><span class="p">.</span><span class="nx">apple</span><span class="p">;</span>
+</span><span id="__span-52-4"><a href="#__codelineno-52-4" id="__codelineno-52-4" name="__codelineno-52-4"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-52-5"><a href="#__codelineno-52-5" id="__codelineno-52-5" name="__codelineno-52-5"></a><span class="w">  </span><span class="nx">apple_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-52-6"><a href="#__codelineno-52-6" id="__codelineno-52-6" name="__codelineno-52-6"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>In the above we assign the value associatd with the key <code>apple</code> in <code>myObj</code> if <code>apple</code> exists in <code>myObj</code>'s key set. Otherwise, <code>0</code> is assigned. As a side note, <code>null</code> denotes a null value in JavaScript. It means "not-exist".</p>
+<h4 id="for">for</h4>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-53-1"><a href="#__codelineno-53-1" id="__codelineno-53-1" name="__codelineno-53-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-53-2"><a href="#__codelineno-53-2" id="__codelineno-53-2" name="__codelineno-53-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">kvs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">myObj</span><span class="p">);</span>
+</span><span id="__span-53-3"><a href="#__codelineno-53-3" id="__codelineno-53-3" name="__codelineno-53-3"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">kvs</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-53-4"><a href="#__codelineno-53-4" id="__codelineno-53-4" name="__codelineno-53-4"></a><span class="w">  </span><span class="nx">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">kvs</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="mf">1</span><span class="p">];</span>
+</span><span id="__span-53-5"><a href="#__codelineno-53-5" id="__codelineno-53-5" name="__codelineno-53-5"></a><span class="p">}</span>
+</span><span id="__span-53-6"><a href="#__codelineno-53-6" id="__codelineno-53-6" name="__codelineno-53-6"></a><span class="nx">sum</span><span class="p">;</span>
+</span><span id="__span-53-7"><a href="#__codelineno-53-7" id="__codelineno-53-7" name="__codelineno-53-7"></a><span class="c1">// 350</span>
+</span></code></pre></div>
+<p>In the above snippet, we use a <code>for</code> loop to compute the sum of all values in the object <code>myObj</code>. First we initialize the <code>sum</code> variable to <code>0</code>. We compute the key-value entries in <code>myObj</code> and store them <code>kvs</code>. In the third statement, we use a for-loop it iterate through every key-value pair and extract the value. In the for statement, we make use of an index variable <code>i</code>. Starting from 0, <code>i</code> can be used to make reference to the <code>i+1</code>-th entry in the array <code>kvs</code>. At the end of each iteration we increment <code>i</code> by 1. The loop stops when <code>i == kvs.length</code>.</p>
+<h5 id="local-scope">Local scope</h5>
+<p>Note that in the <code>for</code> statement we use <code>let</code> to declare a variable <code>i</code>. Remember the difference between <code>var</code> and <code>let</code> is as follows,</p>
+<ol>
+<li>Variables declared with <code>var</code> is accessible in the entire function body.</li>
+<li>Variables declared with <code>let</code> is accessible within the current block.</li>
+</ol>
+<p>In the above example, <code>i</code> is not accessible before and after the for-loop.</p>
+<p>Besides <code>var</code> and <code>let</code>, we can declare a constant variable using <code>const</code></p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-54-1"><a href="#__codelineno-54-1" id="__codelineno-54-1" name="__codelineno-54-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14</span><span class="p">;</span>
+</span></code></pre></div>
+<p>Constant variables are immutable, i.e. once assigned their values cannot be updated.</p>
+<h5 id="for-in-and-for-of">For-in and For-of</h5>
+<p>We could rewrite the for-loop in the following</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-55-1"><a href="#__codelineno-55-1" id="__codelineno-55-1" name="__codelineno-55-1"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">kvs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-55-2"><a href="#__codelineno-55-2" id="__codelineno-55-2" name="__codelineno-55-2"></a><span class="w">  </span><span class="nx">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">kvs</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="mf">1</span><span class="p">];</span>
+</span><span id="__span-55-3"><a href="#__codelineno-55-3" id="__codelineno-55-3" name="__codelineno-55-3"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Notice that <code>i</code> is the keys of object <code>kvs</code>. <code>for-in</code> statement will loop through indices if the given iterable is an array.</p>
+<p>Alternatively,</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-56-1"><a href="#__codelineno-56-1" id="__codelineno-56-1" name="__codelineno-56-1"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">kv</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">kvs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-56-2"><a href="#__codelineno-56-2" id="__codelineno-56-2" name="__codelineno-56-2"></a><span class="w">  </span><span class="nx">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">kv</span><span class="p">[</span><span class="mf">1</span><span class="p">];</span>
+</span><span id="__span-56-3"><a href="#__codelineno-56-3" id="__codelineno-56-3" name="__codelineno-56-3"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>In this case <code>kv</code> denotes the values from the array <code>kvs</code>. <code>for-of</code> statement will loop through each item if the given iterable is an array.</p>
+<h4 id="while">While</h4>
+<p>Besides for-loops, we can repeat operations with <code>while</code>.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-57-1"><a href="#__codelineno-57-1" id="__codelineno-57-1" name="__codelineno-57-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+</span><span id="__span-57-2"><a href="#__codelineno-57-2" id="__codelineno-57-2" name="__codelineno-57-2"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">kvs</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-57-3"><a href="#__codelineno-57-3" id="__codelineno-57-3" name="__codelineno-57-3"></a><span class="w">  </span><span class="nx">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">kvs</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="mf">1</span><span class="p">];</span>
+</span><span id="__span-57-4"><a href="#__codelineno-57-4" id="__codelineno-57-4" name="__codelineno-57-4"></a><span class="w">  </span><span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+</span><span id="__span-57-5"><a href="#__codelineno-57-5" id="__codelineno-57-5" name="__codelineno-57-5"></a><span class="p">}</span>
+</span></code></pre></div>
+<h4 id="foreach-and-map">forEach and map</h4>
+<p>Given an array, we can use <code>.forEach(p)</code> to apply function <code>p</code> to each element in the array.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-58-1"><a href="#__codelineno-58-1" id="__codelineno-58-1" name="__codelineno-58-1"></a><span class="nx">kvs</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">kv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-58-2"><a href="#__codelineno-58-2" id="__codelineno-58-2" name="__codelineno-58-2"></a><span class="w">  </span><span class="nx">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">kv</span><span class="p">[</span><span class="mf">1</span><span class="p">];</span>
+</span><span id="__span-58-3"><a href="#__codelineno-58-3" id="__codelineno-58-3" name="__codelineno-58-3"></a><span class="p">});</span>
+</span></code></pre></div>
+<p>In the above we pass anonymous function to add <code>kv[1]</code> to the <code>sum</code> variable. Note that the functio provided is a function without return statement.</p>
+<p>If we want to apply a function <code>f</code> to each element of the array to produce a new array, we use <code>.map(f)</code>. The function provided here has a return statement.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-59-1"><a href="#__codelineno-59-1" id="__codelineno-59-1" name="__codelineno-59-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">kvs2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">kvs</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">kv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-59-2"><a href="#__codelineno-59-2" id="__codelineno-59-2" name="__codelineno-59-2"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">[</span><span class="nx">kv</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">toUpperCase</span><span class="p">(),</span><span class="w"> </span><span class="nx">kv</span><span class="p">[</span><span class="mf">1</span><span class="p">]];</span>
+</span><span id="__span-59-3"><a href="#__codelineno-59-3" id="__codelineno-59-3" name="__codelineno-59-3"></a><span class="p">});</span>
+</span><span id="__span-59-4"><a href="#__codelineno-59-4" id="__codelineno-59-4" name="__codelineno-59-4"></a><span class="nx">kvs2</span><span class="p">;</span>
+</span><span id="__span-59-5"><a href="#__codelineno-59-5" id="__codelineno-59-5" name="__codelineno-59-5"></a><span class="c1">// [['APPLE', 100], ['ORANGE', 50], ['DURIAN', 200]]</span>
+</span></code></pre></div>
+<p>Note that in JavaScript there is no tuple datatype.</p>
+<h2 id="javascript-operators">JavaScript Operators</h2>
+<h3 id="binary-operators">Binary Operators</h3>
+<p>Operators are predefined symbols in JavaScripts that allows us to compute result. For instance</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-60-1"><a href="#__codelineno-60-1" id="__codelineno-60-1" name="__codelineno-60-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3</span><span class="p">;</span>
+</span><span id="__span-60-2"><a href="#__codelineno-60-2" id="__codelineno-60-2" name="__codelineno-60-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+</span><span id="__span-60-3"><a href="#__codelineno-60-3" id="__codelineno-60-3" name="__codelineno-60-3"></a><span class="kd">var</span><span class="w"> </span><span class="nx">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">y</span><span class="p">;</span><span class="w"> </span><span class="c1">// z is 4</span>
+</span></code></pre></div>
+<p>In the above context, this operator <code>+</code> sums up its given arguments since both are in number type.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-61-1"><a href="#__codelineno-61-1" id="__codelineno-61-1" name="__codelineno-61-1"></a><span class="ow">typeof</span><span class="w"> </span><span class="nx">x</span><span class="p">;</span><span class="w"> </span><span class="c1">// number</span>
+</span><span id="__span-61-2"><a href="#__codelineno-61-2" id="__codelineno-61-2" name="__codelineno-61-2"></a><span class="ow">typeof</span><span class="w"> </span><span class="nx">y</span><span class="p">;</span><span class="w"> </span><span class="c1">// number</span>
+</span></code></pre></div>
+<p>The binary operator <code>+</code> is overloaded.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-62-1"><a href="#__codelineno-62-1" id="__codelineno-62-1" name="__codelineno-62-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"3"</span><span class="p">;</span>
+</span><span id="__span-62-2"><a href="#__codelineno-62-2" id="__codelineno-62-2" name="__codelineno-62-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+</span><span id="__span-62-3"><a href="#__codelineno-62-3" id="__codelineno-62-3" name="__codelineno-62-3"></a><span class="kd">var</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">b</span><span class="p">;</span><span class="w"> </span><span class="c1">// what is c?</span>
+</span></code></pre></div>
+<p>In the above <code>+</code>'s left operand is a string and the right is a number, JavaScript performs some implicit type coercion to convert the second operand to string, hence <code>+</code> becomes a string concatenation operator.</p>
+<p>Another commonly use binary operator in JavaScript is <code>==</code> which used for comparison.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-63-1"><a href="#__codelineno-63-1" id="__codelineno-63-1" name="__codelineno-63-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">100</span><span class="p">;</span>
+</span><span id="__span-63-2"><a href="#__codelineno-63-2" id="__codelineno-63-2" name="__codelineno-63-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">isEven</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// isEven is true</span>
+</span></code></pre></div>
+<p>What about?</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-64-1"><a href="#__codelineno-64-1" id="__codelineno-64-1" name="__codelineno-64-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">isEven2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"0"</span><span class="p">;</span><span class="w"> </span><span class="c1">// isEven2 is true or false?</span>
+</span></code></pre></div>
+<p>JavaScript coerces the right operand from string to number for us, hence <code>isEven2</code> is <code>true</code></p>
+<p>However there situations in which such an implicit type coercion is dangerous</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-65-1"><a href="#__codelineno-65-1" id="__codelineno-65-1" name="__codelineno-65-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">isEven3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">""</span><span class="p">;</span><span class="w"> </span><span class="c1">// isEven3 is true??!?</span>
+</span></code></pre></div>
+<p>To prevent this kind of situation, it's better to use a coercion-free comparison.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-66-1"><a href="#__codelineno-66-1" id="__codelineno-66-1" name="__codelineno-66-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">isEven4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">2</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">""</span><span class="p">;</span><span class="w"> </span><span class="c1">// isEven4 is false!</span>
+</span></code></pre></div>
+<h4 id="things-for-you-to-check">Things for you to check.</h4>
+<p>Please try to test out the following yourself, (try with different browsers).</p>
+<ol>
+<li>Add a number to a <code>null</code> value.</li>
+<li>Add a number to a <code>NaN</code> value.</li>
+<li>Compare two string values.</li>
+<li>Compare a number to a string value.</li>
+</ol>
+<h3 id="unary-operators">Unary Operators</h3>
+<p>Operators taking only one operand are called unary operators.</p>
+<p>For instance, the <code>-</code> symbol is a unary operator as it takes a numerical operand and changes the sign of the operand.</p>
+<p>The <code>!</code> symbol is another unary operator which takes boolean expression and return negation of the operand.</p>
+<h2 id="class">Class</h2>
+<p>In JavaScript, we can define a custom template for creating objects.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-67-1"><a href="#__codelineno-67-1" id="__codelineno-67-1" name="__codelineno-67-1"></a><span class="kd">class</span><span class="w"> </span><span class="nx">Rect</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-67-2"><a href="#__codelineno-67-2" id="__codelineno-67-2" name="__codelineno-67-2"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">h</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-67-3"><a href="#__codelineno-67-3" id="__codelineno-67-3" name="__codelineno-67-3"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">w</span><span class="p">;</span>
+</span><span id="__span-67-4"><a href="#__codelineno-67-4" id="__codelineno-67-4" name="__codelineno-67-4"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">h</span><span class="p">;</span>
+</span><span id="__span-67-5"><a href="#__codelineno-67-5" id="__codelineno-67-5" name="__codelineno-67-5"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-67-6"><a href="#__codelineno-67-6" id="__codelineno-67-6" name="__codelineno-67-6"></a><span class="w">  </span><span class="nx">area</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-67-7"><a href="#__codelineno-67-7" id="__codelineno-67-7" name="__codelineno-67-7"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">height</span><span class="p">;</span>
+</span><span id="__span-67-8"><a href="#__codelineno-67-8" id="__codelineno-67-8" name="__codelineno-67-8"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-67-9"><a href="#__codelineno-67-9" id="__codelineno-67-9" name="__codelineno-67-9"></a><span class="p">}</span>
+</span><span id="__span-67-10"><a href="#__codelineno-67-10" id="__codelineno-67-10" name="__codelineno-67-10"></a>
+</span><span id="__span-67-11"><a href="#__codelineno-67-11" id="__codelineno-67-11" name="__codelineno-67-11"></a><span class="kd">var</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Rect</span><span class="p">(</span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="mf">5</span><span class="p">);</span>
+</span><span id="__span-67-12"><a href="#__codelineno-67-12" id="__codelineno-67-12" name="__codelineno-67-12"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">area</span><span class="p">());</span>
+</span></code></pre></div>
+<p>In the above code snippet, we define a class <code>Rect</code>. Every object instance of <code>Rect</code> has a <code>width</code> and a <code>height</code> attribute. The <code>constructor()</code> is invoked when we instantiate an object instance from a class via the <code>new</code> keyword. Besides the constructor method, the <code>Rect</code> class defines an <code>area()</code> method which computes the area of the object. To invoke a normal method, we use the <code>.</code> operator.</p>
+<h3 id="inheritance-only-available-in-es6-onwards">Inheritance (Only available in ES6 onwards)</h3>
+<p>Since JavaScript version ES6, we can define subclasses using the <code>extends</code> keyword.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-68-1"><a href="#__codelineno-68-1" id="__codelineno-68-1" name="__codelineno-68-1"></a><span class="kd">class</span><span class="w"> </span><span class="nx">Square</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Rect</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-68-2"><a href="#__codelineno-68-2" id="__codelineno-68-2" name="__codelineno-68-2"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-68-3"><a href="#__codelineno-68-3" id="__codelineno-68-3" name="__codelineno-68-3"></a><span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="nx">s</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="p">);</span>
+</span><span id="__span-68-4"><a href="#__codelineno-68-4" id="__codelineno-68-4" name="__codelineno-68-4"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">side</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">s</span><span class="p">;</span>
+</span><span id="__span-68-5"><a href="#__codelineno-68-5" id="__codelineno-68-5" name="__codelineno-68-5"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-68-6"><a href="#__codelineno-68-6" id="__codelineno-68-6" name="__codelineno-68-6"></a><span class="p">}</span>
+</span><span id="__span-68-7"><a href="#__codelineno-68-7" id="__codelineno-68-7" name="__codelineno-68-7"></a>
+</span><span id="__span-68-8"><a href="#__codelineno-68-8" id="__codelineno-68-8" name="__codelineno-68-8"></a><span class="kd">var</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Square</span><span class="p">(</span><span class="mf">10</span><span class="p">);</span>
+</span><span id="__span-68-9"><a href="#__codelineno-68-9" id="__codelineno-68-9" name="__codelineno-68-9"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">s</span><span class="p">.</span><span class="nx">area</span><span class="p">());</span>
+</span></code></pre></div>
+<p>With inheritence objects instantiated from a subclass inherits methods and attributes belong to the base classes.</p>
+<p>Most of the modern browsers support ES6. In case you need to handle some legacy browsers, or you would like understand how class and inheritance were compiled, you could read up the references</p>
+<ul>
+<li>JavaScript prototypes and prototype inheritance</li>
+</ul>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-69-1"><a href="#__codelineno-69-1" id="__codelineno-69-1" name="__codelineno-69-1"></a>https://www.freecodecamp.org/news/prototypes-and-inheritance-in-javascript/#:~:text=In%20JavaScript%2C%20an%20object%20can,from%20other%20objects%20%E2%80%94%20the%20prototypes.
+</span></code></pre></div>
+<h2 id="higher-order-functions">Higher order functions</h2>
+<h3 id="functions-as-inputs">Functions as inputs</h3>
+<p>We have seen how functions are used in JavaScript in the previous unit.
+We consider some advanced usage of functions.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-70-1"><a href="#__codelineno-70-1" id="__codelineno-70-1" name="__codelineno-70-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">incr</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-70-2"><a href="#__codelineno-70-2" id="__codelineno-70-2" name="__codelineno-70-2"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+</span><span id="__span-70-3"><a href="#__codelineno-70-3" id="__codelineno-70-3" name="__codelineno-70-3"></a><span class="p">}</span>
+</span><span id="__span-70-4"><a href="#__codelineno-70-4" id="__codelineno-70-4" name="__codelineno-70-4"></a>
+</span><span id="__span-70-5"><a href="#__codelineno-70-5" id="__codelineno-70-5" name="__codelineno-70-5"></a><span class="kd">function</span><span class="w"> </span><span class="nx">twice</span><span class="p">(</span><span class="nx">f</span><span class="p">,</span><span class="w"> </span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-70-6"><a href="#__codelineno-70-6" id="__codelineno-70-6" name="__codelineno-70-6"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">f</span><span class="p">(</span><span class="nx">f</span><span class="p">(</span><span class="nx">x</span><span class="p">));</span>
+</span><span id="__span-70-7"><a href="#__codelineno-70-7" id="__codelineno-70-7" name="__codelineno-70-7"></a><span class="p">}</span>
+</span><span id="__span-70-8"><a href="#__codelineno-70-8" id="__codelineno-70-8" name="__codelineno-70-8"></a>
+</span><span id="__span-70-9"><a href="#__codelineno-70-9" id="__codelineno-70-9" name="__codelineno-70-9"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">twice</span><span class="p">(</span><span class="nx">incr</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">));</span><span class="w"> </span><span class="c1">// 12</span>
+</span></code></pre></div>
+<p>In the above we define a function <code>incr</code> which increments a numerical input by <code>1</code>. Then we define a function <code>twice</code>, which takes a function argument <code>f</code> and another argument <code>x</code>. We apply <code>f</code> to <code>x</code> to produce an intermediate result then applies <code>f</code> again to the intermediate result.</p>
+<p><code>twice</code> is known as a higher order function as it takes another function as its input argument. Using higher order functions allows us to reuse codes.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-71-1"><a href="#__codelineno-71-1" id="__codelineno-71-1" name="__codelineno-71-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">dbl</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-71-2"><a href="#__codelineno-71-2" id="__codelineno-71-2" name="__codelineno-71-2"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+</span><span id="__span-71-3"><a href="#__codelineno-71-3" id="__codelineno-71-3" name="__codelineno-71-3"></a><span class="p">}</span>
+</span><span id="__span-71-4"><a href="#__codelineno-71-4" id="__codelineno-71-4" name="__codelineno-71-4"></a>
+</span><span id="__span-71-5"><a href="#__codelineno-71-5" id="__codelineno-71-5" name="__codelineno-71-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">twice</span><span class="p">(</span><span class="nx">dbl</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">));</span><span class="w"> </span><span class="c1">// 40</span>
+</span></code></pre></div>
+<h3 id="functions-as-a-returned-value-closure">Functions as a returned value (Closure)</h3>
+<p>Look at the code below and try to answer the question in comment:</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-72-1"><a href="#__codelineno-72-1" id="__codelineno-72-1" name="__codelineno-72-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">aFunc</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-72-2"><a href="#__codelineno-72-2" id="__codelineno-72-2" name="__codelineno-72-2"></a><span class="w">  </span><span class="nx">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span>
+</span><span id="__span-72-3"><a href="#__codelineno-72-3" id="__codelineno-72-3" name="__codelineno-72-3"></a><span class="p">}</span>
+</span><span id="__span-72-4"><a href="#__codelineno-72-4" id="__codelineno-72-4" name="__codelineno-72-4"></a><span class="nx">aFunc</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span><span class="w"> </span><span class="c1">// a=2, b=10</span>
+</span><span id="__span-72-5"><a href="#__codelineno-72-5" id="__codelineno-72-5" name="__codelineno-72-5"></a>
+</span><span id="__span-72-6"><a href="#__codelineno-72-6" id="__codelineno-72-6" name="__codelineno-72-6"></a><span class="c1">// Question: Is it possible to access or interact with the variables a and b after the funcion is invoked above?</span>
+</span></code></pre></div>
+<p>The answer is no. However, there is a way achieve it.</p>
+<p>We can define a function that returns another function.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-73-1"><a href="#__codelineno-73-1" id="__codelineno-73-1" name="__codelineno-73-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">part_sum</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-73-2"><a href="#__codelineno-73-2" id="__codelineno-73-2" name="__codelineno-73-2"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-73-3"><a href="#__codelineno-73-3" id="__codelineno-73-3" name="__codelineno-73-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">y</span><span class="p">;</span>
+</span><span id="__span-73-4"><a href="#__codelineno-73-4" id="__codelineno-73-4" name="__codelineno-73-4"></a><span class="w">  </span><span class="p">};</span>
+</span><span id="__span-73-5"><a href="#__codelineno-73-5" id="__codelineno-73-5" name="__codelineno-73-5"></a><span class="p">}</span>
+</span><span id="__span-73-6"><a href="#__codelineno-73-6" id="__codelineno-73-6" name="__codelineno-73-6"></a>
+</span><span id="__span-73-7"><a href="#__codelineno-73-7" id="__codelineno-73-7" name="__codelineno-73-7"></a><span class="kd">var</span><span class="w"> </span><span class="nx">incr_too</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">part_sum</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
+</span><span id="__span-73-8"><a href="#__codelineno-73-8" id="__codelineno-73-8" name="__codelineno-73-8"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">twice</span><span class="p">(</span><span class="nx">incr_too</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">));</span><span class="w"> </span><span class="c1">// 12</span>
+</span></code></pre></div>
+<p>In the above, we define a partial sum function, <code>part_sum</code> which takes an input <code>x</code> and returns an anonymous function that expects input <code>y</code>. The inner function returns the sum of <code>x</code> and <code>y</code>.
+<code>incr_too</code> is a reference to the anonymous function produced by <code>part_sum(1)</code> that expects <code>y</code> and returns <code>1 + y</code>.</p>
+<p>In this case, <code>part_sum</code> is a higher order function.</p>
+<p><a name="Closure"></a></p>
+<h4 id="closure">Closure</h4>
+<p>A closure in JavaScript is an inner function having access to its outer function's state/variables. In the example above, the inner function is a <em>closure</em> because the function is still having a reference to the variable <code>x</code> even after <code>part_sum(1)</code> has been invoked and returned. You can 'interact' with the variable <code>x</code> by invoking the <code>incr_too</code>.</p>
+<h3 id="functions-as-call-backs">Functions as call-backs</h3>
+<p><em>Function call-backs</em>, also known as continuations, turn out to be very useful for us to define operations that should be performed in sequence. For instance,</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-74-1"><a href="#__codelineno-74-1" id="__codelineno-74-1" name="__codelineno-74-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+</span><span id="__span-74-2"><a href="#__codelineno-74-2" id="__codelineno-74-2" name="__codelineno-74-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">incr</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+</span><span id="__span-74-3"><a href="#__codelineno-74-3" id="__codelineno-74-3" name="__codelineno-74-3"></a><span class="kd">var</span><span class="w"> </span><span class="nx">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dbl</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span>
+</span><span id="__span-74-4"><a href="#__codelineno-74-4" id="__codelineno-74-4" name="__codelineno-74-4"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">z</span><span class="p">);</span>
+</span></code></pre></div>
+<p>In the above we would like to increment <code>x</code> by <code>1</code> then multiply the intermediate result <code>y</code> by <code>2</code>.
+With call-backs, we could rewrite the above as</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-75-1"><a href="#__codelineno-75-1" id="__codelineno-75-1" name="__codelineno-75-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">incr_with_callback</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="nx">f</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-75-2"><a href="#__codelineno-75-2" id="__codelineno-75-2" name="__codelineno-75-2"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">incr</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
+</span><span id="__span-75-3"><a href="#__codelineno-75-3" id="__codelineno-75-3" name="__codelineno-75-3"></a><span class="w">  </span><span class="nx">f</span><span class="p">(</span><span class="nx">r</span><span class="p">);</span>
+</span><span id="__span-75-4"><a href="#__codelineno-75-4" id="__codelineno-75-4" name="__codelineno-75-4"></a><span class="p">}</span>
+</span><span id="__span-75-5"><a href="#__codelineno-75-5" id="__codelineno-75-5" name="__codelineno-75-5"></a>
+</span><span id="__span-75-6"><a href="#__codelineno-75-6" id="__codelineno-75-6" name="__codelineno-75-6"></a><span class="kd">function</span><span class="w"> </span><span class="nx">dbl_with_callback</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="nx">g</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-75-7"><a href="#__codelineno-75-7" id="__codelineno-75-7" name="__codelineno-75-7"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">dbl</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span>
+</span><span id="__span-75-8"><a href="#__codelineno-75-8" id="__codelineno-75-8" name="__codelineno-75-8"></a><span class="w">  </span><span class="nx">g</span><span class="p">(</span><span class="nx">r</span><span class="p">);</span>
+</span><span id="__span-75-9"><a href="#__codelineno-75-9" id="__codelineno-75-9" name="__codelineno-75-9"></a><span class="p">}</span>
+</span><span id="__span-75-10"><a href="#__codelineno-75-10" id="__codelineno-75-10" name="__codelineno-75-10"></a><span class="kd">var</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+</span><span id="__span-75-11"><a href="#__codelineno-75-11" id="__codelineno-75-11" name="__codelineno-75-11"></a><span class="nx">incr_with_callback</span><span class="p">(</span><span class="nx">x</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-75-12"><a href="#__codelineno-75-12" id="__codelineno-75-12" name="__codelineno-75-12"></a><span class="w">  </span><span class="nx">dbl_with_callback</span><span class="p">(</span><span class="nx">y</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">z</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-75-13"><a href="#__codelineno-75-13" id="__codelineno-75-13" name="__codelineno-75-13"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">z</span><span class="p">);</span>
+</span><span id="__span-75-14"><a href="#__codelineno-75-14" id="__codelineno-75-14" name="__codelineno-75-14"></a><span class="w">  </span><span class="p">});</span>
+</span><span id="__span-75-15"><a href="#__codelineno-75-15" id="__codelineno-75-15" name="__codelineno-75-15"></a><span class="p">});</span>
+</span></code></pre></div>
+<p>We introduce some variants of <code>incr</code> and <code>dbl</code> by calling the original functions to obtain the result. Instead of returning the results, we pass the results to the call back functions <code>f</code> (or <code>g</code>). <code>f</code> (and <code>g</code>) are known as the continuations, which means even when the main function terminates, it continues the execution by calling <code>f</code> (or <code>g</code>).</p>
+<p>These two versions should produce the same result. One may argue that the second one is too hard to read and does not bring any significant value over the first version.</p>
+<h3 id="application-of-call-backs">Application of Call-backs</h3>
+<p>Call-backs are widely used in JavaScript. One essential usage of call-back is to support asynchronous progamming.</p>
+<h2 id="asynchronous-programming">Asynchronous Programming</h2>
+<p>Synchronous programming means instructions are executed one after another.
+On the other hand, asynchronous programming means instructions are not executed in the order they are structured. We need this "out-of-order" execution when there exists some long-running instruction that occurs in the middle of the program, but we do not want this long-running instruction to block the rest of instructions. For example, while waiting for an API to return an output, or waiting for the query results from database.</p>
+<p>One possible way to actualize asynchronous programming is to leverage multi-threading, i.e. to spawn a new thread from the main thread to execute the long-running instruction. We can use an analogy that a <em>thread</em> is like a virtual processor executing a task, so multi-threading allows you to start executing multiple task at the same time, altough not necessarily in parallel.</p>
+<p>However, implementing asynchronous programming with multi-threading might lead to extra memory overhead because each thread needs to pre-allocate and maintain its own call stack space and size.</p>
+<h2 id="single-threaded-event-driven-programming">Single threaded Event-driven Programming</h2>
+<p>JavaScript takes a <strong>different</strong> approach in supporting asynchronous programming without using multi-threading.</p>
+<p>From this point onwards, we narrow the definition of "callbacks" to be the functions that will be invoked when an event occurs.</p>
+<p>Like many other languages, JavaScript executes a program with a call stack and a heap.
+Heap is a memory space for us to store non-primitive value such as objects, strings and arrays. For now our focus is on the call stack.</p>
+<p>When a JavaScript starts, a <code>main</code> frame is added to the call stack.Global variables are stored in the <code>main</code> frame. When there is a function call, a new frame is placed on-top of the call stack. Local variables with primitive values are stored inside the frame. The frame is then popped when the function returns. The <code>main</code> frame is popped when all instructions in the JavaScript program has been executed. For example</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-76-1"><a href="#__codelineno-76-1" id="__codelineno-76-1" name="__codelineno-76-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">f</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-76-2"><a href="#__codelineno-76-2" id="__codelineno-76-2" name="__codelineno-76-2"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
+</span><span id="__span-76-3"><a href="#__codelineno-76-3" id="__codelineno-76-3" name="__codelineno-76-3"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">g</span><span class="p">(</span><span class="nx">y</span><span class="p">);</span>
+</span><span id="__span-76-4"><a href="#__codelineno-76-4" id="__codelineno-76-4" name="__codelineno-76-4"></a><span class="p">}</span>
+</span><span id="__span-76-5"><a href="#__codelineno-76-5" id="__codelineno-76-5" name="__codelineno-76-5"></a><span class="kd">function</span><span class="w"> </span><span class="nx">g</span><span class="p">(</span><span class="nx">z</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-76-6"><a href="#__codelineno-76-6" id="__codelineno-76-6" name="__codelineno-76-6"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">z</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+</span><span id="__span-76-7"><a href="#__codelineno-76-7" id="__codelineno-76-7" name="__codelineno-76-7"></a><span class="p">}</span>
+</span><span id="__span-76-8"><a href="#__codelineno-76-8" id="__codelineno-76-8" name="__codelineno-76-8"></a><span class="nx">f</span><span class="p">(</span><span class="mf">10</span><span class="p">);</span>
+</span></code></pre></div>
+<p>In the above program, we define two functions <code>f</code> and <code>g</code>. The call stack begins with the folowing frame.</p>
+<pre class="mermaid"><code>graph LR;
+    id3(main)</code></pre>
+<p>The main program call <code>f(10)</code>. We place a new frame on the call stack. When executing <code>f(10)</code>, we assign <code>10+1</code> to a local variable <code>y</code> in the call frame of <code>f(10)</code>.</p>
+<pre class="mermaid"><code>graph LR;
+    id2("f(10)&lt;br/&gt;y=11")
+    id3(main)</code></pre>
+<p>Before returning the result, we call <code>g(y)</code> which is <code>g(11)</code> which creates another call frame. The following diagram shows the call stack with three frames when the program execution point is right before <code>return z*2</code>.</p>
+<pre class="mermaid"><code>graph LR;
+    id1("g(11)")
+    id2("f(10)&lt;br/&gt;y=11")
+    id3(main)</code></pre>
+<p>As <code>g(11)</code> call returns we remove the top most frame, i.e. <code>g(11)</code>, then back to the frame <code>f(10)</code>.</p>
+<pre class="mermaid"><code>graph LR;
+    id2("f(10)&lt;br/&gt;y=11")
+    id3(main)</code></pre>
+<p>We return <code>22</code> as result and remove the second frame, <code>f(10)</code>.</p>
+<pre class="mermaid"><code>graph LR;
+    id3(main)</code></pre>
+<p>Lastly, we remove the <code>main</code> frame as we reach to the end of the program.</p>
+<p><a name="Callback Queue"></a></p>
+<h3 id="callback-queue">Callback Queue</h3>
+<p>Things become more interesting in the presence of call-back functions associated with some UI elements.
+Recall one of our earlier examples,</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-77-1"><a href="#__codelineno-77-1" id="__codelineno-77-1" name="__codelineno-77-1"></a><span class="mf">1</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">handleButton1Click</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-77-2"><a href="#__codelineno-77-2" id="__codelineno-77-2" name="__codelineno-77-2"></a><span class="mf">2</span><span class="o">:</span><span class="w">   </span><span class="kd">var</span><span class="w"> </span><span class="nx">textbox1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"textbox1"</span><span class="p">);</span>
+</span><span id="__span-77-3"><a href="#__codelineno-77-3" id="__codelineno-77-3" name="__codelineno-77-3"></a><span class="mf">3</span><span class="o">:</span><span class="w">   </span><span class="kd">var</span><span class="w"> </span><span class="nx">span1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"span1"</span><span class="p">);</span>
+</span><span id="__span-77-4"><a href="#__codelineno-77-4" id="__codelineno-77-4" name="__codelineno-77-4"></a><span class="mf">4</span><span class="o">:</span><span class="w">   </span><span class="nx">span1</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">textbox1</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+</span><span id="__span-77-5"><a href="#__codelineno-77-5" id="__codelineno-77-5" name="__codelineno-77-5"></a><span class="mf">5</span><span class="o">:</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-77-6"><a href="#__codelineno-77-6" id="__codelineno-77-6" name="__codelineno-77-6"></a><span class="mf">6</span><span class="o">:</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-77-7"><a href="#__codelineno-77-7" id="__codelineno-77-7" name="__codelineno-77-7"></a><span class="mf">7</span><span class="o">:</span><span class="w">   </span><span class="kd">var</span><span class="w"> </span><span class="nx">button1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"button1"</span><span class="p">);</span>
+</span><span id="__span-77-8"><a href="#__codelineno-77-8" id="__codelineno-77-8" name="__codelineno-77-8"></a><span class="mf">8</span><span class="o">:</span><span class="w">   </span><span class="nx">button1</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"click"</span><span class="p">,</span><span class="w"> </span><span class="nx">handleButton1Click</span><span class="p">);</span>
+</span><span id="__span-77-9"><a href="#__codelineno-77-9" id="__codelineno-77-9" name="__codelineno-77-9"></a><span class="mf">9</span><span class="o">:</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-77-10"><a href="#__codelineno-77-10" id="__codelineno-77-10" name="__codelineno-77-10"></a><span class="mf">10</span><span class="o">:</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"DOMContentLoaded"</span><span class="p">,</span><span class="w"> </span><span class="nx">run</span><span class="p">);</span>
+</span></code></pre></div>
+<p>The program contains three portions, the two function definitions and a statement. JavaScript run-time in the browser executes them sequentially and synchronously, in the <code>main</code> call frame. To illustrate the step by step program execution let's consider the following table. The first column is the program counter.
+The second column captures the call stack, for simplicity, we use python's style list to represent a stack, where the left most element the bottom frame. The third column is a mapping from (UI) events to call-back functions, we use Python's style dictionary syntax. The fourth coulumn is the callback queue (again we use python's list style)</p>
+<table>
+<thead>
+<tr>
+<th>line num</th>
+<th>call stack</th>
+<th>event reg table</th>
+<th>callback queue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>[main]</td>
+<td>{}</td>
+<td>[]</td>
+</tr>
+<tr>
+<td>6</td>
+<td>[main]</td>
+<td>{}</td>
+<td>[]</td>
+</tr>
+<tr>
+<td>10</td>
+<td>[main]</td>
+<td>{ <code>DomContentLoaded</code> : <code>run</code>}</td>
+<td>[]</td>
+</tr>
+</tbody>
+</table>
+<p>The run-time first execute the function declaration in line 1, in call frame <code>main</code>, which does not affect the event registration table nor the callback queue. Similar observation applies when it move on to execute the function declaration in line 6. When the program counter is at line 10, we are add the last statement of the main program. Add an event listener to the even <code>DOMContentLoaded</code>, which creates an entry to the even registration table, mapping <code>DOMContentLoaded</code> to the function <code>run</code> as callback. After line 10, the call stack becomes empty as <code>main</code> ended. However the JavaScript run-time for rendering this web page is still running. It is executing an event-loop, in which it periodically check whether there is anything is the callback queue. At this point in time the browser continues to render the HTML page. When the HTML document is fully rendered, the browser triggers an <code>DomContentLoaded</code> event. At this point the callback function <code>run</code> associated with the event is enqueued to the callback queue.
+Since the call stack is empty and the callback queue is not, the JavaScript run-time dequeues <code>run</code> from the callback queue and creates a call frame in the call stack. It continues to move the program counter from lines 7-9.</p>
+<table>
+<thead>
+<tr>
+<th>program counter (line num)</th>
+<th>call stack</th>
+<th>event reg table</th>
+<th>callback queue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td></td>
+<td>[]</td>
+<td>{ <code>DomContentLoaded</code> : <code>run</code>}</td>
+<td>[<code>run</code>]</td>
+</tr>
+<tr>
+<td>7</td>
+<td>[<code>run</code>]</td>
+<td>{ <code>DomContentLoaded</code> : <code>run</code>}</td>
+<td>[]</td>
+</tr>
+<tr>
+<td>8</td>
+<td>[<code>run</code>]</td>
+<td>{ <code>DomContentLoaded</code> : <code>run</code>}</td>
+<td>[]</td>
+</tr>
+<tr>
+<td>9</td>
+<td>[<code>run</code>]</td>
+<td>{ <code>DomContentLoaded</code> : <code>run</code>, <code>button1.click</code> : <code>handleButton1Click</code> }</td>
+<td>[]</td>
+</tr>
+</tbody>
+</table>
+<p>At the end of line 9, a new event (<code>button1</code> being clicked) is being registered, mapping to <code>handleButton1Click</code>. The call stack becomes empty again. The JavaScript run-time goes into the event loop again, waiting for next event to take place.</p>
+<p>When someone clicks on the button <code>button1</code>, the callback function <code>handleButton1Click</code> will be enqeued into the callback queue. The run-time will "move" it into the call stack to execute it.</p>
+<h3 id="we-have-purposely-ignored-something">We have purposely ignored something ...</h3>
+<p>Actually, besides the callback, there are something called <em>promises</em> which enable JavaScript code to support asynchronous programming. We will discuss it in details in the next class.</p>
+<h3 id="cohort-exercise">Cohort Exercise</h3>
+<ol>
+<li>(Not Graded) Add some <code>console.log()</code> to the <code>textandbutton.js</code> and open <code>textandbutton.html</code> to observe in what order the call backs are executed.</li>
+<li>(Graded) Complete the following HTML and JavaScript codes, so that when the button <code>Submit</code> is clicked, the min and the max of the sequence of numbers (seperated by ",") entered in the input text box will be displayed in the <code>span</code> elements.</li>
+</ol>
+<div class="language-html highlight"><pre><span></span><code><span id="__span-78-1"><a href="#__codelineno-78-1" id="__codelineno-78-1" name="__codelineno-78-1"></a><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span><span id="__span-78-2"><a href="#__codelineno-78-2" id="__codelineno-78-2" name="__codelineno-78-2"></a><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span><span id="__span-78-3"><a href="#__codelineno-78-3" id="__codelineno-78-3" name="__codelineno-78-3"></a>  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-78-4"><a href="#__codelineno-78-4" id="__codelineno-78-4" name="__codelineno-78-4"></a>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"minmax.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-78-5"><a href="#__codelineno-78-5" id="__codelineno-78-5" name="__codelineno-78-5"></a>    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"utf-8"</span> <span class="p">/&gt;</span>
+</span><span id="__span-78-6"><a href="#__codelineno-78-6" id="__codelineno-78-6" name="__codelineno-78-6"></a>    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>50.003 sample code: Min and Max<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span><span id="__span-78-7"><a href="#__codelineno-78-7" id="__codelineno-78-7" name="__codelineno-78-7"></a>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span><span id="__span-78-8"><a href="#__codelineno-78-8" id="__codelineno-78-8" name="__codelineno-78-8"></a>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-78-9"><a href="#__codelineno-78-9" id="__codelineno-78-9" name="__codelineno-78-9"></a>    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>Your input: <span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">"textbox1"</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="p">/&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-78-10"><a href="#__codelineno-78-10" id="__codelineno-78-10" name="__codelineno-78-10"></a>    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>Min: <span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"min"</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-78-11"><a href="#__codelineno-78-11" id="__codelineno-78-11" name="__codelineno-78-11"></a>    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>Max: <span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">"max"</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-78-12"><a href="#__codelineno-78-12" id="__codelineno-78-12" name="__codelineno-78-12"></a>    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;&lt;</span><span class="nt">button</span> <span class="na">id</span><span class="o">=</span><span class="s">"button1"</span><span class="p">&gt;</span>Submit<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span><span id="__span-78-13"><a href="#__codelineno-78-13" id="__codelineno-78-13" name="__codelineno-78-13"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span><span id="__span-78-14"><a href="#__codelineno-78-14" id="__codelineno-78-14" name="__codelineno-78-14"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></code></pre></div>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-79-1"><a href="#__codelineno-79-1" id="__codelineno-79-1" name="__codelineno-79-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">numbers</span><span class="p">(</span><span class="nx">l</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-79-2"><a href="#__codelineno-79-2" id="__codelineno-79-2" name="__codelineno-79-2"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">o</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+</span><span id="__span-79-3"><a href="#__codelineno-79-3" id="__codelineno-79-3" name="__codelineno-79-3"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">l</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-79-4"><a href="#__codelineno-79-4" id="__codelineno-79-4" name="__codelineno-79-4"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">l</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span><span class="w"> </span><span class="mf">10</span><span class="p">);</span>
+</span><span id="__span-79-5"><a href="#__codelineno-79-5" id="__codelineno-79-5" name="__codelineno-79-5"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nb">isNaN</span><span class="p">(</span><span class="nx">n</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-79-6"><a href="#__codelineno-79-6" id="__codelineno-79-6" name="__codelineno-79-6"></a><span class="w">      </span><span class="nx">o</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">n</span><span class="p">);</span>
+</span><span id="__span-79-7"><a href="#__codelineno-79-7" id="__codelineno-79-7" name="__codelineno-79-7"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-79-8"><a href="#__codelineno-79-8" id="__codelineno-79-8" name="__codelineno-79-8"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-79-9"><a href="#__codelineno-79-9" id="__codelineno-79-9" name="__codelineno-79-9"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nx">o</span><span class="p">;</span>
+</span><span id="__span-79-10"><a href="#__codelineno-79-10" id="__codelineno-79-10" name="__codelineno-79-10"></a><span class="p">}</span>
+</span><span id="__span-79-11"><a href="#__codelineno-79-11" id="__codelineno-79-11" name="__codelineno-79-11"></a><span class="c1">// input: an array of numbers</span>
+</span><span id="__span-79-12"><a href="#__codelineno-79-12" id="__codelineno-79-12" name="__codelineno-79-12"></a><span class="c1">// output: an object containing 'min', with the minimum of the array and 'max' the maximum of the array.</span>
+</span><span id="__span-79-13"><a href="#__codelineno-79-13" id="__codelineno-79-13" name="__codelineno-79-13"></a><span class="kd">function</span><span class="w"> </span><span class="nx">min_max</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-79-14"><a href="#__codelineno-79-14" id="__codelineno-79-14" name="__codelineno-79-14"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+</span><span id="__span-79-15"><a href="#__codelineno-79-15" id="__codelineno-79-15" name="__codelineno-79-15"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+</span><span id="__span-79-16"><a href="#__codelineno-79-16" id="__codelineno-79-16" name="__codelineno-79-16"></a><span class="w">  </span><span class="c1">// TODO: fixme</span>
+</span><span id="__span-79-17"><a href="#__codelineno-79-17" id="__codelineno-79-17" name="__codelineno-79-17"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">min</span><span class="o">:</span><span class="w"> </span><span class="nx">min</span><span class="p">,</span><span class="w"> </span><span class="nx">max</span><span class="o">:</span><span class="w"> </span><span class="nx">max</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-79-18"><a href="#__codelineno-79-18" id="__codelineno-79-18" name="__codelineno-79-18"></a><span class="p">}</span>
+</span><span id="__span-79-19"><a href="#__codelineno-79-19" id="__codelineno-79-19" name="__codelineno-79-19"></a>
+</span><span id="__span-79-20"><a href="#__codelineno-79-20" id="__codelineno-79-20" name="__codelineno-79-20"></a><span class="kd">function</span><span class="w"> </span><span class="nx">handleButton1Click</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-79-21"><a href="#__codelineno-79-21" id="__codelineno-79-21" name="__codelineno-79-21"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">textbox1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"textbox1"</span><span class="p">);</span>
+</span><span id="__span-79-22"><a href="#__codelineno-79-22" id="__codelineno-79-22" name="__codelineno-79-22"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"min"</span><span class="p">);</span>
+</span><span id="__span-79-23"><a href="#__codelineno-79-23" id="__codelineno-79-23" name="__codelineno-79-23"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"max"</span><span class="p">);</span>
+</span><span id="__span-79-24"><a href="#__codelineno-79-24" id="__codelineno-79-24" name="__codelineno-79-24"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">textbox1</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">","</span><span class="p">);</span>
+</span><span id="__span-79-25"><a href="#__codelineno-79-25" id="__codelineno-79-25" name="__codelineno-79-25"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">min_max</span><span class="p">(</span><span class="nx">numbers</span><span class="p">(</span><span class="nx">items</span><span class="p">));</span>
+</span><span id="__span-79-26"><a href="#__codelineno-79-26" id="__codelineno-79-26" name="__codelineno-79-26"></a><span class="w">  </span><span class="nx">min</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">[</span><span class="s2">"min"</span><span class="p">];</span>
+</span><span id="__span-79-27"><a href="#__codelineno-79-27" id="__codelineno-79-27" name="__codelineno-79-27"></a><span class="w">  </span><span class="nx">max</span><span class="p">.</span><span class="nx">innerHTML</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">obj</span><span class="p">[</span><span class="s2">"max"</span><span class="p">];</span>
+</span><span id="__span-79-28"><a href="#__codelineno-79-28" id="__codelineno-79-28" name="__codelineno-79-28"></a><span class="p">}</span>
+</span><span id="__span-79-29"><a href="#__codelineno-79-29" id="__codelineno-79-29" name="__codelineno-79-29"></a>
+</span><span id="__span-79-30"><a href="#__codelineno-79-30" id="__codelineno-79-30" name="__codelineno-79-30"></a><span class="kd">function</span><span class="w"> </span><span class="nx">run</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-79-31"><a href="#__codelineno-79-31" id="__codelineno-79-31" name="__codelineno-79-31"></a><span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">button1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"button1"</span><span class="p">);</span>
+</span><span id="__span-79-32"><a href="#__codelineno-79-32" id="__codelineno-79-32" name="__codelineno-79-32"></a><span class="w">  </span><span class="c1">// TODO: fixme</span>
+</span><span id="__span-79-33"><a href="#__codelineno-79-33" id="__codelineno-79-33" name="__codelineno-79-33"></a><span class="p">}</span>
+</span><span id="__span-79-34"><a href="#__codelineno-79-34" id="__codelineno-79-34" name="__codelineno-79-34"></a>
+</span><span id="__span-79-35"><a href="#__codelineno-79-35" id="__codelineno-79-35" name="__codelineno-79-35"></a><span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"DOMContentLoaded"</span><span class="p">,</span><span class="w"> </span><span class="nx">run</span><span class="p">);</span>
+</span></code></pre></div>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../../assets/javascripts/bundle.5cfa9459.min.js"></script>
+<script src="../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>
