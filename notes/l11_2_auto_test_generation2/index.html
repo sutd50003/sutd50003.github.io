@@ -433,9 +433,11 @@ There are several issues required more care. </p>
 </span><span id="__span-15-4"><a href="#__codelineno-15-4" id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-15-5"><a href="#__codelineno-15-5" id="__codelineno-15-5" name="__codelineno-15-5"></a><span class="p">}</span>
 </span></code></pre></div>
-<p>Existing SMT solvers support theories on linear integer arithmetic, bit vectors, string, etc. Existing SMT solvers are not particularly scalable or efficient for certain theories e.g., non-linear arithmetic.
-* In such cases symbolic execution will not (always) be able to evaluate which side of the branch should be taken. 
-* Thus, symbolic execution may randomly generate some inputs to find one of the feasible execution, losing opportunities to cover a large portion of code. </p>
+<p>Existing SMT solvers support theories on linear integer arithmetic, bit vectors, string, etc. Existing SMT solvers are not particularly scalable or efficient for certain theories e.g., non-linear arithmetic.</p>
+<ul>
+<li>In such cases symbolic execution will not (always) be able to evaluate which side of the branch should be taken. </li>
+<li>Thus, symbolic execution may randomly generate some inputs to find one of the feasible execution, losing opportunities to cover a large portion of code. </li>
+</ul>
 <h5 id="memory-object-aliasing">Memory object aliasing</h5>
 <p>Keeping track of constraints among variables with primitive values are straight-forward, it is not that simple when dealing with reference to objects in the heap.</p>
 <p>For instance consider </p>
