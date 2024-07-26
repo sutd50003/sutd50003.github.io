@@ -346,6 +346,102 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#using-regex-to-sanitze-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Regex to sanitze input
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using Regex to sanitze input">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#matching-a-single-expression" class="md-nav__link">
+    <span class="md-ellipsis">
+      Matching a single expression
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#matching-a-single-expression-globally" class="md-nav__link">
+    <span class="md-ellipsis">
+      Matching a single expression globally
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#case-insensitivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Case insensitivity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anchored-match" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anchored match
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#character-class-match" class="md-nav__link">
+    <span class="md-ellipsis">
+      Character class match
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kleenes-star" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kleene's star
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference group
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#more-on-repetition" class="md-nav__link">
+    <span class="md-ellipsis">
+      More on repetition
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pitfall-of-using-regex-as-input-sanitzer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pitfall of using Regex as input sanitzer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -524,6 +620,76 @@ If the <code>addToCart()</code> method processes the elements top-to-bottom in o
 </span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">html</span><span class="p">);</span>
 </span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="p">})</span>
+</span></code></pre></div>
+<h3 id="using-regex-to-sanitze-input">Using Regex to sanitze input</h3>
+<p>Regular expression (Regex) is a commonly use domain specific language for string and data matching. It has a compact syntax and light-weightish implementation. Most of the languages come with libraries support of regex. For instance, in JavaScript, we use the following statement to define a regex object. </p>
+<p><div class="language-js highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">re</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/ab+c/</span>
+</span></code></pre></div>
+or
+<div class="language-js highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">re</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">RegExp</span><span class="p">(</span><span class="s2">&quot;ab+c&quot;</span><span class="p">)</span>
+</span></code></pre></div></p>
+<p>Then we can run it using </p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">abbbbc</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">re</span><span class="p">));</span>
+</span></code></pre></div>
+<p>Here are some basic examples of constructing regex pattern. </p>
+<h4 id="matching-a-single-expression">Matching a single expression</h4>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">r1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/a/</span><span class="p">;</span><span class="w">  </span><span class="c1">// match one</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="s2">&quot;aaa&quot;</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">r1</span><span class="p">);</span><span class="w"> </span><span class="c1">// [ &#39;a&#39;, index: 0, input: &#39;aaa&#39;, groups: undefined ]</span>
+</span></code></pre></div>
+<p>In the above code snippet, <code>r1</code> is a regex that matches a character <code>a</code>.  In the second line, we match the input string <code>aaa</code> with the pattern. The result contains 
+the part that the regex matches, which is <code>'a'</code>, its index and the input and the groups if available.  Note that it only searches for the pattern once in the input string. </p>
+<h4 id="matching-a-single-expression-globally">Matching a single expression globally</h4>
+<p>If we want to apply the regex to look matches "globally" over the input, we define</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">r2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/a/g</span><span class="p">;</span><span class="w"> </span><span class="c1">// match everywhere</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="s2">&quot;aaa&quot;</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">r2</span><span class="p">);</span><span class="w"> </span><span class="c1">// [ &#39;a&#39;, &#39;a&#39;, &#39;a&#39; ]</span>
+</span></code></pre></div>
+<h4 id="case-insensitivity">Case insensitivity</h4>
+<p>If we would like to ignore case sensitivity during the match, we add <code>i</code> to the flags field.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">r3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/a/ig</span><span class="p">;</span><span class="w"> </span><span class="c1">// match everywhere case insensitively </span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="s2">&quot;aAa&quot;</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">r3</span><span class="p">);</span><span class="w"> </span><span class="c1">// [ &#39;a&#39;, &#39;A&#39;, &#39;a&#39; ]</span>
+</span></code></pre></div>
+<h4 id="anchored-match">Anchored match</h4>
+<p>Sometimes we would like to regex to match with the exact starting and ending of the input. </p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">r4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/^a$/</span><span class="p">;</span><span class="w"> </span><span class="c1">// match exact from the start to the end;</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="s2">&quot;aaa&quot;</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">r4</span><span class="p">);</span><span class="w">  </span><span class="c1">// null</span>
+</span></code></pre></div>
+<p>In the above <code>^</code> denotes the starting of the input and <code>$</code> denotes the ending. </p>
+<h4 id="character-class-match">Character class match</h4>
+<p>If we want to match a set of alterantive characters, we use </p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">r5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/[ab]/g</span><span class="p">;</span><span class="w"> </span><span class="c1">// match everywhere with character group, a or b </span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="s2">&quot;abb&quot;</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">r5</span><span class="p">);</span><span class="w">  </span><span class="c1">// [ &#39;a&#39;, &#39;b&#39;, &#39;b&#39; ]</span>
+</span></code></pre></div>
+<p>Note that if we use a <code>^</code> in a <code>[]</code> it means not, e.g. <code>/[^ab]/</code> means match any character except for <code>a</code> and <code>b</code>. </p>
+<h4 id="kleenes-star">Kleene's star</h4>
+<p>Klenee's star allows us to repeat a sub-regex pattern many times. (Note this is different from the global flag <code>g</code>, which produces a list of matches).
+<div class="language-js highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">r6</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/a*/</span><span class="w"> </span><span class="c1">// repetition, zero or more</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="s2">&quot;aaa&quot;</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">r6</span><span class="p">);</span><span class="w">  </span><span class="c1">// [ &#39;aaa&#39;, index: 0, input: &#39;aaa&#39;, groups: undefined ]</span>
+</span></code></pre></div></p>
+<h4 id="reference-group">Reference group</h4>
+<p>Sometimes, we would like to match and extract parts of the input. We use paranthesis to annotate the sub part that we would like to extract.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">r7</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/a(a*)/</span><span class="w"> </span><span class="c1">// match and extract into groups </span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="s2">&quot;aaa&quot;</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">r7</span><span class="p">);</span><span class="w">  </span><span class="c1">// [ &#39;aaa&#39;, &#39;aa&#39;, index: 0, input: &#39;aaa&#39;, groups: undefined ]</span>
+</span></code></pre></div>
+<p>In the above, we match then extract the rest of <code>a</code> after the first <code>a</code>. </p>
+<p>Note that we can add referenced kleene's star regex with a global flag. The following will produce an initialization error.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">r8</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/(a*)/g</span><span class="w"> </span><span class="c1">// error, won&#39;t allow</span>
+</span></code></pre></div>
+<h4 id="more-on-repetition">More on repetition</h4>
+<p>Besides kleene's star, we have the following different operators that define different constraint of repetition.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">r9</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/a+/</span><span class="w"> </span><span class="c1">// repetition, one or more</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">r10</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/a{2,}/</span><span class="w"> </span><span class="c1">// repetition, two or more</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">r11</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/a{2,3}/</span><span class="w"> </span><span class="c1">// repetition, two or three</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="kd">const</span><span class="w"> </span><span class="nx">r12</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/a{3}/</span><span class="w"> </span><span class="c1">// repetition, exactly three</span>
+</span></code></pre></div>
+<h4 id="pitfall-of-using-regex-as-input-sanitzer">Pitfall of using Regex as input sanitzer</h4>
+<p>There many different algorithm in implementing regex matching. Unfortunately many existing libraries use a back-tracking approach when performing the regex matching. This leads to a possible security threat to the software system. e.g. </p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">evil</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sr">/^(a*)*h$/</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="s2">&quot;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&quot;</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">p</span><span class="p">);</span>
+</span></code></pre></div>
+<p>The above will take a substantial amount of time to converge, because the nested kleen's star of <code>(a*)*</code>. The backtracking algorithm with try to back-track and search for alternative to satisfy the match with the ending <code>h</code> character though there are exponentially many paths to backtrack in the above example. </p>
+<p>In general, when a nested repeatable regex accept an empty input, it is problematic, it is classified as <em>evil</em> regular expression. </p>
+<p>For more details, refer to </p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>https://owasp.org/www-community/attacks/Regular_expression_Denial_of_Service_-_ReDoS
 </span></code></pre></div>
 
 
