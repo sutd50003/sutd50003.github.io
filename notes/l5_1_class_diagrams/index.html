@@ -1,0 +1,508 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-9.5.3" name="generator"/>
+<title>50.003 - Class Diagrams - Elements of Software Construction 50.003</title>
+<link href="../../assets/stylesheets/main.50c56a3b.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body dir="ltr">
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#50003-class-diagrams">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="Elements of Software Construction 50.003" class="md-header__button md-logo" data-md-component="logo" href="../.." title="Elements of Software Construction 50.003">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            Elements of Software Construction 50.003
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              50.003 - Class Diagrams
+            
+          </span>
+</div>
+</div>
+</div>
+<script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="Elements of Software Construction 50.003" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="Elements of Software Construction 50.003">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    Elements of Software Construction 50.003
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+<span class="md-ellipsis">
+    Home
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../l1_course_handout/">
+<span class="md-ellipsis">
+    Handout
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#learning-outcomes">
+<span class="md-ellipsis">
+      Learning Outcomes
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#problem-domain">
+<span class="md-ellipsis">
+      Problem Domain
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#domain-concepts">
+<span class="md-ellipsis">
+      Domain Concepts
+    </span>
+</a>
+<nav aria-label="Domain Concepts" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#problem-domain-model">
+<span class="md-ellipsis">
+      Problem Domain Model
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#domain-class-diagram">
+<span class="md-ellipsis">
+      Domain Class Diagram
+    </span>
+</a>
+<nav aria-label="Domain Class Diagram" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#domain-class-notation">
+<span class="md-ellipsis">
+      Domain Class Notation
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#domain-class-relationships-and-notation">
+<span class="md-ellipsis">
+      Domain Class Relationships and Notation
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#non-binary-associations-and-notation">
+<span class="md-ellipsis">
+      Non binary Associations and Notation
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#multiplicity-in-associations-and-notation">
+<span class="md-ellipsis">
+      Multiplicity in Associations and Notation
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#association-class-and-notation">
+<span class="md-ellipsis">
+      Association Class and Notation
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="50003-class-diagrams">50.003 - Class Diagrams</h1>
+<h2 id="learning-outcomes">Learning Outcomes</h2>
+<p>By the end of this unit, you should be able to</p>
+<ol>
+<li>Explain the concept of Problem Domain.</li>
+<li>Explain the concept of Domain model.</li>
+<li>Explain the Relationships, Associations, Multiplicity and Association class</li>
+<li>Derive a Domain Model for a given problem.</li>
+</ol>
+<h2 id="problem-domain">Problem Domain</h2>
+<p>Understanding problem domain is essential before designing a software system to solve a given problem. The problem domain refers to the specific area of expertise or application relevant to the problem being addressed. It includes the real-world concepts that users interact with such as products, orders, invoices, customers, deliveries etc.</p>
+<p>When it comes to developing software system, we need to identify the context of the system being developed. For example, if we need an order management system, the context defines the entities in the order management like products, order, invoices etc.</p>
+<p>The context helps to define the scope of the system being developed. For example, for an order management system, we may not consider the venue as a part of the system.</p>
+<h2 id="domain-concepts">Domain Concepts</h2>
+<p>We can visualize domain concepts in categories. This will help defining system boundaries and identify entities and relationships separately for the problem domain model described next.</p>
+<h3 id="problem-domain-model">Problem Domain Model</h3>
+<p>A Problem Domain Model is a structured representation of real-world business concepts. It serves as a foundation for understanding the system's environment and helps guide requirements and design decisions. The domain model stems from the refined scope in "Problem Domain" defined previously.</p>
+<p>Problem domain model defines the concepts in problem domain as entities and relationships. It may take the form of simple diagrams, glossaries etc. which enhances clarity of the problem domain identified. Problem domain model is still an abstract representation which need to be filled with more details.</p>
+<h2 id="domain-class-diagram">Domain Class Diagram</h2>
+<p>Domain class diagram formally shows a problem domain model. Each class represents an entity in the problem domain model and the corresponding attributes (Ex: In an order management system - Customer, Order). Class diagram also shows the relationships between the domain classes (Ex: In an order management system, Customer places Order shows the relationship between Customer and Order). Note that behaviors like "register (customer), cancel (order)" are not modelled in domain class diagram. In contrast, solution class diagram (different from domain class diagram) models entities and relationships of the system implemented, with added details of the entity behavior.</p>
+<h3 id="domain-class-notation">Domain Class Notation</h3>
+<p>Class diagram represents classes with a rectangle with 3 splits. The text in the splits (from top to bottom) represent class name, class attributes and behaviors respectively. </p>
+<p>Attributes are variables denoting specific details about the class. In case of domain class diagram, the bottom is empty since the behaviors are not represented.</p>
+<p>The following example shows three domain classes in an order management system.</p>
+<p><pre class="mermaid"><code>---
+title: Order management system
+---
+classDiagram
+    class Customer
+    Customer : -custNumber
+    Customer : -address
+    Customer : -phone
+
+    class Order
+    Order : -orderID
+    Order : -orderDate
+    Order : -amount
+
+    class OrderItem
+    OrderItem : -itemID
+    OrderItem : -quantity
+    OrderItem : -price</code></pre>
+Note that attributes are variable names not the exact values. In this example each class contains a unique identifier as an attribute (custNumber, orderID, itemID).</p>
+<h3 id="domain-class-relationships-and-notation">Domain Class Relationships and Notation</h3>
+<p>There can be different relationships among the domain classes.</p>
+<p><em>Inheritance</em> - When a class A is a kind of class B, we say that class A inherits class B. See the notation below.
+<pre class="mermaid"><code>classDiagram
+  classA --|&gt; classB</code></pre></p>
+<p>For example, we can add a new class (onlineOrder) and show that it is another Order type.
+<pre class="mermaid"><code>---
+title: Order management system
+---
+classDiagram
+    OnlineOrder --|&gt; Order
+    class Customer
+    Customer : -custNumber
+    Customer : -address
+    Customer : -phone
+
+    class Order
+    Order : -orderID
+    Order : -orderDate
+    Order : -amount
+
+    class OnlineOrder
+    OnlineOrder : -orderID
+    OnlineOrder : -platformName
+    OnlineOrder : -orderDate
+    OnlineOrder : -amount
+
+    class OrderItem
+    OrderItem : -itemID
+    OrderItem : -quantity
+    OrderItem : -price</code></pre></p>
+<p><em>Association</em> - An association is a linkage among different classes implying one class uses/depends on another class.
+Most general association is shown by a solid line (No arrow heads) representing a conceptual relationship among objects in the two classes.</p>
+<p><pre class="mermaid"><code>classDiagram
+  classA -- classB</code></pre>
+When we get to know more details about the design and implementation, we can choose to refine undirectional association as unidirectional or bidirectional. A unidirectional arrow from classA to classB says, classA can access classB while, classB cannot access classA. If we know that both classes access each other, then we can choose to have a bi-directional arrow between the classes (classC, classD).
+<pre class="mermaid"><code>classDiagram
+  classA --&gt; classB
+  classC &lt;--&gt; classD</code></pre>
+Also see the extended example for order management system.</p>
+<p><pre class="mermaid"><code>---
+title: Order management system
+---
+classDiagram
+    OnlineOrder --|&gt; Order
+    Customer &lt;--&gt; Order
+    Order --&gt; OrderItem
+    class Customer
+    Customer : -custNumber
+    Customer : -address
+    Customer : -phone
+
+    class Order
+    Order : -orderID
+    Order : -orderDate
+    Order : -amount
+
+    class OnlineOrder
+    OnlineOrder : -orderID
+    OnlineOrder : -platformName
+    OnlineOrder : -orderDate
+    OnlineOrder : -amount
+
+    class OrderItem
+    OrderItem : -itemID
+    OrderItem : -quantity
+    OrderItem : -price</code></pre>
+In the order management example, we have refined associations Order --&gt; OrderItem, Customer &lt;--&gt; Order. Here, the unidirectional arrow from Order to OrderItem represent that an Order has access to order item. The bi-directional arrow is to explicitly represent mutual access between Customer and Order (Customer maintains the Orders, Order maintains the corresponding Customer). The accessibility is also called navigability in UML terminology which means we can navigate from classA to classB. However, in a domain class diagram, it is not necessary to explicitly show the mutual access as class attributes.</p>
+<p>Further refinements can be done for the directional associations mentioned above. They can be classified as aggregation or composition which denote whole-part relationships.</p>
+<p><em>Aggregation</em> : Aggregation is a directional association from classA to classB which says classA is a part of classB and classA can also operate independent of classA. </p>
+<pre class="mermaid"><code>classDiagram
+  classA --o classB</code></pre>
+<p><em>Composition</em> : Composition is a directional association from classA to classB which says classA is a part of classB. This is a stronger association than aggregation which says, classB object is created by classA object while classB object is destroyed when the classA object is destroyed.</p>
+<p><pre class="mermaid"><code>classDiagram
+  classA --* classB</code></pre>
+In order to refine with aggregation or composition, there should be a whole-part relationship between the associated classes. Due to the whole-part relationship, the association must be directional. Depending on uni directional or bi-directional nature, refinement process may vary.</p>
+<p>If an association is uni directional, we need to first verify that a whole-part relationship is shown there. Then we can refine the directional association with aggregation or composition depending on the life cycle constraints. Since, aggregation and composition are strongly directional, keeping the arrow head at the otherend is redundant.</p>
+<p>If an association is bi directional, we need to first identify the direction of whole-part relationship (classA is a part of classB) and add a diamond at classB end. Then we can decide on whether we are keeping the arrowhead representing classA accessed classB. If we omit the arrowhead the two classes become less coupled.</p>
+<p>Check the order management system example with the refined associations.</p>
+<pre class="mermaid"><code>---
+title: Order management system (Tightly coupled)
+---
+classDiagram
+    OnlineOrder --|&gt; Order
+    Customer *-- Order
+    Customer &lt;-- Order
+    Order o-- OrderItem
+    class Customer
+    Customer : -custNumber
+    Customer : -address
+    Customer : -phone
+
+    class Order
+    Order : -orderID
+    Order : -orderDate
+    Order : -amount
+
+    class OnlineOrder
+    OnlineOrder : -orderID
+    OnlineOrder : -platformName
+    OnlineOrder : -orderDate
+    OnlineOrder : -amount
+
+    class OrderItem
+    OrderItem : -itemID
+    OrderItem : -quantity
+    OrderItem : -price</code></pre>
+<p><pre class="mermaid"><code>---
+title: Order management system (Low coupling)
+---
+classDiagram
+    OnlineOrder --|&gt; Order
+    Customer *-- Order
+    Order o-- OrderItem
+    class Customer
+    Customer : -custNumber
+    Customer : -address
+    Customer : -phone
+
+    class Order
+    Order : -orderID
+    Order : -orderDate
+    Order : -amount
+
+    class OnlineOrder
+    OnlineOrder : -orderID
+    OnlineOrder : -platformName
+    OnlineOrder : -orderDate
+    OnlineOrder : -amount
+
+    class OrderItem
+    OrderItem : -itemID
+    OrderItem : -quantity
+    OrderItem : -price</code></pre>
+In the above example, consider the refinement from Order --&gt; OrderItem (uni directional) to </p>
+<p>Order o-- OrderItem under the assumption of OrderItem is a part of Order, but OrderItem can operate independently.</p>
+<p>Considering the bi-directional association Customer &lt;--&gt; Order in the example, we can unfold it as following two associations.</p>
+<ol>
+<li>Customer --&gt; Order (Customer can access Order)</li>
+<li>Customer &lt;-- Order (Order can access Customer)
+Assuming a strong part-of relationship, we can refine the 
+Customer --&gt; Order (Customer can access Order) with Customer *-- Order.
+Then we can choose to keep 2. or not. Choosing 2. Makes the association tightly coupled while omitting it makes the association less coupled.</li>
+</ol>
+<h2 id="non-binary-associations-and-notation">Non binary Associations and Notation</h2>
+<p>All the associations we covered above are binary associations where exactly two classed were associated. There are other types of associations such as Unary, Ternary, and most generally n-ary.</p>
+<p>Here, we precisely define the association between class A and class B in terms of class A objects and class B objects. Association between class A and class B means, some objects of class A associate with one or more objects of class B. </p>
+<ol>
+<li>In Unary association a class associates with itself. In other words object of a given class can associate with another object of the same class. It is shown by a self directed edge. </li>
+</ol>
+<p><pre class="mermaid"><code>    classDiagram
+        Person -- Person : is married to
+    class Person</code></pre>
+In the above example, there are objects in the person class where each of them are married to another person(s). We can also represent the bounds for the number of associated objects. This is called multiplicity and will be discussed in the next section.  </p>
+<ol>
+<li>In Ternary association, three classes can associate together. In other words 3 objects from each class can be associated. 
+<img alt="" src="../images/Ternary.png"/></li>
+</ol>
+<p>In the above example, an association can be defined as a supplier supplies a product to a store.</p>
+<h2 id="multiplicity-in-associations-and-notation">Multiplicity in Associations and Notation</h2>
+<p>Given a binary association classA -- classB, for a chosen object in classA, it can interact with zero or more objects in classB. This is the most general case. The multiplicity labels defines precise lower and upper bounds for the number of associated objects in classB.</p>
+<p>Consider the association between Order and OrderItem. Given 1 Order, there can be 1 or more Order items assuming Order is created only when there is a non empty list of OrderItems. This is represented in the Fig: 1, with "1" at the Order end and "1..*" at the OrderItem end. "1..*" means the minimum number of OrderItems is 1 and the maximum number of OrderItems can be any number (represented by the placehoder "*")</p>
+<p>Similarly Fig: 2 denotes what is the minimum and maximum number of Orders exist for 1 OrderItem. Since there is exactly one Order for a given OrderItem, we show "1" at the Order end which is short hand for "1..1" (meaning min of 1 and max of 1).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><img alt="Alt Text" src="../images/multiplicity_ex1.png"/>{ width=300px height=200px }</th>
+<th style="text-align: center;"><img alt="Alt Text" src="../images/multiplicity_ex2.png"/>{ width=300px height=200px }</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Fig: 1 <em>OrderItems per Order</em></td>
+<td style="text-align: center;">Fig: 2 <em>Orders per OrderItem</em></td>
+</tr>
+</tbody>
+</table>
+<p>To obtain the combined multiplicity diagram we remove the Order end "1" from Fig: 1 and OrderItem end "1" from Fig: 2. Then we have the combined multiplicity diagram as Fig 3 below.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><img alt="Alt Text" src="../images/comb_multi.png"/>{ width=300px height=200px }</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Fig: 3 <em>Combined Multiplicity</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="association-class-and-notation">Association Class and Notation</h2>
+<p>Some times, the association between two classes have some details worth modelling in the class diagram itself. This modelling is done via a separate class connected via a dashed line to the association link. </p>
+<p>An example could be an existing association between a Student and a CourseSection. The student's grade for a CourseSection is neither an attribute of Student nor an attribute of CourseSection. The grade attribute belongs to the association between the Student and the CourseSection which we name as CourseEnrollment.</p>
+<p><img alt="" src="../images/Enrollment.png"/>{ width=300px height=200px }</p>
+<p>The following table shows the different types of multiplicities that can be represented in a class diagram.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Multiplicity</th>
+<th style="text-align: left;">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">One and only One</td>
+</tr>
+<tr>
+<td style="text-align: left;">1..X</td>
+<td style="text-align: left;">Min 1 and Max X</td>
+</tr>
+<tr>
+<td style="text-align: left;">1..*</td>
+<td style="text-align: left;">Min 1 and Max many</td>
+</tr>
+<tr>
+<td style="text-align: left;">0..X</td>
+<td style="text-align: left;">Min 0 and Max X</td>
+</tr>
+<tr>
+<td style="text-align: left;">*</td>
+<td style="text-align: left;">Min 0 and Max many</td>
+</tr>
+</tbody>
+</table>
+</article>
+</div>
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+<script src="../../javascripts/mathjax.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</body>
+</html>
