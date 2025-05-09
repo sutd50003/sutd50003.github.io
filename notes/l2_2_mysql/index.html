@@ -359,33 +359,81 @@
 <p><img alt="" src="../images/er3.png" /></p>
 <p>We could</p>
 <ol>
-<li>represent the <code>staff</code> entity as a table
-   | id | name |
-   |---|---|
-   | 1 | aaron |
-   | 2 | betty |
-   <code>id</code> is the primary key</li>
-<li>
-<p>reprsent the <code>dept</code> entity as a table
-   | code |
-   |---|
-   | HR|
-   <code>code</code> is the primary key.</p>
-</li>
-<li>
-<p>represent the <code>Work</code> relationship as a table
-   | id | code |
-   |---|---|
-   | 1 | HR|
-   | 2 | HR|
-   <code>id</code> and <code>code</code> together form the primary key.</p>
-</li>
-<li>represent the <code>Manage</code> relationship as a table
-   | id | code |
-   |---|---|
-   | 2 | HR |
-   either <code>id</code> or <code>code</code> can be the primary key.</li>
+<li>represent the <code>staff</code> entity as a table</li>
 </ol>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>aaron</td>
+</tr>
+<tr>
+<td>2</td>
+<td>betty</td>
+</tr>
+</tbody>
+</table>
+<p><code>id</code> is the primary key
+2. reprsent the <code>dept</code> entity as a table</p>
+<table>
+<thead>
+<tr>
+<th>code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HR</td>
+</tr>
+</tbody>
+</table>
+<p><code>code</code> is the primary key.</p>
+<ol>
+<li>represent the <code>Work</code> relationship as a table</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>HR</td>
+</tr>
+<tr>
+<td>2</td>
+<td>HR</td>
+</tr>
+</tbody>
+</table>
+<p><code>id</code> and <code>code</code> together form the primary key.</p>
+<ol>
+<li>represent the <code>Manage</code> relationship as a table</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>HR</td>
+</tr>
+</tbody>
+</table>
+<p>either <code>id</code> or <code>code</code> can be the primary key.</p>
 <p>Sometimes, we just represent the above using a simpler schema representation for documentation purposes.</p>
 <ul>
 <li>staff(<u>id</u>, name)</li>
