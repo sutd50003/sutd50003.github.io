@@ -473,7 +473,7 @@
 <p>In many web applications, it is insufficient to run the application in the browser which is a run-time system hosted in the user's device, such as desktop, laptop or mobile phone. An obvious reason is that certain computation must not be executed on the user's device due to security and integrity, for instance, transferring balance from one account to another. These highly sensitive operations should be executed at the server ends, which is known as the "backend".</p>
 <p>In practice, frontend deals with the end users’ input and interaction, while
 backend deals with the data storage, data analysis, data retrieval, business logic, authentication, and scalability</p>
-<p><img alt="" src="./images/Frontend_vs_Backend.png" /></p>
+<p><img alt="" src="../images/Frontend_vs_Backend.png" /></p>
 <h2 id="nodejs">Node.js</h2>
 <p>There are many options of implementing the backend applications, e.g. Spring with Java, Django with Python, Flask with Python, Node.js with JavaScript.</p>
 <p>Node.js is a run-time system to run JavaScript applications without the browser (and its event APIs), for instance <code>document</code> is no longer a predefined reference in Node.js.</p>
@@ -609,7 +609,7 @@ In CommonJS (pre ES6), we write <code>modules.export = Circle</code> instead.</p
 <p>Important points to note in this section are:</p>
 <ol>
 <li>There are several commonly used APIs that allow NodeJS to execute instructions asynchronously such as <code>setTimeout()</code>, <code>setInterval()</code>, <code>setImmediate()</code>, and I/O related tasks (for example, <code>fs.writeFile()</code>, HTTP Request and Response, or <code>fetch()</code> )</li>
-<li>The JS in browser's <a href="l4_1_web_prog_common_js.md#Callback%20Queue">callback queue</a> that we know before is called <strong>macrotask</strong> queue in nodeJS runtime. Except <code>fetch()</code>, all the APIs mentioned in the previous points enqueue callbacks into macrotask.</li>
+<li>The JS in browser's <a href="../l1_1_web_prog_common_js/#Callback%20Queue">callback queue</a> that we know before is called <strong>macrotask</strong> queue in nodeJS runtime. Except <code>fetch()</code>, all the APIs mentioned in the previous points enqueue callbacks into macrotask.</li>
 <li>Another type of callback queue are called <strong>microtask</strong>. Microtask has a higher priority than macrotask, meaning that all existing microtasks will be cleared before event-loop dequeue the next macrotask.</li>
 <li>Callbacks that are enqueued into microtask are <code>resolve()</code> or <code>reject()</code> functions from <code>promise</code> and API <code>queueMicrotask()</code>.</li>
 <li>Now we will discuss I/O APIs callbacks (the 2nd Phase, and 4th Phase), <code>fetch()</code>, and <code>promise</code> in the next sections. You can explore the other APIs on your own.</li>
@@ -730,7 +730,7 @@ Look at the simple <code>Promise</code> example below which is not using <code>r
 <p>Explanation:</p>
 <ul>
 <li>In the above we instantiate an asynchronous counter by calling the function <code>asyncCounter()</code>, which initializes a local variable <code>count</code> and return a promise object that immediately <code>resolve</code> with the variable.</li>
-<li>Do you notice that we use <a href="l4_1_web_prog_common_js.md#Closure">closure</a> here?</li>
+<li>Do you notice that we use <a href="../l1_1_web_prog_common_js/#Closure">closure</a> here?</li>
 <li>Next we invoke <code>.then</code> method of this counter (promise) three times. We can chain the invocation because, <code>.then</code> method takes a method and <strong>returns a new promise</strong>. In this case, we use the <code>incr</code> function as the argument of <code>.then</code>. In the <code>incr</code> function, we print the <code>count</code> variable and return the new promise while incrementing <code>count</code> by 1.</li>
 <li><strong>Fun-but-important fact</strong>: you can simply write the return statement of <code>incr()</code> function as <code>return ++count;</code>. JavaScript intrisically turn the returned value as a promise object resolved with returned value. We use this approach sometimes in the notes.</li>
 </ul>
