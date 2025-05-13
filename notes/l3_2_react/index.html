@@ -909,8 +909,8 @@ a single output. In this case, since we are using React JS to build a web app, t
 </span></code></pre></div></td></tr></table></div>
 <h3 id="components">Components<a class="headerlink" href="#components" title="Permanent link">&para;</a></h3>
 <p>Unlike Web Application developed using other frameworks, e.g. express.js, React JS develops applications with a single page in mind. <code>Component</code> is the building block of React app. <code>Component</code> in react can be written using JSX or pure React syntax <code>React.createElement</code>. We will use JSX syntax in this module. With the control of basic components, the React JS app is able to dynamically update and replace components and sub-components within the same page in the event of user interaction and data update.</p>
-<p>In our running example, function <code>App</code> constructs a <em>component</em> which is used by the <code>index.js</code> at the root level. Function <code>App</code> returns the static HTML code as result.</p>
-<p>Let's make some change to <code>App.js</code> as follows,</p>
+<p>In our running example, function <code>App</code> constructs a <em>component</em> which is used by the <code>main.jsx</code> at the root level. Function <code>App</code> returns the static HTML code as result.</p>
+<p>Let's make some change to <code>App.jsx</code> as follows,</p>
 <div class="language-jsx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
@@ -937,7 +937,7 @@ a single output. In this case, since we are using React JS to build a web app, t
 </span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12"></a>
 </span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">App</span><span class="p">;</span>
 </span></code></pre></div></td></tr></table></div>
-<p>In the above we import and include an <code>Echo</code> component from <code>./src/Echo.js</code>, which is defined as as follows,</p>
+<p>In the above we import and include an <code>Echo</code> component from <code>./src/Echo.jsx</code>, which is defined as as follows,</p>
 <div class="language-jsx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
 <span class="normal"><a href="#__codelineno-13-2">2</a></span>
 <span class="normal"><a href="#__codelineno-13-3">3</a></span>
@@ -969,7 +969,7 @@ a single output. In this case, since we are using React JS to build a web app, t
 <p>Suppose we would like to build a frontend app to interact with the express.js app by submitting new messages and displaying the list of submitted messages.
 By breaking down the UI components we might have the following</p>
 <p><img alt="" src="../images/react3.png" /></p>
-<p>By following the UI structural breakdown, we modify the <code>Echo.js</code> as follows,</p>
+<p>By following the UI structural breakdown, we modify the <code>Echo.jsx</code> as follows,</p>
 <div class="language-jsx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-14-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-14-3"> 3</a></span>
@@ -1062,7 +1062,7 @@ By breaking down the UI components we might have the following</p>
 </span><span id="__span-14-45"><a id="__codelineno-14-45" name="__codelineno-14-45"></a>
 </span><span id="__span-14-46"><a id="__codelineno-14-46" name="__codelineno-14-46"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">Echo</span><span class="p">;</span>
 </span></code></pre></div></td></tr></table></div>
-<p>In the above version of <code>Echo.js</code>, we define two sub components, namely <code>NewMessageBar</code> and <code>MessageList</code>. Note that both functions take some objects as the arguments, these objects arguments are referred as <code>props</code> in React's terminologies. Refer <a href="https://react.dev/learn/passing-props-to-a-component">here</a> for more details about <code>props</code> in react.</p>
+<p>In the above version of <code>Echo.jsx</code>, we define two sub components, namely <code>NewMessageBar</code> and <code>MessageList</code>. Note that both functions take some objects as the arguments, these objects arguments are referred as <code>props</code> in React's terminologies. Refer <a href="https://react.dev/learn/passing-props-to-a-component">here</a> for more details about <code>props</code> in react.</p>
 <ul>
 <li><code>NewMessageBar()</code> takes an object with two attributes, <code>message</code> and <code>onSubmitClick</code>. <code>message</code> stores the text value in the text field and <code>onSubmitClick</code> is a callback when the <code>Submit</code> button is clicked. The function returns a text input field and a button <code>Submit</code>.</li>
 <li><code>MessageList()</code> takes an object with an attribute, <code>messages</code> which is a list of message objects. It returns an HTML table whose rows are constructed by mapping each message in the list to a row of the table.</li>
