@@ -252,9 +252,9 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#derive-a-domain-class-diagram-for-trasfer-funds">
+<a class="md-nav__link" href="#derive-a-domain-class-diagram-for-transfer-funds">
 <span class="md-ellipsis">
-      Derive a Domain Class Diagram for Trasfer Funds
+      Derive a Domain Class Diagram for Transfer Funds
     </span>
 </a>
 </li>
@@ -293,15 +293,22 @@
 title: Order management system
 ---
 classDiagram
-    class Customer
-    Customer : -custNumber
-    Customer : -address
-    Customer : -phone
+    class Customer{
+    -custNumber
+    -address
+    -phone
+     -order: Order
+    }
 
-    class Order
-    Order : -orderID
-    Order : -orderDate
-    Order : -amount
+
+    class Order{
+      -orderID
+     -orderDate
+      -cust:Customer
+    -amount
+    -item:OrderItem
+
+    }
 
     class OrderItem
     OrderItem : -itemID
@@ -310,7 +317,7 @@ classDiagram
 Note that attributes are variable names not the exact values. In this example each class contains a unique identifier as an attribute (custNumber, orderID, itemID).</p>
 <h3 id="domain-class-relationships-and-notation">Domain Class Relationships and Notation<a class="headerlink" href="#domain-class-relationships-and-notation" title="Permanent link">¶</a></h3>
 <p>There can be different relationships among the domain classes.</p>
-<p><em>Inheritance</em> - When a class A is a kind of class B, we say that class A inherits class B. See the notation below.
+<p><em>Inheritance</em> - When a class A is a kind of class B, we say that <strong>"class A inherits class B"</strong>. See the notation below.
 <pre class="mermaid"><code>classDiagram
   classA --|&gt; classB</code></pre></p>
 <p>For example, we can add a new class (onlineOrder) and show that it is another Order type.
@@ -319,51 +326,24 @@ title: Order management system
 ---
 classDiagram
     OnlineOrder --|&gt; Order
-    class Customer
-    Customer : -custNumber
-    Customer : -address
-    Customer : -phone
 
-    class Order
-    Order : -orderID
-    Order : -orderDate
-    Order : -amount
+    class Customer{
+    -custNumber
+    -address
+    -phone
+     -order: Order
+    }
 
-    class OnlineOrder
-    OnlineOrder : -orderID
-    OnlineOrder : -platformName
-    OnlineOrder : -orderDate
-    OnlineOrder : -amount
 
-    class OrderItem
-    OrderItem : -itemID
-    OrderItem : -quantity
-    OrderItem : -price</code></pre></p>
-<p><em>Association</em> - An association is a linkage among different classes implying one class uses/depends on another class.
-Most general association is shown by a solid line (No arrow heads) representing a conceptual relationship among objects in the two classes.</p>
-<p><pre class="mermaid"><code>classDiagram
-  classA -- classB</code></pre>
-When we get to know more details about the design and implementation, we can choose to refine undirectional association as unidirectional or bidirectional. A unidirectional arrow from classA to classB says, classA can access classB while, classB cannot access classA. If we know that both classes access each other, then we can choose to have a bi-directional arrow between the classes (classC, classD).
-<pre class="mermaid"><code>classDiagram
-  classA --&gt; classB
-  classC &lt;--&gt; classD</code></pre>
-Also see the extended example for order management system.</p>
-<p><pre class="mermaid"><code>---
-title: Order management system
----
-classDiagram
-    OnlineOrder --|&gt; Order
-    Customer &lt;--&gt; Order
-    Order --&gt; OrderItem
-    class Customer
-    Customer : -custNumber
-    Customer : -address
-    Customer : -phone
+    class Order{
+      -orderID
+     -orderDate
+      -cust:Customer
+    -amount
+    -item:OrderItem
 
-    class Order
-    Order : -orderID
-    Order : -orderDate
-    Order : -amount
+    }
+
 
     class OnlineOrder
     OnlineOrder : -orderID
@@ -375,35 +355,135 @@ classDiagram
     OrderItem : -itemID
     OrderItem : -quantity
     OrderItem : -price</code></pre>
-In the order management example, we have refined associations Order → OrderItem, Customer ↔ Order. Here, the unidirectional arrow from Order to OrderItem represent that an Order has access to order item. The bi-directional arrow is to explicitly represent mutual access between Customer and Order (Customer maintains the Orders, Order maintains the corresponding Customer). The accessibility is also called navigability in UML terminology which means we can navigate from classA to classB. However, in a domain class diagram, it is not necessary to explicitly show the mutual access as class attributes.</p>
-<p>Further refinements can be done for the directional associations mentioned above. They can be classified as aggregation or composition which denote whole-part relationships.</p>
-<p><em>Aggregation</em> : Aggregation is a directional association from classA to classB which says classA is a part of classB and classA can also operate independent of classA. </p>
-<pre class="mermaid"><code>classDiagram
-  classA --o classB</code></pre>
-<p><em>Composition</em> : Composition is a directional association from classA to classB which says classA is a part of classB. This is a stronger association than aggregation which says, classB object is created by classA object while classB object is destroyed when the classA object is destroyed.</p>
+In code,
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kd">class</span><span class="w"> </span><span class="nx">OnlineOrder</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Order</span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">  </span><span class="c1">//your code</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<em>Dependancy</em> - A dependancy is a linkage among different classes implying one class uses/depends on another class. Even a temporary action like passing an object from classA to a method of classB is considered as dependancy. This can be denoted by a dotted arrow drawn from classB to classA, which is read as <strong>"classB uses classA"</strong>.</p>
 <p><pre class="mermaid"><code>classDiagram
-  classA --* classB</code></pre>
-In order to refine with aggregation or composition, there should be a whole-part relationship between the associated classes. Due to the whole-part relationship, the association must be directional. Depending on uni directional or bi-directional nature, refinement process may vary.</p>
-<p>If an association is uni directional, we need to first verify that a whole-part relationship is shown there. Then we can refine the directional association with aggregation or composition depending on the life cycle constraints. Since, aggregation and composition are strongly directional, keeping the arrow head at the otherend is redundant.</p>
-<p>If an association is bi directional, we need to first identify the direction of whole-part relationship (classA is a part of classB) and add a diamond at classB end. Then we can decide on whether we are keeping the arrowhead representing classA accessed classB. If we omit the arrowhead the two classes become less coupled.</p>
-<p>Check the order management system example with the refined associations.</p>
+  classA &lt;.. classB</code></pre>
+We provide code examples in design class diagram lesson, when we discuss adding methods to a class diagram.</p>
+<p><em>Association</em> - An association is a stronger form of dependancy which necassitates one class having a reference to another class as an attribute. Having such a reference is called <strong>Navigability</strong>. If classA has a reference of classB, then we say, "classA can navigate to classB" and in other words, <strong>"classA has classB"</strong></p>
+<p>When the navigation is to a single direction, we have a unidirectional association. Additionally, having mutual navigability defines a bidirectional association. </p>
+<p><pre class="mermaid"><code>classDiagram
+  classA --&gt; classB</code></pre>
+In code,</p>
+<p><div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kd">class</span><span class="w"> </span><span class="nx">Customer</span><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">order</span><span class="p">){</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">order</span><span class="o">=</span><span class="w"> </span><span class="nx">order</span><span class="c1">//order is an object of Order</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+Also see the extended example for order management system.</p>
+<p><pre class="mermaid"><code>---
+title: Order management system
+---
+classDiagram
+    OnlineOrder --|&gt; Order
+    Customer -- Order
+    Order --&gt; OrderItem
+    class Customer{
+    -custNumber
+    -address
+    -phone
+     -order: Order
+    }
+
+
+    class Order{
+      -orderID
+     -orderDate
+      -cust:Customer
+    -amount
+    -item:OrderItem
+
+    }
+
+
+    class OnlineOrder
+    OnlineOrder : -orderID
+    OnlineOrder : -platformName
+    OnlineOrder : -orderDate
+    OnlineOrder : -amount
+
+    class OrderItem
+    OrderItem : -itemID
+    OrderItem : -quantity
+    OrderItem : -price</code></pre>
+In the order management example, the unidirectional arrow from Order to OrderItem represent that an Order has order item object. The non directional arrow (representing bi-directional) is to explicitly represent mutual access between Customer and Order (Customer maintains the Orders, Order maintains the corresponding Customer) in their structures mutually.</p>
+<p>Further refinements can be done for the directional associations mentioned above. They can be classified as aggregation or composition which denote whole-part relationships.</p>
+<p><em>Aggregation</em> : Aggregation is a directional association from classA to classB which says classA is a part of classB and classA can also operate independent of classA.  </p>
+<p><pre class="mermaid"><code>classDiagram
+  classA --o classB</code></pre>
+Semantically, it adds a stronger link to the <strong>has-a</strong> relationship. "Customer <strong>has</strong> Order" and "Order <strong>has</strong> OrderItems" are both associations. However, "OrderItems are <strong>a part of</strong> Order" and "Order is <strong>not a part of</strong> Customer". Additionally, "OrderItem can operate independantly of Order".</p>
+<p>In most programming language syntax, association and aggregation are shown in a similar way. We need more context ("has-a" or "is-part-of") to differentiate them.</p>
+<p>in code,
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kd">class</span><span class="w"> </span><span class="nx">Customer</span><span class="p">{</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">order</span><span class="p">){</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">order</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">order</span><span class="p">)</span><span class="w"> </span><span class="c1">//order object is a part of customer object and outlives customer</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div></p>
+<p><em>Composition</em> : Composition is a directional association from classA to classB which says classA is a part of classB. This is a stronger association than aggregation. In composition <strong>classB object is created by classA object</strong> while <strong>classB object is destroyed when the classA object is destroyed</strong>. Therefore the life cycle of <strong>classB</strong> object is bounded by the life cycle of <strong>classA</strong>.</p>
+<p>In code,</p>
+<p><div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span>
+<span class="normal"><a href="#__codelineno-3-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kd">class</span><span class="w"> </span><span class="nx">Order</span><span class="p">{</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span><span class="nx">amount</span><span class="p">){</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">orderitems</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">OrderItem</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span><span class="nx">amount</span><span class="p">))</span><span class="w"> </span><span class="c1">//orderitem is a part of Order, when order deleted, orderitem also deleted</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+Note that diamond head in aggregation/composition is in the opposite direction of the arrow head in association because, <strong>has-a</strong> relationship and <strong>is-part-of</strong> relationships are in opposite directions. We ignore the association arrow at the opposite side because aggregation is a stronger relationship.
+<pre class="mermaid"><code>classDiagram
+  classA --* classB</code></pre></p>
+<p>If the association is <strong>bi-directional</strong> and one direction (classA to classB) has aggregation, we can show it as below diagram. 
+1. <strong>strong association from classB to classA</strong> (aggregation from classA to classB) </p>
+<ol>
+<li>General association from <strong>classA to classB</strong>.
+<pre class="mermaid"><code>classDiagram
+  classA --* classB
+  classA --&gt; classB</code></pre></li>
+</ol>
+<p>Check the order management system example with  composition and aggregation.</p>
 <pre class="mermaid"><code>---
 title: Order management system (Tightly coupled)
 ---
 classDiagram
     OnlineOrder --|&gt; Order
-    Customer *-- Order
-    Customer &lt;-- Order
-    Order o-- OrderItem
-    class Customer
-    Customer : -custNumber
-    Customer : -address
-    Customer : -phone
+    Customer --o Order
+    Customer--&gt; Order
+    Order --&gt; OrderItem
+    class Customer{
+    -custNumber
+    -address
+    -phone
+     -order: Order
+    }
 
-    class Order
-    Order : -orderID
-    Order : -orderDate
-    Order : -amount
+
+    class Order{
+      -orderID
+     -orderDate
+      -cust:Customer
+    -amount
+    -item:OrderItem
+
+    }
+
 
     class OnlineOrder
     OnlineOrder : -orderID
@@ -420,17 +500,24 @@ title: Order management system (Low coupling)
 ---
 classDiagram
     OnlineOrder --|&gt; Order
-    Customer *-- Order
-    Order o-- OrderItem
-    class Customer
-    Customer : -custNumber
-    Customer : -address
-    Customer : -phone
+    Customer o-- Order
+    Order *-- OrderItem
+    class Customer{
+    -custNumber
+    -address
+    -phone
+     -order: Order
+    }
 
-    class Order
-    Order : -orderID
-    Order : -orderDate
-    Order : -amount
+
+    class Order{
+      -orderID
+     -orderDate
+    -amount
+    -item:OrderItem
+
+    }
+
 
     class OnlineOrder
     OnlineOrder : -orderID
@@ -442,16 +529,7 @@ classDiagram
     OrderItem : -itemID
     OrderItem : -quantity
     OrderItem : -price</code></pre>
-In the above example, consider the refinement from Order → OrderItem (uni directional) to </p>
-<p>Order o-- OrderItem under the assumption of OrderItem is a part of Order, but OrderItem can operate independently.</p>
-<p>Considering the bi-directional association Customer ↔ Order in the example, we can unfold it as following two associations.</p>
-<ol>
-<li>Customer → Order (Customer can access Order)</li>
-<li>Customer ← Order (Order can access Customer)
-Assuming a strong part-of relationship, we can refine the 
-Customer → Order (Customer can access Order) with Customer *-- Order.
-Then we can choose to keep 2. or not. Choosing 2. Makes the association tightly coupled while omitting it makes the association less coupled.</li>
-</ol>
+The composition relationship between Order and OrderItem is modelled in both diagrams. The aggregation relationship between Customer and Order are modelled since order object is a part of the customer object. We do not remove the order objects even if the corresponding customer object is removed.</p>
 <h2 id="non-binary-associations-and-notation">Non binary Associations and Notation<a class="headerlink" href="#non-binary-associations-and-notation" title="Permanent link">¶</a></h2>
 <p>All the associations we covered above are binary associations where exactly two classed were associated. There are other types of associations such as Unary, Ternary, and most generally n-ary.</p>
 <p>Here, we precisely define the association between class A and class B in terms of class A objects and class B objects. Association between class A and class B means, some objects of class A associate with one or more objects of class B. </p>
@@ -547,7 +625,7 @@ Then we can choose to keep 2. or not. Choosing 2. Makes the association tightly 
 <p>Create the Domain Class Diagram: Using the classes, attributes, relationships, construct the domain class diagram. </p>
 </li>
 </ol>
-<h2 id="derive-a-domain-class-diagram-for-trasfer-funds">Derive a Domain Class Diagram for Trasfer Funds<a class="headerlink" href="#derive-a-domain-class-diagram-for-trasfer-funds" title="Permanent link">¶</a></h2>
+<h2 id="derive-a-domain-class-diagram-for-transfer-funds">Derive a Domain Class Diagram for Transfer Funds<a class="headerlink" href="#derive-a-domain-class-diagram-for-transfer-funds" title="Permanent link">¶</a></h2>
 <ol>
 <li>
 <p>Use Case Goal: Enable a customer to transfer funds between accounts.</p>
@@ -555,27 +633,31 @@ Then we can choose to keep 2. or not. Choosing 2. Makes the association tightly 
 <li>
 <p>Identified Classes and Attributes:</p>
 <ol>
-<li>Customer: customerId, name, email</li>
-<li>Account: accountNumber, balance</li>
+<li>Customer: customerId, name, email, account</li>
+<li>Account: accountNumber, balance, Transaction</li>
 <li>Transaction: transactionId, amount, date, fromAccount, toAccount</li>
 </ol>
-<p><img alt="" height="200px" src="../images/DeriveClass_init.png" width="300px"/> </p>
+<p><img alt="" height="500px" src="../images/DeriveClass_init.png" width="600px"/> </p>
 </li>
 <li>
 <p>Relationships:</p>
 <ol>
 <li>
-<p>A Customer can have multiple Accounts. We show a aggregation relationship, implying that Account can exist independant of the customer</p>
+<p>A customer has an account or multiple accounts. An account can associate with a single customer (If we ignore joint accounts).
+We show a general association from Customer to Account.</p>
 </li>
 <li>
-<p>An Account can be involved in multiple Transactions. We show an aggregation relationship since transaction history can outlive the accounts involved.</p>
+<p>An account is a part of transaction. An Account can be involved zero or more Transactions. A transaction relates to exactly two accounts.
+ We show an aggregation relationship from Transaction to Account since transaction can outlive the accounts involved.</p>
 </li>
 </ol>
-<p><img alt="" height="200px" src="../images/DeriveClass_rel.png" width="300px"/></p>
-</li>
-</ol>
-<p>It should be noted that the choice of the nature of association (Ex: Association, Navigable, Aggregate, Composite) depends on the specific requirements and design considerations.</p>
+<p><img alt="" height="400px" src="../images/DeriveClass_rel.png" width="400px"/></p>
+<p>We show the multiplicity requirements as follows.</p>
+<p><img alt="" height="400px" src="../images/DeriveClass_multi.png" width="400px"/></p>
+<p>It should be noted that the choice of the nature of association (Dependancy, Association, Aggregate, Composition) depends on the specific requirements and design considerations.</p>
 <p>It is possible to include a list of transactions as an attribute in Account class here. Here, we leave it for solution class diagram, which is closer to the implementation.</p>
+</li>
+</ol>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
