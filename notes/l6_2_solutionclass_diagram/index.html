@@ -383,11 +383,77 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#solution-class-diagrams" class="md-nav__link">
+  <a href="#solution-class-diagrams-introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      Solution class diagrams
+      Solution class diagrams - Introduction
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution-class-diagrams-derivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution class diagrams - Derivation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solution class diagrams - Derivation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identify-data-types-of-the-attributes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identify Data Types of the Attributes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identify-and-define-the-new-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identify and Define the new Classes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identify-the-new-relationships" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identify the new relationships
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Identify the new relationships">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inheritance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inheritance
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object-usage-uses-relationship" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object Usage (uses relationship)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -414,54 +480,58 @@
 <li>Describe the difference between Domain class diagrams and solution class diagrams</li>
 <li>Derive solution class diagrams</li>
 </ol>
-<h2 id="solution-class-diagrams">Solution class diagrams<a class="headerlink" href="#solution-class-diagrams" title="Permanent link">&para;</a></h2>
+<h2 id="solution-class-diagrams-introduction">Solution class diagrams - Introduction<a class="headerlink" href="#solution-class-diagrams-introduction" title="Permanent link">&para;</a></h2>
+<p>A solution class diagram is the structure of a software System. It Provides an implementation perspective and extends Domain Class diagram with Methods (<strong>processSomeThing()</strong>), Visibility Modifiers (<strong>-accountId, +getId()</strong>) and
+Architecture Layers (<strong>ControllerClass</strong>). It also adds value to Sequence Diagrams by representing messages as class methods.</p>
+<h2 id="solution-class-diagrams-derivation">Solution class diagrams - Derivation<a class="headerlink" href="#solution-class-diagrams-derivation" title="Permanent link">&para;</a></h2>
+<p>The two inputs for a solution class diagram are the domain class diagram and the sequence diagram. The idea is to integrate methods and new classes (relationships too) introduced in Sequence diagram to the existing structure of the domain class diagram.</p>
+<h3 id="identify-data-types-of-the-attributes">Identify Data Types of the Attributes<a class="headerlink" href="#identify-data-types-of-the-attributes" title="Permanent link">&para;</a></h3>
+<p>Let's first recap the domain class diagram that we did in previous week for TransferFunds scenario.</p>
+<p><img alt="" height="400px" src="../images/DeriveClass_multi.png" width="400px" /></p>
+<p>You can observe that the methods are omitted and explicit type details are not mandatory. We first refine the domain class diagram attributes with their data types explicitly as below.</p>
+<p><img alt="" height="400px" src="../images/DeriveClass_types.png" width="600px" /></p>
+<h3 id="identify-and-define-the-new-classes">Identify and Define the new Classes<a class="headerlink" href="#identify-and-define-the-new-classes" title="Permanent link">&para;</a></h3>
+<p>Then we need to identify the new classes introduced in the sequence diagram. Here <strong>UI</strong> and <strong>TransferController</strong> classes are added.</p>
+<p>Recap the sequence diagram of the Transfer funds below.</p>
+<p><img alt="" height="300px" src="../images/refined_seq_diagram.png" width="400px" /></p>
 <ol>
 <li>
-<p>Domain Class diagram with explicit data types for attributes</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;"><img alt="Alt Text" height="400px" src="../images/DeriveClass_types.png" width="600px" /></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><em>Domain Class with Types</em></td>
-</tr>
-</tbody>
-</table>
+<p><strong>UI</strong> class acts on behalf of the customer here to collect the her inputs to send them to the system.</p>
 </li>
 <li>
-<p>Final solution class diagram (stateless)</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;"><img alt="Alt Text" height="400px" src="../images/Sol_Class_stateless.png" width="600px" /></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><em>Solution Class Diagram (stateless)</em></td>
-</tr>
-</tbody>
-</table>
-</li>
-<li>
-<p>Final solution class diagram (Stateful)</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;"><img alt="Alt Text" height="400px" src="../images/Sol_Class2.png" width="600px" /></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><em>Solution Class Diagram</em></td>
-</tr>
-</tbody>
-</table>
+<p><strong>TransferController</strong> class routes requests from UI to Account and Transaction. This class is the middle party which makes UI class and Domain classes (Account, Transaction) isolated.</p>
 </li>
 </ol>
+<p><strong>Remark:</strong> Database class or Repository class could have been considered in the sequence diagram. In this example, we assume that database classes will be added in later refinements to the sequence diagram.</p>
+<p>In order to define the attributes and methods of the new classes, we look at the messages passed the the sequence diagram.</p>
+<ol>
+<li>
+<p>Since UI receives input from customer, we can model an attribute <strong>InputDetails</strong> and the corresponding output <strong>message</strong> according to the sequence diagram.
+ Note that data type of InputData is abstracted as <strong>TransferFormData</strong>.
+ According to the sequence diagram, the methods in UI class are exactly the <strong>showInputStatus()</strong> and <strong>showInsufficientFunds()</strong> which are return messages from controller.</p>
+</li>
+<li>
+<p>When it comes to the <strong>TransferController</strong> class, we have to first identify its methods namely, <strong>validateInput()</strong> sending the customer details and <strong>checkBalance()</strong> sending the amount to be withdrawn.
+The corresponding outputs are <strong>validationStatus</strong> and <strong>isSufficientBalance</strong>.</p>
+<p>The methods it calls are <strong>accountBalance()</strong> , <strong>debit()</strong> and <strong>credit()</strong>.</p>
+<p>According to these methods, we can deduce the possible attributes of <strong>TransferController</strong> class.
+ <strong>-inputStatus</strong>, <strong>-isSufficientBalance</strong> and <strong>-recordStatus</strong>.
+ Note that <strong>TransferController</strong> class can derive <strong>fromAccount</strong> and <strong>toAccount</strong> by processing the <strong>inputDetails</strong> sent from UI. Hence, there is no need to have <strong>fromAccount</strong> and <strong>toAccount</strong> as <strong>Transferontroller</strong> class attributes.</p>
+<p>The methods and the new attributes can be used to define <strong>UI</strong> and <strong>TransferController</strong> classes as below.</p>
+</li>
+</ol>
+<p><img alt="" height="300px" src="../images/newSolutionClasses.png" width="400px" /></p>
+<h3 id="identify-the-new-relationships">Identify the new relationships<a class="headerlink" href="#identify-the-new-relationships" title="Permanent link">&para;</a></h3>
+<h4 id="inheritance">Inheritance<a class="headerlink" href="#inheritance" title="Permanent link">&para;</a></h4>
+<p>The relationships are introduced with the new classes UI and TransferController. We first check for the inheritance relationships and conclude that there is no inheritance to highlight here (If more detail needed we may add some inherited classes of UI).</p>
+<h4 id="object-usage-uses-relationship">Object Usage (uses relationship)<a class="headerlink" href="#object-usage-uses-relationship" title="Permanent link">&para;</a></h4>
+<p>According to the sequence diagram, UI-&gt;TransferController and TransferController-&gt;Account are the message paths. </p>
+<p>Then we check the directions of the relationships. Here, TransferController class is always accessed by the UI class and not viceversa. Similarly, Account class is accessed by TransferController class and not viceversa. Therefore we conclude the directions of the new relationships.</p>
+<p>Finally, we evaluate the strength of the two relationships.</p>
+<p>UI temporarily uses TransferController for validation purposes. UI does not save the reference to the TransferController as an attribute. Therefore, UI depends on TransferController.</p>
+<p>On the other hand, TransferController temporarily uses Account objects and does not store them.  Therefore, TransferController depends on Account. </p>
+<p>The final solution class diagram for transfer funds is as follows.</p>
+<p><img alt="" height="400px" src="../images/SolClass.png" width="600px" /></p>
 
 
 
