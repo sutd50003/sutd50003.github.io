@@ -411,6 +411,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#identify-methods-of-domain-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identify methods of Domain Classes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#identify-and-define-the-new-classes" class="md-nav__link">
     <span class="md-ellipsis">
       Identify and Define the new Classes
@@ -457,6 +466,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#tips-on-sequence-diagram-creation-to-easy-transformation-for-solution-class-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips on Sequence Diagram Creation to Easy Transformation for Solution Class Diagram
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -481,43 +499,45 @@
 <li>Derive solution class diagrams</li>
 </ol>
 <h2 id="solution-class-diagrams-introduction">Solution class diagrams - Introduction<a class="headerlink" href="#solution-class-diagrams-introduction" title="Permanent link">&para;</a></h2>
-<p>A solution class diagram is the structure of a software System. It Provides an implementation perspective and extends Domain Class diagram with Methods (<strong>processSomeThing()</strong>), Visibility Modifiers (<strong>-accountId, +getId()</strong>) and
+<p>A solution class diagram is the structure of a software System. It Provides an implementation perspective and extends Domain Class diagram with Methods (<strong>+processSomeThing()</strong>), Visibility Modifiers (<strong>-accountId, +getId()</strong>) and
 Architecture Layers (<strong>ControllerClass</strong>). It also adds value to Sequence Diagrams by representing messages as class methods.</p>
 <h2 id="solution-class-diagrams-derivation">Solution class diagrams - Derivation<a class="headerlink" href="#solution-class-diagrams-derivation" title="Permanent link">&para;</a></h2>
 <p>The two inputs for a solution class diagram are the domain class diagram and the sequence diagram. The idea is to integrate methods and new classes (relationships too) introduced in Sequence diagram to the existing structure of the domain class diagram.</p>
 <h3 id="identify-data-types-of-the-attributes">Identify Data Types of the Attributes<a class="headerlink" href="#identify-data-types-of-the-attributes" title="Permanent link">&para;</a></h3>
 <p>Let's first recap the domain class diagram that we did in previous week for TransferFunds scenario.</p>
 <p><img alt="" height="400px" src="../images/DeriveClass_multi.png" width="400px" /></p>
-<p>You can observe that the methods are omitted and explicit type details are not mandatory. We first refine the domain class diagram attributes with their data types explicitly as below.</p>
+<p>You can observe that the methods are omitted and explicit type details are not mandatory. We first refine the domain class diagram attributes with their data types (and exact data structures like "List" to show the multiplicity) explicitly as below.</p>
 <p><img alt="" height="400px" src="../images/DeriveClass_types.png" width="600px" /></p>
-<h3 id="identify-and-define-the-new-classes">Identify and Define the new Classes<a class="headerlink" href="#identify-and-define-the-new-classes" title="Permanent link">&para;</a></h3>
-<p>Then we need to identify the new classes introduced in the sequence diagram. Here <strong>UI</strong> and <strong>TransferController</strong> classes are added.</p>
+<h3 id="identify-methods-of-domain-classes">Identify methods of Domain Classes<a class="headerlink" href="#identify-methods-of-domain-classes" title="Permanent link">&para;</a></h3>
 <p>Recap the sequence diagram of the Transfer funds below.</p>
 <p><img alt="" height="300px" src="../images/refined_seq_diagram.png" width="400px" /></p>
+<p>According to the sequence diagram there are two <strong>Account</strong> objects namely <strong>SrcAccount</strong> and <strong>DesAccount</strong>. <strong>Account</strong> class has <strong>debit(amount)</strong>, <strong>credit(amount)</strong>, <strong>record(trans)</strong>, <strong>rollbackDebit(amount)</strong> and <strong>rollbackCredit(amount)</strong> methods which are all called by <strong>TransferController</strong> class.</p>
+<p><strong>Transaction</strong> class does not have methods.</p>
+<p><img alt="" height="300px" src="../images/domain_class_methods.png" width="400px" /></p>
+<h3 id="identify-and-define-the-new-classes">Identify and Define the new Classes<a class="headerlink" href="#identify-and-define-the-new-classes" title="Permanent link">&para;</a></h3>
+<p>Then we need to identify the new classes introduced in the sequence diagram. Here <strong>UI</strong> and <strong>TransferController</strong> classes are added.</p>
 <ol>
 <li>
-<p><strong>UI</strong> class acts on behalf of the customer here to collect the her inputs to send them to the system.</p>
+<p><strong>UI</strong> class acts on behalf of the customer here to collect the inputs and send them to the system.</p>
 </li>
 <li>
-<p><strong>TransferController</strong> class routes requests from UI to Account and Transaction. This class is the middle party which makes UI class and Domain classes (Account, Transaction) isolated.</p>
+<p><strong>TransferController</strong> class routes requests from <strong>UI</strong> to <strong>Account</strong> and <strong>Transaction</strong> and returns results back to the <strong>UI</strong>. This class is the middle party which makes <strong>UI</strong> class and Domain classes (<strong>Account</strong>, <strong>Transaction</strong>) isolated.</p>
 </li>
 </ol>
-<p><strong>Remark:</strong> Database class or Repository class could have been considered in the sequence diagram. In this example, we assume that database classes will be added in later refinements to the sequence diagram.</p>
-<p>In order to define the attributes and methods of the new classes, we look at the messages passed the the sequence diagram.</p>
+<p><strong>Remark:</strong> Database class or Repository class could have been considered in the sequence diagram. In this example, we assume that database classes will be added in later refinements to the sequence diagram. We follow the simple <strong>MVC</strong> architecture introduced in your javascript lessons.</p>
+<p>In order to define the attributes and methods of the new classes, we look at the messages passed to the sequence diagram.</p>
 <ol>
 <li>
 <p>Since UI receives input from customer, we can model an attribute <strong>InputDetails</strong> and the corresponding output <strong>message</strong> according to the sequence diagram.
- Note that data type of InputData is abstracted as <strong>TransferFormData</strong>.
- According to the sequence diagram, the methods in UI class are exactly the <strong>showInputStatus()</strong> and <strong>showInsufficientFunds()</strong> which are return messages from controller.</p>
+ Note that data type of InputData is abstracted as <strong>TransferFormData (tfd)</strong>.
+ According to the sequence diagram, the methods in UI class is <strong>show(msg)</strong> which are return messages from controller.</p>
 </li>
 <li>
-<p>When it comes to the <strong>TransferController</strong> class, we have to first identify its methods namely, <strong>validateInput()</strong> sending the customer details and <strong>checkBalance()</strong> sending the amount to be withdrawn.
-The corresponding outputs are <strong>validationStatus</strong> and <strong>isSufficientBalance</strong>.</p>
-<p>The methods it calls are <strong>accountBalance()</strong> , <strong>debit()</strong> and <strong>credit()</strong>.</p>
-<p>According to these methods, we can deduce the possible attributes of <strong>TransferController</strong> class.
- <strong>-inputStatus</strong>, <strong>-isSufficientBalance</strong> and <strong>-recordStatus</strong>.
- Note that <strong>TransferController</strong> class can derive <strong>fromAccount</strong> and <strong>toAccount</strong> by processing the <strong>inputDetails</strong> sent from UI. Hence, there is no need to have <strong>fromAccount</strong> and <strong>toAccount</strong> as <strong>Transferontroller</strong> class attributes.</p>
-<p>The methods and the new attributes can be used to define <strong>UI</strong> and <strong>TransferController</strong> classes as below.</p>
+<p>Considering <strong>TransferController</strong> class, we have to first identify its methods namely, <strong>validateInput(tfd)</strong> sending the customer details and <strong>transfer(tfd)</strong> sending the amount to be withdrawn.
+The corresponding outputs are <strong>validationStatus</strong> and <strong>transferStatus</strong> (<strong>success</strong> or <strong>fail</strong>)</p>
+<p>The methods it calls are <strong>accountBalance()</strong> , <strong>debit(amount)</strong>, <strong>credit(amount)</strong>, and <strong>new Transaction(src,des,amount)</strong>. According to these methods, we can deduce the possible attributes of <strong>TransferController</strong> class.</p>
+<p>Note that <strong>TransferController</strong> class can derive <strong>fromAccount</strong> ,<strong>toAccount</strong> and <strong>amount</strong> attributes of the <strong>Account</strong> and <strong>Transaction</strong> classes by processing the <strong>TransferFormData</strong> sent from UI. <strong>TransferController</strong> then instantiates <strong>Account</strong> and <strong>Transaction</strong> objects to call the corresponding methods.</p>
+<p>On the other hand, outputs received by <strong>TransferController</strong> class can be used to call the <strong>UI</strong> methods instantly. Therefore, <strong>TransferController</strong> class does not have any attribute.</p>
 </li>
 </ol>
 <p><img alt="" height="300px" src="../images/newSolutionClasses.png" width="400px" /></p>
@@ -525,13 +545,51 @@ The corresponding outputs are <strong>validationStatus</strong> and <strong>isSu
 <h4 id="inheritance">Inheritance<a class="headerlink" href="#inheritance" title="Permanent link">&para;</a></h4>
 <p>The relationships are introduced with the new classes UI and TransferController. We first check for the inheritance relationships and conclude that there is no inheritance to highlight here (If more detail needed we may add some inherited classes of UI).</p>
 <h4 id="object-usage-uses-relationship">Object Usage (uses relationship)<a class="headerlink" href="#object-usage-uses-relationship" title="Permanent link">&para;</a></h4>
-<p>According to the sequence diagram, UI-&gt;TransferController and TransferController-&gt;Account are the message paths. </p>
-<p>Then we check the directions of the relationships. Here, TransferController class is always accessed by the UI class and not viceversa. Similarly, Account class is accessed by TransferController class and not viceversa. Therefore we conclude the directions of the new relationships.</p>
+<p>According to the sequence diagram, <strong>UI-&gt;TransferController</strong> and <strong>TransferController-&gt;Account</strong> are the message paths. </p>
+<p>Then we check the directions of the relationships. Here, <strong>TransferController</strong> class is always accessed by the <strong>UI</strong> class and not viceversa. Similarly, <strong>Account</strong> class is accessed by <strong>TransferController</strong> class and not viceversa. Therefore we conclude the directions of the new relationships.</p>
 <p>Finally, we evaluate the strength of the two relationships.</p>
-<p>UI temporarily uses TransferController for validation purposes. UI does not save the reference to the TransferController as an attribute. Therefore, UI depends on TransferController.</p>
-<p>On the other hand, TransferController temporarily uses Account objects and does not store them.  Therefore, TransferController depends on Account. </p>
-<p>The final solution class diagram for transfer funds is as follows.</p>
+<ol>
+<li>
+<p><strong>UI</strong> temporarily uses <strong>TransferController</strong> for validation purposes and route transfer message to <strong>Account</strong> class. <strong>UI</strong> does not save the reference to the <strong>TransferController</strong> as an attribute. Instead, <strong>UI</strong> creates <strong>TransferController</strong> object inside <strong>inputTransferDetails()</strong> method which calls <strong>validateInput(tfd)</strong> and <strong>transfer(tfd)</strong> internally. UI depends on TransferController.</p>
+</li>
+<li>
+<p><strong>TransferController</strong> temporarily uses <strong>Account</strong> objects for balance checking and transfer. It also temporarily creates and uses <strong>Transaction</strong> object for transfer method. It already receives <strong>tfd</strong> from the <strong>UI</strong> class, hence do not need to store any details of <strong>Account</strong> to reference later. Therefore, <strong>TransferController</strong> depends on <strong>Account</strong> and <strong>Transaction</strong>. </p>
+</li>
+</ol>
+<p>For dependancy relationships we do not show multiplicity since, it is temporary usage. The final solution class diagram for "transfer funds" is as follows.</p>
 <p><img alt="" height="400px" src="../images/SolClass.png" width="600px" /></p>
+<h2 id="tips-on-sequence-diagram-creation-to-easy-transformation-for-solution-class-diagram">Tips on Sequence Diagram Creation to Easy Transformation for Solution Class Diagram<a class="headerlink" href="#tips-on-sequence-diagram-creation-to-easy-transformation-for-solution-class-diagram" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>Message should consist of what to do (method name), inputs,return message and return message type. It is a good practice to show all the return messages explicitly (including empty messages)</p>
+</li>
+<li>
+<p>Limit UI classes for input (<strong>tfd</strong>) attribute and <strong>show(msg)</strong> method.</p>
+</li>
+<li>
+<p>Limit Controller classes to be stateless. Use Controller class as a router between UI and Domain classes. </p>
+<ol>
+<li>
+<p>As long as a value is sent as method argument, no need to have an attribute to store it. Since UI class always store the input data, it can be sent to Controller as method arguments. Controller does not need to store it.</p>
+</li>
+<li>
+<p>Controller class can instantiate domain class objects, and pass arguments to domain class methods based on the arguments it receives from UI. </p>
+</li>
+<li>
+<p>Outputs the Controller object receives from Domain objects can be reused (with some transformations) inside the caller method of Controller object. Therefore no need to store additional Domain class status attributes in Controller class.</p>
+</li>
+<li>
+<p>If we need to store the state across a UI sequence (Ex: Booking ID from Booking UI to Payment UI), we can keep it inside the UI class. Therefore, Controller receives all the state information from UI and send it to the Domain classes without storing it. It is also possible to store the state in the Domain class and propagate it to UI class via the return message without Controller class storing it.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Can keep input messages to Controller and return messages from Controller unnamed, and have a meaningful name, after rest of the sequence diagram is drawn. (Ex: UI sends <strong>tfd</strong> to Controller. Controller calls <strong>accountBalance()</strong> , <strong>debit(amount)</strong> <strong>credit(amount)</strong> in the Account. Finally, Controller sends <strong>transfer_success</strong> message to UI. This entire sequence can be named <strong>transfer(tfd)</strong>).</p>
+<!-- 1. An attribute needs to be defined in a classA, if it needs to store an input (to classA method) or output (from classB method called in classA), to be used later in another method execution of classA.
+1. Inside an activation bar (representing method), it is possible to reuse an input for its nested methods. (Ex: Inside **inputTransferDetails()** , **validateInput(tfd)** and **transfer(tfd)** are nested. **tfd** is reused without storing it as **TransferController** class attribute.)
+ -->
+</li>
+</ol>
 
 
 
