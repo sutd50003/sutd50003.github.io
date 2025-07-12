@@ -582,7 +582,7 @@
 <p>Since we followed the MVC architecture in mind during the UML design process, we can easily extract MVC components from Sequence diagram and Solution class diagram.</p>
 <p>According to Sequence diagram, we can group the UI components (first contact to user) to view layer, next set of components which connect the UI components to domain components to controller layer, and domain and the after components to the model layer.</p>
 <p>Referring to the solution class diagram we can easily start from the UI class and follow the dependancy arrows to find the controller classes and model classes. After one dependancy step from UI, we find controller classes and after next step we find the model classes.</p>
-<p><img alt="" height="300px" src="../images/MVC.png" width="300px" /></p>
+<p><img alt="" height="300px" src="../images/MVC.png" width="200px" /></p>
 <!-- Add MVC image -->
 
 <h4 id="layered-architecture">Layered Architecture<a class="headerlink" href="#layered-architecture" title="Permanent link">&para;</a></h4>
@@ -597,12 +597,18 @@
 <li>Data: AccountRepository, TransactionRepository</li>
 <li>Database: Tables from the database design</li>
 </ol>
-<p>Note that in the layered architecture we refer to controller as application.</p>
-<p><img alt="" height="300px" src="../images/layered_architecture.png" width="300px" /></p>
+<p><img alt="" height="300px" src="../images/TransferFundLayer.png" width="100px" /></p>
 <!-- Layered architecture image -->
-
-<p>It is possible to integrate multiple use cases in a single layered architecture diagram as below. Note that, services can be reused by layers above.</p>
-<p><img alt="" height="300px" src="../images/Layered_architecture_multi.png" width="300px" /></p>
+<p>A service is identified by organizing the controller methods from the MVC style sequence diagram.</p>
+<p>In the example of Transfer Funds, Transfer Controller uses Account model for check balance, and Transaction model for the transfer.</p>
+<p><img alt="" height="300px" src="../images/TransferFundsServiceStack.png" width="100px" /></p>
+<p>To make the service stacks independent, we can define unique owner from the service layer to each model. If a service needs to access models that it does not own, it should do it through service which owns the model of interest. These independant service stacks may be turned into micro services.</p>
+<p>In the example of Transfer Funds, Transaction model is owned by Transfer service and the Account model is owned by the Account service. When Transfer Service needs to access the Account model, it has to do it through the Account Service.</p>
+<p><img alt="" height="300px" src="../images/TransferFundsIntegrated.png" width="100px" /></p>
+<p>It is possible to integrate multiple use cases in a single layered architecture diagram as above.</p>
+<p>Here, Balance Page use case is also added to the UI and the Corresponding controller is added to the Controller layer. After that, Balance Controller also reuses the existing services. If the added controller uses a new model, then we need to introduce a new service.</p>
+<p>Refining with each use case, will result in the final service layered architecture diagram which shows UI components and controllers for each use case. </p>
+<p>There will be a service stack defined for each domain model class. Controllers can connect to one or more services. The services can interact with each other.</p>
 <!-- Layered architecture image for multi use case -->
 
 <h3 id="other-software-architectures">Other Software Architectures<a class="headerlink" href="#other-software-architectures" title="Permanent link">&para;</a></h3>
