@@ -879,7 +879,7 @@ The first test case <code>'testing initMessage() in Echo'</code> is to test the 
 <p>An end-to-end (E2E) testing is to assess the built system's feature from the user's perspective. All the components in the system 
 supporting that particular feature are actively tested, i.e. no mocking. <br />
 An end-to-end test case is often derived directly from a use case. </p>
-<p>To automate an end-to-end test, we can use test framework like Jest. For simple system feature like our Echo App. We could
+<p>To automate an end-to-end test, we can use test framework like vitest. For simple system feature like our Echo App. We could
 define our test as follows (similar to the <code>Echo.test.jsx</code> except that we don't require the mocking.)</p>
 <div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
@@ -923,7 +923,7 @@ define our test as follows (similar to the <code>Echo.test.jsx</code> except tha
 </span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20"></a><span class="w">  </span><span class="p">});</span><span class="w"> </span>
 </span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21"></a><span class="p">})</span>
 </span></code></pre></div></td></tr></table></div>
-<p>In the above test case, we use Jest to simulate the user's action sequence</p>
+<p>In the above test case, we use vitest to simulate the user's action sequence</p>
 <ol>
 <li>randomly generate a text message.</li>
 <li>click on the submit button.</li>
