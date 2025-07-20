@@ -833,39 +833,24 @@ For example, <code>validate input</code> activity starts from UI life line (swim
 </table>
 </li>
 </ol>
-<p>See the refined diagram which adds missing Controller to Model messages and show different life lines for each instance of the same class.</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code>![](./images/refined_seq_diagram.png){ width=400px height=300px}
-
-
-The diagram can be further refined to make the testing simpler.
-
-1. Input loops in user side removed and replaced by &#39;alt&#39; blocks.
-
-1. UI outputs were simplified in the format, &#39;show(msg)&#39; which is a return message.
-
-1. &#39;break&#39; fragments are replaced by &#39;alt&#39;. Failure alternative flows are assumed as termination of sequence, regardless the active status in lifelines.
-
-1. Asynchronous blocks are simplified into synchronous messages and &#39;atomic&#39; notion is being removed. In concurrency testing phase, possible concurrency flows and errors will be separately tested.
-
-
-
-![](./images/simple_refined_seq_diagram.png){ width=400px height=300px}
-</code></pre></div></td></tr></table></div>
+<p>See the refined diagram which adds missing Controller to Model messages (<code>accountBalance</code> to <code>Account</code>) and show different life lines for each instance of the same class (<code>SrcAccount</code> and <code>DesAccount</code>).</p>
+<p><img alt="" height="300px" src="../images/refined_seq_diagram.png" width="400px" /></p>
+<p>The diagram can be further refined to make the testing simpler. </p>
+<ol>
+<li>
+<p>Input loops in user side removed and replaced by 'alt' blocks.</p>
+</li>
+<li>
+<p>UI outputs were simplified in the format, 'show(msg)' which is a return message.</p>
+</li>
+<li>
+<p>'break' fragments are replaced by 'alt'. Failure alternative flows are assumed as termination of sequence, regardless the active status in lifelines.</p>
+</li>
+<li>
+<p>Asynchronous blocks are simplified into synchronous messages and 'atomic' notion is being removed. In concurrency testing phase, possible concurrency flows and errors will be separately tested. </p>
+</li>
+</ol>
+<p><img alt="" height="300px" src="../images/simple_refined_seq_diagram.png" width="400px" /></p>
 
 
 
