@@ -862,9 +862,8 @@ table should contains the message.
 </span><span id="__span-6-55"><a id="__codelineno-6-55" name="__codelineno-6-55"></a><span class="p">})</span>
 </span></code></pre></div></td></tr></table></div>
 <p>As we want to isolate the test from the backend API, we need to mock the API calls. This is achieved by using the library <code>msw</code>. </p>
-<blockquote>
-<p>Due to some API deprecation, to import <code>msw</code> with versions of Jest and React we are currently using we need to introduce some extra configuration for Jest in <code>jest.polyfills</code>. For details setup, please refer to this <a href="../l10_1_ui_test_annex/">file</a>.</p>
-</blockquote>
+<!-- > Due to some API deprecation, to import `msw` with versions of Jest and React we are currently using we need to introduce some extra configuration for Jest in `jest.polyfills`. For details setup, please refer to this [file](./l10_1_ui_test_annex.md). -->
+
 <p><code>setupServer()</code> functions allows us to define a mock backend API server with the required endpoints. 
 The first test case <code>'testing initMessage() in Echo'</code> is to test the first rendering of the <code>Echo()</code> component.  We want to ensure that the table contains a row with the message returned by the mocked API <code>/echo/all</code>. </p>
 <p>Note that <code>findByTestId()</code> is the async version of <code>getByTestId()</code>, it waits for the previous promise to be fully resolved before assigning the result to the LHS variable. </p>
@@ -875,7 +874,7 @@ The first test case <code>'testing initMessage() in Echo'</code> is to test the 
 <li><code>https://testing-library.com/docs/react-testing-library/example-intro</code></li>
 </ul>
 <h3 id="cohort-exercise-non-graded">Cohort Exercise (Non graded)<a class="headerlink" href="#cohort-exercise-non-graded" title="Permanent link">&para;</a></h3>
-<p>Continue with your solution to Cohort Exercise 8 question 2, develop unit test cases for the React components found in the HR app.</p>
+<p>Continue with your solution to Cohort Exercise 3 question 2, develop unit test cases for the React components found in the HR app.</p>
 <h2 id="ui-based-end-to-end-testing">UI-based end-to-end testing<a class="headerlink" href="#ui-based-end-to-end-testing" title="Permanent link">&para;</a></h2>
 <p>An end-to-end (E2E) testing is to assess the built system's feature from the user's perspective. All the components in the system 
 supporting that particular feature are actively tested, i.e. no mocking. <br />
