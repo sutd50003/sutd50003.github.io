@@ -392,6 +392,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#update" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#derivation-of-a-sequence-diagram" class="md-nav__link">
     <span class="md-ellipsis">
       Derivation of a Sequence Diagram
@@ -476,6 +485,21 @@
 </ol>
 <h2 id="sequence-diagram-introduction">Sequence Diagram - Introduction<a class="headerlink" href="#sequence-diagram-introduction" title="Permanent link">&para;</a></h2>
 <p>Refer to the <a href="../l5_2_sequence_diagrams/">previous lesson</a> to recall the basics of sequence diagram.</p>
+<h2 id="update">Update:<a class="headerlink" href="#update" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>The example illustrates multiple notions of sequence diagrams such as loop, break, atomic, etc. However, simplified diagrams for testing purposes can be derived by,</p>
+<ol>
+<li>minimizing loops of user inputs</li>
+<li>minimizing asynchronous messages</li>
+<li>minimizing complex constructs like break and atomic.</li>
+</ol>
+</li>
+<li>
+<p>In the final sequence diagram (and activity diagram) 
+Controller should consult the Account to finalize 'check_balance' instead of returning to UI immediately.</p>
+</li>
+</ol>
 <h2 id="derivation-of-a-sequence-diagram">Derivation of a Sequence Diagram<a class="headerlink" href="#derivation-of-a-sequence-diagram" title="Permanent link">&para;</a></h2>
 <p>It is important to understand which artifacts are needed to derive a sequence diagram as well as how to do it. Sequence diagram represents the sequence of message (method) flow between classes for a given use case. We will need the artifacts which defines the users (use case diagram/description), classes (class diagram) and sequences of interactions (activity diagram). We can follow the following steps from the beginning to derive a sequence diagram for a given use case.</p>
 <ol>
@@ -809,6 +833,39 @@ For example, <code>validate input</code> activity starts from UI life line (swim
 </table>
 </li>
 </ol>
+<p>See the refined diagram which adds missing Controller to Model messages and show different life lines for each instance of the same class.</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code>![](./images/refined_seq_diagram.png){ width=400px height=300px}
+
+
+The diagram can be further refined to make the testing simpler.
+
+1. Input loops in user side removed and replaced by &#39;alt&#39; blocks.
+
+1. UI outputs were simplified in the format, &#39;show(msg)&#39; which is a return message.
+
+1. &#39;break&#39; fragments are replaced by &#39;alt&#39;. Failure alternative flows are assumed as termination of sequence, regardless the active status in lifelines.
+
+1. Asynchronous blocks are simplified into synchronous messages and &#39;atomic&#39; notion is being removed. In concurrency testing phase, possible concurrency flows and errors will be separately tested.
+
+
+
+![](./images/simple_refined_seq_diagram.png){ width=400px height=300px}
+</code></pre></div></td></tr></table></div>
 
 
 

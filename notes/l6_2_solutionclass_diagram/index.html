@@ -509,8 +509,8 @@ Architecture Layers (<strong>ControllerClass</strong>). It also adds value to Se
 <p>You can observe that the methods are omitted and explicit type details are not mandatory. We first refine the domain class diagram attributes with their data types (and exact data structures like "List" to show the multiplicity) explicitly as below.</p>
 <p><img alt="" height="400px" src="../images/DeriveClass_types.png" width="600px" /></p>
 <h3 id="identify-methods-of-domain-classes">Identify methods of Domain Classes<a class="headerlink" href="#identify-methods-of-domain-classes" title="Permanent link">&para;</a></h3>
-<p>Recap the sequence diagram of the Transfer funds below.</p>
-<p><img alt="" height="300px" src="../images/refined_seq_diagram.png" width="400px" /></p>
+<p>Recap the refined sequence diagram of the Transfer funds below.</p>
+<p><img alt="" height="300px" src="../images/simple_refined_seq_diagram.png" width="400px" /></p>
 <p>According to the sequence diagram there are two <strong>Account</strong> objects namely <strong>SrcAccount</strong> and <strong>DesAccount</strong>. <strong>Account</strong> class has <strong>debit(amount)</strong>, <strong>credit(amount)</strong>, <strong>record(trans)</strong>, <strong>rollbackDebit(amount)</strong> and <strong>rollbackCredit(amount)</strong> methods which are all called by <strong>TransferController</strong> class.</p>
 <p><strong>Transaction</strong> class does not have methods.</p>
 <p><img alt="" height="300px" src="../images/domain_class_methods.png" width="400px" /></p>
