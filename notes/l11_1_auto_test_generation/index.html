@@ -210,9 +210,9 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#corhort-exercise-graded">
+<a class="md-nav__link" href="#cohort-exercise-not-graded">
 <span class="md-ellipsis">
-      Corhort Exercise (Graded)
+      Cohort Exercise (Not Graded)
     </span>
 </a>
 </li>
@@ -249,9 +249,9 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#cohort-exercise-graded">
+<a class="md-nav__link" href="#cohort-exercise-not-graded_1">
 <span class="md-ellipsis">
-      Cohort Exercise (Graded)
+      Cohort Exercise (Not Graded)
     </span>
 </a>
 </li>
@@ -388,10 +388,10 @@
 <li>Swapping characters/bits</li>
 <li>Insert characters</li>
 </ul>
-<h3 id="corhort-exercise-graded">Corhort Exercise (Graded)<a class="headerlink" href="#corhort-exercise-graded" title="Permanent link">¶</a></h3>
+<h3 id="cohort-exercise-not-graded">Cohort Exercise (Not Graded)<a class="headerlink" href="#cohort-exercise-not-graded" title="Permanent link">¶</a></h3>
 <p>Given an input string, implement a mutation operator that chooses a random position in the string and swaps the adjacent characters. Meaning if <code>SUTD</code> is an input string and 2 is chosen as the random position, the output should be <code>SUDT</code>. Careful about the string length bound check. </p>
 <h3 id="generation-based-fuzzing">Generation based fuzzing<a class="headerlink" href="#generation-based-fuzzing" title="Permanent link">¶</a></h3>
-<p>An alternative to Mutation-based fuzzing is touse generation based fuzzing. 
+<p>An alternative to Mutation-based fuzzing is the generation based fuzzing. 
 In generation based fuzzing, we assume that we have access to a set of grammar rules that defines the possible syntatically valid inputs to the test subject. </p>
 <h4 id="formal-grammar">Formal Grammar<a class="headerlink" href="#formal-grammar" title="Permanent link">¶</a></h4>
 <p>In computer science, we often use formal grammar as the specification of a language. A language denotes a set of sequences of terminals. A terminal is often a symbol, a byte, or a number. </p>
@@ -416,7 +416,7 @@ A non-terminal is a meta symbol in the grammar which defines a potential expensi
 <h4 id="parse-tree">Parse Tree<a class="headerlink" href="#parse-tree" title="Permanent link">¶</a></h4>
 <p>Given a grammar, a parser normally validates the input sequence by attempting to construct a parse tree. A parse tree records from which grammar rules the input sequence can be validated according to the grammar. 
 We can also think of the parse tree as the result of the parsing. </p>
-<p>For example, the exxpression <code>5 + 2 * 3</code> can be parsed into the following parse tree</p>
+<p>For example, the expression <code>5 + 2 * 3</code> can be parsed into the following parse tree</p>
 <p><pre class="mermaid"><code>graph
    N0("S") --&gt; N1
    N1("Expr") --&gt; N2
@@ -448,11 +448,11 @@ The idea is to starting from the starting rule's nonterminal, randomly choose on
 <li>Do not always expand the same sub-tree / node. </li>
 </ol>
 <p>With this we can generate a good set of fuzz test input passing the syntax checking of the target software and yet having enough randomness.</p>
-<h3 id="cohort-exercise-graded">Cohort Exercise (Graded)<a class="headerlink" href="#cohort-exercise-graded" title="Permanent link">¶</a></h3>
+<h3 id="cohort-exercise-not-graded_1">Cohort Exercise (Not Graded)<a class="headerlink" href="#cohort-exercise-not-graded_1" title="Permanent link">¶</a></h3>
 <p>Use JavaScript to implement a fuzzer that will randomly generate inputs to the calculator conforming to the grammar. For now, you can hardcode the expression grammar. </p>
 <p>Hint: Start with the initial rule <code>S ::= Expr</code> and at each point, apply a rule at random. For example, randomly choose any of the rules <code>Expr ::= Term</code>, <code>Expr ::= Expr + Term</code> or <code>Expr – Term</code> in the next step. Continue until a valid expression for the calculator is obtained. Make sure you do not expand the rules forever to avoid infinite loop. </p>
 <h3 id="limitations-of-fuzzing">Limitations of Fuzzing<a class="headerlink" href="#limitations-of-fuzzing" title="Permanent link">¶</a></h3>
-<p>Fuzzing offers many perks to maintain goodd quality of softwares.</p>
+<p>Fuzzing offers many perks to maintain good quality of software.</p>
 <ul>
 <li>Can provide results with little effort</li>
 <li>Can reveal bugs that were missed in a manual audit</li>
