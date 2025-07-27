@@ -361,11 +361,13 @@
 <p>The symbolic execution framework generates the following set of constraints for the path 3-&gt;4-&gt;6-&gt;7-&gt;8,
 <div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
 <span class="normal"><a href="#__codelineno-3-2">2</a></span>
-<span class="normal"><a href="#__codelineno-3-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="p">{</span><span class="w"> </span><span class="nx">B</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">42342531</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">  </span><span class="nx">B</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="p">}</span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="p">{</span><span class="w"> </span><span class="nx">B</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">42342531</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">  </span><span class="nx">B</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">A</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">  </span><span class="nx">A</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">5</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
-since the first constraint implies the second one, the second constraint is redundant.</p>
+Note that 0 &lt;= A &lt; 5 requires to execute line 7. Since the first constraint implies the second one, the second constraint is redundant.</p>
 <p>Similarly if we have the following code</p>
 <div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
@@ -387,14 +389,16 @@ since the first constraint implies the second one, the second constraint is redu
 </span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
-<p>The symbolic exuection framework generates the constraint set for the path 3-&gt;4-&gt;6-&gt;7-&gt;8-&gt;9-&gt;10, as </p>
+<p>The symbolic exuection framework generates the constraint set for the path 3-&gt;4-&gt;6-&gt;7, as </p>
 <div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
 <span class="normal"><a href="#__codelineno-5-2">2</a></span>
 <span class="normal"><a href="#__codelineno-5-3">3</a></span>
-<span class="normal"><a href="#__codelineno-5-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="p">{</span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="p">{</span>
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">    </span><span class="nx">B</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">42342531</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">    </span><span class="nx">B</span><span class="o">&lt;</span><span class="mf">0</span><span class="w"> </span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="p">}</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">    </span><span class="nx">B</span><span class="o">&lt;</span><span class="mf">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">A</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="w">    </span><span class="nx">A</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">5</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
 <p>which can not be satisfied hence this path of code is not reachable.</p>
 <p>Finally if we have the following code</p>
@@ -423,7 +427,7 @@ we have the following set of constraints</p>
 <span class="normal"><a href="#__codelineno-7-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="p">{</span><span class="w"> </span><span class="nx">B</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">42342531</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">B</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">A</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="mf">0</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">A</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">5</span><span class="w"> </span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
-<p>which is unsatifiable hence a bug must be present.</p>
+<p>which is satifiable for 3-&gt;4-&gt;6 but not satisfiable for 3-&gt;4-&gt;6-&gt;7 hence a bug must be present. Program crashes at line 7.</p>
 <p>As we observe, symbolic execution proceeds by 
 path following. For each path it traverse, it generates a set of constraints,</p>
 <ul>
@@ -553,7 +557,7 @@ We could have more versions of having while loop being unrolled more than once, 
 <p>Symbolic execution was a nice framework with strong formalism behind and highly useful.
 There are several issues required more care. </p>
 <h5 id="limitation-of-the-solvers">Limitation of the solvers<a class="headerlink" href="#limitation-of-the-solvers" title="Permanent link">¶</a></h5>
-<p>It relias on the solver's capabilities. Hence in case of complex inequality, we might not get an answer.</p>
+<p>It relies on the solver's capabilities. Hence in case of complex inequality, we might not get an answer.</p>
 <div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
 <span class="normal"><a href="#__codelineno-15-2">2</a></span>
 <span class="normal"><a href="#__codelineno-15-3">3</a></span>
