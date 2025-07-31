@@ -249,9 +249,9 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#cohort-exercise-graded">
+<a class="md-nav__link" href="#cohort-exercise-not-graded">
 <span class="md-ellipsis">
-      Cohort Exercise (Graded)
+      Cohort Exercise (Not Graded)
     </span>
 </a>
 </li>
@@ -746,7 +746,7 @@ where <span class="arithmatex">\(e\)</span> is the number of edges in <span clas
 <p>Note that Cyclomatic Complexity only measures the number of uniquely linearly paths, which serves as the <strong>lower-bound</strong> of the path coverage. For instance, recall example E, the cyclomatic complexity of function <code>f</code> is 8-7+2*1 = 3. But there exist 4 executable paths. This is because when counting linearly paths, the first if-else gives us two paths, by including a second if-else adds an extra 1 uniquely linearly path (as alternative). To find all executale paths (with max 1-loop-unrolling), we need to rely on the condition coverage.</p>
 <p>Now we have to verify whether we have attained MCDC for <code>max_all</code>. Since there is only one predicate <code>i &lt; arr.length</code>
 we have already covered both possible outcome of the predicate, namely, we executed the body the loop as well as exit from the loop. Hence we argue that the above test cases is providing path and MCDC coverage.</p>
-<h3 id="cohort-exercise-graded">Cohort Exercise (Graded)<a class="headerlink" href="#cohort-exercise-graded" title="Permanent link">¶</a></h3>
+<h3 id="cohort-exercise-not-graded">Cohort Exercise (Not Graded)<a class="headerlink" href="#cohort-exercise-not-graded" title="Permanent link">¶</a></h3>
 <p>Let's consider another example </p>
 <div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
