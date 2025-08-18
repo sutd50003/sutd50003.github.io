@@ -419,7 +419,7 @@ classDiagram
     OrderItem : -price</code></pre>
 In the order management example, the unidirectional arrow from Order to OrderItem represent that an Order has order item object. The non directional arrow (representing bi-directional) is to explicitly represent mutual access between Customer and Order (Customer maintains the Orders, Order maintains the corresponding Customer) in their structures mutually.</p>
 <p>Further refinements can be done for the directional associations mentioned above. They can be classified as aggregation or composition which denote whole-part relationships.</p>
-<p><em>Aggregation</em> : Aggregation is a directional association from classA to classB which says classA is a part of classB and classA can also operate independent of classA.  </p>
+<p><em>Aggregation</em> : Aggregation is a directional association from classA to classB which says classA is a part of classB and classA can also operate independent of classB.  </p>
 <p><pre class="mermaid"><code>classDiagram
   classA --o classB</code></pre>
 Semantically, it adds a stronger link to the <strong>has-a</strong> relationship. "Customer <strong>has</strong> Order" and "Order <strong>has</strong> OrderItems" are both associations. However, "OrderItems are <strong>a part of</strong> Order" and "Order is <strong>not a part of</strong> Customer". Additionally, "OrderItem can operate independantly of Order".</p>
