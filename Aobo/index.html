@@ -16,7 +16,7 @@
     
     
       
-        <title>50.003 - Sequence Diagrams (Contd) - Elements of Software Construction 50.003</title>
+        <title>Aobo - Elements of Software Construction 50.003</title>
       
     
     
@@ -108,11 +108,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#50003-sequence-diagrams-contd" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -143,7 +138,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              50.003 - Sequence Diagrams (Contd)
+              Aobo
             
           </span>
         </div>
@@ -364,103 +359,6 @@
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#learning-outcomes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Learning Outcomes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sequence-diagram-introduction" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sequence Diagram - Introduction
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#update" class="md-nav__link">
-    <span class="md-ellipsis">
-      Update:
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#derivation-of-a-sequence-diagram" class="md-nav__link">
-    <span class="md-ellipsis">
-      Derivation of a Sequence Diagram
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-transfer-funds-banking-app" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example - Transfer Funds (Banking App)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Example - Transfer Funds (Banking App)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#identify-the-use-case" class="md-nav__link">
-    <span class="md-ellipsis">
-      Identify the use case:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#derive-use-case-description" class="md-nav__link">
-    <span class="md-ellipsis">
-      Derive use case description
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#derive-domain-classes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Derive Domain Classes :
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#derive-activity-diagram" class="md-nav__link">
-    <span class="md-ellipsis">
-      Derive activity diagram :
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -475,382 +373,51 @@
                   
 
 
-<h1 id="50003-sequence-diagrams-contd">50.003 - Sequence Diagrams (Contd)<a class="headerlink" href="#50003-sequence-diagrams-contd" title="Permanent link">&para;</a></h1>
-<h2 id="learning-outcomes">Learning Outcomes<a class="headerlink" href="#learning-outcomes" title="Permanent link">&para;</a></h2>
-<p>By the end of this unit, you should be able to</p>
-<ol>
-<li>Describe elements of UML activity diagram</li>
-<li>Explain the steps to derive UML sequence diagram</li>
-<li>Derive a UML sequence diagram</li>
-</ol>
-<h2 id="sequence-diagram-introduction">Sequence Diagram - Introduction<a class="headerlink" href="#sequence-diagram-introduction" title="Permanent link">&para;</a></h2>
-<p>Refer to the <a href="../l5_2_sequence_diagrams/">previous lesson</a> to recall the basics of sequence diagram.</p>
-<h2 id="update">Update:<a class="headerlink" href="#update" title="Permanent link">&para;</a></h2>
-<ol>
-<li>
-<p>The example illustrates multiple notions of sequence diagrams such as loop, break, atomic, etc. However, simplified diagrams for testing purposes can be derived by,</p>
-<ol>
-<li>minimizing loops of user inputs</li>
-<li>minimizing asynchronous messages</li>
-<li>minimizing complex constructs like break and atomic.</li>
-</ol>
-</li>
-<li>
-<p>In the final sequence diagram (and activity diagram) 
-Controller should consult the Account to finalize 'check_balance' instead of returning to UI immediately.</p>
-</li>
-</ol>
-<h2 id="derivation-of-a-sequence-diagram">Derivation of a Sequence Diagram<a class="headerlink" href="#derivation-of-a-sequence-diagram" title="Permanent link">&para;</a></h2>
-<p>It is important to understand which artifacts are needed to derive a sequence diagram as well as how to do it. Sequence diagram represents the sequence of message (method) flow between classes for a given use case. We will need the artifacts which defines the users (use case diagram/description), classes (class diagram) and sequences of interactions (activity diagram). We can follow the following steps from the beginning to derive a sequence diagram for a given use case.</p>
-<ol>
-<li>
-<p>Identify the use case : To find the scope covered by the sequence diagram we should identify the use case first.</p>
-</li>
-<li>
-<p>Derive use case diagram/description: The high level sequence of operations for a use case is mentioned in the use case description in the format of 1. user to system 2. system to user. The high level system will be refined to more specific class names later. </p>
-</li>
-<li>
-<p>Derive classes: The entities involved in the usecase are identified in the domain class diagram. More implementation level classes can also be identified.</p>
-</li>
-<li>
-<p>Derive activity diagram: What is the control flow of operations? A use case description can be transformed to the corresponding activity diagram by explicitly visualizing control flows (if-else, loops, parallel). Owning classes of the activities can also be included to the activity diagram as a refinement.</p>
-</li>
-</ol>
-<h2 id="example-transfer-funds-banking-app">Example - Transfer Funds (Banking App)<a class="headerlink" href="#example-transfer-funds-banking-app" title="Permanent link">&para;</a></h2>
-<p>Lets go through the above mentioned steps to derive the sequence diagram for Transfer Funds use case.</p>
-<h3 id="identify-the-use-case">Identify the use case:<a class="headerlink" href="#identify-the-use-case" title="Permanent link">&para;</a></h3>
-<p>Use case is initiated by a customer of a banking app to transfer funds from the customer's account to another account.</p>
-<h3 id="derive-use-case-description">Derive use case description<a class="headerlink" href="#derive-use-case-description" title="Permanent link">&para;</a></h3>
-<table>
-<tr>
-<td> ID: </td> <td> UC2 </td>
-<td> Name: </td> <td> Transfer Funds </td> 
-</tr>
-<tr>
-    <td> Description: </td> 
-    <td colspan=3> Customer transfers money from her account to another account </td> 
-</tr>
-<tr>
-<td> <i> Created By:</i> </td><td>  Dileepa Fernando </td>
-<td> <i>Date Created:</i> </td><td> 1st May 2025 </td> 
-</tr>
+  <h1>Aobo</h1>
 
-<tr> 
-    <td> <i> Last Updated By: </i> </td>
-    <td> Dileepa Fernando </td>
-    <td> <i> Date Updated: </i> </td>
-    <td> 3rd May 2025 </td>
-</tr>
-<tr>
-    <td> Actors: </td> 
-    <td colspan=3> Customer, SMS Gateway </td>
-</tr>
-<tr>
-    <td> Triggers: </td> 
-    <td colspan=3> The Customer clicks on Transfer menu </td>
-</tr>
-<tr>
-    <td> Preconditions: </td> 
-    <td colspan=3> Customer is logged in and authenticated </td>
-</tr>
-<tr>
-    <td> Postconditions: </td> 
-    <td colspan=3> 
-    1. the customer transfers the mentioned fund value to the selected recipient<br/>
-    2. The customer's balance is reduced by the mentioned fund value
-    </td>
-</tr>
-    <td> Error States:  </td> 
-    <td colspan=3> Fund transfer fail
-    </td>
-<tr>
-</tr>
-<tr>
-    <td>Flow:</td>
-    <td colspan=3> 
-    1. Customer inputs transfer details (source account, destination account, amount)
-    2. System validates the input<br/>
-    3. System verifies sufficient balance<br/>
-    4. System transfers funds<br/>
-    5. System records transaction<br/>
-    6. System confirms transfer to user
-     <br/>
-    </td>
-</tr>
-<tr>
-    <td> Alternative Flow:
-    </td>
-    <td colspan=3> 
-    2A Invalid input:<br/>
-    a. System shows validation error message<br/>
-    b. Customer is prompted to correct the input<br/>
-    c.  Flow resumes at Step 1<br/>
-    3A Insufficient Balance:<br/>
-    a. System shows validation error message<br/>
-    b. Customer is prompted to correct the input<br/>
-    c. Flow resumes at Step 1<br/>
-    </td>
-</tr>
-</table>
-
-<h3 id="derive-domain-classes">Derive Domain Classes :<a class="headerlink" href="#derive-domain-classes" title="Permanent link">&para;</a></h3>
-<p>For this step, we do not need to draw a detailed class diagram. It is sufficient to identify the entities first. The entities in the transfer funds are customer ,bank account and transaction. Customer has one or more bank accounts (single one in this scenario) and bank account contains a list of transactions. </p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;"><img alt="Alt Text" height="100px" src="../images/classDiagramBank.png" width="300px" /></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><em>Class Diagram for Transfer Funds</em></td>
-</tr>
-</tbody>
-</table>
-<h3 id="derive-activity-diagram">Derive activity diagram :<a class="headerlink" href="#derive-activity-diagram" title="Permanent link">&para;</a></h3>
-<p><strong>Introduction</strong></p>
-<p>An activity diagram is a more explicit representation of use case description. The operational flow can be refined and the control flows (if-else, loop) can be explicitly shown. It is a directed graph having start node, stop node and activity nodes. The two nodes start does not have incoming edges while stop does not have outgoing edges.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;"><img alt="Alt Text" height="50px" src="../images/start_node.png" width="50px" /></th>
-<th style="text-align: center;"><img alt="Alt Text" height="50px" src="../images/stop_Node.png" width="50px" /></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><em>Start Node</em></td>
-<td style="text-align: center;"><em>Stop Node</em></td>
-</tr>
-</tbody>
-</table>
-<p>The other nodes can represent activities, condition checks or converging after condition checks.</p>
-<ol>
+<p>Aobo</p>
+<ul>
 <li>
-<p>Activity node (rounded rectangle)</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;"><img alt="Alt Text" height="100px" src="../images/Activity_Node.png" width="200px" /></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><em>Activity Node</em></td>
-</tr>
-</tbody>
-</table>
+<p>Learning Outcomes</p>
+<ul>
+<li>will be able to <ul>
+<li>confusion matrix</li>
+<li>accuracy</li>
+<li>precision</li>
+<li>recall </li>
+</ul>
+</li>
+<li>list them out</li>
+</ul>
 </li>
 <li>
-<p>condition check node (hexagon) and converging node (diamond)</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;"><img alt="Alt Text" height="100px" src="../images/hexagon_Node.png" width="200px" /></th>
-<th style="text-align: center;"><img alt="Alt Text" height="100px" src="../images/diagonal_Node.png" width="200px" /></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><em>Condition Check Node</em></td>
-<td style="text-align: center;"><em>Converging Node</em></td>
-</tr>
-</tbody>
-</table>
-</li>
-</ol>
-<p>An edge from one node to another means the activity in second node immediately follows the activity in first node. The activity can be checking a condition too. </p>
-<ol>
-<li>
-<p>Non Condition nodes other than stop, has exactly one edge going out.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;"><img alt="Alt Text" height="100px" src="../images/activity_seq.png" width="200px" /></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><em>Activity Flow edge</em></td>
-</tr>
-</tbody>
-</table>
+<p>starting with an example (cat images created  by AI)</p>
 </li>
 <li>
-<p>Condition check nodes will have multiple edges going out and the edges can be annotated by the possible conditions. For each conditioned edge, there is a unique destination node which represents the next activity. All these destination nodes converge to a linear flow at a diamond node.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;"><img alt="Alt Text" height="100px" src="../images/decision_converge.png" width="200px" /></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><em>Condition diverge and converge edges</em></td>
-</tr>
-</tbody>
-</table>
+<p>examples</p>
 </li>
 <li>
-<p>There can be back edges referencing activities which already happened. Back edges represent loops. Back edge starts from a diamond node representing the loop condition and ends with the first activity of the loop.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;"><img alt="Alt Text" height="100px" src="../images/loop_Node.png" width="200px" /></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><em>Loops and back edges</em></td>
-</tr>
-</tbody>
-</table>
-</li>
-</ol>
-<p><strong>Derivation of Activity Diagram for Bank App - Transfer Funds</strong></p>
-<ol>
-<li>Draw the start and stop nodes</li>
-<li>Consider the operational flow in use case description. If there are operations that can be written in detail as multiple steps</li>
-<li>Identify the alternative flows. Consider adding condition nodes to represent the conditions resulting in alternative flows.</li>
-<li>
-<p>If the an alternative flow reaches a previous node represent it by a back edge.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;"><img alt="Alt Text" height="100px" src="../images/Bank_activity_v1.png" width="200px" /></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><em>Initial Activity Diagram</em></td>
-</tr>
-</tbody>
-</table>
+<p>the model is to tell which image is generated by AI</p>
 </li>
 <li>
-<p>Refine the activity diagram:
-The initial activity diagram needs to be refined to contain details about classes too.</p>
-<ol>
-<li>
-<p>Use the class diagram to identify the classes involved in each activity (including condition checks) so that each activity can be tranformed to a message passed from one class to another. To achive this, we annotate the initial activity diagram with the domain classes. The class is generally identified by the object which changes after the activity. The annotation is applied to the outgoing edge after each activity node.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;"><img alt="Alt Text" height="100px" src="../images/annotated_domain.png" width="200px" /></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><em>Initial Activity Diagram Annotated with Domain classes</em></td>
-</tr>
-</tbody>
-</table>
+<p>pace is on the fast side</p>
 </li>
 <li>
-<p>If some activities cannot be related to a single class, it means that multiple classes are affected by the given activity. In this case, we decompose the activity node into multiple activity nodes (or sub activity diagram on its own) until we can assign each activity node to a single class. The decomposition can be another activity diagram on its own. In the example, we decompose the <code>record transaction</code> activity to the sequence of two activities <code>create transaction</code> followed by <code>record transaction</code>. Create transaction belongs to Transaction class while Record transaction belongs to account class allowing a single class annotation.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;"><img alt="Alt Text" height="100px" src="../images/expanded_Activity.png" width="200px" /></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><em>With expanded activities</em></td>
-</tr>
-</tbody>
-</table>
+<p>make use of the whiteboard</p>
 </li>
 <li>
-<p>Note that there are many activities without any specific class annotation. because those belong to the system. We can follow the high level MVC architecture and identify each class as one of MVC. The model refers to how data is being handled. Firstly, we have account and transaction classes in the model category which are already defined as domain classes. When it comes to implementation, we will have to add the database class as a model class. Secondly, We use UI class in general to refer view category. Finally, we define all other classes which route requests between view and model (Ex: Code in routes.js ) as controller classes. Following diagram shows the activity diagram, annotated with UI and controller classes.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;"><img alt="Alt Text" height="100px" src="../images/activity_System.png" width="200px" /></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><em>Adding missing class annotations</em></td>
-</tr>
-</tbody>
-</table>
+<p>active teaching with exercise </p>
 </li>
 <li>
-<p>Since we have the class annotations now, all we need to figure out is the lifelines and the messages between them. Life lines are exactly the annotated classes. Here, we are going to use the swim lane feature in activity diagram, where each swim lane (analogous to a life line) represents one class. Each node is placed in the swim lane which represents the class which is affected by the activity (including condition checks). The starting node and end node for each edge are not affected.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;"><img alt="Alt Text" height="300px" src="../images/swimlane.png" width="400px" /></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><em>Activity Diagram with Swim Lanes</em></td>
-</tr>
-</tbody>
-</table>
+<p>how to assess </p>
+<ul>
+<li>self exploration exercises, given full time, how would </li>
+</ul>
 </li>
 <li>
-<p>Note the loops and conditional sequences (highlighted in red)</p>
+<p>summary</p>
 </li>
-</ol>
-</li>
-<li>
-<p>Final mapping to the sequence diagram: </p>
-<ol>
-<li>
-<p>Swim lanes to life lines: An activity node in a swim lane can be mapped to a message arrow ending at the life line with the same name. The message arrow should start from the life line corresponding to previous activity. The text on the message arrow should be the name of the current activity being considered.
-For example, <code>validate input</code> activity starts from UI life line (swim lane of previous activity input transfer details) and ends from the Controller life line (swim lane of current activity) with the message text of <code>validate input</code>.</p>
-</li>
-<li>
-<p>For object creation, indicate a <code>create message</code> (Ex: create transaction message from Account to Transaction)</p>
-</li>
-<li>
-<p>For each message, add a return message. (Ex: return message for <code>Validate input</code> )</p>
-</li>
-<li>
-<p>If message A depends on the result of the message B, the message order should be 1. message A 2. message B 3. return message B 4. return message A (Ex:1. <code>input transfer details</code> 2. <code>validate input</code> 3. <code>return validate input</code> 4. <code>return input transfer details</code>)</p>
-</li>
-<li>
-<p>Add activation bars between each message and corresponding return message. (Ex: <code>validate input</code> <code>return validate input</code> has activation bar at the life line <code>Controller</code>)</p>
-</li>
-<li>
-<p>Map conditions in activity diagram to alt fragments in sequence diagram. Map loops in activity diagram to loop fragments in sequence diagram. Copy the conditions from hexagons to loop header and alt header.</p>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;"><img alt="Alt Text" height="300px" src="../images/final_sequence.png" width="400px" /></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;"><em>Final mapping to Sequence Diagram</em></td>
-</tr>
-</tbody>
-</table>
-</li>
-</ol>
-<p>See the refined diagram which adds missing Controller to Model messages (<code>accountBalance</code> to <code>Account</code>) and show different life lines for each instance of the same class (<code>SrcAccount</code> and <code>DesAccount</code>).</p>
-<p><img alt="" height="300px" src="../images/refined_seq_diagram.png" width="400px" /></p>
-<p>The diagram can be further refined to make the testing simpler. </p>
-<ol>
-<li>
-<p>Input loops in user side removed and replaced by 'alt' blocks.</p>
-</li>
-<li>
-<p>UI outputs were simplified in the format, 'show(msg)' which is a return message.</p>
-</li>
-<li>
-<p>'break' fragments are replaced by 'alt'. Failure alternative flows are assumed as termination of sequence, regardless the active status in lifelines.</p>
-</li>
-<li>
-<p>Asynchronous blocks are simplified into synchronous messages and 'atomic' notion is being removed. In concurrency testing phase, possible concurrency flows and errors will be separately tested. </p>
-</li>
-</ol>
-<p><img alt="" height="300px" src="../images/simple_refined_seq_diagram.png" width="400px" /></p>
+</ul>
 
 
 
