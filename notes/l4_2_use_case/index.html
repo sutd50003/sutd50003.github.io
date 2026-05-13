@@ -449,11 +449,53 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deriving-use-case-text-and-use-case-diagram" class="md-nav__link">
+  <a href="#deriving-use-case-text-and-use-case-diagrams" class="md-nav__link">
     <span class="md-ellipsis">
-      Deriving Use Case Text and Use Case Diagram
+      Deriving Use Case Text and Use Case Diagrams
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Deriving Use Case Text and Use Case Diagrams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#identifying-actors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Identifying Actors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#defining-the-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defining the Use Cases
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#categorizing-actor-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Categorizing Actor Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documenting-the-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documenting the Steps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -499,74 +541,10 @@
 <li>Analyse the given system requirements using use cases and use case diagrams. </li>
 </ol>
 <h2 id="use-case">Use case<a class="headerlink" href="#use-case" title="Permanent link">&para;</a></h2>
-<p>A use case (or a use case text, or use case document) captures a particular scenario or related scenarios in a user-system interaction. Our goal to find out all relevant user-system interaction in the existing system to be fixed and in the newly proposed system that the users want us to build. </p>
+<p>A use case (or a use case text, or use case document) captures a particular scenario or related scenarios in a user-system interaction to achieve a user goal. Our objective is to find out all relevant user-system interaction in the existing system to be fixed and in the newly proposed system that the users want us to build.</p>
 <h3 id="an-example-banking-app">An example - Banking App<a class="headerlink" href="#an-example-banking-app" title="Permanent link">&para;</a></h3>
 <p>Consider the following user interaction with a Banking App</p>
-<!---
-> The customer browses the menu and adds the food or drink items into her order. When she finishes adding items into her order, she can choose to pay using her credit card and enter her mobile number for collection notification. The Fast Food Kiosk System (simplified as *system* from now onwards) checks the authorization on the credit card and confirms the sales by issuing a queue number. The system records the ordered items and sets the order status as *new*.
--->
-
 <p>Although in general there is no fixed format of use case text documents, for consistency, we try to adhere to the following convention. </p>
-<!---
-<table>
-<tr>
-<td> ID: </td> <td> UC1 </td>
-<td> Name: </td> <td> Place Order </td> 
-</tr>
-<tr>
-    <td> Description: </td> 
-    <td colspan=3> Customer orders food and drinks using a Kiosk machine </td> 
-</tr>
-<tr>
-<td> <i> Created By:</i> </td><td>  Kenny Lu </td>
-<td> <i>Date Created:</i> </td><td> 1st May 2024 </td> 
-</tr>
-<tr> 
-    <td> <i> Last Updated By: </i> </td>
-    <td> Kenny Lu </td>
-    <td> <i> Date Updated: </i> </td>
-    <td> 3rd May 2024 </td>
-</tr>
-<tr>
-    <td> Actors: </td> 
-    <td colspan=3> Customer </td>
-</tr>
-<tr>
-    <td> Triggers: </td> 
-    <td colspan=3> Customer accesses the Place Order interface of the Kiosk System. </td>
-</tr>
-<tr>
-    <td> Preconditions: </td> 
-    <td colspan=3> Nil </td>
-</tr>
-<tr>
-    <td> Postconditions: </td> 
-    <td colspan=3> 
-    1. The system creates a new order with the ordered items. <br/>
-    2. The customer receives a queue number. <br/>
-    </td>
-</tr>
-    <td> Error States: </td> 
-    <td colspan=3> 
-    The order is cancelled and the ordered items are not recorded by the system.
-    </td>
-<tr>
-</tr>
-<tr>
-    <td>Flow:</td>
-    <td colspan=3> 
-    1. The customer browses the menu. <br/>
-    2. The customer adds the food or drink items into her order. <br/>
-    3. The customer makes payment using her credit card. <br/> 
-    4. The customer enters her mobile number. <br/>
-    5. The System authorizes the purchase. <br/>
-    6. The System confirms the order by creating a new order and saving the ordered items. <br/>
-    7. The System issues a queue number. <br/>
-    </td>
-</tr>
-<tr> <td colspan=4> ... </td> </tr>
-</table>
--->
 <table>
 <tr>
 <td> ID: </td> <td> UC1 </td>
@@ -578,13 +556,13 @@
 </tr>
 <tr>
 <td> <i> Created By:</i> </td><td>  Dileepa Fernando </td>
-<td> <i>Date Created:</i> </td><td> 1st May 2025 </td> 
+<td> <i>Date Created:</i> </td><td> 1st May 2026 </td> 
 </tr>
 <tr> 
     <td> <i> Last Updated By: </i> </td>
     <td> Dileepa Fernando </td>
     <td> <i> Date Updated: </i> </td>
-    <td> 3rd May 2025 </td>
+    <td> 3rd May 2026 </td>
 </tr>
 <tr>
     <td> Actors: </td> 
@@ -625,13 +603,23 @@
 <tr> <td colspan=4> ... </td> </tr>
 </table>
 
-<p>In the table above, we define the use case. All non-italic fields are mandatory. 
-* For tracking purpose, every use case should be given a unique ID and a informative name. 
-* The description summarizes the gist of the user-system interaction
-* Though optional (hence in italic), it is also good to keep track of the creator and updater's names and the dates.
-* The actors field includes a set of actors involved in this interaction. In this example, the customer is the primary actor since she is the one who is benefitted mainly. When an actor initiates such a use case, we refer to it as a base use case.  The other supporting actors to the base use case are considered secondary actors. Every use case should have at least one actor. We can choose to distinguish between primary and secondary actors.</p>
+<p>In the table above, we define the use case. All non-italic fields are mandatory.</p>
 <ul>
-<li>The triggers field describes what activates this use case, which can be a user action or another user case's action. </li>
+<li>
+<p>For tracking purpose, every use case should be given a unique ID and a informative name. Common convention is to use <code>&lt;verb&gt;+&lt;noun&gt;</code> format where <code>&lt;verb&gt;</code> implies the goal of the entity initiating the interaction. <code>Login</code> is an exception which is retained as a <code>&lt;verb&gt;</code> due to clarity.</p>
+</li>
+<li>
+<p>The description summarizes the gist of the user-system interaction</p>
+</li>
+<li>
+<p>Though optional (hence in italic), it is also good to keep track of the creator and updater's names and the dates.</p>
+</li>
+<li>
+<p>The actors field includes a set of actors involved in this interaction. In this example, the customer is the primary actor since she is the one who is benefitted mainly. When an actor initiates such a use case, we refer to it as a base use case.  The other supporting actors to the base use case are considered secondary actors. Every use case should have at least one actor. We can choose to distinguish between primary and secondary actors.</p>
+</li>
+<li>
+<p>The triggers field describes what activates this use case, which can be a user action or another user case's action. </p>
+</li>
 <li>The preconditions field includes a list of mandatory criteria/ system state must be met before this user-system interaction is initiated. Sometimes, if a precondition is a common to a set of use cases, we convert it into a <em>common requirement</em> field.</li>
 <li>The postconditions field includes a list of possible output states when the use case completes successfully</li>
 <li>The error states field capture the failed outcomes and optionally a general description of how failed outcomes are handled. </li>
@@ -679,14 +667,14 @@ The customer selects the Transfer menu from the banking application. The system 
 </tr>
 <tr>
 <td> <i> Created By:</i> </td><td>  Dileepa Fernando </td>
-<td> <i>Date Created:</i> </td><td> 1st May 2025 </td> 
+<td> <i>Date Created:</i> </td><td> 1st May 2026 </td> 
 </tr>
 
 <tr> 
     <td> <i> Last Updated By: </i> </td>
     <td> Dileepa Fernando </td>
     <td> <i> Date Updated: </i> </td>
-    <td> 3rd May 2025 </td>
+    <td> 3rd May 2026 </td>
 </tr>
 <tr>
     <td> Actors: </td> 
@@ -781,14 +769,14 @@ The customer selects the Transfer menu from the banking application. The system 
 </tr>
 <tr>
 <td> <i> Created By:</i> </td><td>  Dileepa Fernando </td>
-<td> <i>Date Created:</i> </td><td> 1st May 2025 </td> 
+<td> <i>Date Created:</i> </td><td> 1st May 2026 </td> 
 </tr>
 
 <tr> 
     <td> <i> Last Updated By: </i> </td>
     <td> Dileepa Fernando </td>
     <td> <i> Date Updated: </i> </td>
-    <td> 3rd May 2025 </td>
+    <td> 3rd May 2026 </td>
 </tr>
 <tr>
     <td> Actors: </td> 
@@ -851,14 +839,14 @@ the common routine (it is kind of like a function call).</p>
 </tr>
 <tr>
 <td> <i> Created By:</i> </td><td>  Dileepa Fernando </td>
-<td> <i>Date Created:</i> </td><td> 1st May 2025 </td> 
+<td> <i>Date Created:</i> </td><td> 1st May 2026 </td> 
 </tr>
 
 <tr> 
     <td> <i> Last Updated By: </i> </td>
     <td> Dileepa Fernando </td>
     <td> <i> Date Updated: </i> </td>
-    <td> 3rd May 2025 </td>
+    <td> 3rd May 2026 </td>
 </tr>
 <tr>
     <td> Actors: </td> 
@@ -984,37 +972,127 @@ We can make `UC5` as an "inclusion" test case for use case `UC1` and use case `U
 <li>Inheritance relation among actors to allow multiple actors to share the same base actor's use cases. </li>
 </ul>
 <p>We omit the details for these relationships and encourage you to self explore them in the text references. </p>
-<h2 id="deriving-use-case-text-and-use-case-diagram">Deriving Use Case Text and Use Case Diagram<a class="headerlink" href="#deriving-use-case-text-and-use-case-diagram" title="Permanent link">&para;</a></h2>
-<p>To derive the use case diagram, we could either find out the answers of the following questions through documentation study or user study.</p>
-<p>We should first define the system boundary. It will help us to identify actors and relevant use cases.</p>
-<p>To identify whether a component belong to the system, we need to find out
+<!-- ## Deriving Use Case Text and Use Case Diagram
+
+To derive the use case diagram, we could either find out the answers of the following questions through documentation study or user study.
+
+We should first define the system boundary. It will help us to identify actors and relevant use cases.
+
+To identify whether a component belong to the system, we need to find out
 1. Do you/your team implement this part?
-1. Do user goals fail without this part?</p>
-<p>To identify the actors of the system, we need to find out</p>
-<ol>
-<li>Who are the users of the system?</li>
-<li>Who are responsible for the system administration? </li>
-<li>Who is interested in the tasks results?</li>
-<li>Do they need any external devices/sub-systems which the system communicates?</li>
-</ol>
-<p>To define the use case and use case text, we need to find out</p>
-<ol>
-<li>What are the main tasks that an actor perform?</li>
-<li>Does the actor query or retrieve information from the system?</li>
-<li>Does the actor need to inform the system the changes in other external system?</li>
-<li>Should an actor be informed about unexpected events within the system?</li>
-</ol>
-<p>Given a use case and an actor of the system, how to identify its actor type within the usecase?
+1. Do user goals fail without this part?
+
+To identify the actors of the system, we need to find out
+
+1. Who are the users of the system?
+1. Who are responsible for the system administration? 
+1. Who is interested in the tasks results?
+1. Do they need any external devices/sub-systems which the system communicates?
+
+To define the use case and use case text, we need to find out
+
+1. What are the main tasks that an actor perform?
+1. Does the actor query or retrieve information from the system?
+1. Does the actor need to inform the system the changes in other external system?
+1. Should an actor be informed about unexpected events within the system?
+
+Given a use case and an actor of the system, how to identify its actor type within the usecase?
 1. Does the entity interact (initiate of respond) with the system.
 2. Does the entity qualify as an actor and use case goal is the actor's goal? Then it is a primary actor.
-3. Does the entity qualify as an actor, only responds to system and it only supports to achieve use case goal? Then it is a secondary actor.</p>
-<p>After going through the above questions (some times a few rounds), we can map out all the actors, and the main use cases (the oval bubbles) and their relationship. </p>
-<p>For each individual use case, we then need to find out what the exact sequence of actions a user needs to perform to complete the use case. </p>
-<p>Note that use case is a tool for communication, it is not a mathematical statement. The quality of a use case is determined by how effective it conveys the information. </p>
-<p>For instance, in our running example, we could have combine <code>UC1</code> and <code>UC2</code> into one bigger use case. However for now we believe that having them separate helps us to describe the system requirements better.</p>
+3. Does the entity qualify as an actor, only responds to system and it only supports to achieve use case goal? Then it is a secondary actor.
+
+After going through the above questions (some times a few rounds), we can map out all the actors, and the main use cases (the oval bubbles) and their relationship. 
+
+For each individual use case, we then need to find out what the exact sequence of actions a user needs to perform to complete the use case. 
+
+Note that use case is a tool for communication, it is not a mathematical statement. The quality of a use case is determined by how effective it conveys the information. 
+
+For instance, in our running example, we could have combine `UC1` and `UC2` into one bigger use case. However for now we believe that having them separate helps us to describe the system requirements better.
+> At least, I find it easier for me to explain how use case works in this way. =). 
+
+
+
+ -->
+<h2 id="deriving-use-case-text-and-use-case-diagrams">Deriving Use Case Text and Use Case Diagrams<a class="headerlink" href="#deriving-use-case-text-and-use-case-diagrams" title="Permanent link">&para;</a></h2>
+<p>To derive a use case diagram and its supporting text, we generally gather answers to the following questions through documentation analysis or user studies. </p>
+<p>We must first define the <strong>system boundary</strong>. This separates the system we are building from the outside world, helping us accurately identify who the actors are and what goals belong to our system.</p>
+<p>To identify whether a component belongs inside the system boundary, we ask:</p>
+<ol>
+<li>Does our team implement or control this part? </li>
+<li>If this part fails, does a user's primary goal fail?</li>
+</ol>
+<p><em>(Note: If a component is required but not built/controlled by us—like a third-party payment gateway—it sits outside the boundary and is treated as a Secondary Actor).</em>
+If the answer is <code>Yes</code>, component is inside the system boundary and component is outside the system (actor) otherwise.</p>
+<h3 id="identifying-actors">Identifying Actors<a class="headerlink" href="#identifying-actors" title="Permanent link">&para;</a></h3>
+<p>An actor is anything outside the system boundary that interacts with it. To identify actors, we need to ask:</p>
+<ol>
+<li>Who are the core users/entities trying to achieve goals using the system?</li>
+<li>Who is responsible for system administration and maintenance?</li>
+<li>Who receives or is interested in the outcome of the system's tasks?</li>
+<li>What external devices or sub-systems must our system communicate with?</li>
+</ol>
+<p>The entities which answer the above are considered to be actors.</p>
+<h3 id="defining-the-use-cases">Defining the Use Cases<a class="headerlink" href="#defining-the-use-cases" title="Permanent link">&para;</a></h3>
+<p>Use cases define the functional requirements of the system based on what the actors want to achieve. To define them, ask:</p>
+<ol>
+<li>What are the measurable goals the actor wants to accomplish? <em>(Name these using the standard <code>&lt;Verb&gt; + &lt;Noun&gt;</code> format).</em></li>
+<li>What specific information does the actor need to read, create, update, or delete?</li>
+<li>Does the actor need to inform the system about changes in the outside world?</li>
+<li>Does the system need to notify the actor about unexpected events or background system processes?</li>
+</ol>
+<p>The answers to these four questions directly generate the core components of a formal use case document. The actor's measurable goals provide the use case's <code>&lt;Verb&gt;+&lt;Noun&gt;</code> title and define its successful completion (postconditions). Identifying the specific information the actor needs to read, create, update, or delete dictates the core back-and-forth steps of the main success scenario. Understanding how the actor informs the system about real-world changes establishes the initial triggers and input data needed to start the use case. Finally, discovering how the system handles unexpected events or background processes writes your alternate flows, exception handling, and notification steps, ensuring the use case addresses deviations from the primary "happy path."</p>
+<h3 id="categorizing-actor-types">Categorizing Actor Types<a class="headerlink" href="#categorizing-actor-types" title="Permanent link">&para;</a></h3>
+<p>Given a use case, how do we distinguish the roles of the entities interacting with it?</p>
+<ol>
+<li><strong>Primary Actor:</strong> Does the entity have a specific goal they want to achieve, and do they initiate the interaction to achieve it? If so, they are the Primary Actor. <em>(Example: A Customer triggering <code>Checkout Cart</code>).</em></li>
+<li><strong>Secondary Actor:</strong> Does the entity lack a personal goal, but the system relies on it to fulfill the Primary Actor's request? If so, they are a Secondary Actor. <em>(Example: An external Credit Card API that merely responds to the system's request to <code>Process Payment</code>).</em></li>
+</ol>
+<h3 id="documenting-the-steps">Documenting the Steps<a class="headerlink" href="#documenting-the-steps" title="Permanent link">&para;</a></h3>
+<p>After going through the above questions (often requiring a few iterations), we can map out all the actors, the main use cases (the oval bubbles), and their relationships. </p>
+<p>For each individual use case, we then write the <strong>Use Case Text</strong>. This details the exact sequence of back-and-forth interactions between the actor and the system required to achieve the goal. </p>
 <blockquote>
-<p>At least, I find it easier for me to explain how use case works in this way. =). </p>
+<p><strong>A Note on Quality:</strong> 
+A use case is a tool for communication, not a mathematical statement. Its quality is determined by how effectively it conveys the user's need to developers, designers, and stakeholders. </p>
+<p>For instance, in our running example, we could have combined <code>UC1</code> and <code>UC2</code> into one larger use case. However, keeping them separate currently helps us describe the system requirements more clearly. At least, I find it easier to explain how use cases work this way! =)</p>
 </blockquote>
+<details>
+<summary><strong>Advanced Tip: Avoiding UI Details in Use Case Text</strong></summary>
+
+When writing the step-by-step sequence of a Use Case, be careful not to trap yourself in specific UI implementations. Use Cases should describe the *intention*, not the interface.
+
+*   **Weak (Too technical):** "The user clicks the blue 'Submit' button, and the system queries the SQL database."
+*   **Strong (Goal-oriented):** "The user submits their login credentials. The system validates the credentials."
+
+By keeping the steps focused on the flow of information, the Use Case remains valid even if your team completely redesigns the user interface or swaps out the database.
+</details>
+
+<!-- ### A Concrete Example: The Coffee Shop App
+
+#### 1. Identifying the Primary Actors and Use Cases
+*   **Question (Actor):** Who makes the coffee? 
+    *   **Answer:** The Barista. 
+    *   **Result:** You draw a stick figure named `Barista`.
+*   **Question (Use Case):** What is the main task the Barista performs with the tablet? 
+    *   **Answer:** They need to mark a drink as finished. 
+    *   **Result:** You draw an oval named `Complete Order`.
+*   **Question (Actor Type):** Does the Barista have a goal they are trying to achieve here, or are they just responding to the system? 
+    *   **Answer:** It is their goal to clear the queue. They initiate the action.
+    *   **Result:** `Barista` is the **Primary Actor**. You draw a line from the Barista to the `Complete Order` oval.
+
+#### 2. Identifying the Secondary Actors and Use Cases
+*   **Question (Actor):** Who is using the app to buy the coffee?
+    *   **Answer:** The Customer.
+    *   **Result:** You draw a stick figure named `Customer`.
+*   **Question (Use Case):** What is their primary goal?
+    *   **Answer:** They want to pay for their items.
+    *   **Result:** You draw an oval named `Pay for Order`. (`Customer` is the **Primary Actor** because it is *their* goal and they initiate the process).
+*   **Question (External Systems):** Does our system need to communicate with any external services to accomplish this goal?
+    *   **Answer:** Yes, our team didn't build a banking network. We use the **Stripe API** to actually charge the credit card.
+    *   **Result:** You draw another actor outside the system boundary named `Stripe API`.
+*   **Question (Actor Type):** Does the Stripe API have a personal goal here? Does it wake up and initiate the interaction?
+    *   **Answer:** No. Stripe is just sitting quietly. It only responds when *our* system asks it to process the card so the Customer can achieve their goal.
+    *   **Result:** `Stripe API` is a **Secondary Actor**. A line points outward from the Use Case to Stripe, representing that our system is asking for help.
+ -->
 <h2 id="optional-use-case-vs-user-story">(Optional) Use case vs User story<a class="headerlink" href="#optional-use-case-vs-user-story" title="Permanent link">&para;</a></h2>
 <p>User story (AKA feature) is another form of capturing the user requirements. It is often used in combination with iterative style development processes. </p>
 <p>Contrasting with use case, user stories are more specific to system functionality rather than the user-system interation. Use cases are more "narrative" than user stories and providing a bigger picture. User stories are often more fine-grain than use cases and are helpful for us to divide the development tasks.</p>

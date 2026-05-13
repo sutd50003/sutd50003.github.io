@@ -403,9 +403,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#to-make-the-express-app-es6-compatible-optional" class="md-nav__link">
+  <a href="#to-make-the-express-app-using-typescript-recommended" class="md-nav__link">
     <span class="md-ellipsis">
-      To make the express app ES6 compatible (optional)
+      To make the express app using TypeScript (recommended)
     </span>
   </a>
   
@@ -417,11 +417,44 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#expressjs-generator" class="md-nav__link">
+  <a href="#express-generator" class="md-nav__link">
     <span class="md-ellipsis">
-      Express.js Generator
+      Express Generator
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Express Generator">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#migrate-js-into-ts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Migrate JS into TS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#an-agentic-moment" class="md-nav__link">
+    <span class="md-ellipsis">
+      An agentic moment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-end-result-of-the-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      The end result of the conversion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -667,74 +700,177 @@ With these consideration in mind, we often prefer using some web application fra
 <p>To start the web server, run</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>node<span class="w"> </span>app.js
 </span></code></pre></div></td></tr></table></div>
-<h4 id="to-make-the-express-app-es6-compatible-optional">To make the express app ES6 compatible (optional)<a class="headerlink" href="#to-make-the-express-app-es6-compatible-optional" title="Permanent link">&para;</a></h4>
-<p>By default, Express.js does not support ES6.
-To make it ES6 compatible, we</p>
+<h4 id="to-make-the-express-app-using-typescript-recommended">To make the express app using TypeScript (recommended)<a class="headerlink" href="#to-make-the-express-app-using-typescript-recommended" title="Permanent link">&para;</a></h4>
+<p>TypeScript is a super-set of JavaScript which gives us</p>
 <ol>
-<li>add the following to <code>package.json</code></li>
+<li>static typing safety.</li>
+<li>more readable code base for whoever need to access.</li>
+<li>reduces nonsensible run-time error due to type issues, e.g. accessing a field/a method from a null object.</li>
 </ol>
-<div class="language-json highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;module&quot;</span><span class="p">,</span>
+<p>To make our express app in type script, we need to recreate a project </p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span>
+<span class="normal"><a href="#__codelineno-5-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>mkdir<span class="w"> </span>my_ts_express_app
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="nb">cd</span><span class="w"> </span>my_ts_express_app
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a>npm<span class="w"> </span>init<span class="w"> </span>--init-type<span class="o">=</span>module<span class="w"> </span>-y
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a>npm<span class="w"> </span>i<span class="w"> </span>express
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a>npm<span class="w"> </span>i<span class="w"> </span>-D<span class="w"> </span>typescript<span class="w"> </span>@types/node<span class="w"> </span>@types/express<span class="w"> </span>ts-node<span class="w"> </span>nodemon
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a>npx<span class="w"> </span>tsc<span class="w"> </span>--init
 </span></code></pre></div></td></tr></table></div>
+<p>A few extra lines of commands. </p>
 <ol>
-<li>Rename <code>bin/www</code> to <code>bin/www.js</code>.</li>
-<li>Rewrite <code>const xyz = require('./some/package')</code> into <code>import xyz from './some/package'</code> in all the <code>.js</code> files.</li>
-<li>Rewrite <code>modules.export = xyz</code> into <code>export default xyz</code>.</li>
-<li>Enable Babel, refer</li>
+<li><code>npm init --init-type=module -y</code> initializes the project with ES module mode. </li>
+<li><code>npm i -D typescript @types/node @types/express ts-node nodemon</code> command installs the typescript dependencies for development..</li>
+<li><code>npx tsc --init</code> creates the project <code>tsconfig.json</code> which contains the typescript compiler settings.</li>
 </ol>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>https://dev.to/geekygeeky/get-started-with-es6-javascript-for-writing-nodejs-using-express-544h
+<p>Let's add an <code>app.ts</code> file similar to the <code>app.js</code> file in the last section. </p>
+<div class="language-ts highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="k">import</span><span class="w"> </span><span class="nx">express</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">Application</span><span class="p">,</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">Request</span><span class="p">,</span><span class="w"> </span><span class="kr">type</span><span class="w"> </span><span class="nx">Response</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;express&quot;</span><span class="p">;</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="o">:</span><span class="w"> </span><span class="kt">Application</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3000</span><span class="p">;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">_req</span><span class="o">:</span><span class="w"> </span><span class="kt">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="o">:</span><span class="w"> </span><span class="kt">Response</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">);</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="p">});</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Example app listening on port </span><span class="si">${</span><span class="nx">port</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="p">});</span>
 </span></code></pre></div></td></tr></table></div>
-<p>For the rest of this unit we stick to CommonJS syntax.</p>
-<h3 id="expressjs-generator">Express.js Generator<a class="headerlink" href="#expressjs-generator" title="Permanent link">&para;</a></h3>
-<p>In many cases, we may use the express generator to generate a proper project structure. First we recreate another project folder</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
-<span class="normal"><a href="#__codelineno-7-2">2</a></span>
-<span class="normal"><a href="#__codelineno-7-3">3</a></span>
-<span class="normal"><a href="#__codelineno-7-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="nb">cd</span><span class="w"> </span>..
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a>mkdir<span class="w"> </span>my_eg_app
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="nb">cd</span><span class="w"> </span>my_eg_app
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a>npx<span class="w"> </span>express-generator<span class="w"> </span>--view<span class="o">=</span>ejs
+<p>To type check the above type script program, we run <code>npx tsc</code>, which should yield nothing since there is no type error. You may notice the <code>app.js</code> file appears is the result of the succesful compilation. To clean up all the js file created by the compilation, we can use <code>npx tsc -b --clean</code>.</p>
+<p>To start the web server, run</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a>node<span class="w"> </span>app.ts
+</span></code></pre></div></td></tr></table></div>
+<p>For upgrading your knowledge base from JavaScript to TypeScript, read here.</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a>https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html
+</span></code></pre></div></td></tr></table></div>
+<p>For the rest of this unit we stick to TypeScript syntax.</p>
+<h3 id="express-generator">Express Generator<a class="headerlink" href="#express-generator" title="Permanent link">&para;</a></h3>
+<p>In many cases, we may use the express generator to generate a proper project structure. </p>
+<p>There are a few alterantives here.</p>
+<ol>
+<li>use <code>express-generator</code> recommended by official with express.js documentation; then<ol>
+<li>convert the js to ts manually</li>
+<li>use <a href="https://github.com/airbnb/ts-migrate">ts-migrate</a></li>
+</ol>
+</li>
+<li>use <code>express-generator-typescript</code> offered by <a href="https://github.com/seanpmaxwell/express-generator-typescript/tree/master">3<sup>rd</sup> party</a></li>
+<li>use other TS first web frameworks instead of express.js.</li>
+</ol>
+<p>For this module, we choose the 1.i path way. </p>
+<p>First we recreate another project folder</p>
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span>
+<span class="normal"><a href="#__codelineno-9-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="nb">cd</span><span class="w"> </span>..
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a>npx<span class="w"> </span>express-generator<span class="w"> </span>my_egts_app
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="nb">cd</span><span class="w"> </span>my_egts_app
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a>npm<span class="w"> </span>i<span class="w"> </span>ejs
 </span></code></pre></div></td></tr></table></div>
 <p>The <code>--view=ejs</code> flag sets <code>ejs</code> as the view template engine (remember <code>jinja2</code>?). The default view template is <code>Jade</code>. Executing the above gives us a project folder with the following structure.</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-8-10">10</a></span>
-<span class="normal"><a href="#__codelineno-8-11">11</a></span>
-<span class="normal"><a href="#__codelineno-8-12">12</a></span>
-<span class="normal"><a href="#__codelineno-8-13">13</a></span>
-<span class="normal"><a href="#__codelineno-8-14">14</a></span>
-<span class="normal"><a href="#__codelineno-8-15">15</a></span>
-<span class="normal"><a href="#__codelineno-8-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a>.
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a>├── app.js
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a>├── bin
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a>│   └── www
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5"></a>├── package.json
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6"></a>├── public
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7"></a>│   ├── images
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8"></a>│   ├── javascripts
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9"></a>│   └── stylesheets
-</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10"></a>│       └── style.css
-</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11"></a>├── routes
-</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12"></a>│   ├── index.js
-</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13"></a>│   └── users.js
-</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14"></a>└── views
-</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15"></a>    ├── error.ejs
-</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16"></a>    └── index.ejs
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-10-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-10-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-10-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-10-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-10-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-10-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-10-10">10</a></span>
+<span class="normal"><a href="#__codelineno-10-11">11</a></span>
+<span class="normal"><a href="#__codelineno-10-12">12</a></span>
+<span class="normal"><a href="#__codelineno-10-13">13</a></span>
+<span class="normal"><a href="#__codelineno-10-14">14</a></span>
+<span class="normal"><a href="#__codelineno-10-15">15</a></span>
+<span class="normal"><a href="#__codelineno-10-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a>.
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a>├── app.js
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a>├── bin
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a>│   └── www
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a>├── package.json
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a>├── public
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7"></a>│   ├── images
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8"></a>│   ├── javascripts
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9"></a>│   └── stylesheets
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10"></a>│       └── style.css
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11"></a>├── routes
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12"></a>│   ├── index.js
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13"></a>│   └── users.js
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14"></a>└── views
+</span><span id="__span-10-15"><a id="__codelineno-10-15" name="__codelineno-10-15"></a>    ├── error.ejs
+</span><span id="__span-10-16"><a id="__codelineno-10-16" name="__codelineno-10-16"></a>    └── index.ejs
 </span></code></pre></div></td></tr></table></div>
 <p>where <code>app.js</code> is the main entry script. <code>bin</code> stores dependency scripts such as <code>www</code>, <code>package.json</code> is the project file, <code>public</code> stores the static files to be delivered to the client, <code>route</code> contains the different sub-module routing rules, <code>views</code> store the view template sub modules.</p>
 <p>Let's run <code>npm i</code> to download all the dependencies defined in <code>package.json</code>.</p>
 <p>When it is done, run <code>npm start</code>, we observe the following in the command prompt</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
-<span class="normal"><a href="#__codelineno-9-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a>&gt;<span class="w"> </span>my-eg-app@0.0.0<span class="w"> </span>start
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a>&gt;<span class="w"> </span>node<span class="w"> </span>./bin/www
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a>&gt;<span class="w"> </span>my-eg-app@0.0.0<span class="w"> </span>start
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a>&gt;<span class="w"> </span>node<span class="w"> </span>./bin/www
 </span></code></pre></div></td></tr></table></div>
 <p>Opening <code>https://127.0.0.1:3000</code> in the browser, we should see a page with a <code>Welcome to Express</code> message.</p>
+<h4 id="migrate-js-into-ts">Migrate JS into TS<a class="headerlink" href="#migrate-js-into-ts" title="Permanent link">&para;</a></h4>
+<p>The following steps </p>
+<ul>
+<li>Installed TypeScript and type definitions (@types/node, @types/express, @types/cookie-parser, etc.) <code>npm install --save-dev typescript @types/node @types/node, @types/express, @types/cookie-parser</code></li>
+<li>Added tsconfig.json with strict mode enabled <code>npx tsc --init</code></li>
+<li>Converted all .js files to .ts:</li>
+<li>app.js → app.ts</li>
+<li>routes/index.js → routes/index.ts</li>
+<li>routes/users.js → routes/users.ts</li>
+<li>bin/www → bin/www.ts</li>
+<li>Updated package.json scripts:</li>
+<li>build: compiles TypeScript to dist/</li>
+<li>start: runs <code>node ./dist/bin/www.ts</code></li>
+</ul>
+<h4 id="an-agentic-moment">An agentic moment<a class="headerlink" href="#an-agentic-moment" title="Permanent link">&para;</a></h4>
+<p>The above mandate and tedious work can be automated with any LLM based Agent since our project is very simple and we know every piece of code.</p>
+<h4 id="the-end-result-of-the-conversion">The end result of the conversion<a class="headerlink" href="#the-end-result-of-the-conversion" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-12-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-12-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-12-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-12-10">10</a></span>
+<span class="normal"><a href="#__codelineno-12-11">11</a></span>
+<span class="normal"><a href="#__codelineno-12-12">12</a></span>
+<span class="normal"><a href="#__codelineno-12-13">13</a></span>
+<span class="normal"><a href="#__codelineno-12-14">14</a></span>
+<span class="normal"><a href="#__codelineno-12-15">15</a></span>
+<span class="normal"><a href="#__codelineno-12-16">16</a></span>
+<span class="normal"><a href="#__codelineno-12-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a>.
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a>├── app.ts
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a>├── bin
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a>│   └── www.ts
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a>├── package.json
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6"></a>├── public
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7"></a>│   ├── images
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8"></a>│   ├── javascripts
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9"></a>│   └── stylesheets
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10"></a>│       └── style.css
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11"></a>├── routes
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12"></a>│   ├── index.ts
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13"></a>│   └── users.ts
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14"></a>├── tsconfig.json
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15"></a>└── views
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16"></a>    ├── error.ejs
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17"></a>    └── index.ejs
+</span></code></pre></div></td></tr></table></div>
 <h3 id="mvc-architecture">MVC architecture<a class="headerlink" href="#mvc-architecture" title="Permanent link">&para;</a></h3>
 <p>Express.js adopts Model View Controller architecture.<br />
 <img alt="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/MVC-Process.svg/500px-MVC-Process.svg.png" /></p>
@@ -749,52 +885,52 @@ To make it ES6 compatible, we</p>
 <p>Let's build an echoer web app, which listens to the user's request and returns the same.</p>
 <p>First we need to add a new routing rules to the controller. In the <code>routes</code> folder add a new file
 named <code>echo.js</code> with the following content.</p>
-<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-10-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-10-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-10-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-10-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-10-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-10-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-10-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">express</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;express&quot;</span><span class="p">);</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">router</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="cm">/* GET echo listing. */</span>
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/:msg&quot;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">msg</span><span class="p">;</span>
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">msg</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="p">});</span>
-</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9"></a>
-</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10"></a><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">router</span><span class="p">;</span>
+<div class="language-ts highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span>
+<span class="normal"><a href="#__codelineno-13-4">4</a></span>
+<span class="normal"><a href="#__codelineno-13-5">5</a></span>
+<span class="normal"><a href="#__codelineno-13-6">6</a></span>
+<span class="normal"><a href="#__codelineno-13-7">7</a></span>
+<span class="normal"><a href="#__codelineno-13-8">8</a></span>
+<span class="normal"><a href="#__codelineno-13-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="k">import</span><span class="w"> </span><span class="nx">express</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">Response</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;express&#39;</span><span class="p">;</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">router</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/:msg&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="o">:</span><span class="w"> </span><span class="kt">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="o">:</span><span class="w"> </span><span class="kt">Response</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">msg</span><span class="p">;</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">msg</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="p">});</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8"></a>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">router</span><span class="p">;</span>
 </span></code></pre></div></td></tr></table></div>
 <p>In the above, we define a new router which listens to HTTP get requests with URL pattern
 <code>/:msg</code> where <code>:msg</code> is the request parameter and returns a response containing the <code>msg</code> itself. In other words, anything after the <code>/</code> in URL is read as a String parameter stored in variable <code>msg</code>.</p>
-<p>Back in the project root folder, we add the following to the <code>app.js</code></p>
-<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-11-10">10</a></span>
-<span class="normal"><a href="#__codelineno-11-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="p">...</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">indexRouter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./routes/index&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// generated by express generator</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="kd">var</span><span class="w"> </span><span class="nx">usersRouter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./routes/users&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// generated by express generator</span>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="kd">var</span><span class="w"> </span><span class="nx">echoRouter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./routes/echo&#39;</span><span class="p">);</span><span class="w">   </span><span class="c1">// added by us</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="kd">var</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span><span class="w"> </span><span class="c1">// generated by express generator</span>
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6"></a>
-</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="c1">// view engine setup</span>
-</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="p">...</span>
-</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">indexRouter</span><span class="p">);</span><span class="w"> </span><span class="c1">// generated by express generator</span>
-</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/users&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">usersRouter</span><span class="p">);</span><span class="w"> </span><span class="c1">// generated by express generator</span>
-</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/echo&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">echoRouter</span><span class="p">);</span><span class="w">   </span><span class="c1">// added by us</span>
+<p>Back in the project root folder, we add the following to the <code>app.ts</code></p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-14-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-14-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-14-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-14-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-14-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-14-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-14-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-14-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-14-10">10</a></span>
+<span class="normal"><a href="#__codelineno-14-11">11</a></span>
+<span class="normal"><a href="#__codelineno-14-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="p">...</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="k">import</span><span class="w"> </span><span class="nx">indexRouter</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./routes/index&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// generated by express generator</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="k">import</span><span class="w"> </span><span class="nx">usersRouter</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./routes/users&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// generated by express generator</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="k">import</span><span class="w"> </span><span class="nx">echoRouter</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./routes/echo&#39;</span><span class="p">;</span><span class="w"> </span><span class="c1">// added by us</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="kd">const</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">();</span><span class="w"> </span><span class="c1">// generated by express generator</span>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7"></a>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="c1">// view engine setup</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9"></a><span class="p">...</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10"></a><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">indexRouter</span><span class="p">);</span><span class="w"> </span><span class="c1">// generated by express generator</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11"></a><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/users&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">usersRouter</span><span class="p">);</span><span class="w"> </span><span class="c1">// generated by express generator</span>
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12"></a><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="s1">&#39;/echo&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">echoRouter</span><span class="p">);</span><span class="w">   </span><span class="c1">// added by us</span>
 </span></code></pre></div></td></tr></table></div>
-<p>This allows us to "link up" the newly defined <code>echo.js</code> router with the web app. More specifically, we would like the web app to listen to the HTTP get requests with URL prefix <code>/echo</code> and pass it over to the echo router. Note that there are already two existing routers generated by the express generator.</p>
+<p>This allows us to "link up" the newly defined <code>echo.ts</code> router with the web app. More specifically, we would like the web app to listen to the HTTP get requests with URL prefix <code>/echo</code> and pass it over to the echo router. Note that there are already two existing routers generated by the express generator.</p>
 <p>Now restart the web express app by pressing control-C in the command prompt and re-run <code>npm start</code>.</p>
 <p>Open the URL <code>https://127.0.0.1:3000/echo/hello</code> will render the message <code>hello</code> in the browser.</p>
 <p>Behind the scene, the following events took place.</p>
@@ -821,7 +957,7 @@ named <code>echo.js</code> with the following content.</p>
 </ul>
 <p>In this unit, we consider using a document database, MongoDB.</p>
 <p>Let's install mongodb. Follow this guide.</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a>https://www.mongodb.com/docs/manual/administration/install-community/
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a>https://www.mongodb.com/docs/manual/administration/install-community/
 </span></code></pre></div></td></tr></table></div>
 <p>After the installation, run the following to start the mongo database server</p>
 <ul>
@@ -830,415 +966,440 @@ named <code>echo.js</code> with the following content.</p>
 </ul>
 <h4 id="accessing-mongodb-via-mongo-shell">Accessing MongoDB via Mongo Shell<a class="headerlink" href="#accessing-mongodb-via-mongo-shell" title="Permanent link">&para;</a></h4>
 <p>To launch a mongoDB client, (which is called the mongo shell)</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
-<span class="normal"><a href="#__codelineno-13-2">2</a></span>
-<span class="normal"><a href="#__codelineno-13-3">3</a></span>
-<span class="normal"><a href="#__codelineno-13-4">4</a></span>
-<span class="normal"><a href="#__codelineno-13-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a>mongosh
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a>test&gt; show dbs;
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a>admin   40.00 KiB
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4"></a>config  60.00 KiB
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5"></a>local   72.00 KiB
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span>
+<span class="normal"><a href="#__codelineno-16-2">2</a></span>
+<span class="normal"><a href="#__codelineno-16-3">3</a></span>
+<span class="normal"><a href="#__codelineno-16-4">4</a></span>
+<span class="normal"><a href="#__codelineno-16-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a>mongosh
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a>test&gt; show dbs;
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3"></a>admin   40.00 KiB
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4"></a>config  60.00 KiB
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5"></a>local   72.00 KiB
 </span></code></pre></div></td></tr></table></div>
 <p>MongoDB is a database management system, it contains and manages multiple databases.</p>
 <p>To change to a partcular database (if not exists, create it), we type</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a>test&gt; use echo;
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a>test&gt; use echo;
 </span></code></pre></div></td></tr></table></div>
 <p>A database contains multiple collections. We can think of a collection is a collection of documents. To check the list of collections in the database <code>echo</code>.</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a>echo&gt; show collections;
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a>echo&gt; show collections;
 </span></code></pre></div></td></tr></table></div>
 <p>Obviously there is no collection in database <code>echo</code> when you run it the first time.</p>
 <p>Let's create a collection.</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a>echo&gt; db.createCollection(&#39;message&#39;);
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a>echo&gt; db.createCollection(&#39;message&#39;);
 </span></code></pre></div></td></tr></table></div>
 <p>Now we have a database named <code>echo</code> which has a collection name <code>message</code>. You can run the <code>show collections</code> again to check.</p>
 <p>Now, let's insert some documents into the collection.</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
-<span class="normal"><a href="#__codelineno-17-2">2</a></span>
-<span class="normal"><a href="#__codelineno-17-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a>echo&gt; db.message.insertOne({ &#39;key&#39;: 1, &#39;msg&#39;:&#39;hello&#39;, &#39;time&#39;:new Date() });
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2"></a>
-</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3"></a>echo&gt; db.message.insertOne({ &#39;key&#39;: 2, &#39;msg&#39;:&#39;hello&#39;, &#39;time&#39;:new Date() });
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span>
+<span class="normal"><a href="#__codelineno-20-2">2</a></span>
+<span class="normal"><a href="#__codelineno-20-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a>echo&gt; db.message.insertOne({ &#39;key&#39;: 1, &#39;msg&#39;:&#39;hello&#39;, &#39;time&#39;:new Date() });
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2"></a>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3"></a>echo&gt; db.message.insertOne({ &#39;key&#39;: 2, &#39;msg&#39;:&#39;hello&#39;, &#39;time&#39;:new Date() });
 </span></code></pre></div></td></tr></table></div>
 <p>You can see the documents in the collection by</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a>echo&gt; db.message.find();
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a>echo&gt; db.message.find();
 </span></code></pre></div></td></tr></table></div>
 <p>In the above example, we created two documents, with an integer <code>key</code>, a string <code>msg</code> and a date type attribute <code>time</code>.
 Note that for every document being inserted, MongoDB automatically adds an extra attribute <code>_id</code> which is a unique identifier for that doucment.</p>
 <p>For the full list of data type of MongoDB, refer to</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a>https://www.mongodb.com/docs/mongodb-shell/reference/data-types/
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1"></a>https://www.mongodb.com/docs/mongodb-shell/reference/data-types/
 </span></code></pre></div></td></tr></table></div>
 <p>Next we consider how to retrieve some documents based on some criteria.</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span>
-<span class="normal"><a href="#__codelineno-20-2">2</a></span>
-<span class="normal"><a href="#__codelineno-20-3">3</a></span>
-<span class="normal"><a href="#__codelineno-20-4">4</a></span>
-<span class="normal"><a href="#__codelineno-20-5">5</a></span>
-<span class="normal"><a href="#__codelineno-20-6">6</a></span>
-<span class="normal"><a href="#__codelineno-20-7">7</a></span>
-<span class="normal"><a href="#__codelineno-20-8">8</a></span>
-<span class="normal"><a href="#__codelineno-20-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a>echo&gt; db.message.findOne({ &#39;key&#39; : { $eq : 1 }})
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2"></a>
-</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3"></a>// Output:
-</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4"></a>{
-</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5"></a>  _id: ObjectId(&#39;665552798e912adcf1b90346&#39;),
-</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6"></a>  key: 1,
-</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7"></a>  msg: &#39;hello&#39;,
-</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8"></a>  time: ISODate(&#39;2024-05-28T03:41:45.271Z&#39;)
-</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9"></a>}
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span>
+<span class="normal"><a href="#__codelineno-23-2">2</a></span>
+<span class="normal"><a href="#__codelineno-23-3">3</a></span>
+<span class="normal"><a href="#__codelineno-23-4">4</a></span>
+<span class="normal"><a href="#__codelineno-23-5">5</a></span>
+<span class="normal"><a href="#__codelineno-23-6">6</a></span>
+<span class="normal"><a href="#__codelineno-23-7">7</a></span>
+<span class="normal"><a href="#__codelineno-23-8">8</a></span>
+<span class="normal"><a href="#__codelineno-23-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1"></a>echo&gt; db.message.findOne({ &#39;key&#39; : { $eq : 1 }})
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2"></a>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3"></a>// Output:
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4"></a>{
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5"></a>  _id: ObjectId(&#39;665552798e912adcf1b90346&#39;),
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6"></a>  key: 1,
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7"></a>  msg: &#39;hello&#39;,
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8"></a>  time: ISODate(&#39;2024-05-28T03:41:45.271Z&#39;)
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9"></a>}
 </span></code></pre></div></td></tr></table></div>
 <p>The above query returns a single document that having <code>key</code> equals to <code>1</code>.</p>
 <p>We could also use <code>$lt</code> and <code>$gt</code> to define range queries.</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span>
-<span class="normal"><a href="#__codelineno-21-2">2</a></span>
-<span class="normal"><a href="#__codelineno-21-3">3</a></span>
-<span class="normal"><a href="#__codelineno-21-4">4</a></span>
-<span class="normal"><a href="#__codelineno-21-5">5</a></span>
-<span class="normal"><a href="#__codelineno-21-6">6</a></span>
-<span class="normal"><a href="#__codelineno-21-7">7</a></span>
-<span class="normal"><a href="#__codelineno-21-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a>echo&gt; db.message.findOne({ &#39;key&#39; : { $gt : 1 } })
-</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2"></a>
-</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3"></a>{
-</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4"></a>  _id: ObjectId(&#39;6656f1e78e912adcf1b90347&#39;),
-</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5"></a>  key: 2,
-</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6"></a>  msg: &#39;hello&#39;,
-</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7"></a>  time: ISODate(&#39;2024-05-29T09:14:15.691Z&#39;)
-</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8"></a>}
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span>
+<span class="normal"><a href="#__codelineno-24-2">2</a></span>
+<span class="normal"><a href="#__codelineno-24-3">3</a></span>
+<span class="normal"><a href="#__codelineno-24-4">4</a></span>
+<span class="normal"><a href="#__codelineno-24-5">5</a></span>
+<span class="normal"><a href="#__codelineno-24-6">6</a></span>
+<span class="normal"><a href="#__codelineno-24-7">7</a></span>
+<span class="normal"><a href="#__codelineno-24-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1"></a>echo&gt; db.message.findOne({ &#39;key&#39; : { $gt : 1 } })
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2"></a>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3"></a>{
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4"></a>  _id: ObjectId(&#39;6656f1e78e912adcf1b90347&#39;),
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5"></a>  key: 2,
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6"></a>  msg: &#39;hello&#39;,
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7"></a>  time: ISODate(&#39;2024-05-29T09:14:15.691Z&#39;)
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8"></a>}
 </span></code></pre></div></td></tr></table></div>
 <p>Note that <code>findOne</code> returns the one document, in case of a query that matches with multiple documents, we should use <code>find</code></p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-22-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-22-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-22-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-22-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-22-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-22-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-22-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-22-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-22-10">10</a></span>
-<span class="normal"><a href="#__codelineno-22-11">11</a></span>
-<span class="normal"><a href="#__codelineno-22-12">12</a></span>
-<span class="normal"><a href="#__codelineno-22-13">13</a></span>
-<span class="normal"><a href="#__codelineno-22-14">14</a></span>
-<span class="normal"><a href="#__codelineno-22-15">15</a></span>
-<span class="normal"><a href="#__codelineno-22-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1"></a>echo&gt; db.message.find({ &#39;key&#39; : { $gt : 0 }})
-</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2"></a>
-</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3"></a>[
-</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4"></a>  {
-</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5"></a>    _id: ObjectId(&#39;665552798e912adcf1b90346&#39;),
-</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6"></a>    key: 1,
-</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7"></a>    msg: &#39;hello&#39;,
-</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8"></a>    time: ISODate(&#39;2024-05-28T03:41:45.271Z&#39;)
-</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9"></a>  },
-</span><span id="__span-22-10"><a id="__codelineno-22-10" name="__codelineno-22-10"></a>  {
-</span><span id="__span-22-11"><a id="__codelineno-22-11" name="__codelineno-22-11"></a>    _id: ObjectId(&#39;6656f1e78e912adcf1b90347&#39;),
-</span><span id="__span-22-12"><a id="__codelineno-22-12" name="__codelineno-22-12"></a>    key: 2,
-</span><span id="__span-22-13"><a id="__codelineno-22-13" name="__codelineno-22-13"></a>    msg: &#39;hello&#39;,
-</span><span id="__span-22-14"><a id="__codelineno-22-14" name="__codelineno-22-14"></a>    time: ISODate(&#39;2024-05-29T09:14:15.691Z&#39;)
-</span><span id="__span-22-15"><a id="__codelineno-22-15" name="__codelineno-22-15"></a>  }
-</span><span id="__span-22-16"><a id="__codelineno-22-16" name="__codelineno-22-16"></a>]
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-25-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-25-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-25-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-25-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-25-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-25-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-25-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-25-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-25-10">10</a></span>
+<span class="normal"><a href="#__codelineno-25-11">11</a></span>
+<span class="normal"><a href="#__codelineno-25-12">12</a></span>
+<span class="normal"><a href="#__codelineno-25-13">13</a></span>
+<span class="normal"><a href="#__codelineno-25-14">14</a></span>
+<span class="normal"><a href="#__codelineno-25-15">15</a></span>
+<span class="normal"><a href="#__codelineno-25-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1"></a>echo&gt; db.message.find({ &#39;key&#39; : { $gt : 0 }})
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2"></a>
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3"></a>[
+</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4"></a>  {
+</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5"></a>    _id: ObjectId(&#39;665552798e912adcf1b90346&#39;),
+</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6"></a>    key: 1,
+</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7"></a>    msg: &#39;hello&#39;,
+</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8"></a>    time: ISODate(&#39;2024-05-28T03:41:45.271Z&#39;)
+</span><span id="__span-25-9"><a id="__codelineno-25-9" name="__codelineno-25-9"></a>  },
+</span><span id="__span-25-10"><a id="__codelineno-25-10" name="__codelineno-25-10"></a>  {
+</span><span id="__span-25-11"><a id="__codelineno-25-11" name="__codelineno-25-11"></a>    _id: ObjectId(&#39;6656f1e78e912adcf1b90347&#39;),
+</span><span id="__span-25-12"><a id="__codelineno-25-12" name="__codelineno-25-12"></a>    key: 2,
+</span><span id="__span-25-13"><a id="__codelineno-25-13" name="__codelineno-25-13"></a>    msg: &#39;hello&#39;,
+</span><span id="__span-25-14"><a id="__codelineno-25-14" name="__codelineno-25-14"></a>    time: ISODate(&#39;2024-05-29T09:14:15.691Z&#39;)
+</span><span id="__span-25-15"><a id="__codelineno-25-15" name="__codelineno-25-15"></a>  }
+</span><span id="__span-25-16"><a id="__codelineno-25-16" name="__codelineno-25-16"></a>]
 </span></code></pre></div></td></tr></table></div>
 <p>To define a conjunctive query, we can either implicitly including multiple constraint in the same query</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1"></a>db.message.find( { &#39;key&#39; : {$gt:1}, &#39;time&#39;: {$gt:new Date(&quot;2023-05-23T08:08:26.255Z&quot;)}})
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1"></a>db.message.find( { &#39;key&#39; : {$gt:1}, &#39;time&#39;: {$gt:new Date(&quot;2023-05-23T08:08:26.255Z&quot;)}})
 </span></code></pre></div></td></tr></table></div>
 <ol>
 <li>explicitly using <code>$and</code></li>
 </ol>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1"></a>db.message.find({ $and : [ {&#39;key&#39; : { $gt : 1 }}, {&#39;time&#39; : { $gt : new Date(&quot;2023-05-23T08:08:26.255Z&quot;)}}]})
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1"></a>db.message.find({ $and : [ {&#39;key&#39; : { $gt : 1 }}, {&#39;time&#39; : { $gt : new Date(&quot;2023-05-23T08:08:26.255Z&quot;)}}]})
 </span></code></pre></div></td></tr></table></div>
 <p>Both yield</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span>
-<span class="normal"><a href="#__codelineno-25-2">2</a></span>
-<span class="normal"><a href="#__codelineno-25-3">3</a></span>
-<span class="normal"><a href="#__codelineno-25-4">4</a></span>
-<span class="normal"><a href="#__codelineno-25-5">5</a></span>
-<span class="normal"><a href="#__codelineno-25-6">6</a></span>
-<span class="normal"><a href="#__codelineno-25-7">7</a></span>
-<span class="normal"><a href="#__codelineno-25-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1"></a>[
-</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2"></a>  {
-</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3"></a>    _id: ObjectId(&#39;6656f1e78e912adcf1b90347&#39;),
-</span><span id="__span-25-4"><a id="__codelineno-25-4" name="__codelineno-25-4"></a>    key: 2,
-</span><span id="__span-25-5"><a id="__codelineno-25-5" name="__codelineno-25-5"></a>    msg: &#39;hello&#39;,
-</span><span id="__span-25-6"><a id="__codelineno-25-6" name="__codelineno-25-6"></a>    time: ISODate(&#39;2024-05-29T09:14:15.691Z&#39;)
-</span><span id="__span-25-7"><a id="__codelineno-25-7" name="__codelineno-25-7"></a>  }
-</span><span id="__span-25-8"><a id="__codelineno-25-8" name="__codelineno-25-8"></a>]
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span>
+<span class="normal"><a href="#__codelineno-28-2">2</a></span>
+<span class="normal"><a href="#__codelineno-28-3">3</a></span>
+<span class="normal"><a href="#__codelineno-28-4">4</a></span>
+<span class="normal"><a href="#__codelineno-28-5">5</a></span>
+<span class="normal"><a href="#__codelineno-28-6">6</a></span>
+<span class="normal"><a href="#__codelineno-28-7">7</a></span>
+<span class="normal"><a href="#__codelineno-28-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1"></a>[
+</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2"></a>  {
+</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3"></a>    _id: ObjectId(&#39;6656f1e78e912adcf1b90347&#39;),
+</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4"></a>    key: 2,
+</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5"></a>    msg: &#39;hello&#39;,
+</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6"></a>    time: ISODate(&#39;2024-05-29T09:14:15.691Z&#39;)
+</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7"></a>  }
+</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8"></a>]
 </span></code></pre></div></td></tr></table></div>
 <p>Similar to <code>$and</code>, we can use <code>$or</code> to define disjunctive query.</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-26-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-26-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-26-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-26-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-26-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-26-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-26-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-26-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-26-10">10</a></span>
-<span class="normal"><a href="#__codelineno-26-11">11</a></span>
-<span class="normal"><a href="#__codelineno-26-12">12</a></span>
-<span class="normal"><a href="#__codelineno-26-13">13</a></span>
-<span class="normal"><a href="#__codelineno-26-14">14</a></span>
-<span class="normal"><a href="#__codelineno-26-15">15</a></span>
-<span class="normal"><a href="#__codelineno-26-16">16</a></span>
-<span class="normal"><a href="#__codelineno-26-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1"></a>echo&gt; db.message.find({ $or : [ {&#39;key&#39; : { $gt : 0 }}, {&#39;time&#39; : { $eq : new Date(&quot;2023-05-23T08:08:26.255Z&quot;)}}]})
-</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2"></a>
-</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3"></a>
-</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4"></a>[
-</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5"></a>  {
-</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6"></a>    _id: ObjectId(&#39;665552798e912adcf1b90346&#39;),
-</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7"></a>    key: 1,
-</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8"></a>    msg: &#39;hello&#39;,
-</span><span id="__span-26-9"><a id="__codelineno-26-9" name="__codelineno-26-9"></a>    time: ISODate(&#39;2024-05-28T03:41:45.271Z&#39;)
-</span><span id="__span-26-10"><a id="__codelineno-26-10" name="__codelineno-26-10"></a>  },
-</span><span id="__span-26-11"><a id="__codelineno-26-11" name="__codelineno-26-11"></a>  {
-</span><span id="__span-26-12"><a id="__codelineno-26-12" name="__codelineno-26-12"></a>    _id: ObjectId(&#39;6656f1e78e912adcf1b90347&#39;),
-</span><span id="__span-26-13"><a id="__codelineno-26-13" name="__codelineno-26-13"></a>    key: 2,
-</span><span id="__span-26-14"><a id="__codelineno-26-14" name="__codelineno-26-14"></a>    msg: &#39;hello&#39;,
-</span><span id="__span-26-15"><a id="__codelineno-26-15" name="__codelineno-26-15"></a>    time: ISODate(&#39;2024-05-29T09:14:15.691Z&#39;)
-</span><span id="__span-26-16"><a id="__codelineno-26-16" name="__codelineno-26-16"></a>  }
-</span><span id="__span-26-17"><a id="__codelineno-26-17" name="__codelineno-26-17"></a>]
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-29-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-29-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-29-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-29-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-29-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-29-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-29-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-29-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-29-10">10</a></span>
+<span class="normal"><a href="#__codelineno-29-11">11</a></span>
+<span class="normal"><a href="#__codelineno-29-12">12</a></span>
+<span class="normal"><a href="#__codelineno-29-13">13</a></span>
+<span class="normal"><a href="#__codelineno-29-14">14</a></span>
+<span class="normal"><a href="#__codelineno-29-15">15</a></span>
+<span class="normal"><a href="#__codelineno-29-16">16</a></span>
+<span class="normal"><a href="#__codelineno-29-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1"></a>echo&gt; db.message.find({ $or : [ {&#39;key&#39; : { $gt : 0 }}, {&#39;time&#39; : { $eq : new Date(&quot;2023-05-23T08:08:26.255Z&quot;)}}]})
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2"></a>
+</span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3"></a>
+</span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4"></a>[
+</span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5"></a>  {
+</span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6"></a>    _id: ObjectId(&#39;665552798e912adcf1b90346&#39;),
+</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7"></a>    key: 1,
+</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8"></a>    msg: &#39;hello&#39;,
+</span><span id="__span-29-9"><a id="__codelineno-29-9" name="__codelineno-29-9"></a>    time: ISODate(&#39;2024-05-28T03:41:45.271Z&#39;)
+</span><span id="__span-29-10"><a id="__codelineno-29-10" name="__codelineno-29-10"></a>  },
+</span><span id="__span-29-11"><a id="__codelineno-29-11" name="__codelineno-29-11"></a>  {
+</span><span id="__span-29-12"><a id="__codelineno-29-12" name="__codelineno-29-12"></a>    _id: ObjectId(&#39;6656f1e78e912adcf1b90347&#39;),
+</span><span id="__span-29-13"><a id="__codelineno-29-13" name="__codelineno-29-13"></a>    key: 2,
+</span><span id="__span-29-14"><a id="__codelineno-29-14" name="__codelineno-29-14"></a>    msg: &#39;hello&#39;,
+</span><span id="__span-29-15"><a id="__codelineno-29-15" name="__codelineno-29-15"></a>    time: ISODate(&#39;2024-05-29T09:14:15.691Z&#39;)
+</span><span id="__span-29-16"><a id="__codelineno-29-16" name="__codelineno-29-16"></a>  }
+</span><span id="__span-29-17"><a id="__codelineno-29-17" name="__codelineno-29-17"></a>]
 </span></code></pre></div></td></tr></table></div>
 <p>We may also query documents of nested documents.</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-27-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-27-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-27-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-27-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-27-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-27-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-27-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-27-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-27-10">10</a></span>
-<span class="normal"><a href="#__codelineno-27-11">11</a></span>
-<span class="normal"><a href="#__codelineno-27-12">12</a></span>
-<span class="normal"><a href="#__codelineno-27-13">13</a></span>
-<span class="normal"><a href="#__codelineno-27-14">14</a></span>
-<span class="normal"><a href="#__codelineno-27-15">15</a></span>
-<span class="normal"><a href="#__codelineno-27-16">16</a></span>
-<span class="normal"><a href="#__codelineno-27-17">17</a></span>
-<span class="normal"><a href="#__codelineno-27-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1"></a>echo&gt; db.createCollection(&#39;user&#39;);
-</span><span id="__span-27-2"><a id="__codelineno-27-2" name="__codelineno-27-2"></a>{ ok: 1 }
-</span><span id="__span-27-3"><a id="__codelineno-27-3" name="__codelineno-27-3"></a>
-</span><span id="__span-27-4"><a id="__codelineno-27-4" name="__codelineno-27-4"></a>echo&gt; db.user.insertOne({ &#39;id&#39;:1, &#39;name&#39;:&#39;bob&#39;, &#39;dob&#39;: { &#39;year&#39;: 2001, &#39;month&#39;:12, &#39;day&#39;:25 } });
-</span><span id="__span-27-5"><a id="__codelineno-27-5" name="__codelineno-27-5"></a>{
-</span><span id="__span-27-6"><a id="__codelineno-27-6" name="__codelineno-27-6"></a>  acknowledged: true,
-</span><span id="__span-27-7"><a id="__codelineno-27-7" name="__codelineno-27-7"></a>  insertedId: ObjectId(&quot;6476a12efb9207a944895017&quot;)
-</span><span id="__span-27-8"><a id="__codelineno-27-8" name="__codelineno-27-8"></a>}
-</span><span id="__span-27-9"><a id="__codelineno-27-9" name="__codelineno-27-9"></a>
-</span><span id="__span-27-10"><a id="__codelineno-27-10" name="__codelineno-27-10"></a>echo&gt; db.user.find( { &#39;dob.year&#39; : { $eq : 2001 }  }  )
-</span><span id="__span-27-11"><a id="__codelineno-27-11" name="__codelineno-27-11"></a>[
-</span><span id="__span-27-12"><a id="__codelineno-27-12" name="__codelineno-27-12"></a>  {
-</span><span id="__span-27-13"><a id="__codelineno-27-13" name="__codelineno-27-13"></a>    _id: ObjectId(&quot;6476a12efb9207a944895017&quot;),
-</span><span id="__span-27-14"><a id="__codelineno-27-14" name="__codelineno-27-14"></a>    id: 1,
-</span><span id="__span-27-15"><a id="__codelineno-27-15" name="__codelineno-27-15"></a>    name: &#39;bob&#39;,
-</span><span id="__span-27-16"><a id="__codelineno-27-16" name="__codelineno-27-16"></a>    dob: { year: 2001, month: 12, day: 25 }
-</span><span id="__span-27-17"><a id="__codelineno-27-17" name="__codelineno-27-17"></a>  }
-</span><span id="__span-27-18"><a id="__codelineno-27-18" name="__codelineno-27-18"></a>]
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-30-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-30-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-30-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-30-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-30-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-30-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-30-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-30-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-30-10">10</a></span>
+<span class="normal"><a href="#__codelineno-30-11">11</a></span>
+<span class="normal"><a href="#__codelineno-30-12">12</a></span>
+<span class="normal"><a href="#__codelineno-30-13">13</a></span>
+<span class="normal"><a href="#__codelineno-30-14">14</a></span>
+<span class="normal"><a href="#__codelineno-30-15">15</a></span>
+<span class="normal"><a href="#__codelineno-30-16">16</a></span>
+<span class="normal"><a href="#__codelineno-30-17">17</a></span>
+<span class="normal"><a href="#__codelineno-30-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1"></a>echo&gt; db.createCollection(&#39;user&#39;);
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2"></a>{ ok: 1 }
+</span><span id="__span-30-3"><a id="__codelineno-30-3" name="__codelineno-30-3"></a>
+</span><span id="__span-30-4"><a id="__codelineno-30-4" name="__codelineno-30-4"></a>echo&gt; db.user.insertOne({ &#39;id&#39;:1, &#39;name&#39;:&#39;bob&#39;, &#39;dob&#39;: { &#39;year&#39;: 2001, &#39;month&#39;:12, &#39;day&#39;:25 } });
+</span><span id="__span-30-5"><a id="__codelineno-30-5" name="__codelineno-30-5"></a>{
+</span><span id="__span-30-6"><a id="__codelineno-30-6" name="__codelineno-30-6"></a>  acknowledged: true,
+</span><span id="__span-30-7"><a id="__codelineno-30-7" name="__codelineno-30-7"></a>  insertedId: ObjectId(&quot;6476a12efb9207a944895017&quot;)
+</span><span id="__span-30-8"><a id="__codelineno-30-8" name="__codelineno-30-8"></a>}
+</span><span id="__span-30-9"><a id="__codelineno-30-9" name="__codelineno-30-9"></a>
+</span><span id="__span-30-10"><a id="__codelineno-30-10" name="__codelineno-30-10"></a>echo&gt; db.user.find( { &#39;dob.year&#39; : { $eq : 2001 }  }  )
+</span><span id="__span-30-11"><a id="__codelineno-30-11" name="__codelineno-30-11"></a>[
+</span><span id="__span-30-12"><a id="__codelineno-30-12" name="__codelineno-30-12"></a>  {
+</span><span id="__span-30-13"><a id="__codelineno-30-13" name="__codelineno-30-13"></a>    _id: ObjectId(&quot;6476a12efb9207a944895017&quot;),
+</span><span id="__span-30-14"><a id="__codelineno-30-14" name="__codelineno-30-14"></a>    id: 1,
+</span><span id="__span-30-15"><a id="__codelineno-30-15" name="__codelineno-30-15"></a>    name: &#39;bob&#39;,
+</span><span id="__span-30-16"><a id="__codelineno-30-16" name="__codelineno-30-16"></a>    dob: { year: 2001, month: 12, day: 25 }
+</span><span id="__span-30-17"><a id="__codelineno-30-17" name="__codelineno-30-17"></a>  }
+</span><span id="__span-30-18"><a id="__codelineno-30-18" name="__codelineno-30-18"></a>]
 </span></code></pre></div></td></tr></table></div>
 <p>Note that the <code>find</code> method returns a list of documents, we may use a cursor variable to iterate through the document list.</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-28-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-28-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-28-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-28-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-28-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-28-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-28-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-28-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-28-10">10</a></span>
-<span class="normal"><a href="#__codelineno-28-11">11</a></span>
-<span class="normal"><a href="#__codelineno-28-12">12</a></span>
-<span class="normal"><a href="#__codelineno-28-13">13</a></span>
-<span class="normal"><a href="#__codelineno-28-14">14</a></span>
-<span class="normal"><a href="#__codelineno-28-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1"></a>echo&gt; var cursor = db.message.find();
-</span><span id="__span-28-2"><a id="__codelineno-28-2" name="__codelineno-28-2"></a>echo&gt; while (cursor.hasNext()) { printjson(cursor.next()); }
-</span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3"></a>
-</span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4"></a>{
-</span><span id="__span-28-5"><a id="__codelineno-28-5" name="__codelineno-28-5"></a>  _id: ObjectId(&#39;665552798e912adcf1b90346&#39;),
-</span><span id="__span-28-6"><a id="__codelineno-28-6" name="__codelineno-28-6"></a>  key: 1,
-</span><span id="__span-28-7"><a id="__codelineno-28-7" name="__codelineno-28-7"></a>  msg: &#39;hello&#39;,
-</span><span id="__span-28-8"><a id="__codelineno-28-8" name="__codelineno-28-8"></a>  time: ISODate(&#39;2024-05-28T03:41:45.271Z&#39;)
-</span><span id="__span-28-9"><a id="__codelineno-28-9" name="__codelineno-28-9"></a>}
-</span><span id="__span-28-10"><a id="__codelineno-28-10" name="__codelineno-28-10"></a>{
-</span><span id="__span-28-11"><a id="__codelineno-28-11" name="__codelineno-28-11"></a>  _id: ObjectId(&#39;6656f1e78e912adcf1b90347&#39;),
-</span><span id="__span-28-12"><a id="__codelineno-28-12" name="__codelineno-28-12"></a>  key: 2,
-</span><span id="__span-28-13"><a id="__codelineno-28-13" name="__codelineno-28-13"></a>  msg: &#39;hello&#39;,
-</span><span id="__span-28-14"><a id="__codelineno-28-14" name="__codelineno-28-14"></a>  time: ISODate(&#39;2024-05-29T09:14:15.691Z&#39;)
-</span><span id="__span-28-15"><a id="__codelineno-28-15" name="__codelineno-28-15"></a>}
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-31-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-31-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-31-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-31-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-31-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-31-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-31-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-31-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-31-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-31-10">10</a></span>
+<span class="normal"><a href="#__codelineno-31-11">11</a></span>
+<span class="normal"><a href="#__codelineno-31-12">12</a></span>
+<span class="normal"><a href="#__codelineno-31-13">13</a></span>
+<span class="normal"><a href="#__codelineno-31-14">14</a></span>
+<span class="normal"><a href="#__codelineno-31-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1"></a>echo&gt; var cursor = db.message.find();
+</span><span id="__span-31-2"><a id="__codelineno-31-2" name="__codelineno-31-2"></a>echo&gt; while (cursor.hasNext()) { printjson(cursor.next()); }
+</span><span id="__span-31-3"><a id="__codelineno-31-3" name="__codelineno-31-3"></a>
+</span><span id="__span-31-4"><a id="__codelineno-31-4" name="__codelineno-31-4"></a>{
+</span><span id="__span-31-5"><a id="__codelineno-31-5" name="__codelineno-31-5"></a>  _id: ObjectId(&#39;665552798e912adcf1b90346&#39;),
+</span><span id="__span-31-6"><a id="__codelineno-31-6" name="__codelineno-31-6"></a>  key: 1,
+</span><span id="__span-31-7"><a id="__codelineno-31-7" name="__codelineno-31-7"></a>  msg: &#39;hello&#39;,
+</span><span id="__span-31-8"><a id="__codelineno-31-8" name="__codelineno-31-8"></a>  time: ISODate(&#39;2024-05-28T03:41:45.271Z&#39;)
+</span><span id="__span-31-9"><a id="__codelineno-31-9" name="__codelineno-31-9"></a>}
+</span><span id="__span-31-10"><a id="__codelineno-31-10" name="__codelineno-31-10"></a>{
+</span><span id="__span-31-11"><a id="__codelineno-31-11" name="__codelineno-31-11"></a>  _id: ObjectId(&#39;6656f1e78e912adcf1b90347&#39;),
+</span><span id="__span-31-12"><a id="__codelineno-31-12" name="__codelineno-31-12"></a>  key: 2,
+</span><span id="__span-31-13"><a id="__codelineno-31-13" name="__codelineno-31-13"></a>  msg: &#39;hello&#39;,
+</span><span id="__span-31-14"><a id="__codelineno-31-14" name="__codelineno-31-14"></a>  time: ISODate(&#39;2024-05-29T09:14:15.691Z&#39;)
+</span><span id="__span-31-15"><a id="__codelineno-31-15" name="__codelineno-31-15"></a>}
 </span></code></pre></div></td></tr></table></div>
 <p>In the above, we call <code>.find()</code> to execute the query, the result list of documents is assigned to a <code>cursor</code> variable. The <code>cursor</code> in this context behaves similar to an iterator found in Python and Java, i.e. we can use <code>.hasNext()</code> to check whether it has the next element, <code>.next()</code> to retrieve the next element incrementally. This allows us to scan through the set of results (which is potentially huge and not fitting in the RAM).</p>
 <p>To delete a set of documents meeting the criteria, we use the <code>deleteMany</code> method.</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1"></a>db.message.deleteMany({ &#39;key&#39;: { $eq: 2}})
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-32-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1"></a>db.message.deleteMany({ &#39;key&#39;: { $eq: 2}})
 </span></code></pre></div></td></tr></table></div>
 <p>For the full list of collection operations refer to</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1"></a>https://www.mongodb.com/docs/manual/crud/
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-33-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1"></a>https://www.mongodb.com/docs/manual/crud/
 </span></code></pre></div></td></tr></table></div>
 <p>and</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-31-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-31-1"><a id="__codelineno-31-1" name="__codelineno-31-1"></a>https://www.mongodb.com/docs/manual/aggregation/
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-34-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1"></a>https://www.mongodb.com/docs/manual/aggregation/
 </span></code></pre></div></td></tr></table></div>
 <h3 id="mongodb-as-a-db-in-an-expressjs-app">MongoDB as a DB in an Express.js app<a class="headerlink" href="#mongodb-as-a-db-in-an-expressjs-app" title="Permanent link">&para;</a></h3>
 <p>Firstly, let's create a new project.</p>
-<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-32-1">1</a></span>
-<span class="normal"><a href="#__codelineno-32-2">2</a></span>
-<span class="normal"><a href="#__codelineno-32-3">3</a></span>
-<span class="normal"><a href="#__codelineno-32-4">4</a></span>
-<span class="normal"><a href="#__codelineno-32-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1"></a>mkdir<span class="w"> </span>my_mongo_app
-</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2"></a><span class="nb">cd</span><span class="w"> </span>my_mongo_app
-</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3"></a>npx<span class="w"> </span>express-generator<span class="w"> </span>--view<span class="o">=</span>ejs
-</span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4"></a>npm<span class="w"> </span>i<span class="w"> </span>mongodb
-</span><span id="__span-32-5"><a id="__codelineno-32-5" name="__codelineno-32-5"></a>npm<span class="w"> </span>audit<span class="w"> </span>fix<span class="w"> </span>--force
+<div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-35-1">1</a></span>
+<span class="normal"><a href="#__codelineno-35-2">2</a></span>
+<span class="normal"><a href="#__codelineno-35-3">3</a></span>
+<span class="normal"><a href="#__codelineno-35-4">4</a></span>
+<span class="normal"><a href="#__codelineno-35-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1"></a>mkdir<span class="w"> </span>my_mongo_app
+</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2"></a><span class="nb">cd</span><span class="w"> </span>my_mongo_app
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3"></a>npx<span class="w"> </span>express-generator<span class="w"> </span>--view<span class="o">=</span>ejs
+</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4"></a>npm<span class="w"> </span>i<span class="w"> </span>mongodb
+</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5"></a>npm<span class="w"> </span>audit<span class="w"> </span>fix<span class="w"> </span>--force
 </span></code></pre></div></td></tr></table></div>
-<p>We should have a project whose structure is similar to the previous echo app. Copy the <code>app.js</code> and <code>echo.js</code> files from the last app over into the current app.</p>
-<p>Next we create a folder <code>models</code> under the project root folder. In the <code>models</code> folder, we create a file named <code>db.js</code> with the following content.</p>
-<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-33-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-33-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-33-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-33-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-33-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-33-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-33-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-33-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-33-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-33-10">10</a></span>
-<span class="normal"><a href="#__codelineno-33-11">11</a></span>
-<span class="normal"><a href="#__codelineno-33-12">12</a></span>
-<span class="normal"><a href="#__codelineno-33-13">13</a></span>
-<span class="normal"><a href="#__codelineno-33-14">14</a></span>
-<span class="normal"><a href="#__codelineno-33-15">15</a></span>
-<span class="normal"><a href="#__codelineno-33-16">16</a></span>
-<span class="normal"><a href="#__codelineno-33-17">17</a></span>
-<span class="normal"><a href="#__codelineno-33-18">18</a></span>
-<span class="normal"><a href="#__codelineno-33-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">MongoClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;mongodb&quot;</span><span class="p">).</span><span class="nx">MongoClient</span><span class="p">;</span>
-</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2"></a><span class="c1">// creating a user with a password to mongodb is recommended.</span>
-</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">connection_str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mongodb://localhost:27017/&quot;</span><span class="p">;</span>
-</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4"></a><span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MongoClient</span><span class="p">(</span><span class="nx">connection_str</span><span class="p">);</span>
-</span><span id="__span-33-5"><a id="__codelineno-33-5" name="__codelineno-33-5"></a><span class="kd">const</span><span class="w"> </span><span class="nx">dbName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;echo&quot;</span><span class="p">;</span>
-</span><span id="__span-33-6"><a id="__codelineno-33-6" name="__codelineno-33-6"></a>
-</span><span id="__span-33-7"><a id="__codelineno-33-7" name="__codelineno-33-7"></a><span class="kd">var</span><span class="w"> </span><span class="nx">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
-</span><span id="__span-33-8"><a id="__codelineno-33-8" name="__codelineno-33-8"></a>
-</span><span id="__span-33-9"><a id="__codelineno-33-9" name="__codelineno-33-9"></a><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-33-10"><a id="__codelineno-33-10" name="__codelineno-33-10"></a><span class="w">  </span><span class="nx">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">(</span><span class="nx">dbName</span><span class="p">);</span>
-</span><span id="__span-33-11"><a id="__codelineno-33-11" name="__codelineno-33-11"></a><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-33-12"><a id="__codelineno-33-12" name="__codelineno-33-12"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;database connection failed. &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
-</span><span id="__span-33-13"><a id="__codelineno-33-13" name="__codelineno-33-13"></a><span class="p">}</span>
-</span><span id="__span-33-14"><a id="__codelineno-33-14" name="__codelineno-33-14"></a>
-</span><span id="__span-33-15"><a id="__codelineno-33-15" name="__codelineno-33-15"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">cleanup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-33-16"><a id="__codelineno-33-16" name="__codelineno-33-16"></a><span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">();</span>
-</span><span id="__span-33-17"><a id="__codelineno-33-17" name="__codelineno-33-17"></a><span class="p">}</span>
-</span><span id="__span-33-18"><a id="__codelineno-33-18" name="__codelineno-33-18"></a>
-</span><span id="__span-33-19"><a id="__codelineno-33-19" name="__codelineno-33-19"></a><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">db</span><span class="p">,</span><span class="w"> </span><span class="nx">cleanup</span><span class="w"> </span><span class="p">};</span>
+<p>Then convert the above into typescript project same as before. </p>
+<p>We should have a project whose structure is similar to the previous echo app. Copy the <code>app.ts</code> and <code>echo.ts</code> files from the last app over into the current app.</p>
+<p>Next we create a folder <code>models</code> under the project root folder. In the <code>models</code> folder, we create a file named <code>db.ts</code> with the following content.</p>
+<div class="language-ts highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-36-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-36-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-36-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-36-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-36-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-36-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-36-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-36-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-36-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-36-10">10</a></span>
+<span class="normal"><a href="#__codelineno-36-11">11</a></span>
+<span class="normal"><a href="#__codelineno-36-12">12</a></span>
+<span class="normal"><a href="#__codelineno-36-13">13</a></span>
+<span class="normal"><a href="#__codelineno-36-14">14</a></span>
+<span class="normal"><a href="#__codelineno-36-15">15</a></span>
+<span class="normal"><a href="#__codelineno-36-16">16</a></span>
+<span class="normal"><a href="#__codelineno-36-17">17</a></span>
+<span class="normal"><a href="#__codelineno-36-18">18</a></span>
+<span class="normal"><a href="#__codelineno-36-19">19</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">MongoClient</span><span class="p">,</span><span class="w"> </span><span class="nx">Db</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;mongodb&#39;</span><span class="p">;</span>
+</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2"></a><span class="c1">// creating a user with a password to mongodb is recommended.</span>
+</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">connection_str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;mongodb://localhost:27017/&quot;</span><span class="p">;</span>
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4"></a><span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">MongoClient</span><span class="p">(</span><span class="nx">connection_str</span><span class="p">);</span>
+</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5"></a><span class="kd">const</span><span class="w"> </span><span class="nx">dbName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;echo&quot;</span><span class="p">;</span>
+</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6"></a>
+</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7"></a><span class="kd">let</span><span class="w"> </span><span class="nx">db</span><span class="o">:</span><span class="w"> </span><span class="kt">Db</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kc">null</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+</span><span id="__span-36-8"><a id="__codelineno-36-8" name="__codelineno-36-8"></a>
+</span><span id="__span-36-9"><a id="__codelineno-36-9" name="__codelineno-36-9"></a><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-36-10"><a id="__codelineno-36-10" name="__codelineno-36-10"></a><span class="w">  </span><span class="nx">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">(</span><span class="nx">dbName</span><span class="p">);</span>
+</span><span id="__span-36-11"><a id="__codelineno-36-11" name="__codelineno-36-11"></a><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-36-12"><a id="__codelineno-36-12" name="__codelineno-36-12"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;database connection failed. &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+</span><span id="__span-36-13"><a id="__codelineno-36-13" name="__codelineno-36-13"></a><span class="p">}</span>
+</span><span id="__span-36-14"><a id="__codelineno-36-14" name="__codelineno-36-14"></a>
+</span><span id="__span-36-15"><a id="__codelineno-36-15" name="__codelineno-36-15"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">cleanup</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-36-16"><a id="__codelineno-36-16" name="__codelineno-36-16"></a><span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">client</span><span class="p">.</span><span class="nx">disconnect</span><span class="p">();</span>
+</span><span id="__span-36-17"><a id="__codelineno-36-17" name="__codelineno-36-17"></a><span class="p">}</span>
+</span><span id="__span-36-18"><a id="__codelineno-36-18" name="__codelineno-36-18"></a>
+</span><span id="__span-36-19"><a id="__codelineno-36-19" name="__codelineno-36-19"></a><span class="k">export</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">db</span><span class="p">,</span><span class="w"> </span><span class="nx">cleanup</span><span class="w"> </span><span class="p">};</span>
 </span></code></pre></div></td></tr></table></div>
 <p>In the above we initialize the connection string and establish a mongodb client connection. In addition, we define a <code>cleanup()</code> function which will be callled when
 the web app terminates.</p>
-<p>Then we modify the <code>app.js</code> by importing the <code>./models/db.js</code> module, and the <code>process</code> module.</p>
-<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-34-1">1</a></span>
-<span class="normal"><a href="#__codelineno-34-2">2</a></span>
-<span class="normal"><a href="#__codelineno-34-3">3</a></span>
-<span class="normal"><a href="#__codelineno-34-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-34-1"><a id="__codelineno-34-1" name="__codelineno-34-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">process</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;process&quot;</span><span class="p">);</span>
-</span><span id="__span-34-2"><a id="__codelineno-34-2" name="__codelineno-34-2"></a><span class="kd">var</span><span class="w"> </span><span class="nx">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./models/db.js&quot;</span><span class="p">);</span>
-</span><span id="__span-34-3"><a id="__codelineno-34-3" name="__codelineno-34-3"></a><span class="nx">process</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;SIGINT&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">cleanup</span><span class="p">);</span>
-</span><span id="__span-34-4"><a id="__codelineno-34-4" name="__codelineno-34-4"></a><span class="nx">process</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;SIGTERM&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">cleanup</span><span class="p">);</span>
+<p>Then we modify the <code>app.ts</code> by importing the <code>./models/db.ts</code> module.</p>
+<div class="language-ts highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-37-1">1</a></span>
+<span class="normal"><a href="#__codelineno-37-2">2</a></span>
+<span class="normal"><a href="#__codelineno-37-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">cleanup</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./models/db&#39;</span><span class="p">;</span>
+</span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2"></a><span class="nx">process</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;SIGINT&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">cleanup</span><span class="p">);</span>
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3"></a><span class="nx">process</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;SIGTERM&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">cleanup</span><span class="p">);</span>
 </span></code></pre></div></td></tr></table></div>
 <p>We register the <code>SIGINT</code> (signal interupt) and the <code>SIGTERM</code> (signal terminate) events with the <code>cleanup()</code> function from the <code>db.js</code> module.</p>
-<p>Next we create a new file in the <code>./models/</code> folder with name <code>message.js</code> with the following content.</p>
-<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-35-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-35-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-35-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-35-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-35-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-35-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-35-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-35-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-35-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-35-10">10</a></span>
-<span class="normal"><a href="#__codelineno-35-11">11</a></span>
-<span class="normal"><a href="#__codelineno-35-12">12</a></span>
-<span class="normal"><a href="#__codelineno-35-13">13</a></span>
-<span class="normal"><a href="#__codelineno-35-14">14</a></span>
-<span class="normal"><a href="#__codelineno-35-15">15</a></span>
-<span class="normal"><a href="#__codelineno-35-16">16</a></span>
-<span class="normal"><a href="#__codelineno-35-17">17</a></span>
-<span class="normal"><a href="#__codelineno-35-18">18</a></span>
-<span class="normal"><a href="#__codelineno-35-19">19</a></span>
-<span class="normal"><a href="#__codelineno-35-20">20</a></span>
-<span class="normal"><a href="#__codelineno-35-21">21</a></span>
-<span class="normal"><a href="#__codelineno-35-22">22</a></span>
-<span class="normal"><a href="#__codelineno-35-23">23</a></span>
-<span class="normal"><a href="#__codelineno-35-24">24</a></span>
-<span class="normal"><a href="#__codelineno-35-25">25</a></span>
-<span class="normal"><a href="#__codelineno-35-26">26</a></span>
-<span class="normal"><a href="#__codelineno-35-27">27</a></span>
-<span class="normal"><a href="#__codelineno-35-28">28</a></span>
-<span class="normal"><a href="#__codelineno-35-29">29</a></span>
-<span class="normal"><a href="#__codelineno-35-30">30</a></span>
-<span class="normal"><a href="#__codelineno-35-31">31</a></span>
-<span class="normal"><a href="#__codelineno-35-32">32</a></span>
-<span class="normal"><a href="#__codelineno-35-33">33</a></span>
-<span class="normal"><a href="#__codelineno-35-34">34</a></span>
-<span class="normal"><a href="#__codelineno-35-35">35</a></span>
-<span class="normal"><a href="#__codelineno-35-36">36</a></span>
-<span class="normal"><a href="#__codelineno-35-37">37</a></span>
-<span class="normal"><a href="#__codelineno-35-38">38</a></span>
-<span class="normal"><a href="#__codelineno-35-39">39</a></span>
-<span class="normal"><a href="#__codelineno-35-40">40</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;./db.js&quot;</span><span class="p">);</span>
-</span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2"></a>
-</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">collectionName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;message&quot;</span><span class="p">;</span>
-</span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4"></a>
-</span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5"></a><span class="kd">class</span><span class="w"> </span><span class="nx">Message</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">msg</span><span class="p">,</span><span class="w"> </span><span class="nx">time</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">msg</span><span class="p">;</span>
-</span><span id="__span-35-8"><a id="__codelineno-35-8" name="__codelineno-35-8"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">time</span><span class="p">;</span>
-</span><span id="__span-35-9"><a id="__codelineno-35-9" name="__codelineno-35-9"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-35-10"><a id="__codelineno-35-10" name="__codelineno-35-10"></a><span class="p">}</span>
-</span><span id="__span-35-11"><a id="__codelineno-35-11" name="__codelineno-35-11"></a>
-</span><span id="__span-35-12"><a id="__codelineno-35-12" name="__codelineno-35-12"></a><span class="cm">/** return all mesages */</span>
-</span><span id="__span-35-13"><a id="__codelineno-35-13" name="__codelineno-35-13"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">all</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-35-14"><a id="__codelineno-35-14" name="__codelineno-35-14"></a><span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-35-15"><a id="__codelineno-35-15" name="__codelineno-35-15"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">collection</span><span class="p">(</span><span class="nx">collectionName</span><span class="p">);</span>
-</span><span id="__span-35-16"><a id="__codelineno-35-16" name="__codelineno-35-16"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">cursor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">collection</span><span class="p">.</span><span class="nx">find</span><span class="p">();</span>
-</span><span id="__span-35-17"><a id="__codelineno-35-17" name="__codelineno-35-17"></a><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
-</span><span id="__span-35-18"><a id="__codelineno-35-18" name="__codelineno-35-18"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">cursor</span><span class="p">.</span><span class="nx">hasNext</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-35-19"><a id="__codelineno-35-19" name="__codelineno-35-19"></a><span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">dbobj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">cursor</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
-</span><span id="__span-35-20"><a id="__codelineno-35-20" name="__codelineno-35-20"></a><span class="w">      </span><span class="nx">messages</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">Message</span><span class="p">(</span><span class="nx">dbobj</span><span class="p">.</span><span class="nx">msg</span><span class="p">,</span><span class="w"> </span><span class="nx">dbobj</span><span class="p">.</span><span class="nx">time</span><span class="p">));</span>
-</span><span id="__span-35-21"><a id="__codelineno-35-21" name="__codelineno-35-21"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-35-22"><a id="__codelineno-35-22" name="__codelineno-35-22"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">messages</span><span class="p">;</span>
-</span><span id="__span-35-23"><a id="__codelineno-35-23" name="__codelineno-35-23"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-35-24"><a id="__codelineno-35-24" name="__codelineno-35-24"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;database connection failed.&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
-</span><span id="__span-35-25"><a id="__codelineno-35-25" name="__codelineno-35-25"></a><span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span>
-</span><span id="__span-35-26"><a id="__codelineno-35-26" name="__codelineno-35-26"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-35-27"><a id="__codelineno-35-27" name="__codelineno-35-27"></a><span class="p">}</span>
-</span><span id="__span-35-28"><a id="__codelineno-35-28" name="__codelineno-35-28"></a>
-</span><span id="__span-35-29"><a id="__codelineno-35-29" name="__codelineno-35-29"></a><span class="cm">/** insert a list of messages */</span>
-</span><span id="__span-35-30"><a id="__codelineno-35-30" name="__codelineno-35-30"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">insertMany</span><span class="p">(</span><span class="nx">messages</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-35-31"><a id="__codelineno-35-31" name="__codelineno-35-31"></a><span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-35-32"><a id="__codelineno-35-32" name="__codelineno-35-32"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">collection</span><span class="p">(</span><span class="nx">collectionName</span><span class="p">);</span>
-</span><span id="__span-35-33"><a id="__codelineno-35-33" name="__codelineno-35-33"></a><span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">collection</span><span class="p">.</span><span class="nx">insertMany</span><span class="p">(</span><span class="nx">messages</span><span class="p">);</span>
-</span><span id="__span-35-34"><a id="__codelineno-35-34" name="__codelineno-35-34"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-35-35"><a id="__codelineno-35-35" name="__codelineno-35-35"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;database connection failed.&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
-</span><span id="__span-35-36"><a id="__codelineno-35-36" name="__codelineno-35-36"></a><span class="w">    </span><span class="k">throw</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span>
-</span><span id="__span-35-37"><a id="__codelineno-35-37" name="__codelineno-35-37"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-35-38"><a id="__codelineno-35-38" name="__codelineno-35-38"></a><span class="p">}</span>
-</span><span id="__span-35-39"><a id="__codelineno-35-39" name="__codelineno-35-39"></a>
-</span><span id="__span-35-40"><a id="__codelineno-35-40" name="__codelineno-35-40"></a><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Message</span><span class="p">,</span><span class="w"> </span><span class="nx">all</span><span class="p">,</span><span class="w"> </span><span class="nx">insertMany</span><span class="w"> </span><span class="p">};</span>
+<p>Next we create a new file in the <code>./models/</code> folder with name <code>message.ts</code> with the following content.</p>
+<div class="language-ts highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-38-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-38-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-38-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-38-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-38-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-38-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-38-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-38-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-38-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-38-10">10</a></span>
+<span class="normal"><a href="#__codelineno-38-11">11</a></span>
+<span class="normal"><a href="#__codelineno-38-12">12</a></span>
+<span class="normal"><a href="#__codelineno-38-13">13</a></span>
+<span class="normal"><a href="#__codelineno-38-14">14</a></span>
+<span class="normal"><a href="#__codelineno-38-15">15</a></span>
+<span class="normal"><a href="#__codelineno-38-16">16</a></span>
+<span class="normal"><a href="#__codelineno-38-17">17</a></span>
+<span class="normal"><a href="#__codelineno-38-18">18</a></span>
+<span class="normal"><a href="#__codelineno-38-19">19</a></span>
+<span class="normal"><a href="#__codelineno-38-20">20</a></span>
+<span class="normal"><a href="#__codelineno-38-21">21</a></span>
+<span class="normal"><a href="#__codelineno-38-22">22</a></span>
+<span class="normal"><a href="#__codelineno-38-23">23</a></span>
+<span class="normal"><a href="#__codelineno-38-24">24</a></span>
+<span class="normal"><a href="#__codelineno-38-25">25</a></span>
+<span class="normal"><a href="#__codelineno-38-26">26</a></span>
+<span class="normal"><a href="#__codelineno-38-27">27</a></span>
+<span class="normal"><a href="#__codelineno-38-28">28</a></span>
+<span class="normal"><a href="#__codelineno-38-29">29</a></span>
+<span class="normal"><a href="#__codelineno-38-30">30</a></span>
+<span class="normal"><a href="#__codelineno-38-31">31</a></span>
+<span class="normal"><a href="#__codelineno-38-32">32</a></span>
+<span class="normal"><a href="#__codelineno-38-33">33</a></span>
+<span class="normal"><a href="#__codelineno-38-34">34</a></span>
+<span class="normal"><a href="#__codelineno-38-35">35</a></span>
+<span class="normal"><a href="#__codelineno-38-36">36</a></span>
+<span class="normal"><a href="#__codelineno-38-37">37</a></span>
+<span class="normal"><a href="#__codelineno-38-38">38</a></span>
+<span class="normal"><a href="#__codelineno-38-39">39</a></span>
+<span class="normal"><a href="#__codelineno-38-40">40</a></span>
+<span class="normal"><a href="#__codelineno-38-41">41</a></span>
+<span class="normal"><a href="#__codelineno-38-42">42</a></span>
+<span class="normal"><a href="#__codelineno-38-43">43</a></span>
+<span class="normal"><a href="#__codelineno-38-44">44</a></span>
+<span class="normal"><a href="#__codelineno-38-45">45</a></span>
+<span class="normal"><a href="#__codelineno-38-46">46</a></span>
+<span class="normal"><a href="#__codelineno-38-47">47</a></span>
+<span class="normal"><a href="#__codelineno-38-48">48</a></span>
+<span class="normal"><a href="#__codelineno-38-49">49</a></span>
+<span class="normal"><a href="#__codelineno-38-50">50</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">db</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./db&#39;</span><span class="p">;</span>
+</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2"></a>
+</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">collectionName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;message&quot;</span><span class="p">;</span>
+</span><span id="__span-38-4"><a id="__codelineno-38-4" name="__codelineno-38-4"></a>
+</span><span id="__span-38-5"><a id="__codelineno-38-5" name="__codelineno-38-5"></a><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">Message</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-38-6"><a id="__codelineno-38-6" name="__codelineno-38-6"></a><span class="w">    </span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+</span><span id="__span-38-7"><a id="__codelineno-38-7" name="__codelineno-38-7"></a><span class="w">    </span><span class="nx">time</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">;</span>
+</span><span id="__span-38-8"><a id="__codelineno-38-8" name="__codelineno-38-8"></a>
+</span><span id="__span-38-9"><a id="__codelineno-38-9" name="__codelineno-38-9"></a><span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">time</span><span class="o">:</span><span class="w"> </span><span class="kt">Date</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-38-10"><a id="__codelineno-38-10" name="__codelineno-38-10"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">msg</span><span class="p">;</span>
+</span><span id="__span-38-11"><a id="__codelineno-38-11" name="__codelineno-38-11"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">time</span><span class="p">;</span>
+</span><span id="__span-38-12"><a id="__codelineno-38-12" name="__codelineno-38-12"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-38-13"><a id="__codelineno-38-13" name="__codelineno-38-13"></a><span class="p">}</span>
+</span><span id="__span-38-14"><a id="__codelineno-38-14" name="__codelineno-38-14"></a>
+</span><span id="__span-38-15"><a id="__codelineno-38-15" name="__codelineno-38-15"></a><span class="cm">/** return all mesages */</span>
+</span><span id="__span-38-16"><a id="__codelineno-38-16" name="__codelineno-38-16"></a>
+</span><span id="__span-38-17"><a id="__codelineno-38-17" name="__codelineno-38-17"></a><span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">all</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">Message</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-38-18"><a id="__codelineno-38-18" name="__codelineno-38-18"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">db</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-38-19"><a id="__codelineno-38-19" name="__codelineno-38-19"></a><span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;Database not initialized&quot;</span><span class="p">);</span>
+</span><span id="__span-38-20"><a id="__codelineno-38-20" name="__codelineno-38-20"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-38-21"><a id="__codelineno-38-21" name="__codelineno-38-21"></a><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-38-22"><a id="__codelineno-38-22" name="__codelineno-38-22"></a><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">collection</span><span class="p">(</span><span class="nx">collectionName</span><span class="p">);</span>
+</span><span id="__span-38-23"><a id="__codelineno-38-23" name="__codelineno-38-23"></a><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">cursor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">collection</span><span class="p">.</span><span class="nx">find</span><span class="p">();</span>
+</span><span id="__span-38-24"><a id="__codelineno-38-24" name="__codelineno-38-24"></a><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="kt">Message</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+</span><span id="__span-38-25"><a id="__codelineno-38-25" name="__codelineno-38-25"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="k">await</span><span class="w"> </span><span class="nx">cursor</span><span class="p">.</span><span class="nx">hasNext</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-38-26"><a id="__codelineno-38-26" name="__codelineno-38-26"></a><span class="w">            </span><span class="kd">const</span><span class="w"> </span><span class="nx">dbobj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">cursor</span><span class="p">.</span><span class="nx">next</span><span class="p">();</span>
+</span><span id="__span-38-27"><a id="__codelineno-38-27" name="__codelineno-38-27"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">dbobj</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-38-28"><a id="__codelineno-38-28" name="__codelineno-38-28"></a><span class="w">                </span><span class="nx">messages</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="ow">new</span><span class="w"> </span><span class="nx">Message</span><span class="p">(</span><span class="nx">dbobj</span><span class="p">.</span><span class="nx">msg</span><span class="p">,</span><span class="w"> </span><span class="nx">dbobj</span><span class="p">.</span><span class="nx">time</span><span class="p">));</span>
+</span><span id="__span-38-29"><a id="__codelineno-38-29" name="__codelineno-38-29"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-38-30"><a id="__codelineno-38-30" name="__codelineno-38-30"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-38-31"><a id="__codelineno-38-31" name="__codelineno-38-31"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">messages</span><span class="p">;</span>
+</span><span id="__span-38-32"><a id="__codelineno-38-32" name="__codelineno-38-32"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-38-33"><a id="__codelineno-38-33" name="__codelineno-38-33"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;database connection failed.&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+</span><span id="__span-38-34"><a id="__codelineno-38-34" name="__codelineno-38-34"></a><span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span>
+</span><span id="__span-38-35"><a id="__codelineno-38-35" name="__codelineno-38-35"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span>
+</span><span id="__span-38-36"><a id="__codelineno-38-36" name="__codelineno-38-36"></a><span class="p">}</span>
+</span><span id="__span-38-37"><a id="__codelineno-38-37" name="__codelineno-38-37"></a>
+</span><span id="__span-38-38"><a id="__codelineno-38-38" name="__codelineno-38-38"></a><span class="cm">/** insert a list of messages */</span>
+</span><span id="__span-38-39"><a id="__codelineno-38-39" name="__codelineno-38-39"></a><span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">insertMany</span><span class="p">(</span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="kt">Message</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-38-40"><a id="__codelineno-38-40" name="__codelineno-38-40"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">db</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-38-41"><a id="__codelineno-38-41" name="__codelineno-38-41"></a><span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;Database not initialized&quot;</span><span class="p">);</span>
+</span><span id="__span-38-42"><a id="__codelineno-38-42" name="__codelineno-38-42"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-38-43"><a id="__codelineno-38-43" name="__codelineno-38-43"></a><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-38-44"><a id="__codelineno-38-44" name="__codelineno-38-44"></a><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">collection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span><span class="nx">collection</span><span class="p">(</span><span class="nx">collectionName</span><span class="p">);</span>
+</span><span id="__span-38-45"><a id="__codelineno-38-45" name="__codelineno-38-45"></a><span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="nx">collection</span><span class="p">.</span><span class="nx">insertMany</span><span class="p">(</span><span class="nx">messages</span><span class="w"> </span><span class="kr">as</span><span class="w"> </span><span class="nx">any</span><span class="p">);</span>
+</span><span id="__span-38-46"><a id="__codelineno-38-46" name="__codelineno-38-46"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-38-47"><a id="__codelineno-38-47" name="__codelineno-38-47"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;database connection failed.&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+</span><span id="__span-38-48"><a id="__codelineno-38-48" name="__codelineno-38-48"></a><span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span>
+</span><span id="__span-38-49"><a id="__codelineno-38-49" name="__codelineno-38-49"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span>
+</span><span id="__span-38-50"><a id="__codelineno-38-50" name="__codelineno-38-50"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
-<p>In this module, we import the <code>db.js</code> module, we define a class <code>Message</code> with two attributes.
+<p>In this module, we import the <code>db.ts</code> module, we define a class <code>Message</code> with two attributes.
 In addition, we define a query function <code>all()</code> that retrieves all messages, and an <code>insertMany()</code> function that inserts new documents into the the collection.
 Note that these functions are <code>async</code> as the underlying calls to the db are asynchronous, i.e. producing promises.</p>
-<p>Finally, we modify the <code>echo.js</code> router to save the echoed message and retrieve all the old messages.</p>
-<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-36-1">1</a></span>
-<span class="normal"><a href="#__codelineno-36-2">2</a></span>
-<span class="normal"><a href="#__codelineno-36-3">3</a></span>
-<span class="normal"><a href="#__codelineno-36-4">4</a></span>
-<span class="normal"><a href="#__codelineno-36-5">5</a></span>
-<span class="normal"><a href="#__codelineno-36-6">6</a></span>
-<span class="normal"><a href="#__codelineno-36-7">7</a></span>
-<span class="normal"><a href="#__codelineno-36-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">echoModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;../models/message.js&quot;</span><span class="p">);</span>
-</span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2"></a><span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">&quot;/:msg&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="nx">next</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">msg</span><span class="p">;</span>
-</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">echoModel</span><span class="p">.</span><span class="nx">Message</span><span class="p">(</span><span class="nx">msg</span><span class="p">,</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">());</span>
-</span><span id="__span-36-5"><a id="__codelineno-36-5" name="__codelineno-36-5"></a><span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">echoModel</span><span class="p">.</span><span class="nx">insertMany</span><span class="p">([</span><span class="nx">message</span><span class="p">]);</span>
-</span><span id="__span-36-6"><a id="__codelineno-36-6" name="__codelineno-36-6"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">echoModel</span><span class="p">.</span><span class="nx">all</span><span class="p">();</span>
-</span><span id="__span-36-7"><a id="__codelineno-36-7" name="__codelineno-36-7"></a><span class="w">  </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">messages</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-</span><span id="__span-36-8"><a id="__codelineno-36-8" name="__codelineno-36-8"></a><span class="p">});</span>
+<p>Finally, we modify the <code>echo.ts</code> router to save the echoed message and retrieve all the old messages.</p>
+<div class="language-ts highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-39-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-39-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-39-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-39-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-39-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-39-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-39-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-39-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-39-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-39-10">10</a></span>
+<span class="normal"><a href="#__codelineno-39-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Message</span><span class="p">,</span><span class="w"> </span><span class="nx">insertMany</span><span class="p">,</span><span class="w"> </span><span class="nx">all</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;../models/message&#39;</span><span class="p">;</span>
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2"></a>
+</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">router</span><span class="o">:</span><span class="w"> </span><span class="kt">Router</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">express</span><span class="p">.</span><span class="nx">Router</span><span class="p">();</span>
+</span><span id="__span-39-4"><a id="__codelineno-39-4" name="__codelineno-39-4"></a>
+</span><span id="__span-39-5"><a id="__codelineno-39-5" name="__codelineno-39-5"></a><span class="nx">router</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/:msg&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="o">:</span><span class="w"> </span><span class="kt">Request</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="o">:</span><span class="w"> </span><span class="kt">Response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-39-6"><a id="__codelineno-39-6" name="__codelineno-39-6"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">msg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">params</span><span class="p">.</span><span class="nx">msg</span><span class="p">;</span>
+</span><span id="__span-39-7"><a id="__codelineno-39-7" name="__codelineno-39-7"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Message</span><span class="p">(</span><span class="nx">msg</span><span class="p">,</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">());</span>
+</span><span id="__span-39-8"><a id="__codelineno-39-8" name="__codelineno-39-8"></a><span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">insertMany</span><span class="p">([</span><span class="nx">message</span><span class="p">]);</span>
+</span><span id="__span-39-9"><a id="__codelineno-39-9" name="__codelineno-39-9"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">all</span><span class="p">();</span>
+</span><span id="__span-39-10"><a id="__codelineno-39-10" name="__codelineno-39-10"></a><span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">messages</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span><span id="__span-39-11"><a id="__codelineno-39-11" name="__codelineno-39-11"></a><span class="p">});</span>
 </span></code></pre></div></td></tr></table></div>
 <h3 id="exercise-not-graded">Exercise (Not Graded)<a class="headerlink" href="#exercise-not-graded" title="Permanent link">&para;</a></h3>
 <ol>
@@ -1249,7 +1410,7 @@ Note that these functions are <code>async</code> as the underlying calls to the 
 <p>In the above example, we incorporate the model layer to the web app. The models abstract away the underlying database operations in forms of function calls and
 class object instantiation.</p>
 <p>Alternatively, we could use the <code>mongoose</code> library to help us to generate some of these codes. You are encouraged to check out the <code>mongoose</code> library.</p>
-<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-37-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1"></a>https://mongoosejs.com/
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-40-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1"></a>https://mongoosejs.com/
 </span></code></pre></div></td></tr></table></div>
 <h3 id="where-are-the-controllers">Where are the controllers?<a class="headerlink" href="#where-are-the-controllers" title="Permanent link">&para;</a></h3>
 <p>So far we have not seen any controller in this project. We will define controller when we need to model complex business logic which involves multiple models, which
@@ -1285,66 +1446,66 @@ In Database design, we often use <strong>Entity Relation (ER) diagrams</strong> 
 <p>Let's consider the modelling the ER diagram with <code>Staff</code> and <code>Dept</code> and <code>Work</code> relationship (without the <code>Manage</code> relation).</p>
 <p>There are more than one possible logical models:</p>
 <p><strong>Approach one</strong>: Storing <code>Dept</code> as a collection, which has attributes <code>code</code> and <code>staff</code>. <code>code</code> is a string, <code>staff</code> is a list of objects. Each object in <code>staff</code> is a document with <code>sid</code> and <code>name</code> as attributes. e.g.</p>
-<div class="language-json highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-38-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-38-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-38-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-38-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-38-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-38-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-38-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-38-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-38-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-38-10">10</a></span>
-<span class="normal"><a href="#__codelineno-38-11">11</a></span>
-<span class="normal"><a href="#__codelineno-38-12">12</a></span>
-<span class="normal"><a href="#__codelineno-38-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-38-1"><a id="__codelineno-38-1" name="__codelineno-38-1"></a><span class="p">{</span>
-</span><span id="__span-38-2"><a id="__codelineno-38-2" name="__codelineno-38-2"></a><span class="w">  </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HR&quot;</span><span class="p">,</span>
-</span><span id="__span-38-3"><a id="__codelineno-38-3" name="__codelineno-38-3"></a><span class="w">  </span><span class="nt">&quot;staff&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-38-4"><a id="__codelineno-38-4" name="__codelineno-38-4"></a><span class="w">    </span><span class="p">{</span>
-</span><span id="__span-38-5"><a id="__codelineno-38-5" name="__codelineno-38-5"></a><span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-</span><span id="__span-38-6"><a id="__codelineno-38-6" name="__codelineno-38-6"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aaron&quot;</span>
-</span><span id="__span-38-7"><a id="__codelineno-38-7" name="__codelineno-38-7"></a><span class="w">    </span><span class="p">},</span>
-</span><span id="__span-38-8"><a id="__codelineno-38-8" name="__codelineno-38-8"></a><span class="w">    </span><span class="p">{</span>
-</span><span id="__span-38-9"><a id="__codelineno-38-9" name="__codelineno-38-9"></a><span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
-</span><span id="__span-38-10"><a id="__codelineno-38-10" name="__codelineno-38-10"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;betty&quot;</span>
-</span><span id="__span-38-11"><a id="__codelineno-38-11" name="__codelineno-38-11"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-38-12"><a id="__codelineno-38-12" name="__codelineno-38-12"></a><span class="w">  </span><span class="p">]</span>
-</span><span id="__span-38-13"><a id="__codelineno-38-13" name="__codelineno-38-13"></a><span class="p">}</span>
+<div class="language-json highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-41-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-41-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-41-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-41-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-41-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-41-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-41-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-41-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-41-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-41-10">10</a></span>
+<span class="normal"><a href="#__codelineno-41-11">11</a></span>
+<span class="normal"><a href="#__codelineno-41-12">12</a></span>
+<span class="normal"><a href="#__codelineno-41-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1"></a><span class="p">{</span>
+</span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2"></a><span class="w">  </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HR&quot;</span><span class="p">,</span>
+</span><span id="__span-41-3"><a id="__codelineno-41-3" name="__codelineno-41-3"></a><span class="w">  </span><span class="nt">&quot;staff&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-41-4"><a id="__codelineno-41-4" name="__codelineno-41-4"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-41-5"><a id="__codelineno-41-5" name="__codelineno-41-5"></a><span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-41-6"><a id="__codelineno-41-6" name="__codelineno-41-6"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;aaron&quot;</span>
+</span><span id="__span-41-7"><a id="__codelineno-41-7" name="__codelineno-41-7"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-41-8"><a id="__codelineno-41-8" name="__codelineno-41-8"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-41-9"><a id="__codelineno-41-9" name="__codelineno-41-9"></a><span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+</span><span id="__span-41-10"><a id="__codelineno-41-10" name="__codelineno-41-10"></a><span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;betty&quot;</span>
+</span><span id="__span-41-11"><a id="__codelineno-41-11" name="__codelineno-41-11"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-41-12"><a id="__codelineno-41-12" name="__codelineno-41-12"></a><span class="w">  </span><span class="p">]</span>
+</span><span id="__span-41-13"><a id="__codelineno-41-13" name="__codelineno-41-13"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
 <p><strong>Approach two</strong>: Storing <code>staff</code> as a separate collection from <code>dept</code>. The <code>staff</code> attribute in the <code>dept</code> document should contains only the ids of the staff.
 A <code>dept</code> document</p>
-<div class="language-json highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-39-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-39-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-39-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-39-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-39-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-39-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-39-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-39-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-39-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-39-10">10</a></span>
-<span class="normal"><a href="#__codelineno-39-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1"></a><span class="p">{</span>
-</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2"></a><span class="w">  </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HR&quot;</span><span class="p">,</span>
-</span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3"></a><span class="w">  </span><span class="nt">&quot;staff_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-39-4"><a id="__codelineno-39-4" name="__codelineno-39-4"></a><span class="w">    </span><span class="p">{</span>
-</span><span id="__span-39-5"><a id="__codelineno-39-5" name="__codelineno-39-5"></a><span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
-</span><span id="__span-39-6"><a id="__codelineno-39-6" name="__codelineno-39-6"></a><span class="w">    </span><span class="p">},</span>
-</span><span id="__span-39-7"><a id="__codelineno-39-7" name="__codelineno-39-7"></a><span class="w">    </span><span class="p">{</span>
-</span><span id="__span-39-8"><a id="__codelineno-39-8" name="__codelineno-39-8"></a><span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
-</span><span id="__span-39-9"><a id="__codelineno-39-9" name="__codelineno-39-9"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-39-10"><a id="__codelineno-39-10" name="__codelineno-39-10"></a><span class="w">  </span><span class="p">]</span>
-</span><span id="__span-39-11"><a id="__codelineno-39-11" name="__codelineno-39-11"></a><span class="p">}</span>
+<div class="language-json highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-42-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-42-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-42-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-42-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-42-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-42-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-42-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-42-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-42-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-42-10">10</a></span>
+<span class="normal"><a href="#__codelineno-42-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-42-1"><a id="__codelineno-42-1" name="__codelineno-42-1"></a><span class="p">{</span>
+</span><span id="__span-42-2"><a id="__codelineno-42-2" name="__codelineno-42-2"></a><span class="w">  </span><span class="nt">&quot;code&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HR&quot;</span><span class="p">,</span>
+</span><span id="__span-42-3"><a id="__codelineno-42-3" name="__codelineno-42-3"></a><span class="w">  </span><span class="nt">&quot;staff_ids&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+</span><span id="__span-42-4"><a id="__codelineno-42-4" name="__codelineno-42-4"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-42-5"><a id="__codelineno-42-5" name="__codelineno-42-5"></a><span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+</span><span id="__span-42-6"><a id="__codelineno-42-6" name="__codelineno-42-6"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-42-7"><a id="__codelineno-42-7" name="__codelineno-42-7"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-42-8"><a id="__codelineno-42-8" name="__codelineno-42-8"></a><span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+</span><span id="__span-42-9"><a id="__codelineno-42-9" name="__codelineno-42-9"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-42-10"><a id="__codelineno-42-10" name="__codelineno-42-10"></a><span class="w">  </span><span class="p">]</span>
+</span><span id="__span-42-11"><a id="__codelineno-42-11" name="__codelineno-42-11"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
 <p>A <code>staff</code> document contains <code>id</code>, <code>name</code> and <code>dept_code</code> attributes.</p>
-<div class="language-json highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-40-1">1</a></span>
-<span class="normal"><a href="#__codelineno-40-2">2</a></span>
-<span class="normal"><a href="#__codelineno-40-3">3</a></span>
-<span class="normal"><a href="#__codelineno-40-4">4</a></span>
-<span class="normal"><a href="#__codelineno-40-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1"></a><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2"></a><span class="w">   </span><span class="err">&#39;id&#39;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-</span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3"></a><span class="w">   </span><span class="err">&#39;</span><span class="kc">na</span><span class="err">me&#39;</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;aaro</span><span class="kc">n</span><span class="err">&#39;</span>
-</span><span id="__span-40-4"><a id="__codelineno-40-4" name="__codelineno-40-4"></a><span class="w">   </span><span class="err">&#39;dep</span><span class="kc">t</span><span class="err">_code&#39;</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;HR&#39;</span>
-</span><span id="__span-40-5"><a id="__codelineno-40-5" name="__codelineno-40-5"></a><span class="w"> </span><span class="p">}</span>
+<div class="language-json highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-43-1">1</a></span>
+<span class="normal"><a href="#__codelineno-43-2">2</a></span>
+<span class="normal"><a href="#__codelineno-43-3">3</a></span>
+<span class="normal"><a href="#__codelineno-43-4">4</a></span>
+<span class="normal"><a href="#__codelineno-43-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-43-1"><a id="__codelineno-43-1" name="__codelineno-43-1"></a><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-43-2"><a id="__codelineno-43-2" name="__codelineno-43-2"></a><span class="w">   </span><span class="err">&#39;id&#39;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+</span><span id="__span-43-3"><a id="__codelineno-43-3" name="__codelineno-43-3"></a><span class="w">   </span><span class="err">&#39;</span><span class="kc">na</span><span class="err">me&#39;</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;aaro</span><span class="kc">n</span><span class="err">&#39;</span>
+</span><span id="__span-43-4"><a id="__codelineno-43-4" name="__codelineno-43-4"></a><span class="w">   </span><span class="err">&#39;dep</span><span class="kc">t</span><span class="err">_code&#39;</span><span class="p">:</span><span class="w"> </span><span class="err">&#39;HR&#39;</span>
+</span><span id="__span-43-5"><a id="__codelineno-43-5" name="__codelineno-43-5"></a><span class="w"> </span><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Both design will work. The advantage of the first approach is that all the information are now stored in one collection, it is easier to ensure the data consistency, while the downside is that as the conceptual model becomes complex, we might have documents with too many level of nesting. Approach two avoids the deep nesting of the document structure, however, to maintain the data consistency requires additional checking and validation in the application.</p>
 <h3 id="cohort-exercises">Cohort Exercises<a class="headerlink" href="#cohort-exercises" title="Permanent link">&para;</a></h3>
