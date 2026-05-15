@@ -598,7 +598,7 @@ the <code>express.js</code> web app.</p>
 <h2 id="building-a-reactjs-app">Building a ReactJS App<a class="headerlink" href="#building-a-reactjs-app" title="Permanent link">&para;</a></h2>
 <p>To initiate the project, we need to execute</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>npm<span class="w"> </span>create<span class="w"> </span>vite@latest<span class="w"> </span>my_react_app<span class="w"> </span>--<span class="w"> </span>--template<span class="w"> </span>react
+<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>npm<span class="w"> </span>create<span class="w"> </span>vite@latest<span class="w"> </span>my_react_app<span class="w"> </span>--<span class="w"> </span>--template<span class="w"> </span>react-ts
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>my_react_app
 </span></code></pre></div></td></tr></table></div>
 <p>We find a project folder with the following content.</p>
@@ -615,23 +615,27 @@ the <code>express.js</code> web app.</p>
 <span class="normal"><a href="#__codelineno-1-11">11</a></span>
 <span class="normal"><a href="#__codelineno-1-12">12</a></span>
 <span class="normal"><a href="#__codelineno-1-13">13</a></span>
-<span class="normal"><a href="#__codelineno-1-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>.
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a>.
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a>├── public
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a>│   └── vite.svg
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a>├── src
 </span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a>│   ├── assets
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a>│   │   └── react.svg
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a>│   ├── App.css
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a>│   ├── App.jsx
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a>│   ├── App.tsx
 </span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a>│   ├── index.css
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a>│   └── main.jsx
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a>├── eslint.config.js
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a>├── index.html
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a>├── package.json
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a>└── vite.config.js
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a>│   ├── main.tsx
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a>│   └── vite-env.d.ts
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a>├── eslint.config.js
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a>├── index.html
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a>├── package.json
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a>├── tsconfig.json
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a>└── vite.config.ss
 </span></code></pre></div></td></tr></table></div>
-<p><code>src/main.jsx</code> is the main function (application entry point).</p>
-<div class="language-jsx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<p><code>src/main.tsx</code> is the main function (application entry point).</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
@@ -640,26 +644,26 @@ the <code>express.js</code> web app.</p>
 <span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
 <span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
 <span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-2-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">StrictMode</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">createRoot</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react-dom/client&#39;</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="k">import</span><span class="w"> </span><span class="s1">&#39;./index.css&#39;</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="k">import</span><span class="w"> </span><span class="nx">App</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./App.jsx&#39;</span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>import React from &#39;react&#39;;
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>import ReactDOM from &#39;react-dom/client&#39;;
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a>import &#39;./index.css&#39;;
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a>import App from &#39;./App&#39;;
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="nx">createRoot</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">)).</span><span class="nx">render</span><span class="p">(</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">  </span><span class="p">&lt;</span><span class="nt">StrictMode</span><span class="p">&gt;</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">    </span><span class="p">&lt;</span><span class="nt">App</span><span class="w"> </span><span class="p">/&gt;</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">  </span><span class="p">&lt;/</span><span class="nt">StrictMode</span><span class="p">&gt;,</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="p">)</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a>ReactDOM.createRoot(document.getElementById(&#39;root&#39;)!).render(
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a>  &lt;React.StrictMode&gt;
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a>    &lt;App /&gt;
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a>  &lt;/React.StrictMode&gt;,
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a>);
 </span></code></pre></div></td></tr></table></div>
 <p>From the above we noted a few points,</p>
 <ol>
-<li>We are using ES6 syntax</li>
-<li>We mix JavaScript syntax with HTML (XHTML) syntax (as well as CSS). The syntax is called JSX. Using JSX is not mandatory but it is recommended. You can still use pure JS and React syntax to create browser components.</li>
-<li><code>main.jsx</code> is creating a page by referencing to the <code>root</code> element and render the <code>App</code> element inside.</li>
-<li>the <code>App</code> element is imported from <code>src/App.jsx</code>.</li>
+<li>We are using TypeScript syntax</li>
+<li>We mix TypeScript syntax with HTML (XHTML) syntax (as well as CSS). The syntax is called TSX. </li>
+<li><code>main.tsx</code> is creating a page by referencing to the <code>root</code> element and render the <code>App</code> element inside.</li>
+<li>the <code>App</code> element is imported from <code>src/App.tsx</code>.</li>
 </ol>
-<p>Let's take a look at the <code>App.jsx</code></p>
-<div class="language-jsx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<p>Let's take a look at the <code>App.tsx</code></p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
@@ -693,41 +697,41 @@ the <code>express.js</code> web app.</p>
 <span class="normal"><a href="#__codelineno-3-32">32</a></span>
 <span class="normal"><a href="#__codelineno-3-33">33</a></span>
 <span class="normal"><a href="#__codelineno-3-34">34</a></span>
-<span class="normal"><a href="#__codelineno-3-35">35</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;react&#39;</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="k">import</span><span class="w"> </span><span class="nx">reactLogo</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;./assets/react.svg&#39;</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="k">import</span><span class="w"> </span><span class="nx">viteLogo</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;/vite.svg&#39;</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="k">import</span><span class="w"> </span><span class="s1">&#39;./App.css&#39;</span>
+<span class="normal"><a href="#__codelineno-3-35">35</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>import { useState } from &#39;react&#39;
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a>import reactLogo from &#39;./assets/react.svg&#39;
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a>import viteLogo from &#39;/vite.svg&#39;
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a>import &#39;./App.css&#39;
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="kd">function</span><span class="w"> </span><span class="nx">App</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">count</span><span class="p">,</span><span class="w"> </span><span class="nx">setCount</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="mf">0</span><span class="p">)</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a>function App() {
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7"></a>  const [count, setCount] = useState(0)
 </span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8"></a>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="w">    </span><span class="p">&lt;&gt;</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">        </span><span class="p">&lt;</span><span class="nt">a</span><span class="w"> </span><span class="na">href</span><span class="o">=</span><span class="s">&quot;https://vite.dev&quot;</span><span class="w"> </span><span class="na">target</span><span class="o">=</span><span class="s">&quot;_blank&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">          </span><span class="p">&lt;</span><span class="nt">img</span><span class="w"> </span><span class="na">src</span><span class="o">=</span><span class="p">{</span><span class="nx">viteLogo</span><span class="p">}</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">&quot;logo&quot;</span><span class="w"> </span><span class="na">alt</span><span class="o">=</span><span class="s">&quot;Vite logo&quot;</span><span class="w"> </span><span class="p">/&gt;</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="w">        </span><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="w">        </span><span class="p">&lt;</span><span class="nt">a</span><span class="w"> </span><span class="na">href</span><span class="o">=</span><span class="s">&quot;https://react.dev&quot;</span><span class="w"> </span><span class="na">target</span><span class="o">=</span><span class="s">&quot;_blank&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="w">          </span><span class="p">&lt;</span><span class="nt">img</span><span class="w"> </span><span class="na">src</span><span class="o">=</span><span class="p">{</span><span class="nx">reactLogo</span><span class="p">}</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">&quot;logo react&quot;</span><span class="w"> </span><span class="na">alt</span><span class="o">=</span><span class="s">&quot;React logo&quot;</span><span class="w"> </span><span class="p">/&gt;</span>
-</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="w">        </span><span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
-</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="w">      </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="nx">Vite</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">React</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">div</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">&quot;card&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="w">        </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">onClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">setCount</span><span class="p">((</span><span class="nx">count</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1</span><span class="p">)}&gt;</span>
-</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22"></a><span class="w">          </span><span class="nx">count</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="p">{</span><span class="nx">count</span><span class="p">}</span>
-</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="w">        </span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="w">        </span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
-</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25"></a><span class="w">          </span><span class="nx">Edit</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">code</span><span class="p">&gt;</span><span class="nx">src</span><span class="o">/</span><span class="nx">App</span><span class="p">.</span><span class="nx">jsx</span><span class="p">&lt;/</span><span class="nt">code</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">and</span><span class="w"> </span><span class="nx">save</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">test</span><span class="w"> </span><span class="nx">HMR</span>
-</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="w">        </span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="w">      </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">p</span><span class="w"> </span><span class="na">className</span><span class="o">=</span><span class="s">&quot;read-the-docs&quot;</span><span class="p">&gt;</span>
-</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29"></a><span class="w">        </span><span class="nx">Click</span><span class="w"> </span><span class="nx">on</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">Vite</span><span class="w"> </span><span class="nx">and</span><span class="w"> </span><span class="nx">React</span><span class="w"> </span><span class="nx">logos</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">learn</span><span class="w"> </span><span class="nx">more</span>
-</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30"></a><span class="w">      </span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
-</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31"></a><span class="w">    </span><span class="p">&lt;/&gt;</span>
-</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32"></a><span class="w">  </span><span class="p">)</span>
-</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33"></a><span class="p">}</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9"></a>  return (
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10"></a>    &lt;&gt;
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11"></a>      &lt;div&gt;
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12"></a>        &lt;a href=&quot;https://vite.dev&quot; target=&quot;_blank&quot;&gt;
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13"></a>          &lt;img src={viteLogo} className=&quot;logo&quot; alt=&quot;Vite logo&quot; /&gt;
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14"></a>        &lt;/a&gt;
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15"></a>        &lt;a href=&quot;https://react.dev&quot; target=&quot;_blank&quot;&gt;
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16"></a>          &lt;img src={reactLogo} className=&quot;logo react&quot; alt=&quot;React logo&quot; /&gt;
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17"></a>        &lt;/a&gt;
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18"></a>      &lt;/div&gt;
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19"></a>      &lt;h1&gt;Vite + React&lt;/h1&gt;
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20"></a>      &lt;div className=&quot;card&quot;&gt;
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21"></a>        &lt;button onClick={() =&gt; setCount((count) =&gt; count + 1)}&gt;
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22"></a>          count is {count}
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23"></a>        &lt;/button&gt;
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24"></a>        &lt;p&gt;
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25"></a>          Edit &lt;code&gt;src/App.jsx&lt;/code&gt; and save to test HMR
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26"></a>        &lt;/p&gt;
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27"></a>      &lt;/div&gt;
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28"></a>      &lt;p className=&quot;read-the-docs&quot;&gt;
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29"></a>        Click on the Vite and React logos to learn more
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30"></a>      &lt;/p&gt;
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31"></a>    &lt;/&gt;
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32"></a>  )
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33"></a>}
 </span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34"></a>
-</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">App</span>
+</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35"></a>export default App
 </span></code></pre></div></td></tr></table></div>
 <p>To run the app, we run</p>
 <div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
@@ -736,8 +740,8 @@ the <code>express.js</code> web app.</p>
 </span></code></pre></div></td></tr></table></div>
 <p>which will start the reach app at <code>https://localhost:5173</code>. To stop it, we press control-C in the terminal.</p>
 <p>As we are going to run both react server and express server simultanously, we need to run the react app in a specific port, let's say <code>5000</code>.</p>
-<p>In the project root folder, we update the file <code>vite.config.js</code></p>
-<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<p>In the project root folder, we update the file <code>vite.config.ts</code></p>
+<div class="language-ts highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
@@ -753,14 +757,14 @@ the <code>express.js</code> web app.</p>
 </span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">defineConfig</span><span class="p">({</span>
 </span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="w">  </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">react</span><span class="p">()],</span>
 </span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="w">  </span><span class="nx">server</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="w">    </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="mf">5000</span><span class="p">,</span><span class="w"> </span><span class="c1">// Replace with your desired port number</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="w">    </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="kt">5000</span><span class="p">,</span><span class="w"> </span><span class="c1">// Replace with your desired port number</span>
 </span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="w">  </span><span class="p">},</span>
 </span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="p">})</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Re-run <code>npm run dev</code>, it will re-start the react web app at <code>https://localhost:5000</code>.</p>
 <h3 id="appjsx">App.jsx<a class="headerlink" href="#appjsx" title="Permanent link">&para;</a></h3>
-<p>Let's modify <code>src/App.jsx</code> to see how the web app change.</p>
-<div class="language-jsx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<p>Let's modify <code>src/App.tsx</code> to see how the web app change.</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
@@ -771,18 +775,18 @@ the <code>express.js</code> web app.</p>
 <span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
 <span class="normal"><a href="#__codelineno-6-10">10</a></span>
 <span class="normal"><a href="#__codelineno-6-11">11</a></span>
-<span class="normal"><a href="#__codelineno-6-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="k">import</span><span class="w"> </span><span class="s2">&quot;./App.css&quot;</span><span class="p">;</span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a>import &quot;./App.css&quot;;
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a>
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="kd">function</span><span class="w"> </span><span class="nx">App</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="w">    </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">Echo</span><span class="w"> </span><span class="nx">App</span><span class="w"> </span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">This</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="nx">a</span><span class="w"> </span><span class="nx">test</span><span class="w"> </span><span class="nx">app</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">ESC</span><span class="p">.</span><span class="w"> </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="w">    </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="w">  </span><span class="p">);</span>
-</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="p">}</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a>function App() {
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a>  return (
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5"></a>    &lt;div&gt;
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6"></a>      &lt;h1&gt; Echo App &lt;/h1&gt;
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7"></a>      &lt;div&gt; This is a test app for ESC. &lt;/div&gt;
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8"></a>    &lt;/div&gt;
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9"></a>  );
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10"></a>}
 </span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11"></a>
-</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">App</span><span class="p">;</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12"></a>export default App;
 </span></code></pre></div></td></tr></table></div>
 <p>As we save the file, the browser with the web app running will automatically refresh. We see</p>
 <p><img alt="" src="../images/react1.png" /></p>
@@ -824,12 +828,12 @@ If we check the source of the HTML page in the browser,</p>
 </span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15"></a>  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
 </span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16"></a>  <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
 </span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;root&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18"></a>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;module&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/src/main.jsx&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18"></a>    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;module&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/src/main.tsx&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19"></a>  <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
 </span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20"></a><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
 </span></code></pre></div></td></tr></table></div>
-<p>Nothing from the above reflects the change that we made in <code>App.jsx</code>.</p>
-<p>If we follow the link <code>/src/Apx.jsx</code> in the browser, we find the following
+<p>Nothing from the above reflects the change that we made in <code>App.tsx</code>.</p>
+<p>If we follow the link <code>/src/Apx.tsx</code> in the browser, we find the following
 code snippet in the JavaScript file.</p>
 <div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
@@ -873,7 +877,7 @@ code snippet in the JavaScript file.</p>
 </span></code></pre></div></td></tr></table></div>
 <h3 id="react-js-compilation">React JS Compilation<a class="headerlink" href="#react-js-compilation" title="Permanent link">&para;</a></h3>
 <p>React frameworks focus in building applications which can be targeted for multiple platforms, i.e. web browser, windows application, mobile app and etc.
-It takes a single stack of source languages, i.e. JSX and CSS, compiles them into
+It takes a single stack of source languages, i.e. TSX and CSS, compiles them into
 a single output. In this case, since we are using React JS to build a web app, the output will be in a single JavaScript file.</p>
 <p><img alt="" src="../images/compiling.png" /></p>
 <p>Image credits <code>https://nextjs.org/learn/foundations/how-nextjs-works/compiling</code></p>
@@ -888,8 +892,8 @@ a single output. In this case, since we are using React JS to build a web app, t
 <p>Then we could preview it using</p>
 <div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a>npm run preview
 </span></code></pre></div></td></tr></table></div>
-<p>Note: we could also change the preview port by modifying the <code>vite.config.js</code> file. </p>
-<div class="language-jsx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<p>Note: we could also change the preview port by modifying the <code>vite.config.ts</code> file. </p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
 <span class="normal"><a href="#__codelineno-11-2">2</a></span>
 <span class="normal"><a href="#__codelineno-11-3">3</a></span>
 <span class="normal"><a href="#__codelineno-11-4">4</a></span>
@@ -897,21 +901,21 @@ a single output. In this case, since we are using React JS to build a web app, t
 <span class="normal"><a href="#__codelineno-11-6">6</a></span>
 <span class="normal"><a href="#__codelineno-11-7">7</a></span>
 <span class="normal"><a href="#__codelineno-11-8">8</a></span>
-<span class="normal"><a href="#__codelineno-11-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">defineConfig</span><span class="p">({</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="w">  </span><span class="nx">plugins</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">react</span><span class="p">()],</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="w">  </span><span class="nx">server</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w">    </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="mf">5000</span><span class="p">,</span><span class="w"> </span><span class="c1">// Replace with your desired port number</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="w">  </span><span class="p">},</span>
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="w">  </span><span class="nx">preview</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="w">    </span><span class="nx">port</span><span class="o">:</span><span class="w"> </span><span class="mf">8080</span><span class="p">,</span>
-</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="w">  </span><span class="p">},</span>
-</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="p">})</span>
+<span class="normal"><a href="#__codelineno-11-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a>export default defineConfig({
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a>  plugins: [react()],
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a>  server: {
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4"></a>    port: 5000, // Replace with your desired port number
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5"></a>  },
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6"></a>  preview: {
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7"></a>    port: 8080,
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8"></a>  },
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9"></a>})
 </span></code></pre></div></td></tr></table></div>
 <h3 id="components">Components<a class="headerlink" href="#components" title="Permanent link">&para;</a></h3>
-<p>Unlike Web Application developed using other frameworks, e.g. express.js, React JS develops applications with a single page in mind. <code>Component</code> is the building block of React app. <code>Component</code> in react can be written using JSX or pure React syntax <code>React.createElement</code>. We will use JSX syntax in this module. With the control of basic components, the React JS app is able to dynamically update and replace components and sub-components within the same page in the event of user interaction and data update.</p>
-<p>In our running example, function <code>App</code> constructs a <em>component</em> which is used by the <code>main.jsx</code> at the root level. Function <code>App</code> returns the static HTML code as result.</p>
-<p>Let's make some change to <code>App.jsx</code> as follows,</p>
-<div class="language-jsx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
+<p>Unlike Web Application developed using other frameworks, e.g. express.js, React JS develops applications with a single page in mind. <code>Component</code> is the building block of React app. <code>Component</code> in react can be written using TSX or pure React syntax <code>React.createElement</code>. We will use TSX syntax in this module. With the control of basic components, the React JS app is able to dynamically update and replace components and sub-components within the same page in the event of user interaction and data update.</p>
+<p>In our running example, function <code>App</code> constructs a <em>component</em> which is used by the <code>main.tsx</code> at the root level. Function <code>App</code> returns the static HTML code as result.</p>
+<p>Let's make some change to <code>App.tsx</code> as follows,</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
@@ -923,37 +927,37 @@ a single output. In this case, since we are using React JS to build a web app, t
 <span class="normal"><a href="#__codelineno-12-10">10</a></span>
 <span class="normal"><a href="#__codelineno-12-11">11</a></span>
 <span class="normal"><a href="#__codelineno-12-12">12</a></span>
-<span class="normal"><a href="#__codelineno-12-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="k">import</span><span class="w"> </span><span class="s2">&quot;./App.css&quot;</span><span class="p">;</span>
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="k">import</span><span class="w"> </span><span class="nx">Echo</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./Echo&quot;</span><span class="p">;</span>
+<span class="normal"><a href="#__codelineno-12-13">13</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a>import &quot;./App.css&quot;;
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a>import Echo from &quot;./Echo&quot;;
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3"></a>
-</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="kd">function</span><span class="w"> </span><span class="nx">App</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="w">    </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="w"> </span><span class="nx">Echo</span><span class="w"> </span><span class="nx">App</span><span class="w"> </span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
-</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">Echo</span><span class="w"> </span><span class="p">/&gt;</span>
-</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9"></a><span class="w">    </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="w">  </span><span class="p">);</span>
-</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11"></a><span class="p">}</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4"></a>function App() {
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5"></a>  return (
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6"></a>    &lt;div&gt;
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7"></a>      &lt;h1&gt; Echo App &lt;/h1&gt;
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8"></a>      &lt;Echo /&gt;
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9"></a>    &lt;/div&gt;
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10"></a>  );
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11"></a>}
 </span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12"></a>
-</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">App</span><span class="p">;</span>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13"></a>export default App;
 </span></code></pre></div></td></tr></table></div>
-<p>In the above we import and include an <code>Echo</code> component from <code>./src/Echo.jsx</code>, which is defined as as follows,</p>
-<div class="language-jsx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<p>In the above we import and include an <code>Echo</code> component from <code>./src/Echo.tsx</code>, which is defined as as follows,</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
 <span class="normal"><a href="#__codelineno-13-2">2</a></span>
 <span class="normal"><a href="#__codelineno-13-3">3</a></span>
 <span class="normal"><a href="#__codelineno-13-4">4</a></span>
-<span class="normal"><a href="#__codelineno-13-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">Echo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span><span class="nx">This</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="nx">defined</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">Echo</span><span class="w"> </span><span class="nx">component</span><span class="p">.&lt;/</span><span class="nt">div</span><span class="p">&gt;;</span>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="p">}</span>
+<span class="normal"><a href="#__codelineno-13-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a>function Echo() {
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a>  return &lt;div&gt;This message is defined in the Echo component.&lt;/div&gt;;
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3"></a>}
 </span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4"></a>
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">Echo</span><span class="p">;</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5"></a>export default Echo;
 </span></code></pre></div></td></tr></table></div>
 <p>After reloading the app in the browser, we have</p>
 <p><img alt="" src="../images/react2.png" /></p>
 <h3 id="top-down-design-process-static">Top Down design process (static)<a class="headerlink" href="#top-down-design-process-static" title="Permanent link">&para;</a></h3>
 <p>From the earlier example we see a hierachical structures in the components and elements used in our app.</p>
 <ul>
-<li>index.js</li>
+<li>index.tsx</li>
 <li>App<ul>
 <li>div</li>
 <li>h1</li>
@@ -969,8 +973,8 @@ a single output. In this case, since we are using React JS to build a web app, t
 <p>Suppose we would like to build a frontend app to interact with the express.js app by submitting new messages and displaying the list of submitted messages.
 By breaking down the UI components we might have the following</p>
 <p><img alt="" src="../images/react3.png" /></p>
-<p>By following the UI structural breakdown, we modify the <code>Echo.jsx</code> as follows,</p>
-<div class="language-jsx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
+<p>By following the UI structural breakdown, we modify the <code>Echo.tsx</code> as follows,</p>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-14-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-14-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-14-4"> 4</a></span>
@@ -1015,61 +1019,61 @@ By breaking down the UI components we might have the following</p>
 <span class="normal"><a href="#__codelineno-14-43">43</a></span>
 <span class="normal"><a href="#__codelineno-14-44">44</a></span>
 <span class="normal"><a href="#__codelineno-14-45">45</a></span>
-<span class="normal"><a href="#__codelineno-14-46">46</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">NewMessageBar</span><span class="p">({</span><span class="w"> </span><span class="nx">message</span><span class="p">,</span><span class="w"> </span><span class="nx">onSubmitClick</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="w">    </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">input</span><span class="w"> </span><span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span><span class="w"> </span><span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="na">value</span><span class="o">=</span><span class="p">{</span><span class="nx">message</span><span class="p">}&gt;&lt;/</span><span class="nt">input</span><span class="p">&gt;</span>
-</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">onSubmitClick</span><span class="p">}&gt;</span><span class="w"> </span><span class="nx">Submit</span><span class="w"> </span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="w">    </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="w">  </span><span class="p">);</span>
-</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="p">}</span>
+<span class="normal"><a href="#__codelineno-14-46">46</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a>function NewMessageBar({ message, onSubmitClick }) {
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a>  return (
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3"></a>    &lt;div&gt;
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4"></a>      &lt;input type=&quot;text&quot; placeholder=&quot;&quot; value={message}&gt;&lt;/input&gt;
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5"></a>      &lt;button onClick={onSubmitClick}&gt; Submit &lt;/button&gt;
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6"></a>    &lt;/div&gt;
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7"></a>  );
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8"></a>}
 </span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9"></a>
-</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10"></a><span class="kd">function</span><span class="w"> </span><span class="nx">MessageList</span><span class="p">({</span><span class="w"> </span><span class="nx">messages</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11"></a><span class="w">  </span><span class="kd">let</span><span class="w"> </span><span class="nx">rows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
-</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">messages</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13"></a><span class="w">    </span><span class="nx">rows</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span>
-</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15"></a><span class="w">        </span><span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;{</span><span class="nx">messages</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">time</span><span class="p">}&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16"></a><span class="w">        </span><span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;{</span><span class="nx">messages</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">msg</span><span class="p">}&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
-</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17"></a><span class="w">      </span><span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18"></a><span class="w">    </span><span class="p">);</span>
-</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-14-20"><a id="__codelineno-14-20" name="__codelineno-14-20"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-14-21"><a id="__codelineno-14-21" name="__codelineno-14-21"></a><span class="w">    </span><span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
-</span><span id="__span-14-22"><a id="__codelineno-14-22" name="__codelineno-14-22"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">tbody</span><span class="p">&gt;</span>
-</span><span id="__span-14-23"><a id="__codelineno-14-23" name="__codelineno-14-23"></a><span class="w">        </span><span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
-</span><span id="__span-14-24"><a id="__codelineno-14-24" name="__codelineno-14-24"></a><span class="w">          </span><span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span><span class="nb">Date</span><span class="w"> </span><span class="nx">Time</span><span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
-</span><span id="__span-14-25"><a id="__codelineno-14-25" name="__codelineno-14-25"></a><span class="w">          </span><span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span><span class="nx">Message</span><span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
-</span><span id="__span-14-26"><a id="__codelineno-14-26" name="__codelineno-14-26"></a><span class="w">        </span><span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
-</span><span id="__span-14-27"><a id="__codelineno-14-27" name="__codelineno-14-27"></a><span class="w">        </span><span class="p">{</span><span class="nx">rows</span><span class="p">}</span>
-</span><span id="__span-14-28"><a id="__codelineno-14-28" name="__codelineno-14-28"></a><span class="w">      </span><span class="p">&lt;/</span><span class="nt">tbody</span><span class="p">&gt;</span>
-</span><span id="__span-14-29"><a id="__codelineno-14-29" name="__codelineno-14-29"></a><span class="w">    </span><span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
-</span><span id="__span-14-30"><a id="__codelineno-14-30" name="__codelineno-14-30"></a><span class="w">  </span><span class="p">);</span>
-</span><span id="__span-14-31"><a id="__codelineno-14-31" name="__codelineno-14-31"></a><span class="p">}</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10"></a>function MessageList({ messages }) {
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11"></a>  let rows = [];
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12"></a>  for (let i in messages) {
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13"></a>    rows.push(
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14"></a>      &lt;tr&gt;
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15"></a>        &lt;td&gt;{messages[i].time}&lt;/td&gt;
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16"></a>        &lt;td&gt;{messages[i].msg}&lt;/td&gt;
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17"></a>      &lt;/tr&gt;
+</span><span id="__span-14-18"><a id="__codelineno-14-18" name="__codelineno-14-18"></a>    );
+</span><span id="__span-14-19"><a id="__codelineno-14-19" name="__codelineno-14-19"></a>  }
+</span><span id="__span-14-20"><a id="__codelineno-14-20" name="__codelineno-14-20"></a>  return (
+</span><span id="__span-14-21"><a id="__codelineno-14-21" name="__codelineno-14-21"></a>    &lt;table&gt;
+</span><span id="__span-14-22"><a id="__codelineno-14-22" name="__codelineno-14-22"></a>      &lt;tbody&gt;
+</span><span id="__span-14-23"><a id="__codelineno-14-23" name="__codelineno-14-23"></a>        &lt;tr&gt;
+</span><span id="__span-14-24"><a id="__codelineno-14-24" name="__codelineno-14-24"></a>          &lt;th&gt;Date Time&lt;/th&gt;
+</span><span id="__span-14-25"><a id="__codelineno-14-25" name="__codelineno-14-25"></a>          &lt;th&gt;Message&lt;/th&gt;
+</span><span id="__span-14-26"><a id="__codelineno-14-26" name="__codelineno-14-26"></a>        &lt;/tr&gt;
+</span><span id="__span-14-27"><a id="__codelineno-14-27" name="__codelineno-14-27"></a>        {rows}
+</span><span id="__span-14-28"><a id="__codelineno-14-28" name="__codelineno-14-28"></a>      &lt;/tbody&gt;
+</span><span id="__span-14-29"><a id="__codelineno-14-29" name="__codelineno-14-29"></a>    &lt;/table&gt;
+</span><span id="__span-14-30"><a id="__codelineno-14-30" name="__codelineno-14-30"></a>  );
+</span><span id="__span-14-31"><a id="__codelineno-14-31" name="__codelineno-14-31"></a>}
 </span><span id="__span-14-32"><a id="__codelineno-14-32" name="__codelineno-14-32"></a>
-</span><span id="__span-14-33"><a id="__codelineno-14-33" name="__codelineno-14-33"></a><span class="kd">function</span><span class="w"> </span><span class="nx">Echo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-14-34"><a id="__codelineno-14-34" name="__codelineno-14-34"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-14-35"><a id="__codelineno-14-35" name="__codelineno-14-35"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">time</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toDateString</span><span class="p">(),</span><span class="w"> </span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="w"> </span><span class="p">},</span>
-</span><span id="__span-14-36"><a id="__codelineno-14-36" name="__codelineno-14-36"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">time</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toDateString</span><span class="p">(),</span><span class="w"> </span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bye&quot;</span><span class="w"> </span><span class="p">},</span>
-</span><span id="__span-14-37"><a id="__codelineno-14-37" name="__codelineno-14-37"></a><span class="w">  </span><span class="p">];</span>
-</span><span id="__span-14-38"><a id="__codelineno-14-38" name="__codelineno-14-38"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-14-39"><a id="__codelineno-14-39" name="__codelineno-14-39"></a><span class="w">    </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-14-40"><a id="__codelineno-14-40" name="__codelineno-14-40"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">NewMessageBar</span><span class="w"> </span><span class="na">message</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="na">onSubmitClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{}}</span><span class="w"> </span><span class="p">/&gt;</span>
-</span><span id="__span-14-41"><a id="__codelineno-14-41" name="__codelineno-14-41"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">MessageList</span><span class="w"> </span><span class="na">messages</span><span class="o">=</span><span class="p">{</span><span class="nx">messages</span><span class="p">}</span><span class="w"> </span><span class="p">/&gt;</span>
-</span><span id="__span-14-42"><a id="__codelineno-14-42" name="__codelineno-14-42"></a><span class="w">    </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-14-43"><a id="__codelineno-14-43" name="__codelineno-14-43"></a><span class="w">  </span><span class="p">);</span>
-</span><span id="__span-14-44"><a id="__codelineno-14-44" name="__codelineno-14-44"></a><span class="p">}</span>
+</span><span id="__span-14-33"><a id="__codelineno-14-33" name="__codelineno-14-33"></a>function Echo() {
+</span><span id="__span-14-34"><a id="__codelineno-14-34" name="__codelineno-14-34"></a>  const messages = [
+</span><span id="__span-14-35"><a id="__codelineno-14-35" name="__codelineno-14-35"></a>    { time: new Date().toDateString(), msg: &quot;hello&quot; },
+</span><span id="__span-14-36"><a id="__codelineno-14-36" name="__codelineno-14-36"></a>    { time: new Date().toDateString(), msg: &quot;bye&quot; },
+</span><span id="__span-14-37"><a id="__codelineno-14-37" name="__codelineno-14-37"></a>  ];
+</span><span id="__span-14-38"><a id="__codelineno-14-38" name="__codelineno-14-38"></a>  return (
+</span><span id="__span-14-39"><a id="__codelineno-14-39" name="__codelineno-14-39"></a>    &lt;div&gt;
+</span><span id="__span-14-40"><a id="__codelineno-14-40" name="__codelineno-14-40"></a>      &lt;NewMessageBar message=&quot;&quot; onSubmitClick={() =&gt; {}} /&gt;
+</span><span id="__span-14-41"><a id="__codelineno-14-41" name="__codelineno-14-41"></a>      &lt;MessageList messages={messages} /&gt;
+</span><span id="__span-14-42"><a id="__codelineno-14-42" name="__codelineno-14-42"></a>    &lt;/div&gt;
+</span><span id="__span-14-43"><a id="__codelineno-14-43" name="__codelineno-14-43"></a>  );
+</span><span id="__span-14-44"><a id="__codelineno-14-44" name="__codelineno-14-44"></a>}
 </span><span id="__span-14-45"><a id="__codelineno-14-45" name="__codelineno-14-45"></a>
-</span><span id="__span-14-46"><a id="__codelineno-14-46" name="__codelineno-14-46"></a><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nx">Echo</span><span class="p">;</span>
+</span><span id="__span-14-46"><a id="__codelineno-14-46" name="__codelineno-14-46"></a>export default Echo;
 </span></code></pre></div></td></tr></table></div>
-<p>In the above version of <code>Echo.jsx</code>, we define two sub components, namely <code>NewMessageBar</code> and <code>MessageList</code>. Note that both functions take some objects as the arguments, these objects arguments are referred as <code>props</code> in React's terminologies. Refer <a href="https://react.dev/learn/passing-props-to-a-component">here</a> for more details about <code>props</code> in react.</p>
+<p>In the above version of <code>Echo.tsx</code>, we define two sub components, namely <code>NewMessageBar</code> and <code>MessageList</code>. Note that both functions take some objects as the arguments, these objects arguments are referred as <code>props</code> in React's terminologies. Refer <a href="https://react.dev/learn/passing-props-to-a-component">here</a> for more details about <code>props</code> in react.</p>
 <ul>
 <li><code>NewMessageBar()</code> takes an object with two attributes, <code>message</code> and <code>onSubmitClick</code>. <code>message</code> stores the text value in the text field and <code>onSubmitClick</code> is a callback when the <code>Submit</code> button is clicked. The function returns a text input field and a button <code>Submit</code>.</li>
 <li><code>MessageList()</code> takes an object with an attribute, <code>messages</code> which is a list of message objects. It returns an HTML table whose rows are constructed by mapping each message in the list to a row of the table.</li>
 <li><code>Echo()</code>, we hard code the data (which is supposed to be returned by the AJAX call to the backend, will be implemented later), and pass them to <code>MessageList</code> component during the component construction.</li>
 </ul>
 <p>Note that we might re-write the component definition using class instead of function. Notice the difference on how props are accessed here.</p>
-<div class="language-jsx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1"> 1</a></span>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-15-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-15-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-15-4"> 4</a></span>
@@ -1082,20 +1086,20 @@ By breaking down the UI components we might have the following</p>
 <span class="normal"><a href="#__codelineno-15-11">11</a></span>
 <span class="normal"><a href="#__codelineno-15-12">12</a></span>
 <span class="normal"><a href="#__codelineno-15-13">13</a></span>
-<span class="normal"><a href="#__codelineno-15-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="kd">class</span><span class="w"> </span><span class="nx">NewMessageBar</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">React</span><span class="p">.</span><span class="nx">Component</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">props</span><span class="p">.</span><span class="nx">message</span><span class="p">;</span>
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">onSubmitClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">props</span><span class="p">.</span><span class="nx">onSubmitClick</span><span class="p">;</span>
-</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6"></a><span class="w">  </span><span class="nx">render</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9"></a><span class="w">        </span><span class="p">&lt;</span><span class="nt">input</span><span class="w"> </span><span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span><span class="w"> </span><span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="na">value</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">message</span><span class="p">}&gt;&lt;/</span><span class="nt">input</span><span class="p">&gt;</span>
-</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10"></a><span class="w">        </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">onSubmitClick</span><span class="p">}&gt;</span><span class="w"> </span><span class="nx">Submit</span><span class="w"> </span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11"></a><span class="w">      </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12"></a><span class="w">    </span><span class="p">);</span>
-</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14"></a><span class="p">}</span>
+<span class="normal"><a href="#__codelineno-15-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a>class NewMessageBar extends React.Component {
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a>  constructor(props) {
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3"></a>    this.message = props.message;
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4"></a>    this.onSubmitClick = props.onSubmitClick;
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5"></a>  }
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6"></a>  render() {
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7"></a>    return (
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8"></a>      &lt;div&gt;
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9"></a>        &lt;input type=&quot;text&quot; placeholder=&quot;&quot; value={this.message}&gt;&lt;/input&gt;
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10"></a>        &lt;button onClick={this.onSubmitClick}&gt; Submit &lt;/button&gt;
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11"></a>      &lt;/div&gt;
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12"></a>    );
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13"></a>  }
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14"></a>}
 </span></code></pre></div></td></tr></table></div>
 <p>It is up to you to use either <a href="https://react.dev/reference/react/Component"><code>class</code></a> or <a href="https://react.dev/learn/your-first-component#defining-a-component"><code>function</code></a> syntax in creating React components.</p>
 <h4 id="props">Props<a class="headerlink" href="#props" title="Permanent link">&para;</a></h4>
@@ -1103,7 +1107,7 @@ By breaking down the UI components we might have the following</p>
 <h3 id="make-it-interactive-dynamic">Make it interactive (dynamic)<a class="headerlink" href="#make-it-interactive-dynamic" title="Permanent link">&para;</a></h3>
 <p>Now we need to make the echo app functional. First let's make the button click to respond to the text entered in the input text field.</p>
 <p>We modify <code>NewMessageBar</code> as follows,</p>
-<div class="language-jsx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1"> 1</a></span>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-16-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-16-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-16-4"> 4</a></span>
@@ -1117,25 +1121,25 @@ By breaking down the UI components we might have the following</p>
 <span class="normal"><a href="#__codelineno-16-12">12</a></span>
 <span class="normal"><a href="#__codelineno-16-13">13</a></span>
 <span class="normal"><a href="#__codelineno-16-14">14</a></span>
-<span class="normal"><a href="#__codelineno-16-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">NewMessageBar</span><span class="p">({</span><span class="w"> </span><span class="nx">message</span><span class="p">,</span><span class="w"> </span><span class="nx">onMessageChange</span><span class="p">,</span><span class="w"> </span><span class="nx">onSubmitClick</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="w">    </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">input</span>
-</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5"></a><span class="w">        </span><span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span>
-</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6"></a><span class="w">        </span><span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;&quot;</span>
-</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="w">        </span><span class="na">value</span><span class="o">=</span><span class="p">{</span><span class="nx">message</span><span class="p">}</span>
-</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8"></a><span class="w">        </span><span class="na">onChange</span><span class="o">=</span><span class="p">{(</span><span class="nx">e</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9"></a><span class="w">          </span><span class="nx">onMessageChange</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
-</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10"></a><span class="w">        </span><span class="p">}}</span>
-</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11"></a><span class="w">      </span><span class="p">&gt;&lt;/</span><span class="nt">input</span><span class="p">&gt;</span>
-</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">button</span><span class="w"> </span><span class="na">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">onSubmitClick</span><span class="p">}&gt;</span><span class="w"> </span><span class="nx">Submit</span><span class="w"> </span><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
-</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13"></a><span class="w">    </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14"></a><span class="w">  </span><span class="p">);</span>
-</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15"></a><span class="p">}</span>
+<span class="normal"><a href="#__codelineno-16-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1"></a>function NewMessageBar({ message, onMessageChange, onSubmitClick }) {
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2"></a>  return (
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3"></a>    &lt;div&gt;
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4"></a>      &lt;input
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5"></a>        type=&quot;text&quot;
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6"></a>        placeholder=&quot;&quot;
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7"></a>        value={message}
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8"></a>        onChange={(e) =&gt; {
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9"></a>          onMessageChange(e.target.value);
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10"></a>        }}
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11"></a>      &gt;&lt;/input&gt;
+</span><span id="__span-16-12"><a id="__codelineno-16-12" name="__codelineno-16-12"></a>      &lt;button onClick={onSubmitClick}&gt; Submit &lt;/button&gt;
+</span><span id="__span-16-13"><a id="__codelineno-16-13" name="__codelineno-16-13"></a>    &lt;/div&gt;
+</span><span id="__span-16-14"><a id="__codelineno-16-14" name="__codelineno-16-14"></a>  );
+</span><span id="__span-16-15"><a id="__codelineno-16-15" name="__codelineno-16-15"></a>}
 </span></code></pre></div></td></tr></table></div>
 <p>We introduce a new props attribtue <code>onMessageChange</code> which is used as the handler for the text field <code>onChange</code> event. Without this, the text field is read-only.</p>
 <p>Next we modify the <code>Echo</code> function as follows,</p>
-<div class="language-jsx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1"> 1</a></span>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-17-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-17-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-17-4"> 4</a></span>
@@ -1154,36 +1158,36 @@ By breaking down the UI components we might have the following</p>
 <span class="normal"><a href="#__codelineno-17-17">17</a></span>
 <span class="normal"><a href="#__codelineno-17-18">18</a></span>
 <span class="normal"><a href="#__codelineno-17-19">19</a></span>
-<span class="normal"><a href="#__codelineno-17-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">Echo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">msgTxt</span><span class="p">,</span><span class="w"> </span><span class="nx">setMsgTxt</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
-</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">handleSubmitClick</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;clicked &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">msgTxt</span><span class="p">);</span>
-</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span>
-</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">time</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toDateString</span><span class="p">(),</span><span class="w"> </span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;hello&quot;</span><span class="w"> </span><span class="p">},</span>
-</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">time</span><span class="o">:</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">().</span><span class="nx">toDateString</span><span class="p">(),</span><span class="w"> </span><span class="nx">msg</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;bye&quot;</span><span class="w"> </span><span class="p">},</span>
-</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9"></a><span class="w">  </span><span class="p">];</span>
-</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11"></a><span class="w">    </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">NewMessageBar</span>
-</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13"></a><span class="w">        </span><span class="na">message</span><span class="o">=</span><span class="p">{</span><span class="nx">msgTxt</span><span class="p">}</span>
-</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14"></a><span class="w">        </span><span class="na">onMessageChange</span><span class="o">=</span><span class="p">{</span><span class="nx">setMsgTxt</span><span class="p">}</span>
-</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15"></a><span class="w">        </span><span class="na">onSubmitClick</span><span class="o">=</span><span class="p">{</span><span class="nx">handleSubmitClick</span><span class="p">}</span>
-</span><span id="__span-17-16"><a id="__codelineno-17-16" name="__codelineno-17-16"></a><span class="w">      </span><span class="p">/&gt;</span>
-</span><span id="__span-17-17"><a id="__codelineno-17-17" name="__codelineno-17-17"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">MessageList</span><span class="w"> </span><span class="na">messages</span><span class="o">=</span><span class="p">{</span><span class="nx">messages</span><span class="p">}</span><span class="w"> </span><span class="p">/&gt;</span>
-</span><span id="__span-17-18"><a id="__codelineno-17-18" name="__codelineno-17-18"></a><span class="w">    </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-17-19"><a id="__codelineno-17-19" name="__codelineno-17-19"></a><span class="w">  </span><span class="p">);</span>
-</span><span id="__span-17-20"><a id="__codelineno-17-20" name="__codelineno-17-20"></a><span class="p">}</span>
+<span class="normal"><a href="#__codelineno-17-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a>function Echo() {
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2"></a>  const [msgTxt, setMsgTxt] = useState(&quot;&quot;);
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3"></a>  function handleSubmitClick() {
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4"></a>    alert(&quot;clicked &quot; + msgTxt);
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5"></a>  }
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6"></a>  const messages = [
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7"></a>    { time: new Date().toDateString(), msg: &quot;hello&quot; },
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8"></a>    { time: new Date().toDateString(), msg: &quot;bye&quot; },
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9"></a>  ];
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10"></a>  return (
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11"></a>    &lt;div&gt;
+</span><span id="__span-17-12"><a id="__codelineno-17-12" name="__codelineno-17-12"></a>      &lt;NewMessageBar
+</span><span id="__span-17-13"><a id="__codelineno-17-13" name="__codelineno-17-13"></a>        message={msgTxt}
+</span><span id="__span-17-14"><a id="__codelineno-17-14" name="__codelineno-17-14"></a>        onMessageChange={setMsgTxt}
+</span><span id="__span-17-15"><a id="__codelineno-17-15" name="__codelineno-17-15"></a>        onSubmitClick={handleSubmitClick}
+</span><span id="__span-17-16"><a id="__codelineno-17-16" name="__codelineno-17-16"></a>      /&gt;
+</span><span id="__span-17-17"><a id="__codelineno-17-17" name="__codelineno-17-17"></a>      &lt;MessageList messages={messages} /&gt;
+</span><span id="__span-17-18"><a id="__codelineno-17-18" name="__codelineno-17-18"></a>    &lt;/div&gt;
+</span><span id="__span-17-19"><a id="__codelineno-17-19" name="__codelineno-17-19"></a>  );
+</span><span id="__span-17-20"><a id="__codelineno-17-20" name="__codelineno-17-20"></a>}
 </span></code></pre></div></td></tr></table></div>
 <p>and import the following:</p>
-<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a>import { useState } from &quot;react&quot;;
 </span></code></pre></div></td></tr></table></div>
 <h4 id="state">State<a class="headerlink" href="#state" title="Permanent link">&para;</a></h4>
 <p>The <code>useState(initialState)</code> is one of React Hooks which allows you to have a getter and setter without writing a class. This function returns two values (in the previous example, the two values are captured in <code>msgTxt</code> and <code>setMsgTxt</code>). The first value is the current state which in the first render will have the <code>initialState</code> value. The second "value" is the setter function that lets you update the state and trigger a re-render phase of React lifecycle (lifecycle will be discussed later).</p>
 <p>In addition, we define a function <code>handleSubmitClick</code> which is used as the event handler of the <code>Submit</code> button click. Now we can interact with the app by entering the text in the message text field and pressing the button to trigger a pop up.</p>
 <h3 id="interfacing-with-the-backend-app">Interfacing with the backend app<a class="headerlink" href="#interfacing-with-the-backend-app" title="Permanent link">&para;</a></h3>
 <p>Lastly we need to remove the hard-coded data and make use the data returned by the backend API end-point. Adjust the <code>Echo</code> function as follows:</p>
-<div class="language-jsx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1"> 1</a></span>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-19-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-19-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-19-4"> 4</a></span>
@@ -1215,39 +1219,39 @@ By breaking down the UI components we might have the following</p>
 <span class="normal"><a href="#__codelineno-19-30">30</a></span>
 <span class="normal"><a href="#__codelineno-19-31">31</a></span>
 <span class="normal"><a href="#__codelineno-19-32">32</a></span>
-<span class="normal"><a href="#__codelineno-19-33">33</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">Echo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">msgTxt</span><span class="p">,</span><span class="w"> </span><span class="nx">setMsgTxt</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
-</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">messages</span><span class="p">,</span><span class="w"> </span><span class="nx">setMessages</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">([]);</span>
+<span class="normal"><a href="#__codelineno-19-33">33</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1"></a>function Echo() {
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2"></a>  const [msgTxt, setMsgTxt] = useState(&quot;&quot;);
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3"></a>  const [messages, setMessages] = useState([]);
 </span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4"></a>
-</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5"></a><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">handleSubmitClick</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6"></a><span class="w">    </span><span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;clicked &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">msgTxt</span><span class="p">);</span>
-</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7"></a><span class="w">    </span><span class="nx">submitNewMessage</span><span class="p">();</span>
-</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5"></a>  function handleSubmitClick() {
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6"></a>    alert(&quot;clicked &quot; + msgTxt);
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7"></a>    submitNewMessage();
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8"></a>  }
 </span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9"></a>
-</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10"></a><span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">submitNewMessage</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="sb">`http://localhost:3000/echo/submit`</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12"></a><span class="w">      </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
-</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13"></a><span class="w">      </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="sb">`msg=</span><span class="si">${</span><span class="nx">msgTxt</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
-</span><span id="__span-19-14"><a id="__codelineno-19-14" name="__codelineno-19-14"></a><span class="w">      </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-19-15"><a id="__codelineno-19-15" name="__codelineno-19-15"></a><span class="w">        </span><span class="s2">&quot;Content-type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/x-www-form-urlencoded&quot;</span><span class="p">,</span>
-</span><span id="__span-19-16"><a id="__codelineno-19-16" name="__codelineno-19-16"></a><span class="w">      </span><span class="p">},</span>
-</span><span id="__span-19-17"><a id="__codelineno-19-17" name="__codelineno-19-17"></a><span class="w">    </span><span class="p">});</span>
-</span><span id="__span-19-18"><a id="__codelineno-19-18" name="__codelineno-19-18"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">text</span><span class="p">();</span>
-</span><span id="__span-19-19"><a id="__codelineno-19-19" name="__codelineno-19-19"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
-</span><span id="__span-19-20"><a id="__codelineno-19-20" name="__codelineno-19-20"></a><span class="w">    </span><span class="nx">setMessages</span><span class="p">(</span><span class="nx">json</span><span class="p">);</span>
-</span><span id="__span-19-21"><a id="__codelineno-19-21" name="__codelineno-19-21"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-19-10"><a id="__codelineno-19-10" name="__codelineno-19-10"></a>  async function submitNewMessage() {
+</span><span id="__span-19-11"><a id="__codelineno-19-11" name="__codelineno-19-11"></a>    const response = await fetch(`http://localhost:3000/echo/submit`, {
+</span><span id="__span-19-12"><a id="__codelineno-19-12" name="__codelineno-19-12"></a>      method: &quot;POST&quot;,
+</span><span id="__span-19-13"><a id="__codelineno-19-13" name="__codelineno-19-13"></a>      body: `msg=${msgTxt}`,
+</span><span id="__span-19-14"><a id="__codelineno-19-14" name="__codelineno-19-14"></a>      headers: {
+</span><span id="__span-19-15"><a id="__codelineno-19-15" name="__codelineno-19-15"></a>        &quot;Content-type&quot;: &quot;application/x-www-form-urlencoded&quot;,
+</span><span id="__span-19-16"><a id="__codelineno-19-16" name="__codelineno-19-16"></a>      },
+</span><span id="__span-19-17"><a id="__codelineno-19-17" name="__codelineno-19-17"></a>    });
+</span><span id="__span-19-18"><a id="__codelineno-19-18" name="__codelineno-19-18"></a>    const text = await response.text();
+</span><span id="__span-19-19"><a id="__codelineno-19-19" name="__codelineno-19-19"></a>    const json = JSON.parse(text);
+</span><span id="__span-19-20"><a id="__codelineno-19-20" name="__codelineno-19-20"></a>    setMessages(json);
+</span><span id="__span-19-21"><a id="__codelineno-19-21" name="__codelineno-19-21"></a>  }
 </span><span id="__span-19-22"><a id="__codelineno-19-22" name="__codelineno-19-22"></a>
-</span><span id="__span-19-23"><a id="__codelineno-19-23" name="__codelineno-19-23"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-19-24"><a id="__codelineno-19-24" name="__codelineno-19-24"></a><span class="w">    </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-19-25"><a id="__codelineno-19-25" name="__codelineno-19-25"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">NewMessageBar</span>
-</span><span id="__span-19-26"><a id="__codelineno-19-26" name="__codelineno-19-26"></a><span class="w">        </span><span class="na">message</span><span class="o">=</span><span class="p">{</span><span class="nx">msgTxt</span><span class="p">}</span>
-</span><span id="__span-19-27"><a id="__codelineno-19-27" name="__codelineno-19-27"></a><span class="w">        </span><span class="na">onMessageChange</span><span class="o">=</span><span class="p">{</span><span class="nx">setMsgTxt</span><span class="p">}</span>
-</span><span id="__span-19-28"><a id="__codelineno-19-28" name="__codelineno-19-28"></a><span class="w">        </span><span class="na">onSubmitClick</span><span class="o">=</span><span class="p">{</span><span class="nx">handleSubmitClick</span><span class="p">}</span>
-</span><span id="__span-19-29"><a id="__codelineno-19-29" name="__codelineno-19-29"></a><span class="w">      </span><span class="p">/&gt;</span>
-</span><span id="__span-19-30"><a id="__codelineno-19-30" name="__codelineno-19-30"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">MessageList</span><span class="w"> </span><span class="na">messages</span><span class="o">=</span><span class="p">{</span><span class="nx">messages</span><span class="p">}</span><span class="w"> </span><span class="p">/&gt;</span>
-</span><span id="__span-19-31"><a id="__codelineno-19-31" name="__codelineno-19-31"></a><span class="w">    </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-19-32"><a id="__codelineno-19-32" name="__codelineno-19-32"></a><span class="w">  </span><span class="p">);</span>
-</span><span id="__span-19-33"><a id="__codelineno-19-33" name="__codelineno-19-33"></a><span class="p">}</span>
+</span><span id="__span-19-23"><a id="__codelineno-19-23" name="__codelineno-19-23"></a>  return (
+</span><span id="__span-19-24"><a id="__codelineno-19-24" name="__codelineno-19-24"></a>    &lt;div&gt;
+</span><span id="__span-19-25"><a id="__codelineno-19-25" name="__codelineno-19-25"></a>      &lt;NewMessageBar
+</span><span id="__span-19-26"><a id="__codelineno-19-26" name="__codelineno-19-26"></a>        message={msgTxt}
+</span><span id="__span-19-27"><a id="__codelineno-19-27" name="__codelineno-19-27"></a>        onMessageChange={setMsgTxt}
+</span><span id="__span-19-28"><a id="__codelineno-19-28" name="__codelineno-19-28"></a>        onSubmitClick={handleSubmitClick}
+</span><span id="__span-19-29"><a id="__codelineno-19-29" name="__codelineno-19-29"></a>      /&gt;
+</span><span id="__span-19-30"><a id="__codelineno-19-30" name="__codelineno-19-30"></a>      &lt;MessageList messages={messages} /&gt;
+</span><span id="__span-19-31"><a id="__codelineno-19-31" name="__codelineno-19-31"></a>    &lt;/div&gt;
+</span><span id="__span-19-32"><a id="__codelineno-19-32" name="__codelineno-19-32"></a>  );
+</span><span id="__span-19-33"><a id="__codelineno-19-33" name="__codelineno-19-33"></a>}
 </span></code></pre></div></td></tr></table></div>
 <p>The changes we made include</p>
 <ul>
@@ -1266,11 +1270,11 @@ By breaking down the UI components we might have the following</p>
 <p>Next, we can reuse our previous AJAX demo project <a href="https://github.com/sutd50003/examples_in_notes/tree/main/l2_2_ex"><code>my_mysql_app</code></a> as the backend of our react frontend. In separate terminal, run <code>npm start</code> for <code>my_mysql_app</code> for the backend and <code>npm start</code> for the react app (make sure that they run in separate port, 3001 for react and 3000 for express if you follow this note).</p>
 <p>We will encounter an error of the api Call. By checking the console in the browser, we find that it is related to the Cross Origin Resource Sharing (CORS) restriction, which prevents the JS from React app to pull data from an exernal app.</p>
 <p>To lift the restriction, we modify the router code at the backend app, i.e. <code>my_mysql_app</code>.</p>
-<p>For all the AJAX call end-points to be accessed by our react app (which is running on port 3001), we add the following statement before the <code>res.send()</code> is called.</p>
-<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="nx">res</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;Access-Control-Allow-Origin&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;http://localhost:5000&quot;</span><span class="p">);</span>
+<p>For all the AJAX call end-points to be accessed by our react app (which is running on port 5000), we add the following statement before the <code>res.send()</code> is called.</p>
+<div class="language-ts highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="nx">res</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s2">&quot;Access-Control-Allow-Origin&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;http://localhost:5000&quot;</span><span class="p">);</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Lastly, let's make the app to displays all the existing messages when it is firstly loaded. Naively, we might added the following function definitions and function call statements before the <code>return</code> statement in the <code>Echo()</code> function.</p>
-<div class="language-jsx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span>
 <span class="normal"><a href="#__codelineno-21-2">2</a></span>
 <span class="normal"><a href="#__codelineno-21-3">3</a></span>
 <span class="normal"><a href="#__codelineno-21-4">4</a></span>
@@ -1278,15 +1282,15 @@ By breaking down the UI components we might have the following</p>
 <span class="normal"><a href="#__codelineno-21-6">6</a></span>
 <span class="normal"><a href="#__codelineno-21-7">7</a></span>
 <span class="normal"><a href="#__codelineno-21-8">8</a></span>
-<span class="normal"><a href="#__codelineno-21-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">submitNewMessage</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// existing</span>
-</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2"></a><span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">initMessages</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// newly added</span>
-</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3"></a><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="sb">`http://localhost:3000/echo/all`</span><span class="p">);</span>
-</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4"></a><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">text</span><span class="p">();</span>
-</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5"></a><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
-</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6"></a><span class="w">        </span><span class="nx">setMessages</span><span class="p">(</span><span class="nx">json</span><span class="p">);</span>
-</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7"></a><span class="w">    </span><span class="p">}</span>
-</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8"></a><span class="w">    </span><span class="nx">initMessages</span><span class="p">();</span><span class="w"> </span><span class="c1">// newly added, causing loop</span>
-</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">);</span><span class="w"> </span><span class="c1">// existing</span>
+<span class="normal"><a href="#__codelineno-21-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a>    async function submitNewMessage() { ... } // existing
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2"></a>    async function initMessages() { // newly added
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3"></a>        const response = await fetch(`http://localhost:3000/echo/all`);
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4"></a>        const text = await response.text();
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5"></a>        const json = JSON.parse(text);
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6"></a>        setMessages(json);
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7"></a>    }
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8"></a>    initMessages(); // newly added, causing loop
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9"></a>    return ( ... ); // existing
 </span></code></pre></div></td></tr></table></div>
 <p>With this fix, our App seems to get into an infinite loop. This is because <code>initMessages()</code> is now part of the <em>render</em> phase routine of the <code>Echo</code> component. When the <code>Echo</code> is rendered, the <code>setMessages</code> is invoked, which causes the component to re-render.</p>
 <h3 id="life-cycle-of-react-components">Life Cycle of React Components<a class="headerlink" href="#life-cycle-of-react-components" title="Permanent link">&para;</a></h3>
@@ -1295,7 +1299,7 @@ By breaking down the UI components we might have the following</p>
 <p>image credits <code>https://levelup.gitconnected.com/componentdidmakesense-react-lifecycle-explanation-393dcb19e459</code></p>
 <p>When a React Component is spawned, server methods are called at the server end (i.e. when our react app is hosted). After which, it calls <code>componentDidMount</code>, then goes into a kind of loop driven by the changes of states or props of react component. Each change of states or props will re-renders the component in the browser. The loop goes on until it unmount, (i.e. the component is destroyed).</p>
 <p>To access each of the stages of the React Component, let's rewrite the <code>Echo</code> component in class style</p>
-<div class="language-jsx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1"> 1</a></span>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-22-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-22-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-22-4"> 4</a></span>
@@ -1344,56 +1348,56 @@ By breaking down the UI components we might have the following</p>
 <span class="normal"><a href="#__codelineno-22-47">47</a></span>
 <span class="normal"><a href="#__codelineno-22-48">48</a></span>
 <span class="normal"><a href="#__codelineno-22-49">49</a></span>
-<span class="normal"><a href="#__codelineno-22-50">50</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<span class="normal"><a href="#__codelineno-22-50">50</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1"></a>import { Component } from &quot;react&quot;;
 </span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2"></a>
-</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3"></a><span class="kd">class</span><span class="w"> </span><span class="nx">Echo</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">Component</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4"></a><span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5"></a><span class="w">    </span><span class="k">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
-</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">msgTxt</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="p">};</span>
-</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3"></a>class Echo extends Component {
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4"></a>  constructor(props) {
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5"></a>    super(props);
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6"></a>    this.state = { msgTxt: &quot;&quot;, messages: [] };
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7"></a>  }
 </span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8"></a>
-</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9"></a><span class="w">  </span><span class="nx">componentDidMount</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
+</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9"></a>  componentDidMount() {}
 </span><span id="__span-22-10"><a id="__codelineno-22-10" name="__codelineno-22-10"></a>
-</span><span id="__span-22-11"><a id="__codelineno-22-11" name="__codelineno-22-11"></a><span class="w">  </span><span class="nx">componentDidUpdate</span><span class="p">()</span><span class="w"> </span><span class="p">{}</span>
+</span><span id="__span-22-11"><a id="__codelineno-22-11" name="__codelineno-22-11"></a>  componentDidUpdate() {}
 </span><span id="__span-22-12"><a id="__codelineno-22-12" name="__codelineno-22-12"></a>
-</span><span id="__span-22-13"><a id="__codelineno-22-13" name="__codelineno-22-13"></a><span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">submitNewMessage</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-22-14"><a id="__codelineno-22-14" name="__codelineno-22-14"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="sb">`http://localhost:3000/echo/submit`</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-22-15"><a id="__codelineno-22-15" name="__codelineno-22-15"></a><span class="w">      </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
-</span><span id="__span-22-16"><a id="__codelineno-22-16" name="__codelineno-22-16"></a><span class="w">      </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="sb">`msg=</span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">msgTxt</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
-</span><span id="__span-22-17"><a id="__codelineno-22-17" name="__codelineno-22-17"></a><span class="w">      </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-22-18"><a id="__codelineno-22-18" name="__codelineno-22-18"></a><span class="w">        </span><span class="s2">&quot;Content-type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/x-www-form-urlencoded&quot;</span><span class="p">,</span>
-</span><span id="__span-22-19"><a id="__codelineno-22-19" name="__codelineno-22-19"></a><span class="w">      </span><span class="p">},</span>
-</span><span id="__span-22-20"><a id="__codelineno-22-20" name="__codelineno-22-20"></a><span class="w">    </span><span class="p">});</span>
-</span><span id="__span-22-21"><a id="__codelineno-22-21" name="__codelineno-22-21"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">text</span><span class="p">();</span>
-</span><span id="__span-22-22"><a id="__codelineno-22-22" name="__codelineno-22-22"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
-</span><span id="__span-22-23"><a id="__codelineno-22-23" name="__codelineno-22-23"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">setMessages</span><span class="p">(</span><span class="nx">json</span><span class="p">);</span>
-</span><span id="__span-22-24"><a id="__codelineno-22-24" name="__codelineno-22-24"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-22-13"><a id="__codelineno-22-13" name="__codelineno-22-13"></a>  async submitNewMessage() {
+</span><span id="__span-22-14"><a id="__codelineno-22-14" name="__codelineno-22-14"></a>    const response = await fetch(`http://localhost:3000/echo/submit`, {
+</span><span id="__span-22-15"><a id="__codelineno-22-15" name="__codelineno-22-15"></a>      method: &quot;POST&quot;,
+</span><span id="__span-22-16"><a id="__codelineno-22-16" name="__codelineno-22-16"></a>      body: `msg=${this.state.msgTxt}`,
+</span><span id="__span-22-17"><a id="__codelineno-22-17" name="__codelineno-22-17"></a>      headers: {
+</span><span id="__span-22-18"><a id="__codelineno-22-18" name="__codelineno-22-18"></a>        &quot;Content-type&quot;: &quot;application/x-www-form-urlencoded&quot;,
+</span><span id="__span-22-19"><a id="__codelineno-22-19" name="__codelineno-22-19"></a>      },
+</span><span id="__span-22-20"><a id="__codelineno-22-20" name="__codelineno-22-20"></a>    });
+</span><span id="__span-22-21"><a id="__codelineno-22-21" name="__codelineno-22-21"></a>    const text = await response.text();
+</span><span id="__span-22-22"><a id="__codelineno-22-22" name="__codelineno-22-22"></a>    const json = JSON.parse(text);
+</span><span id="__span-22-23"><a id="__codelineno-22-23" name="__codelineno-22-23"></a>    this.setMessages(json);
+</span><span id="__span-22-24"><a id="__codelineno-22-24" name="__codelineno-22-24"></a>  }
 </span><span id="__span-22-25"><a id="__codelineno-22-25" name="__codelineno-22-25"></a>
-</span><span id="__span-22-26"><a id="__codelineno-22-26" name="__codelineno-22-26"></a><span class="w">  </span><span class="nx">setMsgTxt</span><span class="p">(</span><span class="nx">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-22-27"><a id="__codelineno-22-27" name="__codelineno-22-27"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="w"> </span><span class="nx">msgTxt</span><span class="o">:</span><span class="w"> </span><span class="nx">s</span><span class="p">,</span><span class="w"> </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">messages</span><span class="w"> </span><span class="p">});</span>
-</span><span id="__span-22-28"><a id="__codelineno-22-28" name="__codelineno-22-28"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-22-26"><a id="__codelineno-22-26" name="__codelineno-22-26"></a>  setMsgTxt(s) {
+</span><span id="__span-22-27"><a id="__codelineno-22-27" name="__codelineno-22-27"></a>    this.setState({ msgTxt: s, messages: this.state.messages });
+</span><span id="__span-22-28"><a id="__codelineno-22-28" name="__codelineno-22-28"></a>  }
 </span><span id="__span-22-29"><a id="__codelineno-22-29" name="__codelineno-22-29"></a>
-</span><span id="__span-22-30"><a id="__codelineno-22-30" name="__codelineno-22-30"></a><span class="w">  </span><span class="nx">setMessages</span><span class="p">(</span><span class="nx">l</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-22-31"><a id="__codelineno-22-31" name="__codelineno-22-31"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="w"> </span><span class="nx">msgTxt</span><span class="o">:</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">msgTxt</span><span class="p">,</span><span class="w"> </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="nx">l</span><span class="w"> </span><span class="p">});</span>
-</span><span id="__span-22-32"><a id="__codelineno-22-32" name="__codelineno-22-32"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-22-30"><a id="__codelineno-22-30" name="__codelineno-22-30"></a>  setMessages(l) {
+</span><span id="__span-22-31"><a id="__codelineno-22-31" name="__codelineno-22-31"></a>    this.setState({ msgTxt: this.state.msgTxt, messages: l });
+</span><span id="__span-22-32"><a id="__codelineno-22-32" name="__codelineno-22-32"></a>  }
 </span><span id="__span-22-33"><a id="__codelineno-22-33" name="__codelineno-22-33"></a>
-</span><span id="__span-22-34"><a id="__codelineno-22-34" name="__codelineno-22-34"></a><span class="w">  </span><span class="nx">handleSubmitClick</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-22-35"><a id="__codelineno-22-35" name="__codelineno-22-35"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">submitNewMessage</span><span class="p">();</span>
-</span><span id="__span-22-36"><a id="__codelineno-22-36" name="__codelineno-22-36"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-22-34"><a id="__codelineno-22-34" name="__codelineno-22-34"></a>  handleSubmitClick() {
+</span><span id="__span-22-35"><a id="__codelineno-22-35" name="__codelineno-22-35"></a>    this.submitNewMessage();
+</span><span id="__span-22-36"><a id="__codelineno-22-36" name="__codelineno-22-36"></a>  }
 </span><span id="__span-22-37"><a id="__codelineno-22-37" name="__codelineno-22-37"></a>
-</span><span id="__span-22-38"><a id="__codelineno-22-38" name="__codelineno-22-38"></a><span class="w">  </span><span class="nx">render</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-22-39"><a id="__codelineno-22-39" name="__codelineno-22-39"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-22-40"><a id="__codelineno-22-40" name="__codelineno-22-40"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-22-41"><a id="__codelineno-22-41" name="__codelineno-22-41"></a><span class="w">        </span><span class="p">&lt;</span><span class="nt">NewMessageBar</span>
-</span><span id="__span-22-42"><a id="__codelineno-22-42" name="__codelineno-22-42"></a><span class="w">          </span><span class="na">message</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">msgTxt</span><span class="p">}</span>
-</span><span id="__span-22-43"><a id="__codelineno-22-43" name="__codelineno-22-43"></a><span class="w">          </span><span class="na">onMessageChange</span><span class="o">=</span><span class="p">{(</span><span class="nx">s</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">setMsgTxt</span><span class="p">(</span><span class="nx">s</span><span class="p">)}</span>
-</span><span id="__span-22-44"><a id="__codelineno-22-44" name="__codelineno-22-44"></a><span class="w">          </span><span class="na">onSubmitClick</span><span class="o">=</span><span class="p">{()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">handleSubmitClick</span><span class="p">()}</span>
-</span><span id="__span-22-45"><a id="__codelineno-22-45" name="__codelineno-22-45"></a><span class="w">        </span><span class="p">/&gt;</span>
-</span><span id="__span-22-46"><a id="__codelineno-22-46" name="__codelineno-22-46"></a><span class="w">        </span><span class="p">&lt;</span><span class="nt">MessageList</span><span class="w"> </span><span class="na">messages</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">messages</span><span class="p">}</span><span class="w"> </span><span class="p">/&gt;</span>
-</span><span id="__span-22-47"><a id="__codelineno-22-47" name="__codelineno-22-47"></a><span class="w">      </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-22-48"><a id="__codelineno-22-48" name="__codelineno-22-48"></a><span class="w">    </span><span class="p">);</span>
-</span><span id="__span-22-49"><a id="__codelineno-22-49" name="__codelineno-22-49"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-22-50"><a id="__codelineno-22-50" name="__codelineno-22-50"></a><span class="p">}</span>
+</span><span id="__span-22-38"><a id="__codelineno-22-38" name="__codelineno-22-38"></a>  render() {
+</span><span id="__span-22-39"><a id="__codelineno-22-39" name="__codelineno-22-39"></a>    return (
+</span><span id="__span-22-40"><a id="__codelineno-22-40" name="__codelineno-22-40"></a>      &lt;div&gt;
+</span><span id="__span-22-41"><a id="__codelineno-22-41" name="__codelineno-22-41"></a>        &lt;NewMessageBar
+</span><span id="__span-22-42"><a id="__codelineno-22-42" name="__codelineno-22-42"></a>          message={this.state.msgTxt}
+</span><span id="__span-22-43"><a id="__codelineno-22-43" name="__codelineno-22-43"></a>          onMessageChange={(s) =&gt; this.setMsgTxt(s)}
+</span><span id="__span-22-44"><a id="__codelineno-22-44" name="__codelineno-22-44"></a>          onSubmitClick={() =&gt; this.handleSubmitClick()}
+</span><span id="__span-22-45"><a id="__codelineno-22-45" name="__codelineno-22-45"></a>        /&gt;
+</span><span id="__span-22-46"><a id="__codelineno-22-46" name="__codelineno-22-46"></a>        &lt;MessageList messages={this.state.messages} /&gt;
+</span><span id="__span-22-47"><a id="__codelineno-22-47" name="__codelineno-22-47"></a>      &lt;/div&gt;
+</span><span id="__span-22-48"><a id="__codelineno-22-48" name="__codelineno-22-48"></a>    );
+</span><span id="__span-22-49"><a id="__codelineno-22-49" name="__codelineno-22-49"></a>  }
+</span><span id="__span-22-50"><a id="__codelineno-22-50" name="__codelineno-22-50"></a>}
 </span></code></pre></div></td></tr></table></div>
 <p>In the above version, we refactor the <code>useState()</code> parts by using the inherited attribute of the <code>Component</code> class: <code>state</code> and <code>setState()</code>. In the above example, we put <code>msgTxt</code> and <code>messages</code> in <code>this.state</code> and write <code>setMsgTxt</code> and <code>setMessages</code> methods using <code>this.setState</code>. Since functions are different from method internally, we need to turn the props arguments into lambdas, e.g. <code>onMessageChange={(s) =&gt; this.setMsgTxt(s)}</code> instead of <code>onMessageChange={setMsgTxt}</code>. Finally we override the <code>componentDidMount</code> and <code>componentDidUpdate</code> methods.</p>
 <h4 id="exercise-non-graded">Exercise (Non Graded)<a class="headerlink" href="#exercise-non-graded" title="Permanent link">&para;</a></h4>
@@ -1402,7 +1406,7 @@ and <code>render</code>.
 Run the program to observe the order of the log messages being printed. Can you identify which message is printed from which part of the life cycle?</p>
 <p>As suggested by the life cycle, it is better to initilize the state outside the loop, i.e. <code>componentDidMount</code>.</p>
 <p>Hence we change the <code>componentDidMount</code> as follows, and introduce a new function to retrieve all existing messages from the API and update the state.</p>
-<div class="language-jsx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1"> 1</a></span>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-23-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-23-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-23-4"> 4</a></span>
@@ -1411,23 +1415,23 @@ Run the program to observe the order of the log messages being printed. Can you 
 <span class="normal"><a href="#__codelineno-23-7"> 7</a></span>
 <span class="normal"><a href="#__codelineno-23-8"> 8</a></span>
 <span class="normal"><a href="#__codelineno-23-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-23-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="nx">initMessages</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2"></a><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="sb">`http://localhost:3000/echo/all`</span><span class="p">);</span>
-</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3"></a><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">text</span><span class="p">();</span>
-</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4"></a><span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
-</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">setMessages</span><span class="p">(</span><span class="nx">json</span><span class="p">);</span>
-</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6"></a><span class="w">    </span><span class="p">}</span>
+<span class="normal"><a href="#__codelineno-23-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1"></a>    async initMessages() {
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2"></a>        const response = await fetch(`http://localhost:3000/echo/all`);
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3"></a>        const text = await response.text();
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4"></a>        const json = JSON.parse(text);
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5"></a>        this.setMessages(json);
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6"></a>    }
 </span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7"></a>
-</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8"></a><span class="w">    </span><span class="nx">componentDidMount</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">initMessages</span><span class="p">();</span>
-</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8"></a>    componentDidMount() {
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9"></a>        this.initMessages();
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10"></a>    }
 </span></code></pre></div></td></tr></table></div>
 <p>With this change, the App behaves as what we want.</p>
 <h3 id="effect">Effect<a class="headerlink" href="#effect" title="Permanent link">&para;</a></h3>
 <p>Some of us might argue, rewriting the component in the class form allows us to access the different stage of the life-cycle. The code could be too verbose.</p>
 <p>To achieve the same result in the function-form component, we need to use the <code>useEffect</code> hook.</p>
 <p>Recall the earlier version in function-form.</p>
-<div class="language-jsx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1"> 1</a></span>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-24-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-24-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-24-4"> 4</a></span>
@@ -1462,54 +1466,54 @@ Run the program to observe the order of the log messages being printed. Can you 
 <span class="normal"><a href="#__codelineno-24-33">33</a></span>
 <span class="normal"><a href="#__codelineno-24-34">34</a></span>
 <span class="normal"><a href="#__codelineno-24-35">35</a></span>
-<span class="normal"><a href="#__codelineno-24-36">36</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">Echo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">msgTxt</span><span class="p">,</span><span class="w"> </span><span class="nx">setMsgTxt</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
-</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3"></a><span class="w">  </span><span class="kd">function</span><span class="w"> </span><span class="nx">handleSubmitClick</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4"></a><span class="w">    </span><span class="nx">submitNewMessage</span><span class="p">();</span>
-</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5"></a><span class="w">  </span><span class="p">}</span>
-</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="p">[</span><span class="nx">messages</span><span class="p">,</span><span class="w"> </span><span class="nx">setMessages</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useState</span><span class="p">([]);</span>
+<span class="normal"><a href="#__codelineno-24-36">36</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1"></a>function Echo() {
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2"></a>  const [msgTxt, setMsgTxt] = useState(&quot;&quot;);
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3"></a>  function handleSubmitClick() {
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4"></a>    submitNewMessage();
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5"></a>  }
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6"></a>  const [messages, setMessages] = useState([]);
 </span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7"></a>
-</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8"></a><span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">submitNewMessage</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="sb">`http://localhost:3000/echo/submit`</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10"></a><span class="w">      </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="p">,</span>
-</span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11"></a><span class="w">      </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="sb">`msg=</span><span class="si">${</span><span class="nx">msgTxt</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
-</span><span id="__span-24-12"><a id="__codelineno-24-12" name="__codelineno-24-12"></a><span class="w">      </span><span class="nx">headers</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-24-13"><a id="__codelineno-24-13" name="__codelineno-24-13"></a><span class="w">        </span><span class="s2">&quot;Content-type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/x-www-form-urlencoded&quot;</span><span class="p">,</span>
-</span><span id="__span-24-14"><a id="__codelineno-24-14" name="__codelineno-24-14"></a><span class="w">      </span><span class="p">},</span>
-</span><span id="__span-24-15"><a id="__codelineno-24-15" name="__codelineno-24-15"></a><span class="w">    </span><span class="p">});</span>
-</span><span id="__span-24-16"><a id="__codelineno-24-16" name="__codelineno-24-16"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">text</span><span class="p">();</span>
-</span><span id="__span-24-17"><a id="__codelineno-24-17" name="__codelineno-24-17"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
-</span><span id="__span-24-18"><a id="__codelineno-24-18" name="__codelineno-24-18"></a><span class="w">    </span><span class="nx">setMessages</span><span class="p">(</span><span class="nx">json</span><span class="p">);</span>
-</span><span id="__span-24-19"><a id="__codelineno-24-19" name="__codelineno-24-19"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8"></a>  async function submitNewMessage() {
+</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9"></a>    const response = await fetch(`http://localhost:3000/echo/submit`, {
+</span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10"></a>      method: &quot;POST&quot;,
+</span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11"></a>      body: `msg=${msgTxt}`,
+</span><span id="__span-24-12"><a id="__codelineno-24-12" name="__codelineno-24-12"></a>      headers: {
+</span><span id="__span-24-13"><a id="__codelineno-24-13" name="__codelineno-24-13"></a>        &quot;Content-type&quot;: &quot;application/x-www-form-urlencoded&quot;,
+</span><span id="__span-24-14"><a id="__codelineno-24-14" name="__codelineno-24-14"></a>      },
+</span><span id="__span-24-15"><a id="__codelineno-24-15" name="__codelineno-24-15"></a>    });
+</span><span id="__span-24-16"><a id="__codelineno-24-16" name="__codelineno-24-16"></a>    const text = await response.text();
+</span><span id="__span-24-17"><a id="__codelineno-24-17" name="__codelineno-24-17"></a>    const json = JSON.parse(text);
+</span><span id="__span-24-18"><a id="__codelineno-24-18" name="__codelineno-24-18"></a>    setMessages(json);
+</span><span id="__span-24-19"><a id="__codelineno-24-19" name="__codelineno-24-19"></a>  }
 </span><span id="__span-24-20"><a id="__codelineno-24-20" name="__codelineno-24-20"></a>
-</span><span id="__span-24-21"><a id="__codelineno-24-21" name="__codelineno-24-21"></a><span class="w">  </span><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-24-22"><a id="__codelineno-24-22" name="__codelineno-24-22"></a><span class="w">    </span><span class="c1">// useEffect</span>
-</span><span id="__span-24-23"><a id="__codelineno-24-23" name="__codelineno-24-23"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;from effect&quot;</span><span class="p">);</span>
-</span><span id="__span-24-24"><a id="__codelineno-24-24" name="__codelineno-24-24"></a><span class="w">  </span><span class="p">});</span>
+</span><span id="__span-24-21"><a id="__codelineno-24-21" name="__codelineno-24-21"></a>  useEffect(() =&gt; {
+</span><span id="__span-24-22"><a id="__codelineno-24-22" name="__codelineno-24-22"></a>    // useEffect
+</span><span id="__span-24-23"><a id="__codelineno-24-23" name="__codelineno-24-23"></a>    console.log(&quot;from effect&quot;);
+</span><span id="__span-24-24"><a id="__codelineno-24-24" name="__codelineno-24-24"></a>  });
 </span><span id="__span-24-25"><a id="__codelineno-24-25" name="__codelineno-24-25"></a>
-</span><span id="__span-24-26"><a id="__codelineno-24-26" name="__codelineno-24-26"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-24-27"><a id="__codelineno-24-27" name="__codelineno-24-27"></a><span class="w">    </span><span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-24-28"><a id="__codelineno-24-28" name="__codelineno-24-28"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">NewMessageBar</span>
-</span><span id="__span-24-29"><a id="__codelineno-24-29" name="__codelineno-24-29"></a><span class="w">        </span><span class="na">message</span><span class="o">=</span><span class="p">{</span><span class="nx">msgTxt</span><span class="p">}</span>
-</span><span id="__span-24-30"><a id="__codelineno-24-30" name="__codelineno-24-30"></a><span class="w">        </span><span class="na">onMessageChange</span><span class="o">=</span><span class="p">{</span><span class="nx">setMsgTxt</span><span class="p">}</span>
-</span><span id="__span-24-31"><a id="__codelineno-24-31" name="__codelineno-24-31"></a><span class="w">        </span><span class="na">onSubmitClick</span><span class="o">=</span><span class="p">{</span><span class="nx">handleSubmitClick</span><span class="p">}</span>
-</span><span id="__span-24-32"><a id="__codelineno-24-32" name="__codelineno-24-32"></a><span class="w">      </span><span class="p">/&gt;</span>
-</span><span id="__span-24-33"><a id="__codelineno-24-33" name="__codelineno-24-33"></a><span class="w">      </span><span class="p">&lt;</span><span class="nt">MessageList</span><span class="w"> </span><span class="na">messages</span><span class="o">=</span><span class="p">{</span><span class="nx">messages</span><span class="p">}</span><span class="w"> </span><span class="p">/&gt;</span>
-</span><span id="__span-24-34"><a id="__codelineno-24-34" name="__codelineno-24-34"></a><span class="w">    </span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</span><span id="__span-24-35"><a id="__codelineno-24-35" name="__codelineno-24-35"></a><span class="w">  </span><span class="p">);</span>
-</span><span id="__span-24-36"><a id="__codelineno-24-36" name="__codelineno-24-36"></a><span class="p">}</span>
+</span><span id="__span-24-26"><a id="__codelineno-24-26" name="__codelineno-24-26"></a>  return (
+</span><span id="__span-24-27"><a id="__codelineno-24-27" name="__codelineno-24-27"></a>    &lt;div&gt;
+</span><span id="__span-24-28"><a id="__codelineno-24-28" name="__codelineno-24-28"></a>      &lt;NewMessageBar
+</span><span id="__span-24-29"><a id="__codelineno-24-29" name="__codelineno-24-29"></a>        message={msgTxt}
+</span><span id="__span-24-30"><a id="__codelineno-24-30" name="__codelineno-24-30"></a>        onMessageChange={setMsgTxt}
+</span><span id="__span-24-31"><a id="__codelineno-24-31" name="__codelineno-24-31"></a>        onSubmitClick={handleSubmitClick}
+</span><span id="__span-24-32"><a id="__codelineno-24-32" name="__codelineno-24-32"></a>      /&gt;
+</span><span id="__span-24-33"><a id="__codelineno-24-33" name="__codelineno-24-33"></a>      &lt;MessageList messages={messages} /&gt;
+</span><span id="__span-24-34"><a id="__codelineno-24-34" name="__codelineno-24-34"></a>    &lt;/div&gt;
+</span><span id="__span-24-35"><a id="__codelineno-24-35" name="__codelineno-24-35"></a>  );
+</span><span id="__span-24-36"><a id="__codelineno-24-36" name="__codelineno-24-36"></a>}
 </span></code></pre></div></td></tr></table></div>
 <p>The statement calling <code>useEffect</code> defines a call-back to be called every time
 the component re-renders. We can restrict the call-back to be triggered only when certain states have updated, e.g.</p>
-<div class="language-jsx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span>
 <span class="normal"><a href="#__codelineno-25-2">2</a></span>
-<span class="normal"><a href="#__codelineno-25-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2"></a><span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;from effect&quot;</span><span class="p">);</span>
-</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3"></a><span class="p">},</span><span class="w"> </span><span class="p">[</span><span class="nx">msgTxt</span><span class="p">]);</span>
+<span class="normal"><a href="#__codelineno-25-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-25-1"><a id="__codelineno-25-1" name="__codelineno-25-1"></a>useEffect(() =&gt; {
+</span><span id="__span-25-2"><a id="__codelineno-25-2" name="__codelineno-25-2"></a>  console.log(&quot;from effect&quot;);
+</span><span id="__span-25-3"><a id="__codelineno-25-3" name="__codelineno-25-3"></a>}, [msgTxt]);
 </span></code></pre></div></td></tr></table></div>
 <p>will be triggered whenever <code>msgTxt</code> state changes.</p>
 <p>If the 2<sup>nd</sup> argument is an empty list <code>[]</code>. the call-back will only be triggered when the component is mounted. Hence to achieve what we want, i.e. to get all the existing messages and assign them to the state <code>messages</code>, we need to include the following in the body of the <code>Echo</code> function.</p>
-<div class="language-jsx highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span>
+<div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span>
 <span class="normal"><a href="#__codelineno-26-2">2</a></span>
 <span class="normal"><a href="#__codelineno-26-3">3</a></span>
 <span class="normal"><a href="#__codelineno-26-4">4</a></span>
@@ -1517,15 +1521,15 @@ the component re-renders. We can restrict the call-back to be triggered only whe
 <span class="normal"><a href="#__codelineno-26-6">6</a></span>
 <span class="normal"><a href="#__codelineno-26-7">7</a></span>
 <span class="normal"><a href="#__codelineno-26-8">8</a></span>
-<span class="normal"><a href="#__codelineno-26-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">initMessages</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="sb">`http://localhost:3000/echo/all`</span><span class="p">);</span>
-</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">text</span><span class="p">();</span>
-</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4"></a><span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
-</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5"></a><span class="w">  </span><span class="nx">setMessages</span><span class="p">(</span><span class="nx">json</span><span class="p">);</span>
-</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6"></a><span class="p">}</span>
-</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7"></a><span class="nx">useEffect</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8"></a><span class="w">  </span><span class="nx">initMessages</span><span class="p">();</span>
-</span><span id="__span-26-9"><a id="__codelineno-26-9" name="__codelineno-26-9"></a><span class="p">},</span><span class="w"> </span><span class="p">[]);</span>
+<span class="normal"><a href="#__codelineno-26-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1"></a>async function initMessages() {
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2"></a>  const response = await fetch(`http://localhost:3000/echo/all`);
+</span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3"></a>  const text = await response.text();
+</span><span id="__span-26-4"><a id="__codelineno-26-4" name="__codelineno-26-4"></a>  const json = JSON.parse(text);
+</span><span id="__span-26-5"><a id="__codelineno-26-5" name="__codelineno-26-5"></a>  setMessages(json);
+</span><span id="__span-26-6"><a id="__codelineno-26-6" name="__codelineno-26-6"></a>}
+</span><span id="__span-26-7"><a id="__codelineno-26-7" name="__codelineno-26-7"></a>useEffect(() =&gt; {
+</span><span id="__span-26-8"><a id="__codelineno-26-8" name="__codelineno-26-8"></a>  initMessages();
+</span><span id="__span-26-9"><a id="__codelineno-26-9" name="__codelineno-26-9"></a>}, []);
 </span></code></pre></div></td></tr></table></div>
 <p>We could think of <code>useEffect</code> with only 1 argument is behaving like <code>componentDidUpdate</code>. <code>useEffect</code> with a 2<sup>nd</sup> argument as a non empty list is behaving like <code>componentDidUpdate</code> with conditional update (depending on whether the given state has changed). When <code>useEffect</code> is used with a 2<sup>nd</sup> argument as an empty list it is behaving like <code>componentDidMount</code>.</p>
 <h3 id="further-reading">Further Reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h3>
