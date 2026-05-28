@@ -783,7 +783,7 @@ In such a situation, CSS interpretors will pick the one with higher specificity 
 </span></code></pre></div></td></tr></table></div>
 <p>In the second statement, we call <code>document.getElementById()</code> to retrieve the reference to the element with id=<code>msg1</code> in the HTML document and store the reference in a variable <code>p_elem</code>.<br/>
 In the third statement, we set the inner HTML of this element as <code>msg</code>.</p>
-<p>Howe when we load the HTML with the above script, some error occured.</p>
+<p>However when we load the HTML with the above script, some error occured.</p>
 <div class="language-text highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a>Uncaught TypeError: p_elem is null.
 </span></code></pre></div></td></tr></table></div>
 <p>This is because we retrieve the element reference before the document is fully rendered hence <code>p_elem</code> is having a null reference.</p>
@@ -1076,7 +1076,7 @@ A template string is enclosed with (`) instead of (").</p>
 </span><span id="__span-44-2"><a id="__codelineno-44-2" name="__codelineno-44-2"></a><span class="nx">myArr</span><span class="p">;</span>
 </span><span id="__span-44-3"><a id="__codelineno-44-3" name="__codelineno-44-3"></a><span class="c1">// Array ["d", "z", "c", "b", "a"]</span>
 </span></code></pre></div></td></tr></table></div>
-<p>In the above, we call <code>splice()</code> with three arguments. The first argument denotes the index position of the array that we would like to insert the new element. the second argument specifies how many arguments we would like to remove from this position onwards before the insertion. In this case we don't want to remove any existing element. The third argument denotes the new element that we would like to insert.</p>
+<p>In the above, we call <code>splice()</code> with three arguments. The first argument denotes the index position of the array that we would like to insert the new element. The second argument specifies how many arguments we would like to remove from this position onwards before the insertion. In this case we don't want to remove any existing element. The third argument denotes the new element that we would like to insert.</p>
 <p>Without any surprise, we may also use <code>splice()</code> to remove elements from an array.</p>
 <div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-45-1">1</a></span>
 <span class="normal"><a href="#__codelineno-45-2">2</a></span>
@@ -1209,7 +1209,7 @@ A template string is enclosed with (`) instead of (").</p>
 </span><span id="__span-58-2"><a id="__codelineno-58-2" name="__codelineno-58-2"></a><span class="w">  </span><span class="nx">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">kv</span><span class="p">[</span><span class="mf">1</span><span class="p">];</span>
 </span><span id="__span-58-3"><a id="__codelineno-58-3" name="__codelineno-58-3"></a><span class="p">});</span>
 </span></code></pre></div></td></tr></table></div>
-<p>In the above we pass anonymous function to add <code>kv[1]</code> to the <code>sum</code> variable. Note that the functio provided is a function without return statement.</p>
+<p>In the above, we pass an anonymous function to add <code>kv[1]</code> to the <code>sum</code> variable. Note that the function provided is a function without a return statement.</p>
 <p>If we want to apply a function <code>f</code> to each element of the array to produce a new array, we use <code>.map(f)</code>. The function provided here has a return statement.</p>
 <div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-59-1">1</a></span>
 <span class="normal"><a href="#__codelineno-59-2">2</a></span>
@@ -1546,7 +1546,10 @@ The second column captures the call stack, for simplicity, we use python's style
 </tr>
 </tbody>
 </table>
-<p>The run-time first execute the function declaration in line 1, in call frame <code>main</code>, which does not affect the event registration table nor the callback queue. Similar observation applies when it move on to execute the function declaration in line 6. When the program counter is at line 10, we are add the last statement of the main program. Add an event listener to the even <code>DOMContentLoaded</code>, which creates an entry to the even registration table, mapping <code>DOMContentLoaded</code> to the function <code>run</code> as callback. After line 10, the call stack becomes empty as <code>main</code> ended. However the JavaScript run-time for rendering this web page is still running. It is executing an event-loop, in which it periodically check whether there is anything is the callback queue. At this point in time the browser continues to render the HTML page. When the HTML document is fully rendered, the browser triggers an <code>DomContentLoaded</code> event. At this point the callback function <code>run</code> associated with the event is enqueued to the callback queue.
+<p>The run-time first executes the function declaration in line 1, in call frame <code>main</code>, which does not affect the event registration table nor the callback queue. A similar observation applies when it move on to execute the function declaration in line 6. When the program counter is at line 10, we add the last statement of the main program.
+We then add an event listener to the event <code>DOMContentLoaded</code>, which creates an entry to the event registration table, mapping <code>DOMContentLoaded</code> to the function <code>run</code> as a callback. After line 10, the call stack becomes empty as <code>main</code> ended. However the JavaScript run-time for rendering this web page is still running. It is executing an event-loop, in which it periodically checks if anything is in the callback queue.
+At this point, the browser continues to render the HTML page. When the HTML document is fully rendered, the browser triggers an <code>DomContentLoaded</code> event.
+Then, the callback function <code>run</code> associated with the event is enqueued to the callback queue.
 Since the call stack is empty and the callback queue is not, the JavaScript run-time dequeues <code>run</code> from the callback queue and creates a call frame in the call stack. It continues to move the program counter from lines 7-9.</p>
 <table>
 <thead>
@@ -1593,7 +1596,7 @@ Since the call stack is empty and the callback queue is not, the JavaScript run-
 <p>At the end of line 9, a new event (<code>button1</code> being clicked) is being registered, mapping to <code>handleButton1Click</code>. The call stack becomes empty again. The JavaScript run-time goes into the event loop again, waiting for next event to take place.</p>
 <p>When someone clicks on the button <code>button1</code>, the callback function <code>handleButton1Click</code> will be enqeued into the callback queue. The run-time will "move" it into the call stack to execute it.</p>
 <h3 id="we-have-purposely-ignored-something">We have purposely ignored something ...<a class="headerlink" href="#we-have-purposely-ignored-something" title="Permanent link">¶</a></h3>
-<p>Actually, besides the callback, there are something called <em>promises</em> which enable JavaScript code to support asynchronous programming. We will discuss it in details in the next class.</p>
+<p>Actually, besides the callback, there are things called <em>promises</em> which enable JavaScript code to support asynchronous programming. We will discuss it in detail in the next class.</p>
 <h3 id="cohort-exercise">Cohort Exercise<a class="headerlink" href="#cohort-exercise" title="Permanent link">¶</a></h3>
 <ol>
 <li>(Not Graded) Add some <code>console.log()</code> to the <code>textandbutton.js</code> and open <code>textandbutton.html</code> to observe in what order the call backs are executed.</li>
