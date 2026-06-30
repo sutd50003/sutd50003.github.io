@@ -520,6 +520,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#function-component-vs-class-component" class="md-nav__link">
+    <span class="md-ellipsis">
+      Function component vs class component
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#exercise-non-graded" class="md-nav__link">
     <span class="md-ellipsis">
       Exercise (Non Graded)
@@ -1400,6 +1409,10 @@ By breaking down the UI components we might have the following</p>
 </span><span id="__span-22-50"><a id="__codelineno-22-50" name="__codelineno-22-50"></a>}
 </span></code></pre></div></td></tr></table></div>
 <p>In the above version, we refactor the <code>useState()</code> parts by using the inherited attribute of the <code>Component</code> class: <code>state</code> and <code>setState()</code>. In the above example, we put <code>msgTxt</code> and <code>messages</code> in <code>this.state</code> and write <code>setMsgTxt</code> and <code>setMessages</code> methods using <code>this.setState</code>. Since functions are different from method internally, we need to turn the props arguments into lambdas, e.g. <code>onMessageChange={(s) =&gt; this.setMsgTxt(s)}</code> instead of <code>onMessageChange={setMsgTxt}</code>. Finally we override the <code>componentDidMount</code> and <code>componentDidUpdate</code> methods.</p>
+<h5 id="function-component-vs-class-component">Function component vs class component<a class="headerlink" href="#function-component-vs-class-component" title="Permanent link">&para;</a></h5>
+<p>So far we treat function component is a syntax sugar of class component (i.e. React transpile function components to class component). This surely helps our understanding of such as "props as constructor argument", "useEffect is life-cycle-method-overriding". </p>
+<p>Internally, Function component and class component are the derived class (and object) from the same core object, React Element. There are some subtle difference between the function and class components as they are kind of "different" sub class of this base React Element.  </p>
+<p>https://www.freecodecamp.org/news/function-component-vs-class-component-in-react/</p>
 <h4 id="exercise-non-graded">Exercise (Non Graded)<a class="headerlink" href="#exercise-non-graded" title="Permanent link">&para;</a></h4>
 <p>Add some log messages to the <code>constructor</code>, <code>componentDidUpdate</code>, <code>componentDidMount</code>
 and <code>render</code>.

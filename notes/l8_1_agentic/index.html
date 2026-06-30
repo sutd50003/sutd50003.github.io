@@ -588,21 +588,21 @@
 <h3 id="how-ai-agents-fit-into-the-v-model">How AI Agents Fit into the V-Model<a class="headerlink" href="#how-ai-agents-fit-into-the-v-model" title="Permanent link">&para;</a></h3>
 <p>The role of humans and AI agents in the V-Model has evolved over time.</p>
 <p><strong>The traditional way</strong> - humans perform all activities across the entire V-Model.</p>
-<p><strong>AI coding assitant (most common and recommended)</strong> - humans perform the high-level design and specification work. AI agents assist with the lower-level detailed design and implementation. For AI agents to be useful at the coding stage, humans must provide detailed designs: function signatures, type annotations, input and expected outputs.</p>
+<p><strong>AI coding assitant (most common)</strong> - humans perform the high-level design and specification work. AI agents assist with the lower-level detailed design and implementation. For AI agents to be useful at the coding stage, humans must provide detailed designs: function signatures, type annotations, input and expected outputs.</p>
 <p><strong>Autonomous agents</strong> - agents can pick up a task, a ticket, or a pull request, and carry out coding and unit testing with minimal human prompting for each step.</p>
 <p><strong>Team lead model</strong> - you act as a team lead over a swarm of AI agents. You define tasks, review output, and make architectural decisions while the agents do the implementation work.</p>
 <p><strong>Vibe coding</strong> - you provide high-level goals and the AI does everything. This is only appropriate if you are a CEO-level stakeholder with no engineering responsibility.</p>
-<p><strong>Balanced collaboration (also recommended)</strong> - a human-AI collaborative model applies at every stage of the V-Model: requirements, design, coding, and testing. However, people might argue that applying AI to every single component indiscriminately likely yields no productivity gain and reduces the software to a smarter autocomplete.</p>
+<p><strong>Close collaboration</strong> - a human-AI collaborative model applies at every stage of the V-Model: requirements, design, coding, and testing. However, people might argue that applying AI to every single component indiscriminately likely yields no productivity gain.</p>
 <h2 id="concerns">Concerns<a class="headerlink" href="#concerns" title="Permanent link">&para;</a></h2>
 <p>Despite the benefits, there are significant concerns when relying on Agentic AI in software development.</p>
 <ul>
-<li><strong>Accountability</strong> - who is responsible when AI-generated code causes a system failure?</li>
+<li><strong>Accountability</strong> - who is responsible when AI-generated code causes a system failure? It is the human engineer for now.</li>
 <li><strong>Reliability</strong> - AI-generated code may not be correct, secure, or efficient.</li>
 <li><strong>Maintainability</strong> - code that was not reasoned through by a human is often harder to maintain.</li>
 <li><strong>Security</strong> - AI tools may introduce vulnerabilities, especially if operating with insufficient context.</li>
 </ul>
 <h2 id="a-sandwich-approach">A Sandwich Approach<a class="headerlink" href="#a-sandwich-approach" title="Permanent link">&para;</a></h2>
-<p>A practical approach to integrating Agentic AI into software development is the sandwich model, where human effort wraps around the AI's contribution.</p>
+<p>Many practical approaches to integrating Agentic AI into software development can be generalized into the sandwich model, where human effort wraps around the AI's contribution.</p>
 <ul>
 <li><strong>Human First</strong> - divide the task into small pieces, give a clear specification, and develop some examples by hand.</li>
 <li><strong>AI Second</strong> - based on the specification and the examples, the AI develops the missing components.</li>
@@ -621,8 +621,8 @@
 </ul>
 <p><strong>Develop some examples by hand</strong></p>
 <ul>
-<li>Implement 50%–90% of a feature manually before asking the AI to complete it.</li>
-<li>Write 10%–20% of the unit tests by hand to establish a reference pattern.</li>
+<li>Implement 50%–90% of a feature manually before asking the AI to complete it. This is because the AI will search for example and reference from the related modules and similar sibling features before recalling from its pre-trained data.</li>
+<li>Write 10%–20% of the unit tests by hand to establish a reference pattern. Each test case is often a standalone function with a separate set of input and expected output. The dependency and coupling are less compared to the feature code.</li>
 </ul>
 <h3 id="ai-second-agent-workflows">AI Second (Agent Workflows)<a class="headerlink" href="#ai-second-agent-workflows" title="Permanent link">&para;</a></h3>
 <p>When delegating to an AI agent:</p>
