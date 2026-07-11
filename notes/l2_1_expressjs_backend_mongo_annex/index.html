@@ -457,6 +457,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#step-44-fixing-the-export" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4.4 Fixing the export
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
       References
@@ -699,6 +708,12 @@ type checking is enforced. </li>
 </span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15"></a><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div>
 <p>Apply this update to all server side JS files (excluding those in <code>public</code>)</p>
+<h4 id="step-44-fixing-the-export">Step 4.4 Fixing the export<a class="headerlink" href="#step-44-fixing-the-export" title="Permanent link">&para;</a></h4>
+<p>Instead of declaring the export at the end of the file.</p>
+<div class="language-js highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nx">Staff</span><span class="p">,</span><span class="w"> </span><span class="nx">all</span><span class="p">,</span><span class="w"> </span><span class="nx">findOneById</span><span class="p">,</span><span class="w"> </span><span class="nx">findByDept</span><span class="p">,</span><span class="w"> </span><span class="nx">findOneByName</span><span class="p">,</span><span class="w"> </span><span class="nx">sync</span><span class="p">,</span><span class="w"> </span><span class="nx">insertOne</span><span class="p">,</span><span class="w"> </span><span class="nx">insertMany</span><span class="p">,</span><span class="w"> </span><span class="nx">deleteOne</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+<p>add <code>export</code> keyboard to every function and class that should be visible to other modules.</p>
+<p>For example the <code>export class Staff</code> in the step 4.4.</p>
 <h4 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h4>
 <ol>
 <li><code>https://medium.com/@chiragmehta900/migrate-your-node-js-express-app-to-typescript-step-by-step-2026-15e4ff048e1f</code></li>
